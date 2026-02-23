@@ -1,9 +1,5 @@
+// This file contains content that is likely to grow or change (Amplifiable).
 export const siteData = {
-  personal: {
-    name: "Christian Santarelli",
-    role: "Software Engineer & Developer",
-    bio: "I build scalable web applications, automated deployment pipelines, and clean digital architectures. Focused on performance and modular design.",
-  },
   contacts: [
     { id: "email", label: "Email Me", url: "mailto:seintian@altervista.org", isPrimary: true },
     { id: "github", label: "GitHub", url: "https://github.com/Seintian", isPrimary: false },
@@ -45,6 +41,7 @@ export const siteData = {
       rowSpan: "md:row-span-1" 
     }
   ],
+  // The Experience Timeline points
   experience: [
     {
       id: "role-2",
