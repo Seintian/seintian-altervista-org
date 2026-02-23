@@ -1,5 +1,3 @@
-import React from "react";
-
 interface ContactButtonProps {
   label: string;
   url: string;

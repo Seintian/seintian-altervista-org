@@ -1,6 +1,3 @@
-"use client";
-
-import React from "react";
 import { useSiteContext } from "@/context/SiteContext";
 import ContactButton from "@/components/ui/ContactButton";
 
