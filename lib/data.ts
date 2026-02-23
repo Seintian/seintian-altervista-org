@@ -44,5 +44,23 @@ export const siteData = {
       colSpan: "md:col-span-1", 
       rowSpan: "md:row-span-1" 
     }
+  ],
+  experience: [
+    {
+      id: "role-2",
+      role: "Senior Software Engineer",
+      company: "Enterprise Tech Co.",
+      period: "2022 - Present",
+      description: "Architected scalable web applications and fully automated CI/CD pipelines. Reduced deployment times by 40% and mentored junior developers.",
+      technologies: ["Next.js", "TypeScript", "Tailwind", "GitHub Actions"]
+    },
+    {
+      id: "role-1",
+      role: "Full Stack Developer",
+      company: "Digital Solutions Agency",
+      period: "2019 - 2022",
+      description: "Developed custom client portals and integrated third-party APIs. Managed legacy LAMP stack migrations.",
+      technologies: ["React", "Node.js", "PHP", "MySQL"]
+    }
   ]
 };

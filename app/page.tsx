@@ -1,4 +1,5 @@
 import { siteData } from "@/lib/data";
+import ExperienceTimeline from "@/components/ExperienceTimeline";
 
 export default function Home() {
   return (
@@ -67,10 +68,17 @@ export default function Home() {
         ))}
       </section>
 
-      {/* Placeholder for Checkpoint 3 (The Timeline) */}
-      <section id="experience" className="border-t border-slate-200 pt-24 min-h-screen">
-        <h2 className="text-3xl font-bold text-slate-900 mb-8">Professional Experience</h2>
-        <p className="text-slate-400 italic">Timeline component coming next...</p>
+      {/* Checkpoint 3: The Custom Timeline */}
+      <section id="experience" className="border-t border-slate-200 pt-24 min-h-screen scroll-mt-12">
+        <div className="mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Professional Experience</h2>
+          <p className="text-lg text-slate-600 max-w-2xl">
+            A look at my career history, the teams I've worked with, and the technologies I've leveraged to drive business results.
+          </p>
+        </div>
+
+        {/* Drop the modular component here */}
+        <ExperienceTimeline />
       </section>
 
     </main>
