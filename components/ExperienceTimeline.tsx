@@ -1,10 +1,12 @@
-import { siteData } from "@/lib/data";
+import { useSiteContext } from "@/context/SiteContext";
 
 export default function ExperienceTimeline() {
+  const { experience } = useSiteContext();
+
   return (
     <div className="max-w-3xl mx-auto">
       <ol className="relative border-s-2 border-slate-200 ml-3 md:ml-0">
-        {siteData.experience.map((job, index) => (
+        {experience.map((job, index) => (
           <li key={job.id} className="mb-12 ms-8 group">
             {/* The Timeline Dot */}
             <span className="absolute flex items-center justify-center w-4 h-4 bg-white rounded-full -start-[9px] ring-4 ring-slate-100 border border-slate-300 group-hover:border-blue-600 group-hover:ring-blue-50 transition-all duration-300"></span>

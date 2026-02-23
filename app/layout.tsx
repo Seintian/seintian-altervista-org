@@ -9,6 +9,8 @@ export const metadata: Metadata = {
   description: "Curriculum Vitae and Projects",
 };
 
+import { SiteProvider } from "@/context/SiteContext";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -17,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-slate-50 text-slate-900 antialiased`}>
-        {children}
+        <SiteProvider>
+          {children}
+        </SiteProvider>
       </body>
     </html>
   );
