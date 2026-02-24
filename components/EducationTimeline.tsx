@@ -26,27 +26,27 @@ export default function EducationTimeline({ education, certifications, isLoading
 
     return (
         <div className="max-w-3xl mx-auto">
-            <ol className="relative border-s-2 border-slate-200 ml-3 md:ml-0 mb-12">
+            <ol className="relative border-s-2 border-slate-200 dark:border-slate-800 ml-3 md:ml-0 mb-12 transition-colors duration-300">
                 {education.map((edu) => (
                     <li key={edu.id} className="mb-12 ms-8 group">
                         {/* The Timeline Dot */}
-                        <span className="absolute flex items-center justify-center w-4 h-4 bg-white rounded-full -start-[9px] ring-4 ring-slate-100 border border-slate-300 group-hover:border-blue-600 group-hover:ring-blue-50 transition-all duration-300"></span>
+                        <span className="absolute flex items-center justify-center w-4 h-4 bg-white dark:bg-slate-900 rounded-full -start-[9px] ring-4 ring-slate-100 dark:ring-slate-900 border border-slate-300 dark:border-slate-700 group-hover:border-blue-600 dark:group-hover:border-blue-400 group-hover:ring-blue-50 dark:group-hover:ring-blue-900/30 transition-all duration-300"></span>
 
                         {/* Content Card */}
                         <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-                            <h3 className="text-xl font-bold text-slate-900">
+                            <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 transition-colors duration-300">
                                 {t(edu.degreeKey)}
                             </h3>
-                            <time className="text-sm font-medium text-slate-500 mt-1 sm:mt-0">
+                            <time className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 sm:mt-0 transition-colors duration-300">
                                 {t(edu.periodKey)}
                             </time>
                         </div>
 
-                        <div className="text-blue-600 font-medium mb-1">
+                        <div className="text-blue-600 dark:text-blue-400 font-medium mb-1 transition-colors duration-300">
                             {t(edu.schoolKey)}
                         </div>
 
-                        <p className="text-slate-600 mb-4">
+                        <p className="text-slate-600 dark:text-slate-400 mb-4 transition-colors duration-300">
                             {t(edu.locationKey)}
                         </p>
                     </li>
@@ -55,8 +55,8 @@ export default function EducationTimeline({ education, certifications, isLoading
 
             {certifications && certifications.length > 0 && (
                 <div className="mt-8 ms-3 md:ms-0">
-                    <h3 className="text-xl font-bold text-slate-900 mb-4">{t("common.certifications")}</h3>
-                    <ul className="list-disc list-inside space-y-2 text-slate-600">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 mb-4 transition-colors duration-300">{t("common.certifications")}</h3>
+                    <ul className="list-disc list-inside space-y-2 text-slate-600 dark:text-slate-400 transition-colors duration-300">
                         {certifications.map((certKey, idx) => (
                             <li key={idx}>{t(certKey)}</li>
                         ))}
@@ -70,7 +70,7 @@ export default function EducationTimeline({ education, certifications, isLoading
 function TimelineSkeleton() {
     return (
         <div className="max-w-3xl mx-auto">
-            <div className="relative border-s-2 border-slate-100 ml-3 md:ml-0 mb-12">
+            <div className="relative border-s-2 border-slate-100 dark:border-slate-800 ml-3 md:ml-0 mb-12">
                 {[1, 2].map((i) => (
                     <div key={i} className="mb-12 ms-8">
                         <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">

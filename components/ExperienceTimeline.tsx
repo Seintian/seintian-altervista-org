@@ -26,28 +26,28 @@ export default function ExperienceTimeline({ experience, isLoading }: Experience
 
   return (
     <div className="max-w-3xl mx-auto">
-      <ol className="relative border-s-2 border-slate-200 ml-3 md:ml-0">
+      <ol className="relative border-s-2 border-slate-200 dark:border-slate-800 ml-3 md:ml-0 transition-colors duration-300">
         {experience.map((job) => (
           <li key={job.id} className="mb-12 ms-8 group">
             {/* The Timeline Dot */}
-            <span className="absolute flex items-center justify-center w-4 h-4 bg-white rounded-full -start-[9px] ring-4 ring-slate-100 border border-slate-300 group-hover:border-blue-600 group-hover:ring-blue-50 transition-all duration-300"></span>
+            <span className="absolute flex items-center justify-center w-4 h-4 bg-white dark:bg-slate-900 rounded-full -start-[9px] ring-4 ring-slate-100 dark:ring-slate-900 border border-slate-300 dark:border-slate-700 group-hover:border-blue-600 dark:group-hover:border-blue-400 group-hover:ring-blue-50 dark:group-hover:ring-blue-900/30 transition-all duration-300"></span>
 
             {/* Content Card */}
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-              <h3 className="text-xl font-bold text-slate-900">
-                {t(job.roleKey)} <span className="text-blue-600 font-medium hidden sm:inline">@ {t(job.companyKey)}</span>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 transition-colors duration-300">
+                {t(job.roleKey)} <span className="text-blue-600 dark:text-blue-400 font-medium hidden sm:inline transition-colors duration-300">@ {t(job.companyKey)}</span>
               </h3>
-              <time className="text-sm font-medium text-slate-500 mt-1 sm:mt-0">
+              <time className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 sm:mt-0 transition-colors duration-300">
                 {t(job.periodKey)}
               </time>
             </div>
 
             {/* Mobile Company Name */}
-            <div className="text-blue-600 font-medium sm:hidden mb-2">
+            <div className="text-blue-600 dark:text-blue-400 font-medium sm:hidden mb-2 transition-colors duration-300">
               {t(job.companyKey)}
             </div>
 
-            <p className="mb-4 text-slate-600 leading-relaxed">
+            <p className="mb-4 text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-300">
               {t(job.descriptionKey)}
             </p>
 
@@ -56,7 +56,7 @@ export default function ExperienceTimeline({ experience, isLoading }: Experience
               {job.technologies.map((tech) => (
                 <span
                   key={tech}
-                  className="px-3 py-1 text-xs font-medium text-slate-700 bg-slate-100 rounded-full border border-slate-200"
+                  className="px-3 py-1 text-xs font-medium text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 rounded-full border border-slate-200 dark:border-slate-700 transition-colors duration-300"
                 >
                   {tech}
                 </span>
@@ -72,7 +72,7 @@ export default function ExperienceTimeline({ experience, isLoading }: Experience
 function TimelineSkeleton() {
   return (
     <div className="max-w-3xl mx-auto">
-      <div className="relative border-s-2 border-slate-100 ml-3 md:ml-0">
+      <div className="relative border-s-2 border-slate-100 dark:border-slate-800 ml-3 md:ml-0">
         {[1, 2].map((i) => (
           <div key={i} className="mb-12 ms-8">
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-4">

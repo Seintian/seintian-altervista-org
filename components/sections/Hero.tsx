@@ -1,6 +1,7 @@
 import ContactButton from "@/components/ui/ContactButton";
 import Skeleton from "@/components/ui/Skeleton";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 import { useTranslation } from "react-i18next";
 
 interface HeroProps {
@@ -18,14 +19,17 @@ export default function Hero({ contacts, isLoading }: HeroProps) {
 
   return (
     <section className="flex flex-col items-start justify-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-in-out">
-      <LanguageSwitcher />
-      <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
-        {t("hero.greeting")} <span className="text-blue-600">{t("hero.name")}</span>.
+      <div className="flex items-center gap-3 mb-6">
+        <LanguageSwitcher />
+        <ThemeSwitcher />
+      </div>
+      <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 mb-6 transition-colors duration-300">
+        {t("hero.greeting")} <span className="text-blue-600 dark:text-blue-400">{t("hero.name")}</span>.
       </h1>
-      <h2 className="text-2xl md:text-3xl font-medium text-slate-700 mb-6">
+      <h2 className="text-2xl md:text-3xl font-medium text-slate-700 dark:text-slate-300 mb-6 transition-colors duration-300">
         {t("hero.role")}
       </h2>
-      <p className="text-lg text-slate-600 max-w-2xl mb-10 leading-relaxed">
+      <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mb-10 leading-relaxed transition-colors duration-300">
         {t("hero.description")}
       </p>
 

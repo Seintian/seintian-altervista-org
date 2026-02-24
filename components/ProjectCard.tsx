@@ -25,13 +25,13 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, url, repo, technologies }: ProjectCardProps) {
     return (
-        <div className="flex flex-col h-full bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 hover:border-blue-300 hover:shadow-lg transition-all duration-300 group relative overflow-hidden">
+        <div className="flex flex-col h-full bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-lg dark:hover:shadow-blue-900/20 transition-all duration-300 group relative overflow-hidden">
             {/* Subtle background gradient on hover */}
-            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/50 dark:from-blue-900/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
             <div className="relative z-10 flex flex-col h-full">
                 <div className="flex justify-between items-start mb-4">
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                    <h3 className="text-xl font-bold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                         {title}
                     </h3>
                     <div className="flex gap-2">
@@ -40,7 +40,7 @@ export default function ProjectCard({ title, description, url, repo, technologie
                                 href={repo}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-slate-400 hover:text-slate-900 transition-colors"
+                                className="text-slate-400 dark:text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
                                 aria-label="GitHub Repository"
                             >
                                 <GithubIcon className="w-5 h-5" />
@@ -51,7 +51,7 @@ export default function ProjectCard({ title, description, url, repo, technologie
                                 href={url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-slate-400 hover:text-blue-600 transition-colors"
+                                className="text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                                 aria-label="Live Demo"
                             >
                                 <ExternalLink className="w-5 h-5" />
@@ -60,7 +60,7 @@ export default function ProjectCard({ title, description, url, repo, technologie
                     </div>
                 </div>
 
-                <p className="text-slate-600 mb-6 flex-grow">
+                <p className="text-slate-600 dark:text-slate-400 mb-6 flex-grow transition-colors duration-300">
                     {description}
                 </p>
 
@@ -68,7 +68,7 @@ export default function ProjectCard({ title, description, url, repo, technologie
                     {technologies.map((tech) => (
                         <span
                             key={tech}
-                            className="px-3 py-1 text-xs font-medium text-blue-700 bg-blue-50 rounded-full border border-blue-100"
+                            className="px-3 py-1 text-xs font-medium text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/30 rounded-full border border-blue-100 dark:border-blue-800 transition-colors duration-300"
                         >
                             {tech}
                         </span>
