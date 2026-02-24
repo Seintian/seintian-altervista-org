@@ -29,6 +29,7 @@ export default function RootLayout({
           easing="ease"
           speed={200}
           shadow="0 0 10px #3b82f6,0 0 5px #3b82f6"
+          showForHashAnchor={false}
         />
         <Providers>
           {children}
