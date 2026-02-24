@@ -18,10 +18,10 @@ export default function Hero({ contacts, isLoading }: HeroProps) {
         Hello, I&apos;m <span className="text-blue-600">Christian Santarelli</span>.
       </h1>
       <h2 className="text-2xl md:text-3xl font-medium text-slate-700 mb-6">
-        Software Engineer & Developer
+        Software Engineer & Web Developer
       </h2>
       <p className="text-lg text-slate-600 max-w-2xl mb-10 leading-relaxed">
-        I build scalable web applications, automated deployment pipelines, and clean digital architectures. Focused on performance and modular design.
+        Giovane informatico con solida esperienza nello sviluppo software e web, attualmente laureando in Informatica all&apos;Università di Torino. Sviluppo soluzioni che spaziano da architetture web enterprise (React, Spring Boot) a librerie di sistema a basso livello (C, IPC, NUMA).
       </p>
 
       <div className="flex flex-wrap gap-4 min-h-[48px]">
