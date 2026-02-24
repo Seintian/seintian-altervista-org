@@ -1,5 +1,4 @@
 import ProjectCard from "@/components/ProjectCard";
-import Skeleton from "@/components/ui/Skeleton";
 import { useTranslation } from "react-i18next";
 
 interface ProjectsSectionProps {
@@ -11,10 +10,9 @@ interface ProjectsSectionProps {
         repo?: string;
         technologies: string[];
     }>;
-    isLoading?: boolean;
 }
 
-export default function ProjectsSection({ projects, isLoading }: ProjectsSectionProps) {
+export default function ProjectsSection({ projects }: ProjectsSectionProps) {
     const { t } = useTranslation();
 
     return (
@@ -27,26 +25,18 @@ export default function ProjectsSection({ projects, isLoading }: ProjectsSection
                     </p>
                 </div>
 
-                {isLoading ? (
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {[1, 2, 3].map((i) => (
-                            <Skeleton key={i} className="h-64 w-full rounded-3xl" />
-                        ))}
-                    </div>
-                ) : (
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
-                        {projects?.map((project) => (
-                            <ProjectCard
-                                key={project.id}
-                                title={t(project.titleKey)}
-                                description={t(project.descriptionKey)}
-                                url={project.url}
-                                repo={project.repo}
-                                technologies={project.technologies}
-                            />
-                        ))}
-                    </div>
-                )}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-stretch">
+                    {projects?.map((project) => (
+                        <ProjectCard
+                            key={project.id}
+                            title={t(project.titleKey)}
+                            description={t(project.descriptionKey)}
+                            url={project.url}
+                            repo={project.repo}
+                            technologies={project.technologies}
+                        />
+                    ))}
+                </div>
             </div>
         </section>
     );

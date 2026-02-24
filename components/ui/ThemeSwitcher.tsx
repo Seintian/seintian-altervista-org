@@ -3,7 +3,6 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Sun, Moon, Monitor } from "lucide-react";
-import Skeleton from "./Skeleton";
 
 export default function ThemeSwitcher() {
     const [mounted, setMounted] = useState(false);
@@ -15,7 +14,7 @@ export default function ThemeSwitcher() {
     }, []);
 
     if (!mounted) {
-        return <Skeleton className="h-8 w-[130px] rounded-full" />;
+        return <div className="h-8 w-[130px]" />;
     }
 
     return (

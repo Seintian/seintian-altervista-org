@@ -1,4 +1,3 @@
-import Skeleton from "@/components/ui/Skeleton";
 import { useTranslation } from "react-i18next";
 
 interface EducationTimelineProps {
@@ -10,15 +9,10 @@ interface EducationTimelineProps {
         periodKey: string;
     }>;
     certifications?: string[];
-    isLoading?: boolean;
 }
 
-export default function EducationTimeline({ education, certifications, isLoading }: EducationTimelineProps) {
+export default function EducationTimeline({ education, certifications }: EducationTimelineProps) {
     const { t } = useTranslation();
-
-    if (isLoading) {
-        return <TimelineSkeleton />;
-    }
 
     if (!education) {
         return null;
@@ -63,25 +57,6 @@ export default function EducationTimeline({ education, certifications, isLoading
                     </ul>
                 </div>
             )}
-        </div>
-    );
-}
-
-function TimelineSkeleton() {
-    return (
-        <div className="max-w-3xl mx-auto">
-            <div className="relative border-s-2 border-slate-100 dark:border-slate-800 ml-3 md:ml-0 mb-12">
-                {[1, 2].map((i) => (
-                    <div key={i} className="mb-12 ms-8">
-                        <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-                            <Skeleton className="h-6 w-64 mb-2 sm:mb-0" />
-                            <Skeleton className="h-4 w-24" />
-                        </div>
-                        <Skeleton className="h-5 w-48 mb-2" />
-                        <Skeleton className="h-4 w-32" />
-                    </div>
-                ))}
-            </div>
         </div>
     );
 }

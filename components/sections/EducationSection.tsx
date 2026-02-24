@@ -10,10 +10,9 @@ interface EducationSectionProps {
         periodKey: string;
     }>;
     certifications?: string[];
-    isLoading?: boolean;
 }
 
-export default function EducationSection({ education, certifications, isLoading }: EducationSectionProps) {
+export default function EducationSection({ education, certifications }: EducationSectionProps) {
     const { t } = useTranslation();
 
     return (
@@ -25,7 +24,7 @@ export default function EducationSection({ education, certifications, isLoading 
                 </p>
             </div>
 
-            <EducationTimeline education={education} certifications={certifications} isLoading={isLoading} />
+            <EducationTimeline education={education} certifications={certifications} />
         </section>
     );
 }

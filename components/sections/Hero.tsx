@@ -1,5 +1,4 @@
 import ContactButton from "@/components/ui/ContactButton";
-import Skeleton from "@/components/ui/Skeleton";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 import { useTranslation } from "react-i18next";
@@ -11,10 +10,9 @@ interface HeroProps {
     url: string;
     isPrimary: boolean;
   }>;
-  isLoading?: boolean;
 }
 
-export default function Hero({ contacts, isLoading }: HeroProps) {
+export default function Hero({ contacts }: HeroProps) {
   const { t } = useTranslation();
 
   return (
@@ -34,23 +32,15 @@ export default function Hero({ contacts, isLoading }: HeroProps) {
       </p>
 
       <div className="flex flex-wrap gap-4 min-h-[48px]">
-        {isLoading || !contacts ? (
-          <>
-            <Skeleton className="h-12 w-32 rounded-full" />
-            <Skeleton className="h-12 w-32 rounded-full" />
-            <Skeleton className="h-12 w-32 rounded-full" />
-          </>
-        ) : (
-          contacts.map((contact) => (
-            <ContactButton
-              key={contact.id}
-              id={contact.id}
-              label={t(contact.labelKey)}
-              url={contact.url}
-              isPrimary={contact.isPrimary}
-            />
-          ))
-        )}
+        {contacts && contacts.map((contact) => (
+          <ContactButton
+            key={contact.id}
+            id={contact.id}
+            label={t(contact.labelKey)}
+            url={contact.url}
+            isPrimary={contact.isPrimary}
+          />
+        ))}
       </div>
     </section>
   );

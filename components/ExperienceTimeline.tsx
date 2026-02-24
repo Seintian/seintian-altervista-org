@@ -1,4 +1,3 @@
-import Skeleton from "@/components/ui/Skeleton";
 import { useTranslation } from "react-i18next";
 
 interface ExperienceTimelineProps {
@@ -10,15 +9,10 @@ interface ExperienceTimelineProps {
     descriptionKey: string;
     technologies: string[];
   }>;
-  isLoading?: boolean;
 }
 
-export default function ExperienceTimeline({ experience, isLoading }: ExperienceTimelineProps) {
+export default function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
   const { t } = useTranslation();
-
-  if (isLoading) {
-    return <TimelineSkeleton />;
-  }
 
   if (!experience) {
     return null;
@@ -65,29 +59,6 @@ export default function ExperienceTimeline({ experience, isLoading }: Experience
           </li>
         ))}
       </ol>
-    </div>
-  );
-}
-
-function TimelineSkeleton() {
-  return (
-    <div className="max-w-3xl mx-auto">
-      <div className="relative border-s-2 border-slate-100 dark:border-slate-800 ml-3 md:ml-0">
-        {[1, 2].map((i) => (
-          <div key={i} className="mb-12 ms-8">
-            <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-4">
-              <Skeleton className="h-6 w-48 mb-2 sm:mb-0" />
-              <Skeleton className="h-4 w-24" />
-            </div>
-            <Skeleton className="h-20 w-full mb-4" />
-            <div className="flex flex-wrap gap-2">
-              <Skeleton className="h-6 w-20 rounded-full" />
-              <Skeleton className="h-6 w-20 rounded-full" />
-              <Skeleton className="h-6 w-20 rounded-full" />
-            </div>
-          </div>
-        ))}
-      </div>
     </div>
   );
 }
