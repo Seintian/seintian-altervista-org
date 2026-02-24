@@ -1,11 +1,12 @@
 import BentoCard from "@/components/ui/BentoCard";
 import Skeleton from "@/components/ui/Skeleton";
+import { useTranslation } from "react-i18next";
 
 interface BentoGridProps {
   modules?: Array<{
     id: string;
-    title: string;
-    description: string;
+    titleKey: string;
+    descriptionKey: string;
     href: string;
     colSpan: string;
     rowSpan: string;
@@ -14,6 +15,8 @@ interface BentoGridProps {
 }
 
 export default function BentoGrid({ modules, isLoading }: BentoGridProps) {
+  const { t } = useTranslation();
+
   if (isLoading) {
     return <BentoSkeleton />;
   }
@@ -27,8 +30,8 @@ export default function BentoGrid({ modules, isLoading }: BentoGridProps) {
       {modules.map((mod) => (
         <BentoCard
           key={mod.id}
-          title={mod.title}
-          description={mod.description}
+          title={t(mod.titleKey)}
+          description={t(mod.descriptionKey)}
           href={mod.href}
           colSpan={mod.colSpan}
           rowSpan={mod.rowSpan}

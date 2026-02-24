@@ -1,18 +1,21 @@
 import Skeleton from "@/components/ui/Skeleton";
+import { useTranslation } from "react-i18next";
 
 interface ExperienceTimelineProps {
   experience?: Array<{
     id: string;
-    role: string;
-    company: string;
-    period: string;
-    description: string;
+    roleKey: string;
+    companyKey: string;
+    periodKey: string;
+    descriptionKey: string;
     technologies: string[];
   }>;
   isLoading?: boolean;
 }
 
 export default function ExperienceTimeline({ experience, isLoading }: ExperienceTimelineProps) {
+  const { t } = useTranslation();
+
   if (isLoading) {
     return <TimelineSkeleton />;
   }
@@ -32,27 +35,27 @@ export default function ExperienceTimeline({ experience, isLoading }: Experience
             {/* Content Card */}
             <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
               <h3 className="text-xl font-bold text-slate-900">
-                {job.role} <span className="text-blue-600 font-medium hidden sm:inline">@ {job.company}</span>
+                {t(job.roleKey)} <span className="text-blue-600 font-medium hidden sm:inline">@ {t(job.companyKey)}</span>
               </h3>
               <time className="text-sm font-medium text-slate-500 mt-1 sm:mt-0">
-                {job.period}
+                {t(job.periodKey)}
               </time>
             </div>
 
             {/* Mobile Company Name */}
             <div className="text-blue-600 font-medium sm:hidden mb-2">
-              {job.company}
+              {t(job.companyKey)}
             </div>
 
             <p className="mb-4 text-slate-600 leading-relaxed">
-              {job.description}
+              {t(job.descriptionKey)}
             </p>
 
             {/* Technologies Pills */}
             <div className="flex flex-wrap gap-2">
               {job.technologies.map((tech) => (
-                <span 
-                  key={tech} 
+                <span
+                  key={tech}
                   className="px-3 py-1 text-xs font-medium text-slate-700 bg-slate-100 rounded-full border border-slate-200"
                 >
                   {tech}

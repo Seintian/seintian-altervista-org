@@ -1,18 +1,21 @@
 import Skeleton from "@/components/ui/Skeleton";
+import { useTranslation } from "react-i18next";
 
 interface EducationTimelineProps {
     education?: Array<{
         id: string;
-        degree: string;
-        school: string;
-        location: string;
-        period: string;
+        degreeKey: string;
+        schoolKey: string;
+        locationKey: string;
+        periodKey: string;
     }>;
     certifications?: string[];
     isLoading?: boolean;
 }
 
 export default function EducationTimeline({ education, certifications, isLoading }: EducationTimelineProps) {
+    const { t } = useTranslation();
+
     if (isLoading) {
         return <TimelineSkeleton />;
     }
@@ -32,19 +35,19 @@ export default function EducationTimeline({ education, certifications, isLoading
                         {/* Content Card */}
                         <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
                             <h3 className="text-xl font-bold text-slate-900">
-                                {edu.degree}
+                                {t(edu.degreeKey)}
                             </h3>
                             <time className="text-sm font-medium text-slate-500 mt-1 sm:mt-0">
-                                {edu.period}
+                                {t(edu.periodKey)}
                             </time>
                         </div>
 
                         <div className="text-blue-600 font-medium mb-1">
-                            {edu.school}
+                            {t(edu.schoolKey)}
                         </div>
 
                         <p className="text-slate-600 mb-4">
-                            {edu.location}
+                            {t(edu.locationKey)}
                         </p>
                     </li>
                 ))}
@@ -52,10 +55,10 @@ export default function EducationTimeline({ education, certifications, isLoading
 
             {certifications && certifications.length > 0 && (
                 <div className="mt-8 ms-3 md:ms-0">
-                    <h3 className="text-xl font-bold text-slate-900 mb-4">Certifications</h3>
+                    <h3 className="text-xl font-bold text-slate-900 mb-4">{t("common.certifications")}</h3>
                     <ul className="list-disc list-inside space-y-2 text-slate-600">
-                        {certifications.map((cert, idx) => (
-                            <li key={idx}>{cert}</li>
+                        {certifications.map((certKey, idx) => (
+                            <li key={idx}>{t(certKey)}</li>
                         ))}
                     </ul>
                 </div>

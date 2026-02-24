@@ -30,7 +30,7 @@ export default function Home() {
       />
       <EducationSection
         education={data?.education}
-        certifications={data?.certifications}
+        certifications={data?.certificationsKeys}
         isLoading={isLoading}
       />
     </main>
