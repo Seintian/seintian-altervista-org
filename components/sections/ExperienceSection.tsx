@@ -10,10 +10,9 @@ interface ExperienceSectionProps {
     descriptionKey: string;
     technologies: string[];
   }>;
-  isLoading?: boolean;
 }
 
-export default function ExperienceSection({ experience, isLoading }: ExperienceSectionProps) {
+export default function ExperienceSection({ experience }: ExperienceSectionProps) {
   const { t } = useTranslation();
 
   return (
@@ -25,7 +24,7 @@ export default function ExperienceSection({ experience, isLoading }: ExperienceS
         </p>
       </div>
 
-      <ExperienceTimeline experience={experience} isLoading={isLoading} />
+      <ExperienceTimeline experience={experience} />
     </section>
   );
 }
