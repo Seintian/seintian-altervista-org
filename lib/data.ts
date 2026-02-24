@@ -51,5 +51,102 @@ export const siteData = {
             description: "Gestione e sviluppo end-to-end di applicazioni web dinamiche. Progettazione architetturale e coding. Gestione dei deployment e manutenzione mensile per vari clienti. Attività di consulenza tecnica per i team creativi, analizzando feedback e trend per ottimizzare l'efficienza, le performance e la UX del software.",
             technologies: ["PHP", "JavaScript", "CSS", "Bulma"]
         }
+    ],
+    // Education Timeline
+    education: [
+        {
+            id: "edu-1",
+            degree: "Laurea in Informatica (BSc in Computer Science)",
+            school: "Università di Torino",
+            location: "Torino",
+            period: "2023 - Present"
+        },
+        {
+            id: "edu-2",
+            degree: "Diploma di Maturità Scientifica",
+            school: "Liceo Scientifico Maria Curie",
+            location: "Pinerolo (TO)",
+            period: "2018 - 2023"
+        }
+    ],
+    // Certifications
+    certifications: [
+        "First Certificate in English - B2 (2022)",
+        "Corsi di formazione generica e specifica per lavoratori studenti (12 ore)"
+    ],
+    // Projects Showcase
+    projects: [
+        {
+            id: "proj-1",
+            title: "GreenHabits (Web Technologies)",
+            description: "Piattaforma web full-stack con architettura enterprise. Implementata con un backend in Java Spring Boot, frontend in React/Vite (TS), e database PostgreSQL. L'infrastruttura è completamente containerizzata con Docker e include un sistema di monitoraggio avanzato con Grafana e Prometheus.",
+            url: "",
+            repo: "https://github.com/Seintian/unito-web-technologies-25-26",
+            technologies: ["Java", "Spring Boot", "React", "Docker", "PostgreSQL"],
+            category: "core-cs"
+        },
+        {
+            id: "proj-2",
+            title: "Human-Computer Interaction (HCI) Web Platform",
+            description: "Sviluppo di un'interfaccia utente web moderna e accessibile per il corso di HCI. Focus rigoroso su UX/UI design, responsività e principi di usabilità.",
+            url: "https://seintian.github.io/unito-human-computer-interaction-25-26",
+            repo: "https://github.com/Seintian/unito-human-computer-interaction-25-26",
+            technologies: ["UX/UI Design", "Web Development", "HTML/CSS"],
+            category: "core-cs"
+        },
+        {
+            id: "proj-3",
+            title: "WinHUD",
+            description: "Applicazione desktop per Windows sviluppata in C# (.NET/WPF). Implementa un overlay customizzabile per il monitoraggio in tempo reale dei dati hardware e delle performance del sistema.",
+            url: "",
+            repo: "https://github.com/Seintian/WinHUD",
+            technologies: ["C#", ".NET", "WPF"],
+            category: "featured"
+        },
+        {
+            id: "proj-4",
+            title: "libnumakit",
+            description: "Libreria di sistema avanzata scritta in C (build con CMake) per la gestione della memoria su architetture NUMA. Include logiche di task pooling, scheduling e memory migration a basso livello.",
+            url: "",
+            repo: "https://github.com/Seintian/libnumakit",
+            technologies: ["C", "CMake", "NUMA", "IPC"],
+            category: "featured"
+        },
+        {
+            id: "proj-5",
+            title: "Formal Languages & Compilers",
+            description: "Sviluppo from scratch di un compilatore in Java. Include l'implementazione di un analizzatore lessicale (Lexer), un analizzatore sintattico top-down (Parser LL(1)), analisi semantica tramite SDT (Syntax-Directed Translation) e generazione di bytecode eseguibile per la Java Virtual Machine (JVM).",
+            url: "",
+            repo: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26",
+            technologies: ["Java", "Compilers", "JVM", "Parsers"],
+            category: "core-cs"
+        },
+        {
+            id: "proj-6",
+            title: "POSIX Operating Systems Simulation",
+            description: "Simulazione multi-processo complessa sviluppata in C per ambienti POSIX. L'architettura software sfrutta primitive IPC avanzate (Message Queues, Shared Memory, e Semafori) per la gestione sicura della concorrenza e della sincronizzazione tra nodi (Director, Worker, ecc.).",
+            url: "",
+            repo: "https://github.com/Seintian/unito-operative-systems-24-25",
+            technologies: ["C", "POSIX", "IPC", "Multithreading"],
+            category: "core-cs"
+        },
+        {
+            id: "proj-7",
+            title: "Algorithms & Data Structures Library",
+            description: "Libreria in C contenente l'implementazione manuale di strutture dati e algoritmi fondamentali, progettata per massima efficienza. Implementa Grafi, Hash Tables, calcolo dell'Edit Distance e moduli di sorting, validata tramite rigoroso unit testing (framework Unity).",
+            url: "",
+            repo: "https://github.com/Seintian/unito-algorithms-and-data-structures-24-25",
+            technologies: ["C", "TDD", "Algorithms", "Data Structs"],
+            category: "core-cs"
+        },
+        {
+            id: "proj-8",
+            title: "HCI Data Analysis Pipeline",
+            description: "Pipeline di elaborazione e analisi dati sviluppata in Python (Pandas, Jupyter Notebooks) basata su dataset legati alle interfacce uomo-macchina. Comprende script modulari per pre-cleaning, trattamento anomalie, feature engineering ed Exploratory Data Analysis (EDA).",
+            url: "",
+            repo: "https://github.com/Seintian/unito-hci-data-analysis-25-26",
+            technologies: ["Python", "Pandas", "Jupyter", "Data Analysis"],
+            category: "core-cs"
+        }
     ]
 };
