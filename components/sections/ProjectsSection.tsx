@@ -1,11 +1,12 @@
 import ProjectCard from "@/components/ProjectCard";
 import Skeleton from "@/components/ui/Skeleton";
+import { useTranslation } from "react-i18next";
 
 interface ProjectsSectionProps {
     projects?: Array<{
         id: string;
-        title: string;
-        description: string;
+        titleKey: string;
+        descriptionKey: string;
         url?: string;
         repo?: string;
         technologies: string[];
@@ -14,13 +15,15 @@ interface ProjectsSectionProps {
 }
 
 export default function ProjectsSection({ projects, isLoading }: ProjectsSectionProps) {
+    const { t } = useTranslation();
+
     return (
         <section id="projects" className="border-t border-slate-200 pt-24 pb-24 scroll-mt-12 bg-slate-50 -mx-6 px-6 sm:-mx-8 sm:px-8 lg:-mx-12 lg:px-12">
             <div className="max-w-5xl mx-auto">
                 <div className="mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Featured Projects</h2>
+                    <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t("sections.projects.title")}</h2>
                     <p className="text-lg text-slate-600 max-w-2xl">
-                        A selection of my best work spanning enterprise web apps, low-level system libraries, and academic platforms.
+                        {t("sections.projects.description")}
                     </p>
                 </div>
 
@@ -35,8 +38,8 @@ export default function ProjectsSection({ projects, isLoading }: ProjectsSection
                         {projects?.map((project) => (
                             <ProjectCard
                                 key={project.id}
-                                title={project.title}
-                                description={project.description}
+                                title={t(project.titleKey)}
+                                description={t(project.descriptionKey)}
                                 url={project.url}
                                 repo={project.repo}
                                 technologies={project.technologies}
