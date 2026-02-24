@@ -108,7 +108,8 @@
             "present": "Presente",
             "certifications": "Certificazioni",
             "github_repo": "Repo GitHub",
-            "live_demo": "Live Demo"
+            "live_demo": "Live Demo",
+            "search_placeholder": "Filtra per tag o categoria..."
         }
     }
 }
