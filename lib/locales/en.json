@@ -102,13 +102,25 @@
             "education": {
                 "title": "Education & Certifications",
                 "description": "My academic background and relevant certifications in Computer Science and software engineering."
+            },
+            "skills": {
+                "title": "Skills Matrix",
+                "description": "A comprehensive overview of my technical stack and core competencies across multiple domains.",
+                "categories": {
+                    "languages": "Languages",
+                    "frontend": "Frontend",
+                    "backend": "Backend & Cloud",
+                    "core": "Core Computer Science",
+                    "tools": "DevOps & Tools"
+                }
             }
         },
         "common": {
             "present": "Present",
             "certifications": "Certifications",
             "github_repo": "GitHub Repo",
-            "live_demo": "Live Demo"
+            "live_demo": "Live Demo",
+            "search_placeholder": "Filter by tag or category..."
         }
     }
 }

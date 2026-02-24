@@ -102,13 +102,25 @@
             "education": {
                 "title": "Formazione & Certificazioni",
                 "description": "Il mio background accademico e le principali certificazioni in Informatica."
+            },
+            "skills": {
+                "title": "Matrice delle Competenze",
+                "description": "Una panoramica completa del mio stack tecnologico e delle competenze chiave in molteplici domini.",
+                "categories": {
+                    "languages": "Linguaggi",
+                    "frontend": "Frontend",
+                    "backend": "Backend & Cloud",
+                    "core": "Informatica Teorica",
+                    "tools": "DevOps & Strumenti"
+                }
             }
         },
         "common": {
             "present": "Presente",
             "certifications": "Certificazioni",
             "github_repo": "Repo GitHub",
-            "live_demo": "Live Demo"
+            "live_demo": "Live Demo",
+            "search_placeholder": "Filtra per tag o categoria..."
         }
     }
 }

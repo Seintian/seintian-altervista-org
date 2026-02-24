@@ -36,11 +36,45 @@ export const siteData = {
             id: "skills",
             titleKey: "modules.skills.title",
             descriptionKey: "modules.skills.description",
-            href: "#about",
+            href: "#skills",
             colSpan: "md:col-span-1",
             rowSpan: "md:row-span-1"
         }
     ],
+    // The Skills Matrix
+    skills: {
+        languages: [
+            { id: "java", name: "Java", level: 90 },
+            { id: "c", name: "C", level: 85 },
+            { id: "cs", name: "C#", level: 80 },
+            { id: "js-ts", name: "JS / TS", level: 90 },
+            { id: "php", name: "PHP", level: 75 },
+            { id: "python", name: "Python", level: 80 }
+        ],
+        frontend: [
+            { id: "react", name: "React", level: 90 },
+            { id: "nextjs", name: "Next.js", level: 85 },
+            { id: "tailwind", name: "Tailwind CSS", level: 90 },
+            { id: "html-css", name: "HTML / CSS", level: 95 }
+        ],
+        backend: [
+            { id: "spring", name: "Spring Boot", level: 85 },
+            { id: "postgres", name: "PostgreSQL", level: 80 },
+            { id: "docker", name: "Docker", level: 80 }
+        ],
+        core: [
+            { id: "os", name: "Operating Systems", level: 85 },
+            { id: "compilers", name: "Compilers", level: 80 },
+            { id: "algo", name: "Algorithms & DS", level: 85 },
+            { id: "numa", name: "NUMA Arch", level: 75 }
+        ],
+        tools: [
+            { id: "git", name: "Git", level: 90 },
+            { id: "cmake", name: "CMake", level: 75 },
+            { id: "monitoring", name: "Grafana & Prometheus", level: 70 },
+            { id: "analysis", name: "Data Analysis", level: 80 }
+        ]
+    },
     // The Experience Timeline points
     experience: [
         {

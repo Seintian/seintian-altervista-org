@@ -5,6 +5,7 @@ import BentoGrid from "@/components/sections/BentoGrid";
 import ExperienceSection from "@/components/sections/ExperienceSection";
 import ProjectsSection from "@/components/sections/ProjectsSection";
 import EducationSection from "@/components/sections/EducationSection";
+import SkillsMatrix from "@/components/sections/SkillsMatrix";
 import GlobalLoadingScreen from "@/components/ui/GlobalLoadingScreen";
 import { useSiteData } from "@/hooks/useSiteData";
 
@@ -22,6 +23,9 @@ export default function Home() {
       />
       <BentoGrid
         modules={data?.modules}
+      />
+      <SkillsMatrix
+        skills={data?.skills}
       />
       <ExperienceSection
         experience={data?.experience}
