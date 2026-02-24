@@ -1,0 +1,23 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+
+    # ---------------------------------------------------------
+    # 1. FORCE HTTPS (AlterVista specific routing)
+    # ---------------------------------------------------------
+    RewriteCond %{HTTP:X-Forwarded-Proto} !https
+    RewriteCond %{HTTPS} off
+    RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+    # ---------------------------------------------------------
+    # 2. NEXT.JS STATIC EXPORT ROUTING
+    # Automatically resolves extensionless URLs to .html files
+    # ---------------------------------------------------------
+    # If the requested URI is not an existing directory
+    RewriteCond %{REQUEST_FILENAME} !-d
+    # And the requested URI is not an existing file
+    RewriteCond %{REQUEST_FILENAME} !-f
+    # And the corresponding .html file exists
+    RewriteCond %{REQUEST_FILENAME}.html -f
+    # Rewrite the request to the .html file
+    RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
