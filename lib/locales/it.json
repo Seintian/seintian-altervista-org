@@ -1,133 +1,159 @@
 {
-    "translation": {
-        "hero": {
-            "greeting": "Ciao, sono",
-            "name": "Christian Santarelli",
-            "role": "Software Engineer & Web Developer",
-            "description": "Giovane informatico con solida esperienza nello sviluppo software e web, attualmente laureando in Informatica all'Università di Torino. Sviluppo soluzioni che spaziano da architetture web enterprise (React, Spring Boot) a librerie di sistema a basso livello (C, IPC, NUMA)."
-        },
-        "contacts": {
-            "email": "Scrivimi",
-            "github": "GitHub",
-            "linkedin": "LinkedIn",
-            "cv": "Scarica CV"
-        },
-        "modules": {
-            "experience": {
-                "title": "Esperienza Professionale",
-                "description": "La mia carriera come Sviluppatore Web Freelance."
-            },
-            "projects": {
-                "title": "Progetti in Evidenza",
-                "description": "Web app enterprise, piattaforme HCI e progetti CS."
-            },
-            "education": {
-                "title": "Formazione",
-                "description": "Laurea in Informatica presso l'Università di Torino."
-            },
-            "skills": {
-                "title": "Matrice delle Competenze",
-                "description": "Linguaggi, Frontend, Backend, DevOps & Core CS."
-            }
-        },
+    "hero": {
+        "greeting": "Ciao, sono",
+        "name": "Christian Santarelli",
+        "role": "Software Engineer & Web Developer",
+        "description": "Giovane informatico con solida esperienza nello sviluppo software e web, attualmente laureando in Informatica all'Università di Torino. Sviluppo soluzioni che spaziano da architetture web enterprise (React, Spring Boot) a librerie di sistema a basso livello (C, IPC, NUMA)."
+    },
+    "contacts": {
+        "email": "Scrivimi",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "cv": "Scarica CV"
+    },
+    "modules": {
         "experience": {
-            "role-1": {
-                "role": "Sviluppatore Web Freelance",
-                "company": "Freelance",
-                "period": "2022 - Presente",
-                "description": "Gestione e sviluppo end-to-end di applicazioni web dinamiche. Progettazione architetturale e coding. Gestione dei deployment e manutenzione mensile per vari clienti. Attività di consulenza tecnica per i team creativi, analizzando feedback e trend per ottimizzare l'efficienza, le performance e la UX del software."
-            }
+            "title": "Esperienza Professionale",
+            "description": "La mia carriera come Sviluppatore Web Freelance."
+        },
+        "projects": {
+            "title": "Progetti in Evidenza",
+            "description": "Web app enterprise, piattaforme HCI e progetti CS."
         },
         "education": {
-            "edu-1": {
-                "degree": "Laurea in Informatica (BSc in Computer Science)",
-                "school": "Università di Torino",
-                "location": "Torino",
-                "period": "2023 - Presente"
-            },
-            "edu-2": {
-                "degree": "Diploma di Maturità Scientifica",
-                "school": "Liceo Scientifico Maria Curie",
-                "location": "Pinerolo (TO)",
-                "period": "2018 - 2023"
-            }
+            "title": "Formazione",
+            "description": "Laurea in Informatica presso l'Università di Torino."
         },
-        "certifications": [
-            "First Certificate in English - B2 (2022)",
-            "Corsi di formazione generica e specifica per lavoratori studenti (12 ore)"
-        ],
-        "projects": {
-            "proj-1": {
-                "title": "GreenHabits (Tecnologie Web)",
-                "description": "Piattaforma web full-stack con architettura enterprise. Implementata con un backend in Java Spring Boot, frontend in React/Vite (TS), e database PostgreSQL. L'infrastruttura è completamente containerizzata con Docker e include un sistema di monitoraggio avanzato con Grafana e Prometheus."
-            },
-            "proj-2": {
-                "title": "Piattaforma Web Human-Computer Interaction (HCI)",
-                "description": "Sviluppo di un'interfaccia utente web moderna e accessibile per il corso di HCI. Focus rigoroso su UX/UI design, responsività e principi di usabilità."
-            },
-            "proj-3": {
-                "title": "WinHUD",
-                "description": "Applicazione desktop per Windows sviluppata in C# (.NET/WPF). Implementa un overlay customizzabile per il monitoraggio in tempo reale dei dati hardware e delle performance del sistema."
-            },
-            "proj-4": {
-                "title": "libnumakit",
-                "description": "Libreria di sistema avanzata scritta in C (build con CMake) per la gestione della memoria su architetture NUMA. Include logiche di task pooling, scheduling e memory migration a basso livello."
-            },
-            "proj-5": {
-                "title": "Linguaggi Formali & Compilatori",
-                "description": "Sviluppo from scratch di un compilatore in Java. Include l'implementazione di un analizzatore lessicale (Lexer), un analizzatore sintattico top-down (Parser LL(1)), analisi semantica tramite SDT (Syntax-Directed Translation) e generazione di bytecode eseguibile per la Java Virtual Machine (JVM).",
-                "longDescription": "Questo progetto ha previsto l'implementazione completa e da zero di un compilatore per un linguaggio procedurale custom sviluppato in Java. L'architettura segue il classico design multi-pass: inizia con un analizzatore lessicale custom che tokenizza il codice sorgente, passa per un parser a discesa ricorsiva LL(1) che costruisce un solido Abstract Syntax Tree (AST) e include un'analisi semantica per garantire type safety e regole di scoping tramite tecniche di Syntax-Directed Translation. Infine, viene generato Bytecode Java eseguibile e valido tramite la libreria ASM. Questo progetto accademico dimostra efficacemente una profonda e pratica comprensione della progettazione di linguaggi, delle grammatiche formali e del funzionamento interno della JVM.",
-                "features": [
-                    "Implementazione manuale di un Analizzatore Lessicale (Lexer) utilizzando espressioni regolari e teoria degli automi a stati finiti.",
-                    "Costruzione di un Parser a Discesa Ricorsiva Top-Down strutturato secondo i vincoli di una grammatica LL(1).",
-                    "Solida Analisi Semantica che implementa Syntax-Directed Translation (SDT) per type checking e risoluzione dello scope.",
-                    "Generazione diretta di Bytecode Java verificabile (file .class) sfruttando il set di istruzioni e l'architettura della JVM."
-                ]
-            },
-            "proj-6": {
-                "title": "Simulazione Sistemi Operativi POSIX",
-                "description": "Simulazione multi-processo complessa sviluppata in C per ambienti POSIX. L'architettura software sfrutta primitive IPC avanzate (Message Queues, Shared Memory, e Semafori) per la gestione sicura della concorrenza e della sincronizzazione tra nodi (Director, Worker, ecc.)."
-            },
-            "proj-7": {
-                "title": "Libreria Algoritmi & Strutture Dati",
-                "description": "Libreria in C contenente l'implementazione manuale di strutture dati e algoritmi fondamentali, progettata per massima efficienza. Implementa Grafi, Hash Tables, calcolo dell'Edit Distance e moduli di sorting, validata tramite rigoroso unit testing (framework Unity)."
-            },
-            "proj-8": {
-                "title": "Pipeline di Analisi Dati HCI",
-                "description": "Pipeline di elaborazione e analisi dati sviluppata in Python (Pandas, Jupyter Notebooks) basata su dataset legati alle interfacce uomo-macchina. Comprende script modulari per pre-cleaning, trattamento anomalie, feature engineering ed Exploratory Data Analysis (EDA)."
-            }
-        },
-        "sections": {
-            "experience": {
-                "title": "Esperienza Professionale",
-                "description": "Uno sguardo alla mia storia lavorativa, ai team con cui ho collaborato e alle tecnologie che ho utilizzato per portare risultati."
-            },
-            "projects": {
-                "title": "Progetti in Evidenza",
-                "description": "Una selezione dei miei migliori lavori che spaziano da web app enterprise, librerie di sistema e piattaforme accademiche."
-            },
-            "education": {
-                "title": "Formazione & Certificazioni",
-                "description": "Il mio background accademico e le principali certificazioni in Informatica."
-            },
-            "skills": {
-                "title": "Matrice delle Competenze",
-                "description": "Una panoramica completa del mio stack tecnologico e delle competenze chiave in molteplici domini.",
-                "categories": {
-                    "languages": "Linguaggi",
-                    "frontend": "Frontend",
-                    "backend": "Backend & Cloud",
-                    "core": "Informatica Teorica",
-                    "tools": "DevOps & Strumenti"
-                }
-            }
-        },
-        "common": {
-            "present": "Presente",
-            "certifications": "Certificazioni",
-            "github_repo": "Repo GitHub",
-            "live_demo": "Live Demo",
-            "search_placeholder": "Filtra per tag o categoria..."
+        "skills": {
+            "title": "Matrice delle Competenze",
+            "description": "Linguaggi, Frontend, Backend, DevOps & Core CS."
         }
+    },
+    "experience": {
+        "role-1": {
+            "role": "Sviluppatore Web Freelance",
+            "company": "Freelance",
+            "period": "2022 - Presente",
+            "description": "Gestione e sviluppo end-to-end di applicazioni web dinamiche. Progettazione architetturale e coding. Gestione dei deployment e manutenzione mensile per vari clienti. Attività di consulenza tecnica per i team creativi, analizzando feedback e trend per ottimizzare l'efficienza, le performance e la UX del software."
+        }
+    },
+    "education": {
+        "edu-1": {
+            "degree": "Laurea in Informatica (BSc in Computer Science)",
+            "school": "Università di Torino",
+            "location": "Torino",
+            "period": "2023 - Presente"
+        },
+        "edu-2": {
+            "degree": "Diploma di Maturità Scientifica",
+            "school": "Liceo Scientifico Maria Curie",
+            "location": "Pinerolo (TO)",
+            "period": "2018 - 2023"
+        }
+    },
+    "certifications": [
+        "First Certificate in English - B2 (2022)",
+        "Corsi di formazione generica e specifica per lavoratori studenti (12 ore)"
+    ],
+    "projects": {
+        "details": {
+            "type": "Tipo Progetto",
+            "role": "Il Mio Ruolo",
+            "duration": "Durata"
+        },
+        "categories": {
+            "core-cs": "Core Computer Science",
+            "featured": "Progetto in Evidenza"
+        },
+        "proj-1": {
+            "title": "GreenHabits (Tecnologie Web)",
+            "description": "Piattaforma web full-stack con architettura enterprise. Implementata con un backend in Java Spring Boot, frontend in React/Vite (TS), e database PostgreSQL. L'infrastruttura è completamente containerizzata con Docker e include un sistema di monitoraggio avanzato con Grafana e Prometheus.",
+            "role": "Sviluppatore Full-stack",
+            "duration": "Set. 2025 - Gen. 2026",
+            "docs": "Documentazione"
+        },
+        "proj-2": {
+            "title": "Piattaforma Web Human-Computer Interaction (HCI)",
+            "description": "Sviluppo di un'interfaccia utente web moderna e accessibile per il corso di HCI. Focus rigoroso su UX/UI design, responsività e principi di usabilità."
+        },
+        "proj-3": {
+            "title": "WinHUD",
+            "description": "Applicazione desktop per Windows sviluppata in C# (.NET/WPF). Implementa un overlay customizzabile per il monitoraggio in tempo reale dei dati hardware e delle performance del sistema."
+        },
+        "proj-4": {
+            "title": "libnumakit",
+            "description": "Libreria di sistema avanzata scritta in C (build con CMake) per la gestione della memoria su architetture NUMA. Include logiche di task pooling, scheduling e memory migration a basso livello."
+        },
+        "proj-5": {
+            "title": "Linguaggi Formali & Compilatori",
+            "description": "Sviluppo from scratch di un compilatore in Java. Include l'implementazione di un analizzatore lessicale (Lexer), un analizzatore sintattico top-down (Parser LL(1)), analisi semantica tramite SDT (Syntax-Directed Translation) e generazione di bytecode eseguibile per la Java Virtual Machine (JVM).",
+            "longDescription": "Questo progetto ha previsto l'implementazione completa e da zero di un compilatore per un linguaggio procedurale custom sviluppato in Java. L'architettura segue il classico design multi-pass: inizia con un analizzatore lessicale custom che tokenizza il codice sorgente, passa per un parser a discesa ricorsiva LL(1) che costruisce un solido Abstract Syntax Tree (AST) e include un'analisi semantica per garantire type safety e regole di scoping tramite tecniche di Syntax-Directed Translation. Infine, viene generato Bytecode Java eseguibile e valido tramite la libreria ASM. Questo progetto accademico dimostra efficacemente una profonda e pratica comprensione della progettazione di linguaggi, delle grammatiche formali e del funzionamento interno della JVM. Il linguaggio target presenta un flusso di controllo simile al C (while, casi condizionali) integrato con la notazione prefissa (Polacca) per le espressioni aritmetiche e booleane, supportando operatori n-ari e il raggruppamento delle istruzioni.",
+            "role": "Ingegnere Compilatori",
+            "duration": "Feb. 2026 - Mag. 2026",
+            "docs": "Documentazione",
+            "study": "Materiale di Studio",
+            "features": [
+                "Implementazione manuale di un Analizzatore Lessicale (Lexer) utilizzando espressioni regolari e teoria degli automi a stati finiti.",
+                "Costruzione di un Parser a Discesa Ricorsiva Top-Down strutturato secondo i vincoli di una grammatica LL(1).",
+                "Solida Analisi Semantica che implementa Syntax-Directed Translation (SDT) per type checking e risoluzione dello scope.",
+                "Generazione diretta di Bytecode Java verificabile (file .class) sfruttando il set di istruzioni e l'architettura della JVM."
+            ],
+            "theory": [
+                "Gerarchia di Chomsky: Focus sui linguaggi di Tipo-2 (Context-Free) e Tipo-3 (Regular).",
+                "Automi a Stati Finiti: Modellazione DFA e NFA per il riconoscimento dei token.",
+                "Grammatiche LL(1): Analisi formale dei set FIRST e FOLLOW per garantire un parsing predittivo deterministico.",
+                "Syntax-Directed Translation (SDT): Accoppiamento delle produzioni grammaticali con azioni semantiche e propagazione degli attributi."
+            ],
+            "implementation": [
+                "Analisi Lessicale: Scanner codificato a mano con pattern di lookahead e consumo di caratteri.",
+                "Discesa Ricorsiva: Parser modulare in cui ogni non-terminale è mappato su un metodo Java.",
+                "Backend Jasmin: Traduzione di costrutti di alto livello in mnemonici assembly Jasmin.",
+                "Semantica Stack Machine: Gestione dello stack degli operandi della JVM e mappatura delle variabili locali durante l'emissione del codice."
+            ]
+        },
+        "proj-6": {
+            "title": "Simulazione Sistemi Operativi POSIX",
+            "description": "Simulazione multi-processo complessa sviluppata in C per ambienti POSIX. L'architettura software sfrutta primitive IPC avanzate (Message Queues, Shared Memory, e Semafori) per la gestione sicura della concorrenza e della sincronizzazione tra nodi (Director, Worker, ecc.)."
+        },
+        "proj-7": {
+            "title": "Libreria Algoritmi & Strutture Dati",
+            "description": "Libreria in C contenente l'implementazione manuale di strutture dati e algoritmi fondamentali, progettata per massima efficienza. Implementa Grafi, Hash Tables, calcolo dell'Edit Distance e moduli di sorting, validata tramite rigoroso unit testing (framework Unity)."
+        },
+        "proj-8": {
+            "title": "Pipeline di Analisi Dati HCI",
+            "description": "Pipeline di elaborazione e analisi dati sviluppata in Python (Pandas, Jupyter Notebooks) sulla base di dataset legati alle interfacce uomo-macchina. Comprende script modulari per pre-cleaning, trattamento anomalie, feature engineering ed Exploratory Data Analysis (EDA)."
+        }
+    },
+    "sections": {
+        "experience": {
+            "title": "Esperienza Professionale",
+            "description": "Uno sguardo alla mia storia lavorativa, ai team con cui ho collaborato e alle tecnologie che ho utilizzato per portare risultati."
+        },
+        "projects": {
+            "title": "Progetti in Evidenza",
+            "description": "Una selezione dei miei migliori lavori che spaziano da web app enterprise, librerie di sistema e piattaforme accademiche."
+        },
+        "education": {
+            "title": "Formazione & Certificazioni",
+            "description": "Il mio background accademico e le principali certificazioni in Informatica."
+        },
+        "skills": {
+            "title": "Matrice delle Competenze",
+            "description": "Una panoramica completa del mio stack tecnologico e delle competenze chiave in molteplici domini.",
+            "categories": {
+                "languages": "Linguaggi",
+                "frontend": "Frontend",
+                "backend": "Backend & Cloud",
+                "core": "Informatica Teorica",
+                "tools": "DevOps & Strumenti"
+            }
+        }
+    },
+    "common": {
+        "present": "Presente",
+        "certifications": "Certificazioni",
+        "github_repo": "Repo GitHub",
+        "live_demo": "Live Demo",
+        "search_placeholder": "Filtra per tag o categoria..."
     }
 }

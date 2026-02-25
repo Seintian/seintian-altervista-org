@@ -1,6 +1,6 @@
 import { siteData } from "@/lib/data";
 import { notFound } from "next/navigation";
-import ProjectClientPage from "./ProjectClientPage";
+import ProjectClientPage, { ProjectType } from "./ProjectClientPage";
 
 // Generate paths for static export
 export function generateStaticParams() {
@@ -26,5 +26,5 @@ export default async function ProjectPage({ params }: { params: Promise<{ repo: 
         notFound();
     }
 
-    return <ProjectClientPage project={project} />;
+    return <ProjectClientPage project={project as ProjectType} />;
 }

@@ -12,8 +12,8 @@ if (!i18n.isInitialized) {
         // init i18next
         .init({
             resources: {
-                en: enLocales,
-                it: itLocales,
+                en: { translation: enLocales },
+                it: { translation: itLocales },
             },
             lng: 'en', // Force English initially for SSR and hydration matching
             fallbackLng: 'en',
