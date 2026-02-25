@@ -124,7 +124,7 @@ export const siteData = {
             customLinks: [
                 {
                     labelKey: "projects.proj-1.docs",
-                    url: "https://github.com/Seintian/unito-web-technologies-25-26/blob/main/README.md",
+                    url: "https://github.com/Seintian/unito-web-technologies-25-26/blob/master/README.md",
                     icon: "document"
                 }
             ]
