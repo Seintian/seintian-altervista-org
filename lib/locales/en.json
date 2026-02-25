@@ -57,9 +57,21 @@
             "Generic and specific training courses for student workers (12 hours)"
         ],
         "projects": {
+            "details": {
+                "type": "Project Type",
+                "role": "My Role",
+                "duration": "Duration"
+            },
+            "categories": {
+                "core-cs": "Core Computer Science",
+                "featured": "Featured Project"
+            },
             "proj-1": {
                 "title": "GreenHabits (Web Technologies)",
-                "description": "Full-stack web platform with an enterprise architecture. Implemented with a Java Spring Boot backend, React/Vite (TS) frontend, and PostgreSQL database. The infrastructure is fully containerized with Docker and includes an advanced monitoring system with Grafana and Prometheus."
+                "description": "Full-stack web platform with an enterprise architecture. Implemented with a Java Spring Boot backend, React/Vite (TS) frontend, and PostgreSQL database. The infrastructure is fully containerized with Docker and includes an advanced monitoring system with Grafana and Prometheus.",
+                "role": "Full-stack Developer",
+                "duration": "Sept 2025 - Jan 2026",
+                "docs": "Documentation"
             },
             "proj-2": {
                 "title": "Human-Computer Interaction (HCI) Web Platform",
@@ -77,6 +89,8 @@
                 "title": "Formal Languages & Compilers",
                 "description": "Development from scratch of a compiler in Java. Includes the implementation of a lexical analyzer (Lexer), a top-down syntax analyzer (LL(1) Parser), semantic analysis via SDT (Syntax-Directed Translation), and generation of executable bytecode for the Java Virtual Machine (JVM).",
                 "longDescription": "This project involved the complete, from-scratch implementation of a compiler for a custom procedural language using Java. The architecture follows a classic multi-pass compiler design, starting with a custom lexical analyzer that tokenizes the input source code. Parsing is handled by a recursive descent LL(1) parser, which constructs a clear Abstract Syntax Tree (AST). Semantic analysis guarantees type safety and scoping rules via Syntax-Directed Translation techniques before finally generating valid executable Java Bytecode using the ASM library. This academic project successfully demonstrates a deep, practical understanding of language design, formal grammars, and the internal workings of the JVM.",
+                "role": "Compiler Engineer",
+                "duration": "Feb 2026 - May 2026",
                 "features": [
                     "Manual implementation of a Lexical Analyzer (Lexer) using regular expressions and finite automata theory.",
                     "Construction of a Top-Down Recursive Descent Parser conforming to LL(1) grammar constraints.",

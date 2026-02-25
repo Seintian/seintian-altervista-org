@@ -57,9 +57,21 @@
             "Corsi di formazione generica e specifica per lavoratori studenti (12 ore)"
         ],
         "projects": {
+            "details": {
+                "type": "Tipo Progetto",
+                "role": "Il Mio Ruolo",
+                "duration": "Durata"
+            },
+            "categories": {
+                "core-cs": "Core Computer Science",
+                "featured": "Progetto in Evidenza"
+            },
             "proj-1": {
                 "title": "GreenHabits (Tecnologie Web)",
-                "description": "Piattaforma web full-stack con architettura enterprise. Implementata con un backend in Java Spring Boot, frontend in React/Vite (TS), e database PostgreSQL. L'infrastruttura è completamente containerizzata con Docker e include un sistema di monitoraggio avanzato con Grafana e Prometheus."
+                "description": "Piattaforma web full-stack con architettura enterprise. Implementata con un backend in Java Spring Boot, frontend in React/Vite (TS), e database PostgreSQL. L'infrastruttura è completamente containerizzata con Docker e include un sistema di monitoraggio avanzato con Grafana e Prometheus.",
+                "role": "Sviluppatore Full-stack",
+                "duration": "Set. 2025 - Gen. 2026",
+                "docs": "Documentazione"
             },
             "proj-2": {
                 "title": "Piattaforma Web Human-Computer Interaction (HCI)",
@@ -77,6 +89,8 @@
                 "title": "Linguaggi Formali & Compilatori",
                 "description": "Sviluppo from scratch di un compilatore in Java. Include l'implementazione di un analizzatore lessicale (Lexer), un analizzatore sintattico top-down (Parser LL(1)), analisi semantica tramite SDT (Syntax-Directed Translation) e generazione di bytecode eseguibile per la Java Virtual Machine (JVM).",
                 "longDescription": "Questo progetto ha previsto l'implementazione completa e da zero di un compilatore per un linguaggio procedurale custom sviluppato in Java. L'architettura segue il classico design multi-pass: inizia con un analizzatore lessicale custom che tokenizza il codice sorgente, passa per un parser a discesa ricorsiva LL(1) che costruisce un solido Abstract Syntax Tree (AST) e include un'analisi semantica per garantire type safety e regole di scoping tramite tecniche di Syntax-Directed Translation. Infine, viene generato Bytecode Java eseguibile e valido tramite la libreria ASM. Questo progetto accademico dimostra efficacemente una profonda e pratica comprensione della progettazione di linguaggi, delle grammatiche formali e del funzionamento interno della JVM.",
+                "role": "Ingegnere Compilatori",
+                "duration": "Feb. 2026 - Mag. 2026",
                 "features": [
                     "Implementazione manuale di un Analizzatore Lessicale (Lexer) utilizzando espressioni regolari e teoria degli automi a stati finiti.",
                     "Costruzione di un Parser a Discesa Ricorsiva Top-Down strutturato secondo i vincoli di una grammatica LL(1).",

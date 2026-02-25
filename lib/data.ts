@@ -117,7 +117,17 @@ export const siteData = {
             url: "",
             repo: "https://github.com/Seintian/unito-web-technologies-25-26",
             technologies: ["Java", "Spring Boot", "React", "Docker", "PostgreSQL"],
-            category: "core-cs"
+            category: "core-cs",
+            themeColor: "emerald",
+            roleKey: "projects.proj-1.role",
+            durationKey: "projects.proj-1.duration",
+            customLinks: [
+                {
+                    labelKey: "projects.proj-1.docs",
+                    url: "https://github.com/Seintian/unito-web-technologies-25-26/blob/main/README.md",
+                    icon: "document"
+                }
+            ]
         },
         {
             id: "proj-2",
@@ -153,7 +163,10 @@ export const siteData = {
             url: "",
             repo: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26",
             technologies: ["Java", "Compilers", "JVM", "Parsers"],
-            category: "core-cs"
+            category: "core-cs",
+            themeColor: "purple",
+            roleKey: "projects.proj-5.role",
+            durationKey: "projects.proj-5.duration"
         },
         {
             id: "proj-6",
