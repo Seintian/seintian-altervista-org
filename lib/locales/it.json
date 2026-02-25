@@ -75,7 +75,14 @@
             },
             "proj-5": {
                 "title": "Linguaggi Formali & Compilatori",
-                "description": "Sviluppo from scratch di un compilatore in Java. Include l'implementazione di un analizzatore lessicale (Lexer), un analizzatore sintattico top-down (Parser LL(1)), analisi semantica tramite SDT (Syntax-Directed Translation) e generazione di bytecode eseguibile per la Java Virtual Machine (JVM)."
+                "description": "Sviluppo from scratch di un compilatore in Java. Include l'implementazione di un analizzatore lessicale (Lexer), un analizzatore sintattico top-down (Parser LL(1)), analisi semantica tramite SDT (Syntax-Directed Translation) e generazione di bytecode eseguibile per la Java Virtual Machine (JVM).",
+                "longDescription": "Questo progetto ha previsto l'implementazione completa e da zero di un compilatore per un linguaggio procedurale custom sviluppato in Java. L'architettura segue il classico design multi-pass: inizia con un analizzatore lessicale custom che tokenizza il codice sorgente, passa per un parser a discesa ricorsiva LL(1) che costruisce un solido Abstract Syntax Tree (AST) e include un'analisi semantica per garantire type safety e regole di scoping tramite tecniche di Syntax-Directed Translation. Infine, viene generato Bytecode Java eseguibile e valido tramite la libreria ASM. Questo progetto accademico dimostra efficacemente una profonda e pratica comprensione della progettazione di linguaggi, delle grammatiche formali e del funzionamento interno della JVM.",
+                "features": [
+                    "Implementazione manuale di un Analizzatore Lessicale (Lexer) utilizzando espressioni regolari e teoria degli automi a stati finiti.",
+                    "Costruzione di un Parser a Discesa Ricorsiva Top-Down strutturato secondo i vincoli di una grammatica LL(1).",
+                    "Solida Analisi Semantica che implementa Syntax-Directed Translation (SDT) per type checking e risoluzione dello scope.",
+                    "Generazione diretta di Bytecode Java verificabile (file .class) sfruttando il set di istruzioni e l'architettura della JVM."
+                ]
             },
             "proj-6": {
                 "title": "Simulazione Sistemi Operativi POSIX",

@@ -75,7 +75,14 @@
             },
             "proj-5": {
                 "title": "Formal Languages & Compilers",
-                "description": "Development from scratch of a compiler in Java. Includes the implementation of a lexical analyzer (Lexer), a top-down syntax analyzer (LL(1) Parser), semantic analysis via SDT (Syntax-Directed Translation), and generation of executable bytecode for the Java Virtual Machine (JVM)."
+                "description": "Development from scratch of a compiler in Java. Includes the implementation of a lexical analyzer (Lexer), a top-down syntax analyzer (LL(1) Parser), semantic analysis via SDT (Syntax-Directed Translation), and generation of executable bytecode for the Java Virtual Machine (JVM).",
+                "longDescription": "This project involved the complete, from-scratch implementation of a compiler for a custom procedural language using Java. The architecture follows a classic multi-pass compiler design, starting with a custom lexical analyzer that tokenizes the input source code. Parsing is handled by a recursive descent LL(1) parser, which constructs a clear Abstract Syntax Tree (AST). Semantic analysis guarantees type safety and scoping rules via Syntax-Directed Translation techniques before finally generating valid executable Java Bytecode using the ASM library. This academic project successfully demonstrates a deep, practical understanding of language design, formal grammars, and the internal workings of the JVM.",
+                "features": [
+                    "Manual implementation of a Lexical Analyzer (Lexer) using regular expressions and finite automata theory.",
+                    "Construction of a Top-Down Recursive Descent Parser conforming to LL(1) grammar constraints.",
+                    "Robust Semantic Analysis implementing Syntax-Directed Translation (SDT) for type checking and scope resolution.",
+                    "Direct generation of verifiable Java Bytecode (.class files) utilizing the JVM instruction set architecture."
+                ]
             },
             "proj-6": {
                 "title": "POSIX Operating Systems Simulation",
