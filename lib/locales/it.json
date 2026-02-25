@@ -109,7 +109,11 @@
                 "Discesa Ricorsiva: Parser modulare in cui ogni non-terminale è mappato su un metodo Java.",
                 "Backend Jasmin: Traduzione di costrutti di alto livello in mnemonici assembly Jasmin.",
                 "Semantica Stack Machine: Gestione dello stack degli operandi della JVM e mappatura delle variabili locali durante l'emissione del codice."
-            ]
+            ],  
+            "links": {
+                "grammar": "Grammatica",
+                "study": "Studio"
+            }
         },
         "proj-6": {
             "title": "Simulazione Sistemi Operativi POSIX",
