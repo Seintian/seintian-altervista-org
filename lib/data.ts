@@ -166,7 +166,19 @@ export const siteData = {
             category: "core-cs",
             themeColor: "purple",
             roleKey: "projects.proj-5.role",
-            durationKey: "projects.proj-5.duration"
+            durationKey: "projects.proj-5.duration",
+            customLinks: [
+                {
+                    labelKey: "projects.proj-5.grammar",
+                    url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/GRAMMAR.md",
+                    icon: "document"
+                },
+                {
+                    labelKey: "projects.proj-5.study",
+                    url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/STUDY_BRIEF.md",
+                    icon: "document"
+                }
+            ]
         },
         {
             id: "proj-6",

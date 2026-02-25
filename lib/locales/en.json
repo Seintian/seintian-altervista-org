@@ -1,147 +1,159 @@
 {
-    "translation": {
-        "hero": {
-            "greeting": "Hello, I'm",
-            "name": "Christian Santarelli",
-            "role": "Software Engineer & Web Developer",
-            "description": "Young computer scientist with solid experience in software and web development, currently an undergraduate in Computer Science at the University of Turin. I develop solutions ranging from enterprise web architectures (React, Spring Boot) to low-level system libraries (C, IPC, NUMA)."
-        },
-        "contacts": {
-            "email": "Email Me",
-            "github": "GitHub",
-            "linkedin": "LinkedIn",
-            "cv": "Download CV"
-        },
-        "modules": {
-            "experience": {
-                "title": "Professional Experience",
-                "description": "My career timeline as a Freelance Web Developer."
-            },
-            "projects": {
-                "title": "Featured Projects",
-                "description": "Enterprise web apps, HCI platforms, and core CS projects."
-            },
-            "education": {
-                "title": "Education",
-                "description": "BSc in Computer Science at Università di Torino."
-            },
-            "skills": {
-                "title": "Skills Matrix",
-                "description": "Languages, Frontend, Backend, DevOps & Core CS."
-            }
-        },
+    "hero": {
+        "greeting": "Hello, I'm",
+        "name": "Christian Santarelli",
+        "role": "Software Engineer & Web Developer",
+        "description": "Young computer scientist with solid experience in software and web development, currently an undergraduate in Computer Science at the University of Turin. I develop solutions ranging from enterprise web architectures (React, Spring Boot) to low-level system libraries (C, IPC, NUMA)."
+    },
+    "contacts": {
+        "email": "Email Me",
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "cv": "Download CV"
+    },
+    "modules": {
         "experience": {
-            "role-1": {
-                "role": "Freelance Web Developer",
-                "company": "Freelance",
-                "period": "2022 - Present",
-                "description": "End-to-end management and development of dynamic web applications. Architectural design and coding. Deployment management and monthly maintenance for various clients. Technical consulting activities for creative teams, analyzing feedback and trends to optimize software efficiency, performance, and UX."
-            }
+            "title": "Professional Experience",
+            "description": "My career timeline as a Freelance Web Developer."
+        },
+        "projects": {
+            "title": "Featured Projects",
+            "description": "Enterprise web apps, HCI platforms, and core CS projects."
         },
         "education": {
-            "edu-1": {
-                "degree": "BSc in Computer Science",
-                "school": "University of Turin",
-                "location": "Turin",
-                "period": "2023 - Present"
-            },
-            "edu-2": {
-                "degree": "High School Diploma in Science",
-                "school": "Maria Curie Scientific High School",
-                "location": "Pinerolo (TO)",
-                "period": "2018 - 2023"
-            }
+            "title": "Education",
+            "description": "BSc in Computer Science at Università di Torino."
         },
-        "certifications": [
-            "First Certificate in English - B2 (2022)",
-            "Generic and specific training courses for student workers (12 hours)"
-        ],
-        "projects": {
-            "details": {
-                "type": "Project Type",
-                "role": "My Role",
-                "duration": "Duration"
-            },
-            "categories": {
-                "core-cs": "Core Computer Science",
-                "featured": "Featured Project"
-            },
-            "proj-1": {
-                "title": "GreenHabits (Web Technologies)",
-                "description": "Full-stack web platform with an enterprise architecture. Implemented with a Java Spring Boot backend, React/Vite (TS) frontend, and PostgreSQL database. The infrastructure is fully containerized with Docker and includes an advanced monitoring system with Grafana and Prometheus.",
-                "role": "Full-stack Developer",
-                "duration": "Sept 2025 - Jan 2026",
-                "docs": "Documentation"
-            },
-            "proj-2": {
-                "title": "Human-Computer Interaction (HCI) Web Platform",
-                "description": "Development of a modern and accessible web user interface for the HCI course. Strict focus on UX/UI design, responsiveness, and usability principles."
-            },
-            "proj-3": {
-                "title": "WinHUD",
-                "description": "Desktop application for Windows developed in C# (.NET/WPF). Implements a customizable overlay for real-time monitoring of hardware data and system performance."
-            },
-            "proj-4": {
-                "title": "libnumakit",
-                "description": "Advanced system library written in C (built with CMake) for memory management on NUMA architectures. Includes low-level task pooling, scheduling, and memory migration logic."
-            },
-            "proj-5": {
-                "title": "Formal Languages & Compilers",
-                "description": "Development from scratch of a compiler in Java. Includes the implementation of a lexical analyzer (Lexer), a top-down syntax analyzer (LL(1) Parser), semantic analysis via SDT (Syntax-Directed Translation), and generation of executable bytecode for the Java Virtual Machine (JVM).",
-                "longDescription": "This project involved the complete, from-scratch implementation of a compiler for a custom procedural language using Java. The architecture follows a classic multi-pass compiler design, starting with a custom lexical analyzer that tokenizes the input source code. Parsing is handled by a recursive descent LL(1) parser, which constructs a clear Abstract Syntax Tree (AST). Semantic analysis guarantees type safety and scoping rules via Syntax-Directed Translation techniques before finally generating valid executable Java Bytecode using the ASM library. This academic project successfully demonstrates a deep, practical understanding of language design, formal grammars, and the internal workings of the JVM.",
-                "role": "Compiler Engineer",
-                "duration": "Feb 2026 - May 2026",
-                "features": [
-                    "Manual implementation of a Lexical Analyzer (Lexer) using regular expressions and finite automata theory.",
-                    "Construction of a Top-Down Recursive Descent Parser conforming to LL(1) grammar constraints.",
-                    "Robust Semantic Analysis implementing Syntax-Directed Translation (SDT) for type checking and scope resolution.",
-                    "Direct generation of verifiable Java Bytecode (.class files) utilizing the JVM instruction set architecture."
-                ]
-            },
-            "proj-6": {
-                "title": "POSIX Operating Systems Simulation",
-                "description": "Complex multi-process simulation developed in C for POSIX environments. The software architecture leverages advanced IPC primitives (Message Queues, Shared Memory, and Semaphores) for secure concurrency management and node synchronization (Director, Worker, etc.)."
-            },
-            "proj-7": {
-                "title": "Algorithms & Data Structures Library",
-                "description": "C library containing manual implementation of fundamental data structures and algorithms, designed for maximum efficiency. Implements Graphs, Hash Tables, Edit Distance calculation, and sorting modules, validated through rigorous unit testing (Unity framework)."
-            },
-            "proj-8": {
-                "title": "HCI Data Analysis Pipeline",
-                "description": "Data processing and analysis pipeline developed in Python (Pandas, Jupyter Notebooks) based on datasets related to human-machine interfaces. Includes modular scripts for pre-cleaning, anomaly treatment, feature engineering, and Exploratory Data Analysis (EDA)."
-            }
-        },
-        "sections": {
-            "experience": {
-                "title": "Professional Experience",
-                "description": "A look at my career history, the teams I've worked with, and the technologies I've leveraged to drive business results."
-            },
-            "projects": {
-                "title": "Featured Projects",
-                "description": "A selection of my best work spanning enterprise web apps, low-level system libraries, and academic platforms."
-            },
-            "education": {
-                "title": "Education & Certifications",
-                "description": "My academic background and relevant certifications in Computer Science and software engineering."
-            },
-            "skills": {
-                "title": "Skills Matrix",
-                "description": "A comprehensive overview of my technical stack and core competencies across multiple domains.",
-                "categories": {
-                    "languages": "Languages",
-                    "frontend": "Frontend",
-                    "backend": "Backend & Cloud",
-                    "core": "Core Computer Science",
-                    "tools": "DevOps & Tools"
-                }
-            }
-        },
-        "common": {
-            "present": "Present",
-            "certifications": "Certifications",
-            "github_repo": "GitHub Repo",
-            "live_demo": "Live Demo",
-            "search_placeholder": "Filter by tag or category..."
+        "skills": {
+            "title": "Skills Matrix",
+            "description": "Languages, Frontend, Backend, DevOps & Core CS."
         }
+    },
+    "experience": {
+        "role-1": {
+            "role": "Freelance Web Developer",
+            "company": "Freelance",
+            "period": "2022 - Present",
+            "description": "End-to-end management and development of dynamic web applications. Architectural design and coding. Deployment management and monthly maintenance for various clients. Technical consulting activities for creative teams, analyzing feedback and trends to optimize software efficiency, performance, and UX."
+        }
+    },
+    "education": {
+        "edu-1": {
+            "degree": "BSc in Computer Science",
+            "school": "University of Turin",
+            "location": "Turin",
+            "period": "2023 - Present"
+        },
+        "edu-2": {
+            "degree": "High School Diploma in Science",
+            "school": "Maria Curie Scientific High School",
+            "location": "Pinerolo (TO)",
+            "period": "2018 - 2023"
+        }
+    },
+    "certifications": [
+        "First Certificate in English - B2 (2022)",
+        "Generic and specific training courses for student workers (12 hours)"
+    ],
+    "projects": {
+        "details": {
+            "type": "Project Type",
+            "role": "My Role",
+            "duration": "Duration"
+        },
+        "categories": {
+            "core-cs": "Core Computer Science",
+            "featured": "Featured Project"
+        },
+        "proj-1": {
+            "title": "GreenHabits (Web Technologies)",
+            "description": "Full-stack web platform with an enterprise architecture. Implemented with a Java Spring Boot backend, React/Vite (TS) frontend, and PostgreSQL database. The infrastructure is fully containerized with Docker and includes an advanced monitoring system with Grafana and Prometheus.",
+            "role": "Full-stack Developer",
+            "duration": "Sept 2025 - Jan 2026",
+            "docs": "Documentation"
+        },
+        "proj-2": {
+            "title": "Human-Computer Interaction (HCI) Web Platform",
+            "description": "Development of a modern and accessible web user interface for the HCI course. Strict focus on UX/UI design, responsiveness, and usability principles."
+        },
+        "proj-3": {
+            "title": "WinHUD",
+            "description": "Desktop application for Windows developed in C# (.NET/WPF). Implements a customizable overlay for real-time monitoring of hardware data and system performance."
+        },
+        "proj-4": {
+            "title": "libnumakit",
+            "description": "Advanced system library written in C (built with CMake) for memory management on NUMA architectures. Includes low-level task pooling, scheduling, and memory migration logic."
+        },
+        "proj-5": {
+            "title": "Formal Languages & Compilers",
+            "description": "Development from scratch of a compiler in Java. Includes the implementation of a lexical analyzer (Lexer), a top-down syntax analyzer (LL(1) Parser), semantic analysis via SDT (Syntax-Directed Translation), and generation of executable bytecode for the Java Virtual Machine (JVM).",
+            "longDescription": "This project involved the complete, from-scratch implementation of a compiler for a custom procedural language using Java. The architecture follows a classic multi-pass compiler design, starting with a custom lexical analyzer that tokenizes the input source code. Parsing is handled by a recursive descent LL(1) parser, which constructs a clear Abstract Syntax Tree (AST). Semantic analysis guarantees type safety and scoping rules via Syntax-Directed Translation techniques before finally generating valid executable Java Bytecode using the ASM library. This academic project successfully demonstrates a deep, practical understanding of language design, formal grammars, and the internal workings of the JVM. The target language features a C-like control flow (while, conditional cases) integrated with Prefix (Polish) notation for arithmetic and boolean expressions, supporting n-ary operators and statement grouping.",
+            "role": "Compiler Engineer",
+            "duration": "Feb 2026 - May 2026",
+            "docs": "Documentation",
+            "study": "Study Materials",
+            "features": [
+                "Manual implementation of a Lexical Analyzer (Lexer) using regular expressions and finite automata theory.",
+                "Construction of a Top-Down Recursive Descent Parser conforming to LL(1) grammar constraints.",
+                "Robust Semantic Analysis implementing Syntax-Directed Translation (SDT) for type checking and scope resolution.",
+                "Direct generation of verifiable Java Bytecode (.class files) utilizing the JVM instruction set architecture."
+            ],
+            "theory": [
+                "Chomsky Hierarchy: Focus on Type-2 (Context-Free) and Type-3 (Regular) languages.",
+                "Finite Automata: Deterministic (DFA) and Nondeterministic (NFA) modeling for token recognition.",
+                "LL(1) Grammars: Formal analysis of FIRST and FOLLOW sets to ensure deterministic predictive parsing.",
+                "Syntax-Directed Translation (SDT): Coupling grammar productions with semantic actions and attribute propagation."
+            ],
+            "implementation": [
+                "Lexical Analysis: Hand-coded scanner with lookahead and character consumption patterns.",
+                "Recursive Descent: Modular parser where each non-terminal is mapped to a Java method.",
+                "Jasmin Backend: Translation of high-level constructs into Jasmin assembly mnemonics.",
+                "Stack Machine Semantics: Management of JVM operand stack and local variable mapping during code emission."
+            ]
+        },
+        "proj-6": {
+            "title": "POSIX Operating Systems Simulation",
+            "description": "Complex multi-process simulation developed in C for POSIX environments. The software architecture leverages advanced IPC primitives (Message Queues, Shared Memory, and Semaphores) for secure concurrency management and node synchronization (Director, Worker, etc.)."
+        },
+        "proj-7": {
+            "title": "Algorithms & Data Structures Library",
+            "description": "C library containing manual implementation of fundamental data structures and algorithms, designed for maximum efficiency. Implements Graphs, Hash Tables, Edit Distance calculation, and sorting modules, validated through rigorous unit testing (Unity framework)."
+        },
+        "proj-8": {
+            "title": "HCI Data Analysis Pipeline",
+            "description": "Data processing and analysis pipeline developed in Python (Pandas, Jupyter Notebooks) based on datasets related to human-machine interfaces. Includes modular scripts for pre-cleaning, anomaly treatment, feature engineering, and Exploratory Data Analysis (EDA)."
+        }
+    },
+    "sections": {
+        "experience": {
+            "title": "Professional Experience",
+            "description": "A look at my career history, the teams I've worked with, and the technologies I've leveraged to drive business results."
+        },
+        "projects": {
+            "title": "Featured Projects",
+            "description": "A selection of my best work spanning enterprise web apps, low-level system libraries, and academic platforms."
+        },
+        "education": {
+            "title": "Education & Certifications",
+            "description": "My academic background and relevant certifications in Computer Science and software engineering."
+        },
+        "skills": {
+            "title": "Skills Matrix",
+            "description": "A comprehensive overview of my technical stack and core competencies across multiple domains.",
+            "categories": {
+                "languages": "Languages",
+                "frontend": "Frontend",
+                "backend": "Backend & Cloud",
+                "core": "Core Computer Science",
+                "tools": "DevOps & Tools"
+            }
+        }
+    },
+    "common": {
+        "present": "Present",
+        "certifications": "Certifications",
+        "github_repo": "GitHub Repo",
+        "live_demo": "Live Demo",
+        "search_placeholder": "Filter by tag or category..."
     }
 }

@@ -115,7 +115,7 @@ export default function ProjectClientPage({ project }: { project: ProjectType })
                     </div>
                 )}
 
-                <h1 className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent pb-2 lg:pb-3 leading-snug lg:leading-normal bg-gradient-to-r ${getThemeGradient(project.themeColor)}`}>
+                <h1 className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent pb-2 lg:pb-3 leading-snug lg:leading-normal bg-linear-to-r ${getThemeGradient(project.themeColor)}`}>
                     {t(project.titleKey)}
                 </h1>
                 <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
@@ -195,8 +195,6 @@ export default function ProjectClientPage({ project }: { project: ProjectType })
                             Key Features
                         </h2>
                         <ul className="space-y-3">
-                            {/* Try to load features if they exist. Defaulting to an empty array so we can map safely later. 
-                  i18next allows accessing array keys. However we have to specify returnObjects: true */}
                             {(t(`projects.${project.id}.features`, { returnObjects: true, defaultValue: [] }) as string[]).map((feature, idx) => (
                                 <li key={idx} className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
                                     <span className="w-1.5 h-1.5 mt-2 rounded-full bg-blue-500 shrink-0" />
@@ -205,6 +203,39 @@ export default function ProjectClientPage({ project }: { project: ProjectType })
                             ))}
                         </ul>
                     </section>
+
+                    {/* New Technical Sections */}
+                    {(t(`projects.${project.id}.theory`, { returnObjects: true, defaultValue: [] }) as string[]).length > 0 && (
+                        <section>
+                            <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">
+                                Theory & Foundation
+                            </h2>
+                            <ul className="space-y-3">
+                                {(t(`projects.${project.id}.theory`, { returnObjects: true }) as string[]).map((item, idx) => (
+                                    <li key={idx} className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
+                                        <div className="w-1.5 h-1.5 mt-2 rounded-full bg-purple-500 shrink-0" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    )}
+
+                    {(t(`projects.${project.id}.implementation`, { returnObjects: true, defaultValue: [] }) as string[]).length > 0 && (
+                        <section>
+                            <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">
+                                Technical Implementation
+                            </h2>
+                            <ul className="space-y-3">
+                                {(t(`projects.${project.id}.implementation`, { returnObjects: true }) as string[]).map((item, idx) => (
+                                    <li key={idx} className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
+                                        <div className="w-1.5 h-1.5 mt-2 rounded-full shrink-0 ring-1 ring-emerald-500 bg-emerald-500" />
+                                        <span>{item}</span>
+                                    </li>
+                                ))}
+                            </ul>
+                        </section>
+                    )}
                 </div>
 
                 {/* Sidebar Info maybe? */}
