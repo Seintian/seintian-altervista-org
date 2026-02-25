@@ -169,12 +169,12 @@ export const siteData = {
             durationKey: "projects.proj-5.duration",
             customLinks: [
                 {
-                    labelKey: "projects.proj-5.grammar",
+                    labelKey: "projects.proj-5.links.grammar",
                     url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/GRAMMAR.md",
                     icon: "document"
                 },
                 {
-                    labelKey: "projects.proj-5.study",
+                    labelKey: "projects.proj-5.links.study",
                     url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/STUDY_BRIEF.md",
                     icon: "document"
                 }

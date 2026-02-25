@@ -109,7 +109,11 @@
                 "Recursive Descent: Modular parser where each non-terminal is mapped to a Java method.",
                 "Jasmin Backend: Translation of high-level constructs into Jasmin assembly mnemonics.",
                 "Stack Machine Semantics: Management of JVM operand stack and local variable mapping during code emission."
-            ]
+            ],
+            "links": {
+                "grammar": "Grammar",
+                "study": "Study"
+            }
         },
         "proj-6": {
             "title": "POSIX Operating Systems Simulation",
