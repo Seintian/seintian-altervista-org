@@ -196,7 +196,28 @@
         },
         "proj-6": {
             "title": "POSIX Operating Systems Simulation",
-            "description": "Complex multi-process simulation developed in C for POSIX environments. The software architecture leverages advanced IPC primitives (Message Queues, Shared Memory, and Semaphores) for secure concurrency management and node synchronization (Director, Worker, etc.)."
+            "description": "Complex multi-process simulation developed in C for POSIX environments. The software architecture leverages advanced IPC primitives (Message Queues, Shared Memory, and Semaphores) for secure concurrency management and node synchronization (Director, Worker, etc.).",
+            "longDescription": "This project is a comprehensive multi-process simulation framework developed as part of an Operating Systems course (A.Y. 2024-2025). The simulation models a post office service system with various interacting components: Director, Workers, Users, and Ticket Issuers. Structured with a modular architecture, the program relies on an intricate set of advanced System V IPC primitives to orchestrate flow and two-way communications. A parallel Main application provides a terminal-based UI where users can manage validation of the simulation's configuration or inspect generated logs. In terms of fault tolerance, the project autonomously handles fatal scenarios by generating detailed crash reports—containing CPU registry dumps—for robust post-mortem debugging across architectures like x86-64 and aarch64.",
+            "role": "C Developer / System Engineer",
+            "duration": "Nov 2024 - Jul 2025",
+            "features": [
+                "Realistic modeling of six distinct postal services, producing real-time analytical logs or aggregated statistics at run completion.",
+                "Separated Main application with an interactive TUI utilizing libfort to dynamically manage startup properties and monitor diagnostic output.",
+                "Advanced Error Handling structure that intrinsically intercepts panic signals (SIGSEGV/SIGABRT) to produce core dump files natively listing critical CPU registers.",
+                "Centralized distributed logging driven asynchronously by dedicated Logger processes and orchestrated through custom named pipes (FIFOs)."
+            ],
+            "theory": [
+                "Multi-Process Architecture: An orchestrated process tree where separate client/server logic simulates business components dealing with real-time event ingestion.",
+                "Cooperative Synchronization: Detailed design against race conditions when matching wait queues to agent windows, relying systematically on System V semaphore arrays.",
+                "IPC Primitives: Instantiation of shared memory segments and message queues mapped with precise payload definitions for guaranteed bi-directional communication.",
+                "POSIX OS native signals: Handling complex asynchronous signals to orchestrate controlled interrupts across the process hierarchy and deter zombie processes."
+            ],
+            "implementation": [
+                "Modular C project split into discrete Header/Source files natively compiled with structured Makefiles branching to isolated build targets.",
+                "Integration of the inih library to automatically parse and enforce constraints exposed through external INI configurations.",
+                "System V IPC Abstractions: Extensive wrapping of raw shmget, msgget, semget (and cleanup routines) to effectively broker non-blocking messaging boundaries.",
+                "Adapted log.c library extended with multi-processing guardrails offering variable terminal-colored log severities."
+            ]
         },
         "proj-7": {
             "title": "Algorithms & Data Structures Library",

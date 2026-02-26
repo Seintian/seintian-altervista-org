@@ -196,7 +196,28 @@
         },
         "proj-6": {
             "title": "Simulazione Sistemi Operativi POSIX",
-            "description": "Simulazione multi-processo complessa sviluppata in C per ambienti POSIX. L'architettura software sfrutta primitive IPC avanzate (Message Queues, Shared Memory, e Semafori) per la gestione sicura della concorrenza e della sincronizzazione tra nodi (Director, Worker, ecc.)."
+            "description": "Simulazione multi-processo complessa sviluppata in C per ambienti POSIX. L'architettura software sfrutta primitive IPC avanzate (Message Queues, Shared Memory, e Semafori) per la gestione sicura della concorrenza e della sincronizzazione tra nodi (Director, Worker, ecc.).",
+            "longDescription": "Questo progetto è un framework di simulazione multi-processo completo sviluppato nell'ambito del corso di Sistemi Operativi (A.A. 2024-2025). La simulazione modella il servizio di un sistema di sportelli postali con vari componenti interagenti: Direttore, Lavoratori, Utenti, ed Enti Emittenti di ticket. Strutturato con un'architettura modulare, il programma si basa su una combinazione complessa di primitive System V IPC avanzate per orchestrare il flusso e le comunicazioni bidirezionali. È stata creata un'applicazione parallela per fornire un'UI interattiva basata su terminale con la quale l'utente può configurare la simulazione o controllarne i log. Dal punto di vista della tolleranza agli errori, il progetto gestisce autonomamente scenari di fault mediante generazione di crash report contenenti il dump dei registri della CPU per agevolarne il debug post-mortem su architetture x86-64 e aarch64.",
+            "role": "Sviluppatore C / System Engineer",
+            "duration": "Nov. 2024 - Lug. 2025",
+            "features": [
+                "Modellazione realistica di sei differenti servizi postali e generazione di log analitici in tempo reale o statistiche aggregate al termine dell'esecuzione.",
+                "Processo Main separato con interfaccia TUI interattiva tramite libfort per gestire dinamicamente il set di configurazione e monitorare l'output diagnostico.",
+                "Infrastruttura di Error Handling avanzata con supporto per l'intercettazione dei segnali di panico (SIGSEGV/SIGABRT) e generazione di file core dump con l'elenco dei registri CPU più importanti.",
+                "Gestione log distribuita centralizzata tramite processi Logger asincroni e named pipes (FIFOs) custom."
+            ],
+            "theory": [
+                "Progettazione Multi-Processo: Architettura software in cui logiche client/server separate simulano l'elaborazione degli eventi in tempo reale.",
+                "Sincronizzazione Cooperativa: Meccanismi espliciti e rigorosi contro le race conditions nel matching tra code utente e sportelli operativi, mediante l'utilizzo sistematico di insiemi di semafori System V.",
+                "Meccanismi di IPC: Creazione di memorie condivise e code di messaggi (System V) strutturate con payload specifici per la comunicazione bidirezionale.",
+                "OS Native Signals (POSIX): Handlers asincroni complessi per coordinare interruzioni controllate in tutto l'albero dei sottoprocessi ed evitare i processi zombie."
+            ],
+            "implementation": [
+                "Progetto C modulare (Header / Source code) standardizzato mediante Makefiles complessi aventi i processi isolati come target.",
+                "Integrazione della libreria inih per effettuare in automatico il parsing e la validazione dei vincoli imposti nel file INI prima del lancio della simulazione.",
+                "System V IPC Abstractions: incapsulamento esteso di chiamate primitive come shmget, msgget, semget (più le cleaning routines) per mascherare lo scambiodi messaggi non bloccanti.",
+                "Libreria log.c adattata per l'uso multi-processuale dotandola della differenziazione automatica dei livelli di gravità con codici colore su terminale."
+            ]
         },
         "proj-7": {
             "title": "Libreria Algoritmi & Strutture Dati",
