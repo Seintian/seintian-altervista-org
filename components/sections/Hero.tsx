@@ -15,7 +15,7 @@ export default function Hero({ contacts }: HeroProps) {
 
   return (
     <section className="flex flex-col items-start justify-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-in-out">
-      <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 mb-6 transition-colors duration-300 mt-2 md:mt-0">
+      <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 mb-6 transition-colors duration-300">
         {t("hero.greeting")} <span className="text-blue-600 dark:text-blue-400">{t("hero.name")}</span>.
       </h1>
       <h2 className="text-2xl md:text-3xl font-medium text-slate-700 dark:text-slate-300 mb-6 transition-colors duration-300">

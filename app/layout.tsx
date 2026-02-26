@@ -6,11 +6,13 @@ import NextTopLoader from "nextjs-toploader";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 
+import Header from "@/components/ui/Header";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "My Professional Portfolio",
-  description: "Curriculum Vitae and Projects",
+  title: "Christian Santarelli | Software Engineering",
+  description: "Crafting robust architectures and stunning digital experiences.",
 };
 
 export default function RootLayout({
@@ -34,10 +36,7 @@ export default function RootLayout({
           showForHashAnchor={false}
         />
         <Providers>
-          <div className="fixed top-4 right-4 md:top-6 md:right-8 z-50 flex items-center gap-3">
-            <LanguageSwitcher />
-            <ThemeSwitcher />
-          </div>
+          <Header />
           {children}
         </Providers>
       </body>
