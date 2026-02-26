@@ -204,8 +204,11 @@ export const siteData = {
             descriptionKey: "projects.proj-8.description",
             url: "",
             repo: "https://github.com/Seintian/unito-hci-data-analysis-25-26",
-            technologies: ["Python", "Pandas", "Jupyter", "Data Analysis"],
-            category: "core-cs"
+            technologies: ["Python", "Pandas", "PyArrow", "Jupyter", "Data Analysis"],
+            category: "core-cs",
+            themeColor: "amber",
+            roleKey: "projects.proj-8.role",
+            durationKey: "projects.proj-8.duration"
         }
     ]
 };

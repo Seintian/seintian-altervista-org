@@ -143,8 +143,29 @@
             "description": "C library containing manual implementation of fundamental data structures and algorithms, designed for maximum efficiency. Implements Graphs, Hash Tables, Edit Distance calculation, and sorting modules, validated through rigorous unit testing (Unity framework)."
         },
         "proj-8": {
-            "title": "HCI Data Analysis Pipeline",
-            "description": "Data processing and analysis pipeline developed in Python (Pandas, Jupyter Notebooks) based on datasets related to human-machine interfaces. Includes modular scripts for pre-cleaning, anomaly treatment, feature engineering, and Exploratory Data Analysis (EDA)."
+            "title": "HCI Anime Data Storytelling",
+            "description": "Data processing and analysis pipeline developed in Python (Pandas, Jupyter Notebooks) based on a massive dataset (+130M data points) related to the anime industry. Includes modular scripts for ETL, anomaly treatment, feature engineering, and Exploratory Data Analysis to tell a story through data.",
+            "longDescription": "This project implements an end-to-end data processing and analysis pipeline to explore and visualize a massive dataset of over 130 million data points related to the anime industry (anime, characters, actors, user interactions). Developed entirely in Python within JupyterLab, the work utilizes the uv package manager to guarantee deterministic and highly efficient dependency resolution. The core of the analysis focuses not only on compiling statistics but on true 'Data Storytelling', highlighting patterns, trends, and outliers over time to offer compelling insights to domain experts and fans alike.",
+            "role": "Data Analyst",
+            "duration": "Dec 2025 - Feb 2026",
+            "features": [
+                "Comprehensive ETL (Extract, Transform, Load) Pipeline processing raw CSV data into highly optimized Parquet format.",
+                "Deep Exploratory Data Analysis (EDA) focused on identifying narrative arcs and industry-wide temporal trends.",
+                "Advanced Static Visualization via Matplotlib and Seaborn for multi-dimensional data representation.",
+                "Geospatial Analysis utilizing Geopandas and Folium to plot interactive maps related to content origination and audience spread."
+            ],
+            "theory": [
+                "Data Storytelling: Structuring data-driven narratives to intuitively communicate complex quantitative insights.",
+                "High-Performance Data Storage: Transitioning from row-based (CSV) to columnar storage (Parquet) for analytical workloads.",
+                "Geospatial Topology: Principles of mapping discrete spatial data onto continuous coordinate projections.",
+                "Exploratory vs Explanatory Analysis: Shifting from open-ended data discovery to focused narrative presentation."
+            ],
+            "implementation": [
+                "Pandas with PyArrow Backend: Leveraging Arrow memory format to drastically reduce footprint and speed up aggregations on 130M+ rows.",
+                "Uv Package Management: Use of Rust-based uv for millisecond-resolution of Python virtual environments and locked dependencies.",
+                "Jupyter Workspaces: Separation of concerns across modular notebooks (01_cleaning, 02_exploration, 03_story) for reproducible research.",
+                "Local Package Architecture: Installation of the analysis source code (src/) in editable mode for clean cross-notebook imports."
+            ]
         }
     },
     "sections": {
