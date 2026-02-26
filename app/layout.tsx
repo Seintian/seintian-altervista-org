@@ -4,11 +4,13 @@ import Providers from "@/components/Providers";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 
+import Header from "@/components/ui/Header";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "My Professional Portfolio",
-  description: "Curriculum Vitae and Projects",
+  title: "Christian Santarelli | Software Engineering",
+  description: "Crafting robust architectures and stunning digital experiences.",
 };
 
 export default function RootLayout({
@@ -32,6 +34,7 @@ export default function RootLayout({
           showForHashAnchor={false}
         />
         <Providers>
+          <Header />
           {children}
         </Providers>
       </body>
