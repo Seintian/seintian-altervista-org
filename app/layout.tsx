@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import Providers from "@/components/Providers";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +34,10 @@ export default function RootLayout({
           showForHashAnchor={false}
         />
         <Providers>
+          <div className="fixed top-4 right-4 md:top-6 md:right-8 z-50 flex items-center gap-3">
+            <LanguageSwitcher />
+            <ThemeSwitcher />
+          </div>
           {children}
         </Providers>
       </body>
