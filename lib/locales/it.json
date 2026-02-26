@@ -221,7 +221,28 @@
         },
         "proj-7": {
             "title": "Libreria Algoritmi & Strutture Dati",
-            "description": "Libreria in C contenente l'implementazione manuale di strutture dati e algoritmi fondamentali, progettata per massima efficienza. Implementa Grafi, Hash Tables, calcolo dell'Edit Distance e moduli di sorting, validata tramite rigoroso unit testing (framework Unity)."
+            "description": "Libreria in C contenente l'implementazione manuale di strutture dati e algoritmi fondamentali, progettata per massima efficienza. Implementa Grafi, Hash Tables, calcolo dell'Edit Distance e moduli di sorting, validata tramite rigoroso unit testing (framework Unity).",
+            "longDescription": "Questo progetto è una suite completa di librerie sviluppate in C che implementano strutture dati e algoritmi fondamentali, partendo da zero. Realizzato per il corso di Algoritmi e Strutture Dati, l'obiettivo principale è stato massimizzare l'efficienza temporale e spaziale. Il progetto è guidato dai test (Test-Driven Development) avvalendosi del framework Unity per C, assicurando robustezza attraverso unit testing intensivi per ogni singolo modulo. I moduli spaziano da algoritmi di ordinamento, al calcolo dell'Edit Distance per correzioni testuali, fino all'implementazione generica di Tabelle Hash e Grafi sparsi, con algoritmi applicati come la Visita in Ampiezza (BFS).",
+            "role": "Sviluppatore C / Algoritmi",
+            "duration": "Set. 2025 - Ott. 2025",
+            "features": [
+                "Implementazione generica (void*) in C di Tabelle Hash e Grafi Sparsi etichettati/non etichettati, diretti/non diretti.",
+                "Sviluppo TDD puro utilizzando il framework Unity per garantire la copertura al 100% delle funzionalità della libreria.",
+                "Calcolo della distanza di editing (Edit Distance) ottimizzato ed efficiente, applicato alla correzione automatica di testi rispetto a un dizionario.",
+                "Algoritmo di Visita in Ampiezza (BFS) applicato a un dataset reale di distanze tra città italiane (reti stradali)."
+            ],
+            "theory": [
+                "Analisi della Complessità: Valutazione asintotica (Big-O) di tempi di esecuzione e occupazione di memoria per ogni algoritmo implementato.",
+                "Design Pattern in C: Creazione di interfacce astratte, uso di puntatori a funzione per hash e compare, garantendo il polimorfismo.",
+                "Programmazione Dinamica: Risoluzione del problema dell'Edit Distance memorizzando i risultati intermedi per ottimizzare le prestazioni.",
+                "Teoria dei Grafi: Rappresentazione computazionale tramite liste di adiacenza (Ottimizzazione per grafi sparsi)."
+            ],
+            "implementation": [
+                "C: Compilazione strutturata tramite Makefile, garantendo la separazione tra oggetti della libreria ed eseguibili main/test.",
+                "Puntatori a funzione: Implementazione di interfacce generiche capaci di memorizzare e manipolare qualsiasi tipo di dato.",
+                "Strutture Dati Dinamiche: Gestione meticolosa della memoria heap (malloc/free) per scongiurare memory leak (verifiche tramite Valgrind).",
+                "Unit Testing (Unity C): Produzione di test suite per ogni scenario pre-condizione e post-condizione prima della stesura effettiva degli algoritmi."
+            ]
         },
         "proj-8": {
             "title": "HCI Anime Data Storytelling",
