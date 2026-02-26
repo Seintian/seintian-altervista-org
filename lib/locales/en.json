@@ -68,9 +68,28 @@
         "proj-1": {
             "title": "GreenHabits (Web Technologies)",
             "description": "Full-stack web platform with an enterprise architecture. Implemented with a Java Spring Boot backend, React/Vite (TS) frontend, and PostgreSQL database. The infrastructure is fully containerized with Docker and includes an advanced monitoring system with Grafana and Prometheus.",
+            "longDescription": "GreenHabits is a comprehensive full-stack application designed to track and promote sustainable living habits. The platform boasts an enterprise-grade architecture with a robust backend powered by Java 25 and Spring Boot 4.0.0, exposing a complete RESTful API. The frontend is a modern Single Page Application (SPA) built with React 19, TypeScript, and Vite, utilizing React Query v5 for efficient data fetching and state management. The entire infrastructure is containerized using Docker, orchestrating services including PostgreSQL 16 for persistent data, Redis 7.0+ for caching, and a full observability stack (Prometheus, Grafana, Loki, Promtail) for real-time monitoring and log aggregation.",
             "role": "Full-stack Developer",
             "duration": "Sept 2025 - Jan 2026",
-            "docs": "Documentation"
+            "docs": "Documentation",
+            "features": [
+                "Comprehensive user activity logging and statistics tracking with an exponential level system and gamification elements.",
+                "Robust JWT-based security with token blacklisting functionality and customized security filtering.",
+                "Real-time centralized logging and application metrics visualization via Prometheus, Loki, Promtail, and Grafana.",
+                "Fully containerized deployment strategy unifying the backend, frontend, database, cache, and monitoring stack in a single Docker Compose network."
+            ],
+            "theory": [
+                "Controller-Service-Repository Pattern: Strict separation of concerns in the Spring Boot backend architecture.",
+                "Observability Driven Development: First-class integration of metrics (Prometheus) and log aggregation (Loki/Promtail) in the development lifecycle.",
+                "Relational Database Design: Complex entity relationships handling users, posts, activities, events, and challenges via JPA/Hibernate.",
+                "N+1 Query Optimization: Advanced use of LEFT JOIN FETCH and DTO projection queries to resolve performance bottlenecks in ORM data fetching."
+            ],
+            "implementation": [
+                "Spring Boot Actuator & Micrometer: Exposure of custom metrics and health endpoints for Prometheus scraping.",
+                "React Query (v5) & React Hook Form: Implementation of sophisticated client-side data fetching, caching strategies, and form validation.",
+                "Hibernate Query Hints: Applying fetch size hints and covering indexes (idx_activity_user_summary) to batch fetch related entities and reduce memory overhead.",
+                "Cypress E2E Testing: Exhaustive end-to-end testing scenarios ensuring critical user flows and application reliability."
+            ]
         },
         "proj-2": {
             "title": "Human-Computer Interaction (HCI) Web Platform",
