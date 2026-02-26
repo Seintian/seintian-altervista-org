@@ -142,7 +142,26 @@
         },
         "proj-4": {
             "title": "libnumakit",
-            "description": "Libreria di sistema avanzata scritta in C (build con CMake) per la gestione della memoria su architetture NUMA. Include logiche di task pooling, scheduling e memory migration a basso livello."
+            "description": "Libreria di sistema avanzata scritta in C (build con CMake) per la gestione della memoria su architetture NUMA. Include logiche di task pooling, scheduling e memory migration a basso livello.",
+            "longDescription": "libnumakit è un toolkit ad alte prestazioni in C, progettato per colmare il divario tra la scoperta della topologia hardware (es. hwloc) e la logica applicativa nei moderni sistemi NUMA multi-socket. Fornisce allocatori topology-aware, primitive di sincronizzazione a bassa latenza (lock MCS) e policy di affinità per i thread. Controllando rigorosamente il piazzamento della memoria ed eliminando il traffico sull'interconnessione durante le contese sui lock, previene colli di bottiglia critici come il false sharing e l'overhead da allocazione remota.",
+            "role": "System Software Engineer",
+            "duration": "Feb. 2026",
+            "features": [
+                "Gestione della memoria Local-First, offrendo allocazione bump-pointer senza overhead e binding rigoroso sui nodi tramite arene basate su hugepage.",
+                "Sincronizzazione Interconnect-Friendly tramite spinlock MCS basati su code d'attesa che iterano su linee di cache locali, riducendo drasticamente il traffico UPI/xGMI.",
+                "Scheduling dei thread basato su policy che permette il pinning dichiarativo (es. policy 'compact' o 'scatter') senza manipolazioni manuali di bitmask.",
+                "Architettura Modulare suddivisa in componenti di Memory (hugepage, slab), Sched (affinità, migrazione) e Sync (lock MCS, Ticket, RWS)."
+            ],
+            "theory": [
+                "Architettura NUMA: Comprensione e mitigazione degli overhead di latenza nell'accesso a memoria remota attraverso socket CPU diversi.",
+                "Concorrenza & Progettazione di Lock: Sviluppo di spinlock scalabili (MCS) che evitano thundering herd sui protocolli di coerenza della cache.",
+                "Gestione della Memoria: Integrazione diretta con le hugepage di Linux per ridurre i TLB miss in allocazioni su larga scala."
+            ],
+            "implementation": [
+                "C / CMake: Core library ad alte prestazioni compilata con ottimizzazioni stringenti (GCC 9+ / Clang 10+).",
+                "Hardware Locality (hwloc): Scoperta topologica interna e astrazione hardware.",
+                "Strutture Dati Zero-Overhead: Arene bump-pointer lockless che garantiscono tempi di allocazione costanti in tempo O(1)."
+            ]
         },
         "proj-5": {
             "title": "Linguaggi Formali & Compilatori",

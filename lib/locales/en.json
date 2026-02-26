@@ -142,7 +142,26 @@
         },
         "proj-4": {
             "title": "libnumakit",
-            "description": "Advanced system library written in C (built with CMake) for memory management on NUMA architectures. Includes low-level task pooling, scheduling, and memory migration logic."
+            "description": "Advanced system library written in C (built with CMake) for memory management on NUMA architectures. Includes low-level task pooling, scheduling, and memory migration logic.",
+            "longDescription": "libnumakit is a high-performance, 'batteries-included' C toolkit designed to bridge the gap between hardware topology discovery (like hwloc) and application logic on modern multi-socket NUMA systems. It provides topology-aware allocators, low-latency synchronization primitives (MCS locks), and declarative thread affinity policies. By strictly controlling memory placement and eliminating interconnect traffic during lock contention, it solves critical performance bottlenecks like false sharing and remote allocation overheads.",
+            "role": "System Software Engineer",
+            "duration": "Feb 2026",
+            "features": [
+                "Local-First Memory Management offering zero-overhead bump-pointer allocation and strict node binding through hugepage-backed arenas.",
+                "Interconnect-Friendly Synchronization using queue-based MCS spinlocks that spin on local cache lines, drastically reducing UPI/xGMI traffic.",
+                "Policy-Based Thread Scheduling allowing declarative pinning (e.g., compact or scatter policies) without manual bitmask manipulation.",
+                "Modular Architecture divided into Memory (hugepages, slabs), Sched (affinity, migration), and Sync (MCS, Ticket, RWS locks) components."
+            ],
+            "theory": [
+                "NUMA Architecture: Understanding and mitigating latency overheads when accessing remote memory across CPU sockets.",
+                "Concurrency & Lock Design: Designing scalable spinlocks (MCS) that prevent thundering herds on cache coherence protocols.",
+                "Memory Management: Direct integration with Linux hugepages to reduce TLB misses during large-scale allocations."
+            ],
+            "implementation": [
+                "C / CMake: High-performance core library compiled with strict optimizations (GCC 9+ / Clang 10+).",
+                "Hardware Locality (hwloc): Internal topological discovery and hardware abstractions.",
+                "Zero-Overhead Data Structures: Lockless bump-pointer arenas ensuring O(1) allocation time."
+            ]
         },
         "proj-5": {
             "title": "Formal Languages & Compilers",

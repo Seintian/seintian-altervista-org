@@ -160,7 +160,10 @@ export const siteData = {
             url: "",
             repo: "https://github.com/Seintian/libnumakit",
             technologies: ["C", "CMake", "NUMA", "IPC"],
-            category: "featured"
+            category: "featured",
+            themeColor: "red",
+            roleKey: "projects.proj-4.role",
+            durationKey: "projects.proj-4.duration"
         },
         {
             id: "proj-5",
