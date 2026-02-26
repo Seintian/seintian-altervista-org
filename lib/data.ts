@@ -135,8 +135,11 @@ export const siteData = {
             descriptionKey: "projects.proj-2.description",
             url: "https://seintian.github.io/unito-human-computer-interaction-25-26",
             repo: "https://github.com/Seintian/unito-human-computer-interaction-25-26",
-            technologies: ["UX/UI Design", "Web Development", "HTML/CSS"],
-            category: "core-cs"
+            technologies: ["React", "TypeScript", "Vite", "Bootstrap", "UX/UI Design"],
+            category: "core-cs",
+            themeColor: "blue",
+            roleKey: "projects.proj-2.role",
+            durationKey: "projects.proj-2.duration"
         },
         {
             id: "proj-3",

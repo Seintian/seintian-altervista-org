@@ -92,8 +92,29 @@
             ]
         },
         "proj-2": {
-            "title": "Human-Computer Interaction (HCI) Web Platform",
-            "description": "Development of a modern and accessible web user interface for the HCI course. Strict focus on UX/UI design, responsiveness, and usability principles."
+            "title": "School Outreach Portal (HCI)",
+            "description": "Development of a high-fidelity, accessible web portal for the Department of Computer Science (UniTo), designed to aggregate outreach activities for schools.",
+            "longDescription": "This project is a high-fidelity, fully functional web application designed for the Department of Computer Science at the University of Turin. It serves as a dedicated portal for schools (students, teachers, and principals) to explore outreach activities, labs, and orientation programs. Developed as part of the Human-Computer Interaction class, the goal was to aggregate various Public Engagement activities (like Social4School and AIRLab) into a single, highly accessible, and user-centric platform.",
+            "role": "Frontend Developer & UX Engineer",
+            "duration": "Dec 2025",
+            "features": [
+                "Advanced accessibility compliance, breadcrumbs, and error handling for maximum usability.",
+                "Full internationalization (i18n) support implemented to accommodate diverse users.",
+                "Native theming leveraging Bootstrap 5 variables for a maintainable and consistent design system.",
+                "Dedicated tailored views including a Master Page, Schools Page, and Events Page."
+            ],
+            "theory": [
+                "Human-Computer Interaction Principles: Focus on user-centric design and intuitive navigation paths.",
+                "Accessibility (a11y) Standards: Ensuring the platform is usable by individuals with varying abilities.",
+                "Information Architecture: Structuring complex academic department data into digestible formats.",
+                "Responsive Web Design: Adapting UI components seamlessly across all breakpoints."
+            ],
+            "implementation": [
+                "React 19 & TypeScript: Building a robust, type-safe single-page application.",
+                "Vite 6.0: Utilizing a modern, rapid build tool for optimized frontend tooling.",
+                "Bootstrap 5.3: Extending native variables for a custom-branded UI without excessive CSS overrides.",
+                "GitHub Actions CI/CD: Automated deployment pipeline directly to GitHub Pages."
+            ]
         },
         "proj-3": {
             "title": "WinHUD",

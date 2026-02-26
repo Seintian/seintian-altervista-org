@@ -92,8 +92,29 @@
             ]
         },
         "proj-2": {
-            "title": "Piattaforma Web Human-Computer Interaction (HCI)",
-            "description": "Sviluppo di un'interfaccia utente web moderna e accessibile per il corso di HCI. Focus rigoroso su UX/UI design, responsività e principi di usabilità."
+            "title": "Portale Outreach per le Scuole (HCI)",
+            "description": "Sviluppo di un portale web moderno e accessibile per il Dipartimento di Informatica (UniTo), progettato per aggregare le attività di orientamento per le scuole.",
+            "longDescription": "Questo progetto è un'applicazione web ad alta fedeltà e completamente funzionale progettata per il Dipartimento di Informatica dell'Università di Torino. Funge da portale dedicato alle scuole (studenti, insegnanti e presidi) per esplorare le attività di orientamento, i laboratori e i programmi. Sviluppato nell'ambito del corso di Human-Computer Interaction, l'obiettivo era aggregare varie attività di Public Engagement (come Social4School e AIRLab) in un'unica piattaforma accessibile e incentrata sull'utente.",
+            "role": "Frontend Developer & UX Engineer",
+            "duration": "Dic. 2025",
+            "features": [
+                "Conformità avanzata all'accessibilità, breadcrumbs e gestione degli errori per la massima usabilità.",
+                "Supporto completo per l'internazionalizzazione (i18n) implementato per accogliere un'utenza diversificata.",
+                "Theming nativo che sfrutta le variabili di Bootstrap 5 per un design system coerente e manutenibile.",
+                "Visualizzazioni dedicate tra cui una Master Page, una pagina Scuole e una pagina Eventi."
+            ],
+            "theory": [
+                "Principi di Human-Computer Interaction: Focus sul design user-centric e su percorsi di navigazione intuitivi.",
+                "Standard di Accessibilità (a11y): Garantire che la piattaforma sia utilizzabile da individui con diverse abilità.",
+                "Architettura dell'Informazione: Strutturare dati dipartimentali complessi in formati digeribili.",
+                "Responsive Web Design: Adattare i componenti UI senza soluzione di continuità su tutti i breakpoint."
+            ],
+            "implementation": [
+                "React 19 & TypeScript: Costruzione di una single-page application robusta e type-safe.",
+                "Vite 6.0: Utilizzo di un moderno e rapido tool di build per un'ottimizzazione degli strumenti frontend.",
+                "Bootstrap 5.3: Estensione delle variabili native per un'interfaccia personalizzata senza eccessivi override CSS.",
+                "GitHub Actions CI/CD: Pipeline di deployment automatizzata direttamente su GitHub Pages."
+            ]
         },
         "proj-3": {
             "title": "WinHUD",
