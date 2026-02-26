@@ -221,7 +221,28 @@
         },
         "proj-7": {
             "title": "Algorithms & Data Structures Library",
-            "description": "C library containing manual implementation of fundamental data structures and algorithms, designed for maximum efficiency. Implements Graphs, Hash Tables, Edit Distance calculation, and sorting modules, validated through rigorous unit testing (Unity framework)."
+            "description": "C library containing manual implementation of fundamental data structures and algorithms, designed for maximum efficiency. Implements Graphs, Hash Tables, Edit Distance calculation, and sorting modules, validated through rigorous unit testing (Unity framework).",
+            "longDescription": "This project is a comprehensive suite of C libraries implementing fundamental data structures and algorithms from scratch. Developed for the Algorithms and Data Structures class, the primary focus was on maximizing time and space efficiency. The project follows a strictly Test-Driven Development (TDD) approach using the Unity framework for C, ensuring extreme robustness through intensive unit testing of each module. The implemented modules range from sorting algorithms and Edit Distance calculation for auto-correction, to generic implementations of Hash Tables with chaining, and sparse Graphs with algorithms such as Breadth-First Visit (BFS).",
+            "role": "C Developer / Algorithms",
+            "duration": "Sept 2025 - Oct 2025",
+            "features": [
+                "Generic implementation (void*) in C of Hash Tables and Sparse Graphs (labeled/unlabeled, directed/undirected).",
+                "Pure TDD development using the Unity framework to ensure 100% coverage of library functionalities.",
+                "Optimized and efficient Edit Distance calculation, applied to automatic text correction against a dictionary.",
+                "Breadth-First Search (BFS) algorithm applied to a real-world dataset of distances between Italian cities (road networks)."
+            ],
+            "theory": [
+                "Complexity Analysis: Rigorous asymptotic (Big-O) evaluation of execution times and memory footprint for every implemented routine.",
+                "Design Patterns in C: Abstract interfaces and utilization of function pointers for custom hashing and comparisons to ensure polymorphism.",
+                "Dynamic Programming: Implementation of the Edit Distance problem by memoizing intermediate results to optimize performance.",
+                "Graph Theory: Computational representation via adjacency lists natively optimized for sparsely connected node topologies."
+            ],
+            "implementation": [
+                "C Engineering: Structured compilation via Makefiles, ensuring clean separation between library objects and main/test executables.",
+                "Function Pointers: Building generic structures capable of storing, hashing, and manipulating arbitrary data types abstractly.",
+                "Dynamic Memory Allocation: Meticulous manipulation of heap memory (malloc/free) with strict verification against memory leaks via Valgrind.",
+                "Unit Testing (Unity C): Production of comprehensive test suites validating all pre- and post-conditions before actual algorithm coding."
+            ]
         },
         "proj-8": {
             "title": "HCI Anime Data Storytelling",

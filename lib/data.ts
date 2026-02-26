@@ -208,7 +208,10 @@ export const siteData = {
             url: "",
             repo: "https://github.com/Seintian/unito-algorithms-and-data-structures-24-25",
             technologies: ["C", "TDD", "Algorithms", "Data Structs"],
-            category: "core-cs"
+            category: "core-cs",
+            themeColor: "cyan",
+            roleKey: "projects.proj-7.role",
+            durationKey: "projects.proj-7.duration"
         },
         {
             id: "proj-8",
