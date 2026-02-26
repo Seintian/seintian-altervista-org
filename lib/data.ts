@@ -135,8 +135,11 @@ export const siteData = {
             descriptionKey: "projects.proj-2.description",
             url: "https://seintian.github.io/unito-human-computer-interaction-25-26",
             repo: "https://github.com/Seintian/unito-human-computer-interaction-25-26",
-            technologies: ["UX/UI Design", "Web Development", "HTML/CSS"],
-            category: "core-cs"
+            technologies: ["React", "TypeScript", "Vite", "Bootstrap", "UX/UI Design"],
+            category: "core-cs",
+            themeColor: "blue",
+            roleKey: "projects.proj-2.role",
+            durationKey: "projects.proj-2.duration"
         },
         {
             id: "proj-3",
@@ -144,8 +147,11 @@ export const siteData = {
             descriptionKey: "projects.proj-3.description",
             url: "",
             repo: "https://github.com/Seintian/WinHUD",
-            technologies: ["C#", ".NET", "WPF"],
-            category: "featured"
+            technologies: ["C#", ".NET 10", "WPF"],
+            category: "featured",
+            themeColor: "slate",
+            roleKey: "projects.proj-3.role",
+            durationKey: "projects.proj-3.duration"
         },
         {
             id: "proj-4",
@@ -154,7 +160,10 @@ export const siteData = {
             url: "",
             repo: "https://github.com/Seintian/libnumakit",
             technologies: ["C", "CMake", "NUMA", "IPC"],
-            category: "featured"
+            category: "featured",
+            themeColor: "red",
+            roleKey: "projects.proj-4.role",
+            durationKey: "projects.proj-4.duration"
         },
         {
             id: "proj-5",
@@ -204,8 +213,11 @@ export const siteData = {
             descriptionKey: "projects.proj-8.description",
             url: "",
             repo: "https://github.com/Seintian/unito-hci-data-analysis-25-26",
-            technologies: ["Python", "Pandas", "Jupyter", "Data Analysis"],
-            category: "core-cs"
+            technologies: ["Python", "Pandas", "PyArrow", "Jupyter", "Data Analysis"],
+            category: "core-cs",
+            themeColor: "amber",
+            roleKey: "projects.proj-8.role",
+            durationKey: "projects.proj-8.duration"
         }
     ]
 };

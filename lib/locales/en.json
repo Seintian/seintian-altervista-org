@@ -92,16 +92,76 @@
             ]
         },
         "proj-2": {
-            "title": "Human-Computer Interaction (HCI) Web Platform",
-            "description": "Development of a modern and accessible web user interface for the HCI course. Strict focus on UX/UI design, responsiveness, and usability principles."
+            "title": "School Outreach Portal (HCI)",
+            "description": "Development of a high-fidelity, accessible web portal for the Department of Computer Science (UniTo), designed to aggregate outreach activities for schools.",
+            "longDescription": "This project is a high-fidelity, fully functional web application designed for the Department of Computer Science at the University of Turin. It serves as a dedicated portal for schools (students, teachers, and principals) to explore outreach activities, labs, and orientation programs. Developed as part of the Human-Computer Interaction class, the goal was to aggregate various Public Engagement activities (like Social4School and AIRLab) into a single, highly accessible, and user-centric platform.",
+            "role": "Frontend Developer & UX Engineer",
+            "duration": "Dec 2025",
+            "features": [
+                "Advanced accessibility compliance, breadcrumbs, and error handling for maximum usability.",
+                "Full internationalization (i18n) support implemented to accommodate diverse users.",
+                "Native theming leveraging Bootstrap 5 variables for a maintainable and consistent design system.",
+                "Dedicated tailored views including a Master Page, Schools Page, and Events Page."
+            ],
+            "theory": [
+                "Human-Computer Interaction Principles: Focus on user-centric design and intuitive navigation paths.",
+                "Accessibility (a11y) Standards: Ensuring the platform is usable by individuals with varying abilities.",
+                "Information Architecture: Structuring complex academic department data into digestible formats.",
+                "Responsive Web Design: Adapting UI components seamlessly across all breakpoints."
+            ],
+            "implementation": [
+                "React 19 & TypeScript: Building a robust, type-safe single-page application.",
+                "Vite 6.0: Utilizing a modern, rapid build tool for optimized frontend tooling.",
+                "Bootstrap 5.3: Extending native variables for a custom-branded UI without excessive CSS overrides.",
+                "GitHub Actions CI/CD: Automated deployment pipeline directly to GitHub Pages."
+            ]
         },
         "proj-3": {
             "title": "WinHUD",
-            "description": "Desktop application for Windows developed in C# (.NET/WPF). Implements a customizable overlay for real-time monitoring of hardware data and system performance."
+            "description": "Desktop application for Windows developed in C# (.NET/WPF). Implements a customizable overlay for real-time monitoring of hardware data and system performance.",
+            "longDescription": "WinHUD is a lightweight, non-intrusive system performance overlay for Windows. It provides real-time monitoring of critical system metrics (CPU, GPU, RAM, Disk, Network) without cluttering your screen or stealing focus from your games. Designed with a \"set it and forget it\" philosophy, WinHUD automatically detects when you are gaming, adjusts its text color based on the background brightness, and stays out of your way (complete with a \"Ghost Mode\" where clicks pass entirely through its UI).",
+            "role": "C# / .NET Developer",
+            "duration": "Jan 2026 - Feb 2026",
+            "features": [
+                "Real-Time Hardware Monitoring delivering updates every second for CPU, GPU, RAM, Disk activity, and Network speed.",
+                "Gamer-Centric Design where the overlay is totally click-through, supported by Steam detection to dynamically vary visibility.",
+                "Smart Visuals using dynamic contrast processing by analyzing pixels beneath it 60 times a second, switching between Bright Green and Dark Grey.",
+                "Multi-Monitor Support via System Tray management driven by auto-saved configuration preferences."
+            ],
+            "theory": [
+                "Windows System Programming: Deep hooks for performance metrics retrieval and Window Manager interactions.",
+                "Image Processing: Real-time background analysis utilizing sub-second pixel readings for intelligent contrast detection.",
+                "Non-blocking UI Loops: Threading models separating heavy computational tasks off the UI update thread."
+            ],
+            "implementation": [
+                "C# 10 & .NET 10: Targeting the latest platform performance with porting via VS 2022 extensions.",
+                "LibreHardwareMonitorLib: Utilization for granular hardware queries extending across GPU vendors like AMD/Intel/NVIDIA.",
+                "WPF & System.Drawing.Common: Core UI technologies combined specifically for on-screen pixel data captures.",
+                "Makefiles for CI/CD: Automating building, packaging, and release publication directly from a Git Bash terminal."
+            ]
         },
         "proj-4": {
             "title": "libnumakit",
-            "description": "Advanced system library written in C (built with CMake) for memory management on NUMA architectures. Includes low-level task pooling, scheduling, and memory migration logic."
+            "description": "Advanced system library written in C (built with CMake) for memory management on NUMA architectures. Includes low-level task pooling, scheduling, and memory migration logic.",
+            "longDescription": "libnumakit is a high-performance, 'batteries-included' C toolkit designed to bridge the gap between hardware topology discovery (like hwloc) and application logic on modern multi-socket NUMA systems. It provides topology-aware allocators, low-latency synchronization primitives (MCS locks), and declarative thread affinity policies. By strictly controlling memory placement and eliminating interconnect traffic during lock contention, it solves critical performance bottlenecks like false sharing and remote allocation overheads.",
+            "role": "System Software Engineer",
+            "duration": "Feb 2026",
+            "features": [
+                "Local-First Memory Management offering zero-overhead bump-pointer allocation and strict node binding through hugepage-backed arenas.",
+                "Interconnect-Friendly Synchronization using queue-based MCS spinlocks that spin on local cache lines, drastically reducing UPI/xGMI traffic.",
+                "Policy-Based Thread Scheduling allowing declarative pinning (e.g., compact or scatter policies) without manual bitmask manipulation.",
+                "Modular Architecture divided into Memory (hugepages, slabs), Sched (affinity, migration), and Sync (MCS, Ticket, RWS locks) components."
+            ],
+            "theory": [
+                "NUMA Architecture: Understanding and mitigating latency overheads when accessing remote memory across CPU sockets.",
+                "Concurrency & Lock Design: Designing scalable spinlocks (MCS) that prevent thundering herds on cache coherence protocols.",
+                "Memory Management: Direct integration with Linux hugepages to reduce TLB misses during large-scale allocations."
+            ],
+            "implementation": [
+                "C / CMake: High-performance core library compiled with strict optimizations (GCC 9+ / Clang 10+).",
+                "Hardware Locality (hwloc): Internal topological discovery and hardware abstractions.",
+                "Zero-Overhead Data Structures: Lockless bump-pointer arenas ensuring O(1) allocation time."
+            ]
         },
         "proj-5": {
             "title": "Formal Languages & Compilers",
@@ -143,8 +203,29 @@
             "description": "C library containing manual implementation of fundamental data structures and algorithms, designed for maximum efficiency. Implements Graphs, Hash Tables, Edit Distance calculation, and sorting modules, validated through rigorous unit testing (Unity framework)."
         },
         "proj-8": {
-            "title": "HCI Data Analysis Pipeline",
-            "description": "Data processing and analysis pipeline developed in Python (Pandas, Jupyter Notebooks) based on datasets related to human-machine interfaces. Includes modular scripts for pre-cleaning, anomaly treatment, feature engineering, and Exploratory Data Analysis (EDA)."
+            "title": "HCI Anime Data Storytelling",
+            "description": "Data processing and analysis pipeline developed in Python (Pandas, Jupyter Notebooks) based on a massive dataset (+130M data points) related to the anime industry. Includes modular scripts for ETL, anomaly treatment, feature engineering, and Exploratory Data Analysis to tell a story through data.",
+            "longDescription": "This project implements an end-to-end data processing and analysis pipeline to explore and visualize a massive dataset of over 130 million data points related to the anime industry (anime, characters, actors, user interactions). Developed entirely in Python within JupyterLab, the work utilizes the uv package manager to guarantee deterministic and highly efficient dependency resolution. The core of the analysis focuses not only on compiling statistics but on true 'Data Storytelling', highlighting patterns, trends, and outliers over time to offer compelling insights to domain experts and fans alike.",
+            "role": "Data Analyst",
+            "duration": "Dec 2025 - Feb 2026",
+            "features": [
+                "Comprehensive ETL (Extract, Transform, Load) Pipeline processing raw CSV data into highly optimized Parquet format.",
+                "Deep Exploratory Data Analysis (EDA) focused on identifying narrative arcs and industry-wide temporal trends.",
+                "Advanced Static Visualization via Matplotlib and Seaborn for multi-dimensional data representation.",
+                "Geospatial Analysis utilizing Geopandas and Folium to plot interactive maps related to content origination and audience spread."
+            ],
+            "theory": [
+                "Data Storytelling: Structuring data-driven narratives to intuitively communicate complex quantitative insights.",
+                "High-Performance Data Storage: Transitioning from row-based (CSV) to columnar storage (Parquet) for analytical workloads.",
+                "Geospatial Topology: Principles of mapping discrete spatial data onto continuous coordinate projections.",
+                "Exploratory vs Explanatory Analysis: Shifting from open-ended data discovery to focused narrative presentation."
+            ],
+            "implementation": [
+                "Pandas with PyArrow Backend: Leveraging Arrow memory format to drastically reduce footprint and speed up aggregations on 130M+ rows.",
+                "Uv Package Management: Use of Rust-based uv for millisecond-resolution of Python virtual environments and locked dependencies.",
+                "Jupyter Workspaces: Separation of concerns across modular notebooks (01_cleaning, 02_exploration, 03_story) for reproducible research.",
+                "Local Package Architecture: Installation of the analysis source code (src/) in editable mode for clean cross-notebook imports."
+            ]
         }
     },
     "sections": {
