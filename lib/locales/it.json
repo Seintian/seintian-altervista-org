@@ -68,9 +68,28 @@
         "proj-1": {
             "title": "GreenHabits (Tecnologie Web)",
             "description": "Piattaforma web full-stack con architettura enterprise. Implementata con un backend in Java Spring Boot, frontend in React/Vite (TS), e database PostgreSQL. L'infrastruttura è completamente containerizzata con Docker e include un sistema di monitoraggio avanzato con Grafana e Prometheus.",
+            "longDescription": "GreenHabits è un'applicazione full-stack completa progettata per tracciare e promuovere abitudini di vita sostenibili. La piattaforma vanta un'architettura di livello enterprise con un robusto backend basato su Java 25 e Spring Boot 4.0.0, che espone un'API RESTful completa. Il frontend è una moderna Single Page Application (SPA) costruita con React 19, TypeScript e Vite, utilizzando React Query v5 per un efficiente data fetching e state management. L'intera infrastruttura è containerizzata con Docker, orchestrando servizi tra cui PostgreSQL 16 per i dati persistenti, Redis 7.0+ per il caching, e un completo stack di osservabilità (Prometheus, Grafana, Loki, Promtail) per il monitoraggio in tempo reale e l'aggregazione dei log.",
             "role": "Sviluppatore Full-stack",
             "duration": "Set. 2025 - Gen. 2026",
-            "docs": "Documentazione"
+            "docs": "Documentazione",
+            "features": [
+                "Tracciamento completo delle attività utente e delle statistiche con un sistema a livelli esponenziale ed elementi di gamification.",
+                "Sicurezza robusta basata su JWT con funzionalità di token blacklisting e filtering di sicurezza personalizzato.",
+                "Logging centralizzato in tempo reale e visualizzazione delle metriche applicative tramite Prometheus, Loki, Promtail, e Grafana.",
+                "Strategia di deployment completamente containerizzata che unifica backend, frontend, database, cache e stack di monitoraggio in una singola rete Docker Compose."
+            ],
+            "theory": [
+                "Pattern Controller-Service-Repository: Rigorosa separazione delle responsabilità nell'architettura backend Spring Boot.",
+                "Observability Driven Development: Integrazione nativa delle metriche (Prometheus) e dell'aggregazione dei log (Loki/Promtail) nel ciclo di sviluppo.",
+                "Progettazione Database Relazionale: Relazioni complesse tra entità per la gestione di utenti, post, attività, eventi e sfide tramite JPA/Hibernate.",
+                "Ottimizzazione Query N+1: Uso avanzato di LEFT JOIN FETCH e query con proiezioni DTO per risolvere colli di bottiglia nelle performance del data fetching ORM."
+            ],
+            "implementation": [
+                "Spring Boot Actuator & Micrometer: Esposizione di metriche personalizzate e endpoint di health per lo scraping di Prometheus.",
+                "React Query (v5) & React Hook Form: Implementazione client-side di complesse strategie di data fetching, caching e validazione form.",
+                "Hibernate Query Hints: Applicazione di query hints sul fetch size e indici di copertura (idx_activity_user_summary) per il batch fetching di entità correlate e la riduzione dell'overhead di memoria.",
+                "Testing E2E con Cypress: Scenari esaustivi di test end-to-end per garantire la stabilità dei flussi utente critici e l'affidabilità dell'applicazione."
+            ]
         },
         "proj-2": {
             "title": "Piattaforma Web Human-Computer Interaction (HCI)",
@@ -109,7 +128,7 @@
                 "Discesa Ricorsiva: Parser modulare in cui ogni non-terminale è mappato su un metodo Java.",
                 "Backend Jasmin: Traduzione di costrutti di alto livello in mnemonici assembly Jasmin.",
                 "Semantica Stack Machine: Gestione dello stack degli operandi della JVM e mappatura delle variabili locali durante l'emissione del codice."
-            ],  
+            ],
             "links": {
                 "grammar": "Grammatica",
                 "study": "Studio"
