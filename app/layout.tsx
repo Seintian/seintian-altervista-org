@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import Providers from "@/components/Providers";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
-import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
-import ThemeSwitcher from "@/components/ui/ThemeSwitcher";
 
 import Header from "@/components/ui/Header";
 
