@@ -118,7 +118,27 @@
         },
         "proj-3": {
             "title": "WinHUD",
-            "description": "Desktop application for Windows developed in C# (.NET/WPF). Implements a customizable overlay for real-time monitoring of hardware data and system performance."
+            "description": "Desktop application for Windows developed in C# (.NET/WPF). Implements a customizable overlay for real-time monitoring of hardware data and system performance.",
+            "longDescription": "WinHUD is a lightweight, non-intrusive system performance overlay for Windows. It provides real-time monitoring of critical system metrics (CPU, GPU, RAM, Disk, Network) without cluttering your screen or stealing focus from your games. Designed with a \"set it and forget it\" philosophy, WinHUD automatically detects when you are gaming, adjusts its text color based on the background brightness, and stays out of your way (complete with a \"Ghost Mode\" where clicks pass entirely through its UI).",
+            "role": "C# / .NET Developer",
+            "duration": "Jan 2026 - Feb 2026",
+            "features": [
+                "Real-Time Hardware Monitoring delivering updates every second for CPU, GPU, RAM, Disk activity, and Network speed.",
+                "Gamer-Centric Design where the overlay is totally click-through, supported by Steam detection to dynamically vary visibility.",
+                "Smart Visuals using dynamic contrast processing by analyzing pixels beneath it 60 times a second, switching between Bright Green and Dark Grey.",
+                "Multi-Monitor Support via System Tray management driven by auto-saved configuration preferences."
+            ],
+            "theory": [
+                "Windows System Programming: Deep hooks for performance metrics retrieval and Window Manager interactions.",
+                "Image Processing: Real-time background analysis utilizing sub-second pixel readings for intelligent contrast detection.",
+                "Non-blocking UI Loops: Threading models separating heavy computational tasks off the UI update thread."
+            ],
+            "implementation": [
+                "C# 10 & .NET 10: Targeting the latest platform performance with porting via VS 2022 extensions.",
+                "LibreHardwareMonitorLib: Utilization for granular hardware queries extending across GPU vendors like AMD/Intel/NVIDIA.",
+                "WPF & System.Drawing.Common: Core UI technologies combined specifically for on-screen pixel data captures.",
+                "Makefiles for CI/CD: Automating building, packaging, and release publication directly from a Git Bash terminal."
+            ]
         },
         "proj-4": {
             "title": "libnumakit",

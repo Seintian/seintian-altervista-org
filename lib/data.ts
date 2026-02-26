@@ -147,8 +147,11 @@ export const siteData = {
             descriptionKey: "projects.proj-3.description",
             url: "",
             repo: "https://github.com/Seintian/WinHUD",
-            technologies: ["C#", ".NET", "WPF"],
-            category: "featured"
+            technologies: ["C#", ".NET 10", "WPF"],
+            category: "featured",
+            themeColor: "slate",
+            roleKey: "projects.proj-3.role",
+            durationKey: "projects.proj-3.duration"
         },
         {
             id: "proj-4",

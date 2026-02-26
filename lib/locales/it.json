@@ -118,7 +118,27 @@
         },
         "proj-3": {
             "title": "WinHUD",
-            "description": "Applicazione desktop per Windows sviluppata in C# (.NET/WPF). Implementa un overlay customizzabile per il monitoraggio in tempo reale dei dati hardware e delle performance del sistema."
+            "description": "Applicazione desktop per Windows sviluppata in C# (.NET/WPF). Implementa un overlay customizzabile per il monitoraggio in tempo reale dei dati hardware e delle performance del sistema.",
+            "longDescription": "WinHUD è un overlay leggero e non intrusivo per le prestazioni del sistema di Windows. Offre monitoraggio in tempo reale delle metriche critiche del sistema (CPU, GPU, RAM, Disco, Rete) senza affollare lo schermo e senza rubare il focus ai tuoi giochi. Ideato con la filosofia \"set it and forget it\", WinHUD rileva automaticamente quando stai giocando, regola il colore del testo in base alla luminosità del background e non ostruisce mai la vista (grazie alla \"Ghost Mode\" in cui i click passano attraverso l'interfaccia).",
+            "role": "Sviluppatore C# / .NET",
+            "duration": "Gen. 2026 - Feb. 2026",
+            "features": [
+                "Monitoraggio hardware in tempo reale ogni secondo di CPU, GPU, RAM, attività dei dischi e utilizzo della Rete.",
+                "Disegno Gamer-Centric con l'overlay cliccabile attraverso, supportato dalla rilevazione di Steam per variare automaticamente la visibilità.",
+                "Smart Visuals tramite contrasto dinamico, valutato analizzando i pixel esposti 60 volte al secondo, passando da testo Verde Brillante a Grigio Scuro per mantenere la leggibilità.",
+                "Supporto Multi-Monitor tramite la gestione dal System Tray basata su preferenze configurabili ed auto-salvate."
+            ],
+            "theory": [
+                "Programmazione di Sistema su Windows: Recupero low-level di metriche prestazionali ed interazione con il Window Manager.",
+                "Elaborazione delle Immagini: Analisi del background in tempo reale tramite letture pixel al secondo per il rilevamento del contrasto intelligente.",
+                "Cicli UI Non Bloccanti: Modello Threading per disporre i calcoli pesanti lontani dal thread dell'update UI."
+            ],
+            "implementation": [
+                "C# 10 & .NET 10: Costruzione per le ultime performance del platform, con porting tramite le estensioni di VS 2022.",
+                "Librerie LibreHardwareMonitor: Utilizzo per le query granulari di hardware dei vendor di GPU come AMD/Intel/NVIDIA.",
+                "WPF & System.Drawing.Common: Tecnologie essenziali di UI, combinate in particolare per le acquisizioni on-screen del pixel data.",
+                "Makefiles per CI/CD: Automatizzazione di build, impacchettamento e pubblicazioni release dal terminale Git Bash."
+            ]
         },
         "proj-4": {
             "title": "libnumakit",
