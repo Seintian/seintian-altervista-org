@@ -195,8 +195,11 @@ export const siteData = {
             descriptionKey: "projects.proj-6.description",
             url: "",
             repo: "https://github.com/Seintian/unito-operative-systems-24-25",
-            technologies: ["C", "POSIX", "IPC", "Multithreading"],
-            category: "core-cs"
+            technologies: ["C", "POSIX", "IPC", "Multithreading", "Makefile"],
+            category: "core-cs",
+            themeColor: "indigo",
+            roleKey: "projects.proj-6.role",
+            durationKey: "projects.proj-6.duration"
         },
         {
             id: "proj-7",
