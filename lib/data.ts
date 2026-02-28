@@ -116,7 +116,7 @@ export const siteData = {
             descriptionKey: "projects.proj-gym.description",
             url: "http://avid3959134.altervista.org/",
             repo: "", // Private repository
-            technologies: ["PHP", "MySQL", "JavaScript", "CSS", "Session API"],
+            technologies: ["Vanilla PHP", "MySQL", "jQuery", "Bulma CSS", "Session API"],
             category: "featured",
             themeColor: "rose",
             roleKey: "projects.proj-gym.role",

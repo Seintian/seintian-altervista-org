@@ -67,7 +67,7 @@
         },
         "proj-gym": {
             "title": "Sistema di Gestione Palestra (Freelance)",
-            "description": "Una piattaforma di gestione su misura per un centro fitness locale, con tracciamento automatico degli iscritti e una dashboard amministrativa.",
+            "description": "Piattaforma gestionale su misura per un centro fitness locale. Presenta un'architettura a doppia interfaccia: un sito pubblico e una dashboard sicura per lo staff atta a gestire abbonamenti, schede d'allenamento e orari. Sviluppata interamente con Vanilla PHP, jQuery e Bulma CSS senza framework pesanti, utilizzando le API di Sessione per un'autenticazione robusta e query MySQL custom per transazioni dati ad alte prestazioni.",
             "longDescription": "Sviluppata come soluzione commerciale ad alte prestazioni, questa piattaforma ha traghettato una palestra locale da processi manuali cartacei a un ecosistema completamente digitale. Costruita su un'architettura Vanilla PHP, il sistema gestisce richieste ad alta concorrenza per check-in dei membri e programmazione dei corsi senza l'overhead di framework pesanti.",
             "role": "Sviluppatore Full-stack (Freelance)",
             "duration": "2022 - 2023",
