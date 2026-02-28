@@ -3,10 +3,12 @@
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { Sun, Moon, Monitor } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function ThemeSwitcher() {
     const [mounted, setMounted] = useState(false);
     const { theme, setTheme } = useTheme();
+    const { t } = useTranslation();
 
     // useEffect only runs on the client, so now we can safely show the UI
     useEffect(() => {
@@ -25,7 +27,7 @@ export default function ThemeSwitcher() {
                     ? "bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm"
                     : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
                     }`}
-                aria-label="Light mode"
+                aria-label={t("theme.light", "Light mode")}
             >
                 <Sun className="w-4 h-4" />
             </button>
@@ -36,7 +38,7 @@ export default function ThemeSwitcher() {
                     ? "bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm"
                     : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
                     }`}
-                aria-label="System theme"
+                aria-label={t("theme.system", "System theme")}
             >
                 <Monitor className="w-4 h-4" />
             </button>
@@ -47,7 +49,7 @@ export default function ThemeSwitcher() {
                     ? "bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm"
                     : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
                     }`}
-                aria-label="Dark mode"
+                aria-label={t("theme.dark", "Dark mode")}
             >
                 <Moon className="w-4 h-4" />
             </button>

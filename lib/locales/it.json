@@ -292,6 +292,29 @@
                 "backend": "Backend & Cloud",
                 "core": "Informatica Teorica",
                 "tools": "DevOps & Strumenti"
+            },
+            "items": {
+                "java": "Java",
+                "c": "C",
+                "cs": "C#",
+                "js-ts": "JS / TS",
+                "php": "PHP",
+                "python": "Python",
+                "react": "React",
+                "nextjs": "Next.js",
+                "tailwind": "Tailwind CSS",
+                "html-css": "HTML / CSS",
+                "spring": "Spring Boot",
+                "postgres": "PostgreSQL",
+                "docker": "Docker",
+                "os": "Sistemi Operativi",
+                "compilers": "Compilatori",
+                "algo": "Algoritmi & Strutture Dati",
+                "numa": "Architetture NUMA",
+                "git": "Git",
+                "cmake": "CMake",
+                "monitoring": "Grafana & Prometheus",
+                "analysis": "Analisi dei Dati"
             }
         }
     },
@@ -300,6 +323,12 @@
         "certifications": "Certificazioni",
         "github_repo": "Repo GitHub",
         "live_demo": "Live Demo",
-        "search_placeholder": "Filtra per tag o categoria..."
+        "search_placeholder": "Filtra per tag o categoria...",
+        "header_subtitle": "Software Engineer"
+    },
+    "theme": {
+        "light": "Tema chiaro",
+        "system": "Tema di sistema",
+        "dark": "Tema scuro"
     }
 }

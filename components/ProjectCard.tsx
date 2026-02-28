@@ -1,5 +1,8 @@
 import { ExternalLink } from "lucide-react";
-import Link from "next/link"; function GithubIcon({ className = "", ...props }: React.HTMLAttributes<HTMLSpanElement>) {
+import Link from "next/link";
+import { useTranslation } from "react-i18next";
+
+function GithubIcon({ className = "", ...props }: React.HTMLAttributes<HTMLSpanElement>) {
     return (
         <span
             {...props}
@@ -31,6 +34,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ title, description, url, repo, technologies }: ProjectCardProps) {
     const repoSlug = repo?.split("/").pop();
+    const { t } = useTranslation();
 
     return (
         <div className="flex flex-col h-full bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-lg dark:hover:shadow-blue-900/20 transition-all duration-300 group relative overflow-hidden isolate focus-within:ring-2 focus-within:ring-blue-500 focus-within:ring-offset-2 dark:focus-within:ring-offset-slate-950">
@@ -55,7 +59,7 @@ export default function ProjectCard({ title, description, url, repo, technologie
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center w-8 h-8 rounded-full text-slate-400 dark:text-slate-500 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
-                                aria-label="GitHub Repository"
+                                aria-label={t("common.github_repo", "GitHub Repository")}
                             >
                                 <GithubIcon className="w-5 h-5 flex-shrink-0" />
                             </Link>
@@ -66,7 +70,7 @@ export default function ProjectCard({ title, description, url, repo, technologie
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="flex items-center justify-center w-8 h-8 rounded-full text-slate-400 dark:text-slate-500 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 transition-colors cursor-pointer"
-                                aria-label="Live Demo"
+                                aria-label={t("common.live_demo", "Live Demo")}
                             >
                                 <ExternalLink className="w-5 h-5 flex-shrink-0" />
                             </Link>

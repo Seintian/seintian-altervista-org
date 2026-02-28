@@ -3,8 +3,10 @@
 import LanguageSwitcher from "./LanguageSwitcher";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Link from "next/link";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
+    const { t } = useTranslation();
     return (
         <header className="sticky top-0 z-50 w-full border-b border-slate-200/50 dark:border-slate-800/50 bg-white/70 dark:bg-slate-950/70 backdrop-blur-md transition-colors duration-300">
             <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
@@ -26,7 +28,7 @@ export default function Header() {
                                 SEINT<span className="text-blue-600 dark:text-blue-400">IAN</span>
                             </span>
                             <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-slate-500 uppercase mt-0.5 opacity-80 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-300">
-                                Software Engineer
+                                {t("common.header_subtitle", "Software Engineer")}
                             </span>
                         </div>
                     </div>

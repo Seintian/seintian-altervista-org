@@ -69,7 +69,7 @@ export default function SkillsMatrix({ skills }: SkillsMatrixProps) {
                   <div key={skill.id} className="space-y-1.5">
                     <div className="flex justify-between text-sm">
                       <span className="font-medium text-slate-700 dark:text-slate-300">
-                        {skill.name}
+                        {t(`sections.skills.items.${skill.id}`, skill.name)}
                       </span>
                       <span className="text-slate-400 dark:text-slate-500 font-mono">
                         {skill.level}%
