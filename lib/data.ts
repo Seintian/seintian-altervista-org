@@ -111,6 +111,18 @@ export const siteData = {
     // Projects Showcase
     projects: [
         {
+            id: "proj-gym",
+            titleKey: "projects.proj-gym.title",
+            descriptionKey: "projects.proj-gym.description",
+            url: "http://avid3959134.altervista.org/",
+            repo: "", // Private repository
+            technologies: ["PHP", "MySQL", "JavaScript", "CSS", "Session API"],
+            category: "featured",
+            themeColor: "rose",
+            roleKey: "projects.proj-gym.role",
+            durationKey: "projects.proj-gym.duration"
+        },
+        {
             id: "proj-1",
             titleKey: "projects.proj-1.title",
             descriptionKey: "projects.proj-1.description",

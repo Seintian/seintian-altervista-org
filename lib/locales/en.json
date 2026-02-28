@@ -65,6 +65,30 @@
             "core-cs": "Core Computer Science",
             "featured": "Featured Project"
         },
+        "proj-gym": {
+            "title": "Gym Management System (Freelance)",
+            "description": "A bespoke management platform for a local fitness center, featuring automated member tracking and an administrative dashboard.",
+            "longDescription": "Developed as a high-performance commercial solution, this platform transitioned a local gym from manual paper-based processes to a fully digital ecosystem. Built on a Vanilla PHP architecture, the system manages high-concurrency requests for member check-ins and class scheduling without the overhead of heavy frameworks.",
+            "role": "Full-stack Developer (Freelance)",
+            "duration": "2022 - 2023",
+            "features": [
+                "Dual-interface architecture with a public-facing Homepage and a secure Staff Dashboard.",
+                "Bespoke Membership Management system for real-time tracking of subscriptions and attendance.",
+                "Custom administrative tools for staff to manage equipment inventory and class schedules.",
+                "Responsive design ensuring accessibility for gym members on both mobile and desktop devices."
+            ],
+            "theory": [
+                "Vanilla PHP Architecture: Implementation of a script-per-page model to minimize server latency and eliminate framework dependency.",
+                "State Management: Utilization of PHP Session and Cookie APIs for robust cross-page state persistence and user authentication.",
+                "Relational Database Design: Optimized MySQL schema for handling complex relationships between members, trainers, and schedules."
+            ],
+            "implementation": [
+                "Security-First Design: Implementation of strong password protection using Salted Hashing (password_hash) to ensure data integrity.",
+                "Session-Based Authentication: Custom-built login system with granular access control separating User and Staff privileges.",
+                "SQL Optimization: Hand-crafted queries designed for maximum efficiency in generating real-time attendance reports.",
+                "Legacy Deployment: Deployed on an Apache/Linux environment (Altervista) with custom configuration for optimal PHP performance."
+            ]
+        },
         "proj-1": {
             "title": "GreenHabits (Web Technologies)",
             "description": "Full-stack web platform with an enterprise architecture. Implemented with a Java Spring Boot backend, React/Vite (TS) frontend, and PostgreSQL database. The infrastructure is fully containerized with Docker and includes an advanced monitoring system with Grafana and Prometheus.",

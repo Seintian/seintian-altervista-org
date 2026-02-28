@@ -65,6 +65,30 @@
             "core-cs": "Core Computer Science",
             "featured": "Progetto in Evidenza"
         },
+        "proj-gym": {
+            "title": "Sistema di Gestione Palestra (Freelance)",
+            "description": "Una piattaforma di gestione su misura per un centro fitness locale, con tracciamento automatico degli iscritti e una dashboard amministrativa.",
+            "longDescription": "Sviluppata come soluzione commerciale ad alte prestazioni, questa piattaforma ha traghettato una palestra locale da processi manuali cartacei a un ecosistema completamente digitale. Costruita su un'architettura Vanilla PHP, il sistema gestisce richieste ad alta concorrenza per check-in dei membri e programmazione dei corsi senza l'overhead di framework pesanti.",
+            "role": "Sviluppatore Full-stack (Freelance)",
+            "duration": "2022 - 2023",
+            "features": [
+                "Architettura a doppia interfaccia con una Homepage pubblica e una Dashboard sicura per lo Staff.",
+                "Sistema di Gestione Abbonamenti su misura per il tracciamento in tempo reale di sottoscrizioni e presenze.",
+                "Strumenti amministrativi personalizzati per lo staff per gestire l'inventario delle attrezzature e l'orario dei corsi.",
+                "Design responsivo che garantisce l'accessibilità per i membri della palestra sia su dispositivi mobili che desktop."
+            ],
+            "theory": [
+                "Architettura Vanilla PHP: Implementazione di un modello script-per-page per minimizzare la latenza del server ed eliminare la dipendenza da framework.",
+                "Gestione dello Stato: Utilizzo delle API Session e Cookie di PHP per una solida persistenza dello stato cross-page e autenticazione utente.",
+                "Progettazione Database Relazionale: Schema MySQL ottimizzato per gestire relazioni complesse tra membri, istruttori e orari."
+            ],
+            "implementation": [
+                "Design Security-First: Implementazione di una forte protezione delle password tramite Salted Hashing (password_hash) per garantire l'integrità dei dati.",
+                "Autenticazione basata su Sessione: Sistema di login custom con controllo granulare degli accessi che separa i privilegi di Utente e Staff.",
+                "Ottimizzazione SQL: Query artigianali progettate per la massima efficienza nella generazione di report presenze in tempo reale.",
+                "Legacy Deployment: Distribuito su ambiente Apache/Linux (Altervista) con configurazione personalizzata per performance PHP ottimali."
+            ]
+        },
         "proj-1": {
             "title": "GreenHabits (Tecnologie Web)",
             "description": "Piattaforma web full-stack con architettura enterprise. Implementata con un backend in Java Spring Boot, frontend in React/Vite (TS), e database PostgreSQL. L'infrastruttura è completamente containerizzata con Docker e include un sistema di monitoraggio avanzato con Grafana e Prometheus.",
