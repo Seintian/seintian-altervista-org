@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
   <rect width="256" height="256" rx="56" fill="#f8fafc"/>
   
-  <text x="40" y="195" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="160" fill="#2563eb">S</text>
+  <text x="28" y="195" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="160" fill="#2563eb">S</text>
   
-  <path d="M 150 210 L 200 46 L 240 46 L 190 210 Z" fill="#0f172a"/>
+  <path d="M 138 210 L 188 46 L 228 46 L 178 210 Z" fill="#0f172a"/>
 </svg>

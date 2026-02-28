@@ -16,8 +16,8 @@ export default function Header() {
                             <div className="absolute inset-0 transition-transform duration-500 transform-gpu group-hover:rotate-12 group-hover:scale-110 will-change-transform rounded-[9px] shadow-sm group-hover:shadow-md">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" className="w-full h-full block">
                                     <rect width="256" height="256" rx="56" className="fill-slate-50 dark:fill-slate-800 transition-colors duration-300" />
-                                    <text x="40" y="195" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="900" fontSize="160" textRendering="geometricPrecision" style={{ willChange: "transform", WebkitFontSmoothing: "antialiased", transform: "translateZ(0)" }} className="fill-blue-600 dark:fill-blue-400 transition-colors duration-300">S</text>
-                                    <path d="M 150 210 L 200 46 L 240 46 L 190 210 Z" className="fill-slate-900 dark:fill-slate-50 transition-colors duration-300" />
+                                    <text x="28" y="195" fontFamily="system-ui, -apple-system, sans-serif" fontWeight="900" fontSize="160" textRendering="geometricPrecision" style={{ willChange: "transform", WebkitFontSmoothing: "antialiased", transform: "translateZ(0)" }} className="fill-blue-600 dark:fill-blue-400 transition-colors duration-300">S</text>
+                                    <path d="M 138 210 L 188 46 L 228 46 L 178 210 Z" className="fill-slate-900 dark:fill-slate-50 transition-colors duration-300" />
                                 </svg>
                             </div>
                         </div>
