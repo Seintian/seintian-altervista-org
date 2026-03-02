@@ -4,7 +4,7 @@ export const siteData = {
         { id: "email", labelKey: "contacts.email", url: "mailto:seintian@altervista.org", isPrimary: true },
         { id: "github", labelKey: "contacts.github", url: "https://github.com/Seintian", isPrimary: false },
         { id: "linkedin", labelKey: "contacts.linkedin", url: "https://linkedin.com/in/christian-santarelli-4290ab19a/", isPrimary: false },
-        { id: "cv", labelKey: "contacts.cv", url: "/cv.pdf", isPrimary: false }
+        { id: "cv", labelKey: "contacts.cv", url: "/christian_santarelli_cv_2-3-26.pdf", isPrimary: false }
     ],
     // The Bento Box Navigation Modules
     modules: [
