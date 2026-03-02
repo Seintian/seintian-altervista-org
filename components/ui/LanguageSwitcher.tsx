@@ -14,43 +14,25 @@ export default function LanguageSwitcher() {
 
     if (!mounted) {
         return (
-            <div className="flex bg-slate-100 dark:bg-slate-900 p-1 rounded-full w-[100px] h-[36px] animate-pulse"></div>
+            <div className="flex bg-slate-100 dark:bg-slate-900 rounded-full w-[48px] h-10 animate-pulse"></div>
         );
     }
 
     const currentLang = i18n.language || 'en';
     const isIt = currentLang.startsWith('it');
 
-    const toggleLanguage = (lang: string) => {
-        if (i18n.language !== lang) {
-            i18n.changeLanguage(lang);
-        }
+    const toggleLanguage = () => {
+        i18n.changeLanguage(isIt ? "en" : "it");
     };
 
     return (
-        <div className="flex bg-slate-100/80 dark:bg-slate-900/80 backdrop-blur-sm p-1 rounded-full border border-slate-200/50 dark:border-slate-800/50 shadow-sm relative w-min transition-colors duration-300">
-            <button
-                onClick={() => toggleLanguage("it")}
-                className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-all duration-300 relative z-10 ${isIt
-                    ? "text-blue-700 dark:text-blue-400 bg-white dark:bg-slate-800 shadow-sm ring-1 ring-slate-200 dark:ring-slate-700"
-                    : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                    }`}
-                aria-pressed={isIt}
-                aria-label="Italian"
-            >
-                IT
-            </button>
-            <button
-                onClick={() => toggleLanguage("en")}
-                className={`px-4 py-1.5 text-sm font-semibold rounded-full transition-all duration-300 relative z-10 ${!isIt
-                    ? "text-blue-700 dark:text-blue-400 bg-white dark:bg-slate-800 shadow-sm ring-1 ring-slate-200 dark:ring-slate-700"
-                    : "text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
-                    }`}
-                aria-pressed={!isIt}
-                aria-label="English"
-            >
-                EN
-            </button>
-        </div>
+        <button
+            onClick={toggleLanguage}
+            className="flex items-center justify-center h-10 px-3 min-w-[48px] bg-slate-100/80 dark:bg-slate-900/80 backdrop-blur-sm rounded-full border border-slate-200/50 dark:border-slate-800/50 shadow-sm transition-all duration-300 text-sm font-semibold text-slate-700 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 cursor-pointer"
+            aria-label={isIt ? "Switch to English" : "Passa all'italiano"}
+            title={isIt ? "Switch to English" : "Passa all'italiano"}
+        >
+            {isIt ? "IT" : "EN"}
+        </button>
     );
 }

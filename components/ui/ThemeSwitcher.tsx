@@ -16,43 +16,35 @@ export default function ThemeSwitcher() {
     }, []);
 
     if (!mounted) {
-        return <div className="h-8 w-[130px]" />;
+        return <div className="h-10 w-10 rounded-full bg-slate-100 dark:bg-slate-900 animate-pulse" />;
     }
 
+    const cycleTheme = () => {
+        if (theme === "light") setTheme("dark");
+        else if (theme === "dark") setTheme("system");
+        else setTheme("light");
+    };
+
+    const getIcon = () => {
+        if (theme === "light") return <Sun className="w-[18px] h-[18px]" />;
+        if (theme === "dark") return <Moon className="w-[18px] h-[18px]" />;
+        return <Monitor className="w-[18px] h-[18px]" />;
+    };
+
+    const getAriaLabel = () => {
+        if (theme === "light") return t("theme.light", "Light mode");
+        if (theme === "dark") return t("theme.dark", "Dark mode");
+        return t("theme.system", "System theme");
+    };
+
     return (
-        <div className="flex bg-slate-100/80 dark:bg-slate-900/80 backdrop-blur-sm p-1 rounded-full border border-slate-200/50 dark:border-slate-800/50 shadow-sm transition-colors duration-300">
-            <button
-                onClick={() => setTheme("light")}
-                className={`flex items-center justify-center h-8 w-10 text-sm font-medium rounded-full transition-all duration-200 ${theme === "light"
-                    ? "bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm"
-                    : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
-                    }`}
-                aria-label={t("theme.light", "Light mode")}
-            >
-                <Sun className="w-4 h-4" />
-            </button>
-
-            <button
-                onClick={() => setTheme("system")}
-                className={`flex items-center justify-center h-8 w-10 text-sm font-medium rounded-full transition-all duration-200 ${theme === "system"
-                    ? "bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm"
-                    : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
-                    }`}
-                aria-label={t("theme.system", "System theme")}
-            >
-                <Monitor className="w-4 h-4" />
-            </button>
-
-            <button
-                onClick={() => setTheme("dark")}
-                className={`flex items-center justify-center h-8 w-10 text-sm font-medium rounded-full transition-all duration-200 ${theme === "dark"
-                    ? "bg-slate-100 dark:bg-slate-800 text-blue-600 dark:text-blue-400 shadow-sm"
-                    : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50"
-                    }`}
-                aria-label={t("theme.dark", "Dark mode")}
-            >
-                <Moon className="w-4 h-4" />
-            </button>
-        </div>
+        <button
+            onClick={cycleTheme}
+            className="flex items-center justify-center h-10 w-10 bg-slate-100/80 dark:bg-slate-900/80 backdrop-blur-sm rounded-full border border-slate-200/50 dark:border-slate-800/50 shadow-sm transition-all duration-300 text-slate-700 hover:text-blue-600 dark:text-slate-200 dark:hover:text-blue-400 hover:bg-slate-200/50 dark:hover:bg-slate-800/50 cursor-pointer"
+            aria-label={getAriaLabel()}
+            title={getAriaLabel()}
+        >
+            {getIcon()}
+        </button>
     );
 }
