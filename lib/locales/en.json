@@ -65,6 +65,11 @@
             "core-cs": "Core Computer Science",
             "featured": "Featured Project"
         },
+        "origins": {
+            "university": "University",
+            "personal": "Personal",
+            "freelance": "Freelance"
+        },
         "proj-gym": {
             "title": "Gym Management System (Freelance)",
             "description": "Bespoke management platform for a local fitness center. It features a dual-interface architecture: a public-facing website and a secure staff dashboard to manage memberships, training plans, and schedules. Built entirely with Vanilla PHP, jQuery, and Bulma CSS without heavy frameworks, utilizing Session APIs for robust cross-page authentication and custom MySQL queries for high-performance data transactions.",

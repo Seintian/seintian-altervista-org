@@ -118,6 +118,7 @@ export const siteData = {
             repo: "", // Private repository
             technologies: ["Vanilla PHP", "MySQL", "jQuery", "Bulma CSS", "Session API"],
             category: "featured",
+            origin: "freelance" as const,
             themeColor: "rose",
             roleKey: "projects.proj-gym.role",
             durationKey: "projects.proj-gym.duration"
@@ -130,6 +131,7 @@ export const siteData = {
             repo: "https://github.com/Seintian/unito-web-technologies-25-26",
             technologies: ["Java", "Spring Boot", "React", "Docker", "PostgreSQL"],
             category: "core-cs",
+            origin: "university" as const,
             themeColor: "emerald",
             roleKey: "projects.proj-1.role",
             durationKey: "projects.proj-1.duration",
@@ -149,6 +151,7 @@ export const siteData = {
             repo: "https://github.com/Seintian/unito-human-computer-interaction-25-26",
             technologies: ["React", "TypeScript", "Vite", "Bootstrap", "UX/UI Design"],
             category: "core-cs",
+            origin: "university" as const,
             themeColor: "blue",
             roleKey: "projects.proj-2.role",
             durationKey: "projects.proj-2.duration"
@@ -161,6 +164,7 @@ export const siteData = {
             repo: "https://github.com/Seintian/WinHUD",
             technologies: ["C#", ".NET 10", "WPF"],
             category: "featured",
+            origin: "personal" as const,
             themeColor: "slate",
             roleKey: "projects.proj-3.role",
             durationKey: "projects.proj-3.duration"
@@ -173,6 +177,7 @@ export const siteData = {
             repo: "https://github.com/Seintian/libnumakit",
             technologies: ["C", "CMake", "NUMA", "IPC"],
             category: "featured",
+            origin: "personal" as const,
             themeColor: "red",
             roleKey: "projects.proj-4.role",
             durationKey: "projects.proj-4.duration"
@@ -185,6 +190,7 @@ export const siteData = {
             repo: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26",
             technologies: ["Java", "Compilers", "JVM", "Parsers"],
             category: "core-cs",
+            origin: "university" as const,
             themeColor: "purple",
             roleKey: "projects.proj-5.role",
             durationKey: "projects.proj-5.duration",
@@ -209,6 +215,7 @@ export const siteData = {
             repo: "https://github.com/Seintian/unito-operative-systems-24-25",
             technologies: ["C", "POSIX", "IPC", "Multithreading", "Makefile"],
             category: "core-cs",
+            origin: "university" as const,
             themeColor: "indigo",
             roleKey: "projects.proj-6.role",
             durationKey: "projects.proj-6.duration"
@@ -221,6 +228,7 @@ export const siteData = {
             repo: "https://github.com/Seintian/unito-algorithms-and-data-structures-24-25",
             technologies: ["C", "TDD", "Algorithms", "Data Structs"],
             category: "core-cs",
+            origin: "university" as const,
             themeColor: "cyan",
             roleKey: "projects.proj-7.role",
             durationKey: "projects.proj-7.duration"
@@ -233,6 +241,7 @@ export const siteData = {
             repo: "https://github.com/Seintian/unito-hci-data-analysis-25-26",
             technologies: ["Python", "Pandas", "PyArrow", "Jupyter", "Data Analysis"],
             category: "core-cs",
+            origin: "university" as const,
             themeColor: "amber",
             roleKey: "projects.proj-8.role",
             durationKey: "projects.proj-8.duration"

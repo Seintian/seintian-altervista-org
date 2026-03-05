@@ -65,6 +65,11 @@
             "core-cs": "Core Computer Science",
             "featured": "Progetto in Evidenza"
         },
+        "origins": {
+            "university": "Università",
+            "personal": "Personale",
+            "freelance": "Freelance"
+        },
         "proj-gym": {
             "title": "Sistema di Gestione Palestra (Freelance)",
             "description": "Piattaforma gestionale su misura per un centro fitness locale. Presenta un'architettura a doppia interfaccia: un sito pubblico e una dashboard sicura per lo staff atta a gestire abbonamenti, schede d'allenamento e orari. Sviluppata interamente con Vanilla PHP, jQuery e Bulma CSS senza framework pesanti, utilizzando le API di Sessione per un'autenticazione robusta e query MySQL custom per transazioni dati ad alte prestazioni.",

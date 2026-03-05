@@ -12,6 +12,7 @@ interface ProjectsSectionProps {
         repo?: string;
         technologies: string[];
         category?: string;
+        origin?: "university" | "personal" | "freelance";
     }>;
 }
 
@@ -74,6 +75,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                             url={project.url}
                             repo={project.repo}
                             technologies={project.technologies}
+                            origin={project.origin as any}
                         />
                     ))}
                 </div>
