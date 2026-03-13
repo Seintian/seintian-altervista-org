@@ -340,6 +340,7 @@
                 "tailwind": "Tailwind CSS",
                 "bootstrap": "Bootstrap",
                 "bulma": "Bulma CSS",
+                "jquery": "jQuery",
                 "html-css": "HTML / CSS",
                 "spring": "Spring Boot",
                 "fastapi": "FastAPI",
