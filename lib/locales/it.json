@@ -322,6 +322,11 @@
                 "core": "Informatica Teorica",
                 "tools": "DevOps & Strumenti"
             },
+            "tiers": {
+                "advanced": "Avanzato",
+                "proficient": "Competente",
+                "familiar": "Familiare"
+            },
             "items": {
                 "java": "Java",
                 "c": "C",
@@ -329,11 +334,16 @@
                 "js-ts": "JS / TS",
                 "php": "PHP",
                 "python": "Python",
+                "rust": "Rust",
                 "react": "React",
                 "nextjs": "Next.js",
                 "tailwind": "Tailwind CSS",
+                "bootstrap": "Bootstrap",
+                "bulma": "Bulma CSS",
                 "html-css": "HTML / CSS",
                 "spring": "Spring Boot",
+                "fastapi": "FastAPI",
+                "flask": "Flask",
                 "postgres": "PostgreSQL",
                 "docker": "Docker",
                 "os": "Sistemi Operativi",
@@ -341,9 +351,11 @@
                 "algo": "Algoritmi & Strutture Dati",
                 "numa": "Architetture NUMA",
                 "git": "Git",
+                "make": "Make",
                 "cmake": "CMake",
                 "monitoring": "Grafana & Prometheus",
-                "analysis": "Analisi dei Dati"
+                "analysis": "Analisi dei Dati",
+                "k8s": "Kubernetes"
             }
         }
     },

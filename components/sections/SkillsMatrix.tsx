@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslation } from "react-i18next";
-import { Code2, Layout, Server, Cpu, Wrench } from "lucide-react";
+import { Code2, Layout, Server, Cpu, Wrench, Award, Shield, Zap } from "lucide-react";
 
 interface Skill {
   id: string;
@@ -25,6 +25,21 @@ const iconMap = {
   backend: Server,
   core: Cpu,
   tools: Wrench,
+};
+
+const tierConfig = {
+  advanced: {
+    icon: Award,
+    style: "bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 border-blue-100 dark:border-blue-800",
+  },
+  proficient: {
+    icon: Shield,
+    style: "bg-slate-50 text-slate-600 dark:bg-slate-800/50 dark:text-slate-400 border-slate-100 dark:border-slate-700",
+  },
+  familiar: {
+    icon: Zap,
+    style: "bg-slate-50/50 text-slate-500 dark:bg-slate-900/30 dark:text-slate-500 border-slate-100/50 dark:border-slate-800",
+  }
 };
 
 export default function SkillsMatrix({ skills }: SkillsMatrixProps) {
@@ -64,25 +79,34 @@ export default function SkillsMatrix({ skills }: SkillsMatrixProps) {
                 </h3>
               </div>
 
-              <div className="space-y-4">
-                {categorySkills.map((skill) => (
-                  <div key={skill.id} className="space-y-1.5">
-                    <div className="flex justify-between text-sm">
-                      <span className="font-medium text-slate-700 dark:text-slate-300">
+              <div className="grid grid-cols-1 gap-2">
+                {categorySkills.map((skill) => {
+                  const level = skill.level;
+                  if (level <= 30) return null;
+
+                  let tier: "advanced" | "proficient" | "familiar" = "familiar";
+                  if (level > 70) tier = "advanced";
+                  else if (level > 50) tier = "proficient";
+                  else if (level > 30) tier = "familiar";
+
+                  const config = tierConfig[tier];
+                  const TierIcon = config.icon;
+
+                  return (
+                    <div
+                      key={skill.id}
+                      className="flex items-start justify-between p-3 rounded-2xl border border-transparent hover:border-slate-100 dark:hover:border-slate-800 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-all duration-200 group/skill"
+                      title={t(`sections.skills.tiers.${tier}`)}
+                    >
+                      <span className="font-medium text-slate-700 dark:text-slate-300 group-hover/skill:text-blue-600 dark:group-hover/skill:text-blue-400 transition-colors leading-7">
                         {t(`sections.skills.items.${skill.id}`, skill.name)}
                       </span>
-                      <span className="text-slate-400 dark:text-slate-500 font-mono">
-                        {skill.level}%
-                      </span>
+                      <div className={`shrink-0 flex items-center justify-center w-7 h-7 rounded-lg border ${config.style} transition-all duration-200 group-hover/skill:scale-110`}>
+                        <TierIcon className="w-4 h-4" />
+                      </div>
                     </div>
-                    <div className="h-1.5 w-full bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                      <div
-                        className="h-full bg-blue-500 dark:bg-blue-400 rounded-full transition-all duration-1000 ease-out"
-                        style={{ width: `${skill.level}%` }}
-                      />
-                    </div>
-                  </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           );

@@ -44,35 +44,43 @@ export const siteData = {
     // The Skills Matrix
     skills: {
         languages: [
-            { id: "java", name: "Java", level: 90 },
+            { id: "java", name: "Java", level: 85 },
             { id: "c", name: "C", level: 85 },
-            { id: "cs", name: "C#", level: 80 },
-            { id: "js-ts", name: "JS / TS", level: 90 },
-            { id: "php", name: "PHP", level: 75 },
-            { id: "python", name: "Python", level: 80 }
+            { id: "cs", name: "C#", level: 65 },
+            { id: "js-ts", name: "JS / TS", level: 75 },
+            { id: "php", name: "PHP", level: 60 },
+            { id: "python", name: "Python", level: 60 },
+            { id: "rust", name: "Rust", level: 40 }
         ],
         frontend: [
-            { id: "react", name: "React", level: 90 },
-            { id: "nextjs", name: "Next.js", level: 85 },
-            { id: "tailwind", name: "Tailwind CSS", level: 90 },
-            { id: "html-css", name: "HTML / CSS", level: 95 }
+            { id: "react", name: "React", level: 75 },
+            { id: "nextjs", name: "Next.js", level: 65 },
+            { id: "tailwind", name: "Tailwind CSS", level: 70 },
+            { id: "bootstrap", name: "Bootstrap", level: 55 },
+            { id: "bulma", name: "Bulma CSS", level: 65 },
+            { id: "jquery", name: "jQuery", level: 40 },
+            { id: "html-css", name: "HTML / CSS", level: 80 }
         ],
         backend: [
-            { id: "spring", name: "Spring Boot", level: 85 },
-            { id: "postgres", name: "PostgreSQL", level: 80 },
-            { id: "docker", name: "Docker", level: 80 }
+            { id: "spring", name: "Spring Boot", level: 65 },
+            { id: "fastapi", name: "FastAPI", level: 40 },
+            { id: "flask", name: "Flask", level: 40 },
+            { id: "postgres", name: "PostgreSQL", level: 60 },
+            { id: "docker", name: "Docker", level: 65 }
         ],
         core: [
-            { id: "os", name: "Operating Systems", level: 85 },
-            { id: "compilers", name: "Compilers", level: 80 },
-            { id: "algo", name: "Algorithms & DS", level: 85 },
-            { id: "numa", name: "NUMA Arch", level: 75 }
+            { id: "os", name: "Operating Systems", level: 70 },
+            { id: "compilers", name: "Compilers", level: 65 },
+            { id: "algo", name: "Algorithms & DS", level: 75 },
+            { id: "numa", name: "NUMA Arch", level: 60 },
+            { id: "analysis", name: "Data Analysis", level: 65 }
         ],
         tools: [
-            { id: "git", name: "Git", level: 90 },
-            { id: "cmake", name: "CMake", level: 75 },
-            { id: "monitoring", name: "Grafana & Prometheus", level: 70 },
-            { id: "analysis", name: "Data Analysis", level: 80 }
+            { id: "git", name: "Git", level: 85 },
+            { id: "make", name: "Makefile / Make", level: 85 },
+            { id: "cmake", name: "CMake", level: 48 },
+            { id: "monitoring", name: "Grafana & Prometheus", level: 45 },
+            { id: "k8s", name: "Kubernetes", level: 40 }
         ]
     },
     // The Experience Timeline points
