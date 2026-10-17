@@ -3,8 +3,7 @@
 import { useTranslation } from "react-i18next";
 import { ArrowLeft, ExternalLink, FileText, Video } from "lucide-react";
 import Link from "next/link";
-import GlobalLoadingScreen from "@/components/ui/GlobalLoadingScreen";
-import { useEffect, useState } from "react";
+import Image from "next/image";
 
 function GithubIcon({ className = "", ...props }: React.HTMLAttributes<HTMLSpanElement>) {
     return (
@@ -35,10 +34,12 @@ export interface ProjectType {
     descriptionKey: string;
     url?: string;
     repo?: string;
+    slug?: string;
     technologies: string[];
     category: string;
+    origin?: "university" | "personal" | "freelance";
     coverImage?: string;
-    themeColor?: 'blue' | 'emerald' | 'purple' | 'amber' | 'rose' | 'slate';
+    themeColor?: 'blue' | 'emerald' | 'purple' | 'amber' | 'rose' | 'slate' | 'red' | 'indigo' | 'cyan';
     roleKey?: string;
     durationKey?: string;
     customLinks?: {
@@ -61,6 +62,12 @@ const getThemeGradient = (color?: string) => {
             return 'from-rose-500 to-red-600 dark:from-rose-400 dark:to-red-500';
         case 'slate':
             return 'from-slate-600 to-slate-800 dark:from-slate-400 dark:to-slate-600';
+        case 'red':
+            return 'from-red-600 to-rose-600 dark:from-red-400 dark:to-rose-400';
+        case 'indigo':
+            return 'from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400';
+        case 'cyan':
+            return 'from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400';
         case 'blue':
         default:
             return 'from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400';
@@ -81,16 +88,7 @@ const getCustomIcon = (iconStr?: string, className?: string) => {
 };
 
 export default function ProjectClientPage({ project }: { project: ProjectType }) {
-    const [mounted, setMounted] = useState(false);
     const { t } = useTranslation();
-
-    useEffect(() => {
-        setMounted(true);
-    }, []);
-
-    if (!mounted) {
-        return <GlobalLoadingScreen />;
-    }
 
     return (
         <main className="min-h-screen max-w-5xl mx-auto px-6 py-12 md:py-24">
@@ -106,10 +104,13 @@ export default function ProjectClientPage({ project }: { project: ProjectType })
             {/* Hero Section */}
             <div className="space-y-6 mb-16">
                 {project.coverImage && (
-                    <div className="w-full h-48 md:h-80 rounded-2xl overflow-hidden mb-8 ring-1 ring-slate-200 dark:ring-slate-800">
-                        <img
+                    <div className="w-full h-48 md:h-80 rounded-2xl overflow-hidden mb-8 ring-1 ring-slate-200 dark:ring-slate-800 relative">
+                        <Image
                             src={project.coverImage}
                             alt={t(project.titleKey)}
+                            width={1200}
+                            height={600}
+                            unoptimized
                             className="w-full h-full object-cover object-center"
                         />
                     </div>
@@ -118,24 +119,25 @@ export default function ProjectClientPage({ project }: { project: ProjectType })
                 <h1 className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent pb-2 lg:pb-3 leading-snug lg:leading-normal bg-linear-to-r ${getThemeGradient(project.themeColor)}`}>
                     {t(project.titleKey)}
                 </h1>
+
                 <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
                     {t(project.descriptionKey)}
                 </p>
 
-                {/* Technologies */}
-                <div className="flex flex-wrap gap-2 pt-4">
-                    {project.technologies?.map((tech, idx) => (
+                {/* Tech Stack Pills */}
+                <div className="flex flex-wrap gap-2 pt-2">
+                    {project.technologies.map((tech) => (
                         <span
-                            key={idx}
-                            className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-sm rounded-full"
+                            key={tech}
+                            className="px-3.5 py-1.5 text-sm font-semibold tracking-wide rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200"
                         >
                             {tech}
                         </span>
                     ))}
                 </div>
 
-                {/* Action Buttons */}
-                <div className="flex flex-wrap gap-4 pt-6">
+                {/* Project Links / CTAs */}
+                <div className="flex flex-wrap gap-4 pt-4">
                     {project.repo && (
                         <a
                             href={project.repo}
@@ -238,9 +240,8 @@ export default function ProjectClientPage({ project }: { project: ProjectType })
                     )}
                 </div>
 
-                {/* Sidebar Info maybe? */}
+                {/* Sidebar Info */}
                 <div className="space-y-8 lg:border-l lg:border-slate-200 lg:dark:border-slate-800 lg:pl-12">
-                    {/* Add more specific fields here later if you want, e.g. timeframe, team size */}
                     <section>
                         <h3 className="font-semibold text-slate-900 dark:text-slate-50 mb-3">{t('projects.details.type', { defaultValue: 'Project Type' })}</h3>
                         <p className="text-slate-600 dark:text-slate-300 capitalize">

@@ -21,5 +21,6 @@ export function useSiteData() {
   return useQuery({
     queryKey: ["siteData"],
     queryFn: fetchSiteData,
+    initialData: siteData,
   });
 }
