@@ -29,6 +29,7 @@ interface ProjectCardProps {
     description: string;
     url?: string;
     repo?: string;
+    slug?: string;
     technologies: string[];
     origin?: "university" | "personal" | "freelance";
 }
@@ -84,8 +85,8 @@ const ORIGIN_CONFIG = {
     }
 } as const;
 
-export default function ProjectCard({ title, description, url, repo, technologies, origin }: ProjectCardProps) {
-    const repoSlug = repo?.split("/").pop();
+export default function ProjectCard({ title, description, url, repo, slug, technologies, origin }: ProjectCardProps) {
+    const projectSlug = slug || repo?.split("/").pop();
     const { t } = useTranslation();
 
     const config = origin ? ORIGIN_CONFIG[origin] : ORIGIN_CONFIG.default;
@@ -114,8 +115,8 @@ export default function ProjectCard({ title, description, url, repo, technologie
                             </div>
                         )}
                         <h3 className={`text-xl font-bold transition-colors duration-300 leading-tight ${config.titleHover}`}>
-                            {repoSlug ? (
-                                <Link href={`/${repoSlug}`} className="focus:outline-none before:absolute before:inset-0 before:z-10 text-inherit hover:text-inherit">
+                            {projectSlug ? (
+                                <Link href={`/${projectSlug}`} className="focus:outline-none before:absolute before:inset-0 before:z-10 text-inherit hover:text-inherit">
                                     {title}
                                 </Link>
                             ) : (

@@ -6,6 +6,7 @@ import { Search, X } from "lucide-react";
 interface ProjectsSectionProps {
     projects?: Array<{
         id: string;
+        slug?: string;
         titleKey: string;
         descriptionKey: string;
         url?: string;
@@ -74,8 +75,9 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                             description={t(project.descriptionKey)}
                             url={project.url}
                             repo={project.repo}
+                            slug={project.slug}
                             technologies={project.technologies}
-                            origin={project.origin as any}
+                            origin={project.origin}
                         />
                     ))}
                 </div>

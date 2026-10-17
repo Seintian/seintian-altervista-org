@@ -1,4 +1,14 @@
 // This file contains content structured via keys to be handled by i18next via useTranslation() hook in React Components
+
+export function getProjectSlug(project: { id: string; repo?: string; slug?: string }): string {
+    if (project.slug) return project.slug;
+    if (project.repo) {
+        const repoName = project.repo.split("/").pop();
+        if (repoName) return repoName;
+    }
+    return project.id;
+}
+
 export const siteData = {
     contacts: [
         { id: "email", labelKey: "contacts.email", url: "mailto:seintian@altervista.org", isPrimary: true },
@@ -120,6 +130,7 @@ export const siteData = {
     projects: [
         {
             id: "proj-gym",
+            slug: "gym-management-system",
             titleKey: "projects.proj-gym.title",
             descriptionKey: "projects.proj-gym.description",
             url: "http://avid3959134.altervista.org/",
@@ -133,6 +144,7 @@ export const siteData = {
         },
         {
             id: "proj-1",
+            slug: "unito-web-technologies-25-26",
             titleKey: "projects.proj-1.title",
             descriptionKey: "projects.proj-1.description",
             url: "",
@@ -147,12 +159,13 @@ export const siteData = {
                 {
                     labelKey: "projects.proj-1.docs",
                     url: "https://github.com/Seintian/unito-web-technologies-25-26/blob/master/README.md",
-                    icon: "document"
+                    icon: "document" as const
                 }
             ]
         },
         {
             id: "proj-2",
+            slug: "unito-human-computer-interaction-25-26",
             titleKey: "projects.proj-2.title",
             descriptionKey: "projects.proj-2.description",
             url: "https://seintian.github.io/unito-human-computer-interaction-25-26",
@@ -166,6 +179,7 @@ export const siteData = {
         },
         {
             id: "proj-3",
+            slug: "WinHUD",
             titleKey: "projects.proj-3.title",
             descriptionKey: "projects.proj-3.description",
             url: "",
@@ -179,6 +193,7 @@ export const siteData = {
         },
         {
             id: "proj-4",
+            slug: "libnumakit",
             titleKey: "projects.proj-4.title",
             descriptionKey: "projects.proj-4.description",
             url: "",
@@ -192,6 +207,7 @@ export const siteData = {
         },
         {
             id: "proj-5",
+            slug: "unito-formal-languages-and-compilers-25-26",
             titleKey: "projects.proj-5.title",
             descriptionKey: "projects.proj-5.description",
             url: "",
@@ -206,17 +222,18 @@ export const siteData = {
                 {
                     labelKey: "projects.proj-5.links.grammar",
                     url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/GRAMMAR.md",
-                    icon: "document"
+                    icon: "document" as const
                 },
                 {
                     labelKey: "projects.proj-5.links.study",
                     url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/STUDY_BRIEF.md",
-                    icon: "document"
+                    icon: "document" as const
                 }
             ]
         },
         {
             id: "proj-6",
+            slug: "unito-operative-systems-24-25",
             titleKey: "projects.proj-6.title",
             descriptionKey: "projects.proj-6.description",
             url: "",
@@ -230,6 +247,7 @@ export const siteData = {
         },
         {
             id: "proj-7",
+            slug: "unito-algorithms-and-data-structures-24-25",
             titleKey: "projects.proj-7.title",
             descriptionKey: "projects.proj-7.description",
             url: "",
@@ -243,6 +261,7 @@ export const siteData = {
         },
         {
             id: "proj-8",
+            slug: "unito-hci-data-analysis-25-26",
             titleKey: "projects.proj-8.title",
             descriptionKey: "projects.proj-8.description",
             url: "",
