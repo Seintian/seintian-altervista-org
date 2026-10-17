@@ -44,7 +44,7 @@
       "location": "Turin, Italy",
       "period": "2023 - 2026",
       "thesis": "Bachelor's Thesis: Low-Overhead Linux Systems Telemetry (YATAL) for HPC4AI",
-      "description": "Comprehensive Datacenter Usage and Sensor Monitoring under Prof. Robert René Maria Birke."
+      "description": "Comprehensive Datacenter Usage and Sensor Monitoring for the HPC4AI supercomputing infrastructure."
     },
     "edu-2": {
       "degree": "High School Diploma in Science",
@@ -61,7 +61,7 @@
     "proj-yatal": {
       "title": "YATAL: Linux Telemetry Daemon for HPC & AI",
       "description": "High-performance, Linux-native telemetry daemon engineered in Rust for the HPC4AI datacenter cluster. Bridges synchronous hardware scraping with asynchronous network pipelines, featuring zero-allocation hot paths, Linux kernel io_uring, and temporal drift sentinels.",
-      "longDescription": "Developed as a Bachelor's Thesis project at the University of Turin under the supervision of Prof. Robert Birke, YATAL (Yet Another Telemetry Agent for Linux) provides safe, real-time observability for large-scale High-Performance Computing (HPC) and Artificial Intelligence infrastructure. Designed to eliminate the probe effect on scientific computing nodes, the daemon unifies disparate datacenter telemetry sources—ranging from Linux kernel PSI and RTNetlink sockets to Out-of-Band BMC Redfish APIs and industrial Modbus TCP PDUs. The project incorporates deep systems research into concurrent memory allocators (jemalloc vs mimalloc), proving that aggressive decay purging is essential to prevent permanent memory pinning in long-running daemons.",
+      "longDescription": "Developed as a Bachelor's Thesis project at the University of Turin for the HPC4AI supercomputing infrastructure, YATAL (Yet Another Telemetry Agent for Linux) provides safe, real-time observability for large-scale High-Performance Computing (HPC) and Artificial Intelligence infrastructure. Designed to eliminate the probe effect on scientific computing nodes, the daemon unifies disparate datacenter telemetry sources—ranging from Linux kernel PSI and RTNetlink sockets to Out-of-Band BMC Redfish APIs and industrial Modbus TCP PDUs. The project incorporates deep systems research into concurrent memory allocators (jemalloc vs mimalloc), proving that aggressive decay purging is essential to prevent permanent memory pinning in long-running daemons.",
       "role": "Systems Software Engineer & Researcher",
       "duration": "Apr 2026 - Sep 2026",
       "features": [
@@ -90,9 +90,14 @@
       }
     },
     "details": {
-      "type": "Project Type",
-      "role": "My Role",
-      "duration": "Duration"
+      "overview": "Overview",
+      "features": "Key Features",
+      "theory": "Theory & Computer Science Foundations",
+      "implementation": "Technical Implementation & Systems Architecture",
+      "type": "Project Category",
+      "role": "Engineering Role",
+      "duration": "Timeline",
+      "technologies": "Technologies & Tooling"
     },
     "categories": {
       "core-cs": "Core Computer Science",
@@ -403,7 +408,10 @@
     "header_subtitle": "Software Engineer",
     "loading": "Loading",
     "thesis": "Bachelor's Thesis / Research",
-    "back_to_portfolio": "Back to Portfolio"
+    "back_to_portfolio": "Back to Portfolio",
+    "clear_search": "Clear search",
+    "switch_to_en": "Switch to English",
+    "switch_to_it": "Switch to Italian"
   },
   "theme": {
     "light": "Light mode",

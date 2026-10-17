@@ -44,7 +44,7 @@
       "location": "Torino",
       "period": "2023 - 2026",
       "thesis": "Tesi di Laurea: Telemetria Real-Time ad Alte Prestazioni per Datacenter HPC & AI (YATAL)",
-      "description": "Monitoraggio e utilizzo sensori datacenter ad altissima efficienza sotto la supervisione del Prof. Robert René Maria Birke."
+      "description": "Monitoraggio e utilizzo sensori datacenter ad altissima efficienza per l'infrastruttura di supercalcolo HPC4AI."
     },
     "edu-2": {
       "degree": "Diploma di Maturità Scientifica",
@@ -61,7 +61,7 @@
     "proj-yatal": {
       "title": "YATAL: Daemon di Telemetria Linux per HPC & AI",
       "description": "Daemon di telemetria Linux-native ad alte prestazioni sviluppato in Rust per il datacenter HPC4AI. Integra la campionatura sincrona dell'hardware con pipeline asincrone di esportazione di rete, incorporando percorsi a zero allocazioni, io_uring e sentinelle temporali.",
-      "longDescription": "Sviluppato come progetto di Tesi di Laurea presso l'Università degli Studi di Torino sotto la supervisione del Prof. Robert Birke, YATAL (Yet Another Telemetry Agent for Linux) fornisce un'osservabilità sicura e in tempo reale per infrastrutture di supercalcolo (HPC) e intelligenza artificiale. Progettato per eliminare l'effetto sonda sui nodi di calcolo primari, il daemon unifica sorgenti eterogenee: dai file system virtuali del kernel Linux (PSI, RTNetlink) fino alle API Out-of-Band BMC Redfish e ai bus industriali Modbus TCP. Il progetto include un'approfondita ricerca empirica sugli allocatori di memoria concorrenti (jemalloc vs mimalloc), dimostrando la necessità del decay-purging asincrono per prevenire il memory pinning nei daemon persistenti.",
+      "longDescription": "Sviluppato come progetto di Tesi di Laurea presso l'Università degli Studi di Torino per l'infrastruttura di supercalcolo HPC4AI, YATAL (Yet Another Telemetry Agent for Linux) fornisce un'osservabilità sicura e in tempo reale per infrastrutture di supercalcolo (HPC) e intelligenza artificiale. Progettato per eliminare l'effetto sonda sui nodi di calcolo primari, il daemon unifica sorgenti eterogenee: dai file system virtuali del kernel Linux (PSI, RTNetlink) fino alle API Out-of-Band BMC Redfish e ai bus industriali Modbus TCP. Il progetto include un'approfondita ricerca empirica sugli allocatori di memoria concorrenti (jemalloc vs mimalloc), dimostrando la necessità del decay-purging asincrono per prevenire il memory pinning nei daemon persistenti.",
       "role": "Ingegnere del Software di Sistema & Tesista",
       "duration": "Apr 2026 - Set 2026",
       "features": [
@@ -90,9 +90,14 @@
       }
     },
     "details": {
-      "type": "Tipo Progetto",
-      "role": "Il Mio Ruolo",
-      "duration": "Durata"
+      "overview": "Panoramica",
+      "features": "Caratteristiche Principali",
+      "theory": "Teoria & Fondamenti di Informatica",
+      "implementation": "Implementazione Tecnica & Architettura di Sistema",
+      "type": "Categoria Progetto",
+      "role": "Ruolo Ingegneristico",
+      "duration": "Tempistiche",
+      "technologies": "Tecnologie & Strumenti"
     },
     "categories": {
       "core-cs": "Core Computer Science",
@@ -403,7 +408,10 @@
     "header_subtitle": "Software Engineer",
     "loading": "Caricamento",
     "thesis": "Tesi di Laurea / Ricerca",
-    "back_to_portfolio": "Torna al Portfolio"
+    "back_to_portfolio": "Torna al Portfolio",
+    "clear_search": "Cancella ricerca",
+    "switch_to_en": "Passa all'inglese",
+    "switch_to_it": "Passa all'italiano"
   },
   "theme": {
     "light": "Tema chiaro",

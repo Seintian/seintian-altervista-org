@@ -62,7 +62,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
             <button
               onClick={() => setSearchQuery("")}
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
-              aria-label="Clear search"
+              aria-label={t("common.clear_search", "Clear search")}
             >
               <X className="h-5 w-5" />
             </button>

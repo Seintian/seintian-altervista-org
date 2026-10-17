@@ -141,6 +141,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-slate-50 text-white dark:text-slate-900 rounded-full font-medium hover:bg-slate-800 dark:hover:bg-slate-200 shadow-md hover:shadow-lg transition-all"
+                        aria-label={t("common.github_repo", "GitHub Repository")}
                     >
                         <GithubIcon className="w-5 h-5" />
                         {t("common.github_repo", "GitHub Repository")}
@@ -152,6 +153,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 border border-slate-300 dark:border-slate-700 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors shadow-xs"
+                        aria-label={t("common.live_demo", "Live Demo")}
                     >
                         <ExternalLink className="w-5 h-5" />
                         {t("common.live_demo", "Live Demo")}
@@ -166,6 +168,7 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center gap-2 px-6 py-3 border border-blue-200 dark:border-blue-800/60 bg-blue-50/50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-full font-medium hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
+                        aria-label={t(link.labelKey)}
                     >
                         {getCustomIcon(link.icon, "w-5 h-5")}
                         {t(link.labelKey)}
