@@ -1,14 +1,9 @@
 import EducationTimeline from "@/components/EducationTimeline";
 import { useTranslation } from "react-i18next";
+import { EducationItem } from "@/types/portfolio";
 
 interface EducationSectionProps {
-    education?: Array<{
-        id: string;
-        degreeKey: string;
-        schoolKey: string;
-        locationKey: string;
-        periodKey: string;
-    }>;
+    education?: EducationItem[];
     certifications?: string[];
 }
 

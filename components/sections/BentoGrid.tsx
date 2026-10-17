@@ -1,15 +1,9 @@
 import BentoCard from "@/components/ui/BentoCard";
 import { useTranslation } from "react-i18next";
+import { BentoModule } from "@/types/portfolio";
 
 interface BentoGridProps {
-  modules?: Array<{
-    id: string;
-    titleKey: string;
-    descriptionKey: string;
-    href: string;
-    colSpan: string;
-    rowSpan: string;
-  }>;
+  modules?: BentoModule[];
 }
 
 export default function BentoGrid({ modules }: BentoGridProps) {

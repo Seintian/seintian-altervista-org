@@ -1,33 +1,38 @@
+"use client";
+
 import ExperienceTimeline from "@/components/ExperienceTimeline";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Search, X } from "lucide-react";
+import { ExperienceItem } from "@/types/portfolio";
 
 interface ExperienceSectionProps {
-  experience?: Array<{
-    id: string;
-    roleKey: string;
-    companyKey: string;
-    periodKey: string;
-    descriptionKey: string;
-    technologies: string[];
-  }>;
+  experience?: ExperienceItem[];
 }
 
 export default function ExperienceSection({ experience }: ExperienceSectionProps) {
   const { t } = useTranslation();
   const [searchQuery, setSearchQuery] = useState("");
 
+  const sanitizedQuery = searchQuery
+    .slice(0, 100)
+    .replace(/[\x00-\x1F\x7F]/g, "")
+    .toLowerCase()
+    .trim();
+
   const filteredExperience = experience?.filter((item) => {
-    const query = searchQuery.toLowerCase();
+    if (!sanitizedQuery) return true;
+
     const role = t(item.roleKey).toLowerCase();
     const company = t(item.companyKey).toLowerCase();
-    const technologies = item.technologies.map(tech => tech.toLowerCase());
+    const description = t(item.descriptionKey).toLowerCase();
+    const technologies = item.technologies.map((tech) => tech.toLowerCase());
 
     return (
-      role.includes(query) ||
-      company.includes(query) ||
-      technologies.some(tech => tech.includes(query))
+      role.includes(sanitizedQuery) ||
+      company.includes(sanitizedQuery) ||
+      description.includes(sanitizedQuery) ||
+      technologies.some((tech) => tech.includes(sanitizedQuery))
     );
   });
 
@@ -47,6 +52,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
           </div>
           <input
             type="text"
+            maxLength={100}
             className="block w-full pl-10 pr-10 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
             placeholder={t("common.search_placeholder")}
             value={searchQuery}
@@ -56,6 +62,7 @@ export default function ExperienceSection({ experience }: ExperienceSectionProps
             <button
               onClick={() => setSearchQuery("")}
               className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+              aria-label="Clear search"
             >
               <X className="h-5 w-5" />
             </button>

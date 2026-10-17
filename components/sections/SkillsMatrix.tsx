@@ -2,21 +2,10 @@
 
 import { useTranslation } from "react-i18next";
 import { Code2, Layout, Server, Cpu, Wrench, Award, Shield, Zap } from "lucide-react";
-
-interface Skill {
-  id: string;
-  name: string;
-  level: number;
-}
+import { SkillsMatrix as SkillsMatrixType, SkillTier } from "@/types/portfolio";
 
 interface SkillsMatrixProps {
-  skills?: {
-    languages: Skill[];
-    frontend: Skill[];
-    backend: Skill[];
-    core: Skill[];
-    tools: Skill[];
-  };
+  skills?: SkillsMatrixType;
 }
 
 const iconMap = {
@@ -47,7 +36,7 @@ export default function SkillsMatrix({ skills }: SkillsMatrixProps) {
 
   if (!skills) return null;
 
-  const categories = Object.keys(skills) as Array<keyof typeof skills>;
+  const categories = Object.keys(skills) as Array<keyof SkillsMatrixType>;
 
   return (
     <section id="skills" className="border-t border-slate-200 dark:border-slate-800 pt-24 pb-24 scroll-mt-12 transition-colors duration-300">
@@ -84,7 +73,7 @@ export default function SkillsMatrix({ skills }: SkillsMatrixProps) {
                   const level = skill.level;
                   if (level <= 30) return null;
 
-                  let tier: "advanced" | "proficient" | "familiar" = "familiar";
+                  let tier: SkillTier = "familiar";
                   if (level > 70) tier = "advanced";
                   else if (level > 50) tier = "proficient";
                   else if (level > 30) tier = "familiar";

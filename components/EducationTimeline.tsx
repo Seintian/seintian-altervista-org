@@ -1,13 +1,8 @@
 import { useTranslation } from "react-i18next";
+import { EducationItem } from "@/types/portfolio";
 
 interface EducationTimelineProps {
-    education?: Array<{
-        id: string;
-        degreeKey: string;
-        schoolKey: string;
-        locationKey: string;
-        periodKey: string;
-    }>;
+    education?: EducationItem[];
     certifications?: string[];
 }
 
@@ -40,9 +35,26 @@ export default function EducationTimeline({ education, certifications }: Educati
                             {t(edu.schoolKey)}
                         </div>
 
-                        <p className="text-slate-600 dark:text-slate-400 mb-4 transition-colors duration-300">
+                        <p className="text-slate-600 dark:text-slate-400 mb-2 transition-colors duration-300">
                             {t(edu.locationKey)}
                         </p>
+
+                        {/* Thesis & Graduation Research Highlight */}
+                        {edu.thesisKey && (
+                            <div className="mt-3 p-4 bg-blue-50/70 dark:bg-blue-950/20 border border-blue-200/80 dark:border-blue-900/50 rounded-2xl transition-colors">
+                                <div className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400 mb-1">
+                                    {t("common.thesis", "Bachelor's Thesis / Graduation Research")}
+                                </div>
+                                <div className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-1">
+                                    {t(edu.thesisKey)}
+                                </div>
+                                {edu.descriptionKey && (
+                                    <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                                        {t(edu.descriptionKey)}
+                                    </p>
+                                )}
+                            </div>
+                        )}
                     </li>
                 ))}
             </ol>
