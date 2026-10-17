@@ -366,11 +366,13 @@
         "github_repo": "GitHub Repo",
         "live_demo": "Live Demo",
         "search_placeholder": "Filter by tag or category...",
-        "header_subtitle": "Software Engineer"
+        "header_subtitle": "Software Engineer",
+        "loading": "Loading"
     },
     "theme": {
         "light": "Light mode",
         "system": "System theme",
         "dark": "Dark mode"
-    }
+    },
+    "loading": "Loading"
 }

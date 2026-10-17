@@ -16,24 +16,33 @@ export default function Providers({ children }: { children: ReactNode }) {
   }));
 
   useEffect(() => {
-    // Perform language detection safely *after* hydration
-    const savedLang = window.localStorage.getItem('i18nextLng');
+    const updateDocumentLang = (lng: string) => {
+      if (typeof document !== "undefined") {
+        document.documentElement.lang = lng.startsWith("it") ? "it" : "en";
+      }
+    };
+
+    // Perform language detection safely after hydration
+    const savedLang = window.localStorage.getItem("i18nextLng");
     if (savedLang) {
       i18n.changeLanguage(savedLang);
+      updateDocumentLang(savedLang);
     } else {
       const browserLang = window.navigator.language;
-      const defaultLang = browserLang.startsWith('it') ? 'it' : 'en';
+      const defaultLang = browserLang.startsWith("it") ? "it" : "en";
       i18n.changeLanguage(defaultLang);
-      window.localStorage.setItem('i18nextLng', defaultLang);
+      window.localStorage.setItem("i18nextLng", defaultLang);
+      updateDocumentLang(defaultLang);
     }
 
     const handleLanguageChange = (lng: string) => {
-      window.localStorage.setItem('i18nextLng', lng);
+      window.localStorage.setItem("i18nextLng", lng);
+      updateDocumentLang(lng);
     };
 
-    i18n.on('languageChanged', handleLanguageChange);
+    i18n.on("languageChanged", handleLanguageChange);
     return () => {
-      i18n.off('languageChanged', handleLanguageChange);
+      i18n.off("languageChanged", handleLanguageChange);
     };
   }, []);
 

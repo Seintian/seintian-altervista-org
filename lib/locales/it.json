@@ -366,11 +366,13 @@
         "github_repo": "Repo GitHub",
         "live_demo": "Live Demo",
         "search_placeholder": "Filtra per tag o categoria...",
-        "header_subtitle": "Software Engineer"
+        "header_subtitle": "Software Engineer",
+        "loading": "Caricamento"
     },
     "theme": {
         "light": "Tema chiaro",
         "system": "Tema di sistema",
         "dark": "Tema scuro"
-    }
+    },
+    "loading": "Caricamento"
 }
