@@ -2,8 +2,8 @@
   "hero": {
     "greeting": "Hello, I'm",
     "name": "Christian Santarelli",
-    "role": "Software Engineer & Web Developer",
-    "description": "Young computer scientist with solid experience in software and web development, currently an undergraduate in Computer Science at the University of Turin. I develop solutions ranging from enterprise web architectures (React, Spring Boot) to low-level system libraries (C, IPC, NUMA)."
+    "role": "Computer Scientist & Systems Software Engineer",
+    "description": "Computer scientist specializing in low-level systems programming, high-performance telemetry, and distributed architectures. Currently completing my B.Sc. in Computer Science at the University of Turin, with academic research on Linux kernel observability (HPC4AI) and teaching experience in algorithms and data structures."
   },
   "contacts": {
     "email": "Email Me",
@@ -13,49 +13,68 @@
   },
   "modules": {
     "experience": {
-      "title": "Professional Experience",
-      "description": "My career timeline as a Freelance Web Developer."
+      "title": "Professional & Academic Experience",
+      "description": "Software engineering and researching"
     },
     "projects": {
       "title": "Featured Projects",
-      "description": "Enterprise web apps, HCI platforms, and core CS projects."
+      "description": "Datacenter telemetry, compilers, operating systems & system libraries."
     },
     "education": {
-      "title": "Education",
-      "description": "BSc in Computer Science at the University of Turin."
+      "title": "Education & Research",
+      "description": "BSc in Computer Science at UniTO & HPC4AI thesis research."
     },
     "skills": {
       "title": "Skills Matrix",
-      "description": "Languages, Frontend, Backend, DevOps & Core CS."
+      "description": "Low-level systems, core CS foundations, backend & tooling."
     }
   },
   "experience": {
+    "role-tutor-theory": {
+      "role": "Academic Tutor & Algorithmic Assessment Designer",
+      "company": "University of Turin - Department of Computer Science",
+      "period": "Apr 2026 - Sep 2026",
+      "description": "Collaborated with the theory professor of the Algorithms and Data Structures course to design and develop automated grading exercises on Moodle (CodeRunner plugin). Conceived and implemented a 4-5 stage guided composite exercise requiring students to build an advanced variant of the Rabin-Karp algorithm (fixed-length multi-pattern string matching) from scratch, engineering rigorous test suites and anti-brute-force validation mechanics enforcing rolling-hash complexity invariants."
+    },
+    "role-tutor-lab": {
+      "role": "Laboratory Teaching Assistant / Academic Tutor",
+      "company": "University of Turin - Department of Computer Science",
+      "period": "Oct 2025 - Dec 2025",
+      "description": "Provided hands-on laboratory tutoring and technical assistance for the Algorithms and Data Structures course (B.Sc. in Computer Science), supporting a cohort of ~100 students alongside the tenure-track professor. Supervised practical programming sessions, conducted real-time code reviews, assisted with memory-management troubleshooting and Valgrind debugging, and guided students through empirical and asymptotic computational complexity analysis."
+    },
+    "role-powerline": {
+      "role": "Full-Stack Software Developer",
+      "company": "Powerline 2.0 (Freelance)",
+      "period": "Aug 2023 - May 2024",
+      "description": "End-to-end design and full-stack development of a dynamic web platform for a fitness center. Conducted requirements analysis, system architecture design, relational database modeling, and GDPR-compliant sensitive data handling. Developed client and administrative staff portals using PHP, MySQL, JavaScript, and Bulma CSS."
+    },
     "role-1": {
-      "role": "Freelance Web Developer",
-      "company": "Freelance",
-      "period": "2022 - Present",
-      "description": "End-to-end management and development of dynamic web applications. Architectural design and coding. Deployment management and monthly maintenance for various clients. Technical consulting activities for creative teams, analyzing feedback and trends to optimize software efficiency, performance, and UX."
+      "role": "Full-Stack Software Developer",
+      "company": "Powerline 2.0 (Freelance)",
+      "period": "Aug 2023 - May 2024",
+      "description": "End-to-end design and full-stack development of a dynamic web platform for a fitness center. Conducted requirements analysis, system architecture design, relational database modeling, and GDPR-compliant sensitive data handling. Developed client and administrative staff portals using PHP, MySQL, JavaScript, and Bulma CSS."
     }
   },
   "education": {
     "edu-1": {
-      "degree": "BSc in Computer Science",
-      "school": "University of Turin",
+      "degree": "BSc in Computer Science (180 ECTS)",
+      "school": "University of Turin - Department of Computer Science",
       "location": "Turin, Italy",
       "period": "2023 - 2026",
-      "thesis": "Bachelor's Thesis: Low-Overhead Linux Systems Telemetry (YATAL) for HPC4AI",
-      "description": "Comprehensive Datacenter Usage and Sensor Monitoring for the HPC4AI supercomputing infrastructure."
+      "thesis": "Bachelor's Thesis: Comprehensive Datacenter Usage and Sensor Monitoring (YATAL)",
+      "description": "High-performance real-time Linux telemetry daemon engineered in Rust for the HPC4AI supercomputing infrastructure, mitigating probe effects and clock drifts across heterogeneous datacenter nodes."
     },
     "edu-2": {
-      "degree": "High School Diploma in Science",
-      "school": "Maria Curie Scientific High School",
-      "location": "Pinerolo (TO)",
+      "degree": "High School Diploma in Scientific Studies",
+      "school": "Liceo Scientifico Maria Curie",
+      "location": "Pinerolo (TO), Italy",
       "period": "2018 - 2023"
     }
   },
   "certifications": [
-    "First Certificate in English - B2 (2022)",
-    "Generic and specific training courses for student workers (12 hours)"
+    "NVIDIA DLI: Data Parallelism: How to Train Deep Learning Models on Multiple GPUs (PyTorch DDP, NCCL) - 2026",
+    "Cambridge Assessment English: First Certificate in English - B2 (Grade B, Score 177 - 2022)",
+    "Training courses on occupational health and safety for student workers (D.Lgs. 81/08, 12 hours)"
   ],
   "projects": {
     "proj-yatal": {
@@ -101,7 +120,8 @@
     },
     "categories": {
       "core-cs": "Core Computer Science",
-      "featured": "Featured Project"
+      "featured": "Featured Project",
+      "web": "Commercial & Web Development"
     },
     "origins": {
       "university": "University",
@@ -339,8 +359,8 @@
   },
   "sections": {
     "experience": {
-      "title": "Professional Experience",
-      "description": "A look at my career history, the teams I've worked with, and the technologies I've leveraged to drive business results."
+      "title": "Professional & Academic Experience",
+      "description": "My journey across academic teaching, systems engineering research, and commercial software development."
     },
     "projects": {
       "title": "Featured Projects",
@@ -405,7 +425,7 @@
     "github_repo": "GitHub Repo",
     "live_demo": "Live Demo",
     "search_placeholder": "Filter by tag or category...",
-    "header_subtitle": "Software Engineer",
+    "header_subtitle": "Computer Scientist & Systems Engineer",
     "loading": "Loading",
     "thesis": "Bachelor's Thesis / Research",
     "back_to_portfolio": "Back to Portfolio",

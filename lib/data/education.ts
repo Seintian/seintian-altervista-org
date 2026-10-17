@@ -21,5 +21,6 @@ export const education: EducationItem[] = [
 
 export const certificationsKeys: string[] = [
     "certifications.0",
-    "certifications.1"
+    "certifications.1",
+    "certifications.2"
 ];

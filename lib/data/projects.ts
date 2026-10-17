@@ -28,18 +28,86 @@ export const projects: ProjectType[] = [
         ]
     },
     {
-        id: "proj-gym",
-        slug: "gym-management-system",
-        titleKey: "projects.proj-gym.title",
-        descriptionKey: "projects.proj-gym.description",
-        url: "http://avid3959134.altervista.org/",
-        repo: "", // Private repository
-        technologies: ["Vanilla PHP", "MySQL", "jQuery", "Bulma CSS", "Session API"],
+        id: "proj-4",
+        slug: "libnumakit",
+        titleKey: "projects.proj-4.title",
+        descriptionKey: "projects.proj-4.description",
+        url: "",
+        repo: "https://github.com/Seintian/libnumakit",
+        technologies: ["C", "CMake", "NUMA", "IPC"],
         category: "featured",
-        origin: "freelance",
-        themeColor: "rose",
-        roleKey: "projects.proj-gym.role",
-        durationKey: "projects.proj-gym.duration"
+        origin: "personal",
+        themeColor: "red",
+        roleKey: "projects.proj-4.role",
+        durationKey: "projects.proj-4.duration"
+    },
+    {
+        id: "proj-5",
+        slug: "unito-formal-languages-and-compilers-25-26",
+        titleKey: "projects.proj-5.title",
+        descriptionKey: "projects.proj-5.description",
+        url: "",
+        repo: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26",
+        technologies: ["Java", "Compilers", "JVM", "Parsers"],
+        category: "featured",
+        origin: "university",
+        themeColor: "purple",
+        roleKey: "projects.proj-5.role",
+        durationKey: "projects.proj-5.duration",
+        customLinks: [
+            {
+                labelKey: "projects.proj-5.links.grammar",
+                url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/GRAMMAR.md",
+                icon: "document"
+            },
+            {
+                labelKey: "projects.proj-5.links.study",
+                url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/STUDY_BRIEF.md",
+                icon: "document"
+            }
+        ]
+    },
+    {
+        id: "proj-6",
+        slug: "unito-operative-systems-24-25",
+        titleKey: "projects.proj-6.title",
+        descriptionKey: "projects.proj-6.description",
+        url: "",
+        repo: "https://github.com/Seintian/unito-operative-systems-24-25",
+        technologies: ["C", "POSIX", "IPC", "Multithreading", "Makefile"],
+        category: "featured",
+        origin: "university",
+        themeColor: "indigo",
+        roleKey: "projects.proj-6.role",
+        durationKey: "projects.proj-6.duration"
+    },
+    {
+        id: "proj-3",
+        slug: "WinHUD",
+        titleKey: "projects.proj-3.title",
+        descriptionKey: "projects.proj-3.description",
+        url: "",
+        repo: "https://github.com/Seintian/WinHUD",
+        technologies: ["C#", ".NET 10", "WPF"],
+        category: "featured",
+        origin: "personal",
+        themeColor: "slate",
+        roleKey: "projects.proj-3.role",
+        durationKey: "projects.proj-3.duration"
+    },
+    {
+        id: "proj-7",
+        slug: "unito-algorithms-and-data-structures-24-25",
+        titleKey: "projects.proj-7.title",
+        descriptionKey: "projects.proj-7.description",
+        url: "",
+        repo: "https://github.com/Seintian/unito-algorithms-and-data-structures-24-25",
+        technologies: ["C", "TDD", "Algorithms", "Data Structs"],
+        category: "core-cs",
+        origin: "university",
+        themeColor: "cyan",
+        roleKey: "projects.proj-7.role",
+        durationKey: "projects.proj-7.duration"
     },
     {
         id: "proj-1",
@@ -77,88 +145,6 @@ export const projects: ProjectType[] = [
         durationKey: "projects.proj-2.duration"
     },
     {
-        id: "proj-3",
-        slug: "WinHUD",
-        titleKey: "projects.proj-3.title",
-        descriptionKey: "projects.proj-3.description",
-        url: "",
-        repo: "https://github.com/Seintian/WinHUD",
-        technologies: ["C#", ".NET 10", "WPF"],
-        category: "featured",
-        origin: "personal",
-        themeColor: "slate",
-        roleKey: "projects.proj-3.role",
-        durationKey: "projects.proj-3.duration"
-    },
-    {
-        id: "proj-4",
-        slug: "libnumakit",
-        titleKey: "projects.proj-4.title",
-        descriptionKey: "projects.proj-4.description",
-        url: "",
-        repo: "https://github.com/Seintian/libnumakit",
-        technologies: ["C", "CMake", "NUMA", "IPC"],
-        category: "featured",
-        origin: "personal",
-        themeColor: "red",
-        roleKey: "projects.proj-4.role",
-        durationKey: "projects.proj-4.duration"
-    },
-    {
-        id: "proj-5",
-        slug: "unito-formal-languages-and-compilers-25-26",
-        titleKey: "projects.proj-5.title",
-        descriptionKey: "projects.proj-5.description",
-        url: "",
-        repo: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26",
-        technologies: ["Java", "Compilers", "JVM", "Parsers"],
-        category: "core-cs",
-        origin: "university",
-        themeColor: "purple",
-        roleKey: "projects.proj-5.role",
-        durationKey: "projects.proj-5.duration",
-        customLinks: [
-            {
-                labelKey: "projects.proj-5.links.grammar",
-                url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/GRAMMAR.md",
-                icon: "document"
-            },
-            {
-                labelKey: "projects.proj-5.links.study",
-                url: "https://github.com/Seintian/unito-formal-languages-and-compilers-25-26/blob/master/STUDY_BRIEF.md",
-                icon: "document"
-            }
-        ]
-    },
-    {
-        id: "proj-6",
-        slug: "unito-operative-systems-24-25",
-        titleKey: "projects.proj-6.title",
-        descriptionKey: "projects.proj-6.description",
-        url: "",
-        repo: "https://github.com/Seintian/unito-operative-systems-24-25",
-        technologies: ["C", "POSIX", "IPC", "Multithreading", "Makefile"],
-        category: "core-cs",
-        origin: "university",
-        themeColor: "indigo",
-        roleKey: "projects.proj-6.role",
-        durationKey: "projects.proj-6.duration"
-    },
-    {
-        id: "proj-7",
-        slug: "unito-algorithms-and-data-structures-24-25",
-        titleKey: "projects.proj-7.title",
-        descriptionKey: "projects.proj-7.description",
-        url: "",
-        repo: "https://github.com/Seintian/unito-algorithms-and-data-structures-24-25",
-        technologies: ["C", "TDD", "Algorithms", "Data Structs"],
-        category: "core-cs",
-        origin: "university",
-        themeColor: "cyan",
-        roleKey: "projects.proj-7.role",
-        durationKey: "projects.proj-7.duration"
-    },
-    {
         id: "proj-8",
         slug: "unito-hci-data-analysis-25-26",
         titleKey: "projects.proj-8.title",
@@ -171,5 +157,19 @@ export const projects: ProjectType[] = [
         themeColor: "amber",
         roleKey: "projects.proj-8.role",
         durationKey: "projects.proj-8.duration"
+    },
+    {
+        id: "proj-gym",
+        slug: "gym-management-system",
+        titleKey: "projects.proj-gym.title",
+        descriptionKey: "projects.proj-gym.description",
+        url: "http://avid3959134.altervista.org/",
+        repo: "", // Private repository
+        technologies: ["Vanilla PHP", "MySQL", "jQuery", "Bulma CSS", "Session API"],
+        category: "web",
+        origin: "freelance",
+        themeColor: "rose",
+        roleKey: "projects.proj-gym.role",
+        durationKey: "projects.proj-gym.duration"
     }
 ];

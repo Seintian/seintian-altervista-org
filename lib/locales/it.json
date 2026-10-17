@@ -2,8 +2,8 @@
   "hero": {
     "greeting": "Ciao, sono",
     "name": "Christian Santarelli",
-    "role": "Software Engineer & Web Developer",
-    "description": "Giovane informatico con solida esperienza nello sviluppo software e web, attualmente laureando in Informatica all'Università di Torino. Sviluppo soluzioni che spaziano da architetture web enterprise (React, Spring Boot) a librerie di sistema a basso livello (C, IPC, NUMA)."
+    "role": "Computer Scientist & Systems Software Engineer",
+    "description": "Informatico specializzato nella programmazione di sistema a basso livello, telemetria ad alte prestazioni e architetture distribuite. Laureando in Informatica presso l'Università degli Studi di Torino, con ricerca accademica sull'osservabilità del kernel Linux (HPC4AI) ed esperienza di docenza e tutorato in algoritmi e strutture dati."
   },
   "contacts": {
     "email": "Scrivimi",
@@ -13,49 +13,68 @@
   },
   "modules": {
     "experience": {
-      "title": "Esperienza Professionale",
-      "description": "La mia carriera come Sviluppatore Web Freelance."
+      "title": "Esperienza Professionale & Accademica",
+      "description": "Software engineering and researching"
     },
     "projects": {
       "title": "Progetti in Evidenza",
-      "description": "Web app enterprise, piattaforme HCI e progetti CS."
+      "description": "Telemetria datacenter, compilatori, sistemi operativi e librerie di sistema."
     },
     "education": {
-      "title": "Formazione",
-      "description": "Laurea in Informatica presso l'Università di Torino."
+      "title": "Formazione & Ricerca",
+      "description": "Laurea in Informatica a UniTO e ricerca di tesi su HPC4AI."
     },
     "skills": {
       "title": "Matrice delle Competenze",
-      "description": "Linguaggi, Frontend, Backend, DevOps & Core CS."
+      "description": "Sistemi a basso livello, fondamenti di informatica, backend e tooling."
     }
   },
   "experience": {
+    "role-tutor-theory": {
+      "role": "Tutor Didattico e Progettista di Esercizi Algoritmici",
+      "company": "Università degli Studi di Torino - Dipartimento di Informatica",
+      "period": "11/04/2026 - 23/09/2026",
+      "description": "Collaborazione con il docente della parte teorica del corso di Algoritmi e Strutture Dati per la progettazione e lo sviluppo di esercizi di valutazione automatizzata su piattaforma Moodle (plugin CodeRunner). Ideazione e implementazione di un esercizio guidato multi-stadio (4-5 fasi progressive) per lo sviluppo da zero di una variante avanzata dell'algoritmo di Rabin-Karp (ricerca multi-pattern a lunghezza fissa) con verifiche anti-brute-force sui vincoli di complessità temporale del rolling hash."
+    },
+    "role-tutor-lab": {
+      "role": "Tutor Didattico di Laboratorio",
+      "company": "Università degli Studi di Torino - Dipartimento di Informatica",
+      "period": "03/10/2025 - 09/12/2025",
+      "description": "Supporto didattico e assistenza tecnica in laboratorio per il corso di Algoritmi e Strutture Dati (Corso di Laurea Triennale in Informatica), in affiancamento al docente titolare su una coorte di circa 100 studenti. Supervisione delle sessioni pratiche di programmazione, revisione del codice (code review) in tempo reale, risoluzione di problematiche di gestione della memoria e con Valgrind, e guida all'analisi asintotica della complessità computazionale."
+    },
+    "role-powerline": {
+      "role": "Sviluppatore Software Full-Stack",
+      "company": "Powerline 2.0 (Freelance)",
+      "period": "01/08/2023 - 30/05/2024",
+      "description": "Progettazione e sviluppo end-to-end di una piattaforma web dinamica per un centro fitness. Analisi dei requisiti, progettazione architetturale, modellazione del database relazionale e gestione sicura di dati sensibili conformemente al GDPR. Sviluppo del portale clienti e della dashboard amministrativa per lo staff in PHP, MySQL, JavaScript e Bulma CSS."
+    },
     "role-1": {
-      "role": "Sviluppatore Web Freelance",
-      "company": "Freelance",
-      "period": "2022 - Presente",
-      "description": "Gestione e sviluppo end-to-end di applicazioni web dinamiche. Progettazione architetturale e coding. Gestione dei deployment e manutenzione mensile per vari clienti. Attività di consulenza tecnica per i team creativi, analizzando feedback e trend per ottimizzare l'efficienza, le performance e la UX del software."
+      "role": "Sviluppatore Software Full-Stack",
+      "company": "Powerline 2.0 (Freelance)",
+      "period": "01/08/2023 - 30/05/2024",
+      "description": "Progettazione e sviluppo end-to-end di una piattaforma web dinamica per un centro fitness. Analisi dei requisiti, progettazione architetturale, modellazione del database relazionale e gestione sicura di dati sensibili conformemente al GDPR. Sviluppo del portale clienti e della dashboard amministrativa per lo staff in PHP, MySQL, JavaScript e Bulma CSS."
     }
   },
   "education": {
     "edu-1": {
-      "degree": "Laurea Triennale in Informatica",
-      "school": "Università degli Studi di Torino",
-      "location": "Torino",
+      "degree": "Laurea Triennale in Informatica (180 CFU)",
+      "school": "Università degli Studi di Torino - Dipartimento di Informatica",
+      "location": "Torino, Italia",
       "period": "2023 - 2026",
-      "thesis": "Tesi di Laurea: Telemetria Real-Time ad Alte Prestazioni per Datacenter HPC & AI (YATAL)",
-      "description": "Monitoraggio e utilizzo sensori datacenter ad altissima efficienza per l'infrastruttura di supercalcolo HPC4AI."
+      "thesis": "Tesi di Laurea: Comprehensive Datacenter Usage and Sensor Monitoring (YATAL)",
+      "description": "Daemon di telemetria Linux-native ad alte prestazioni sviluppato in Rust per l'infrastruttura di supercalcolo HPC4AI, risolvendo l'effetto sonda e il drift d'orologio su nodi di datacenter eterogenei."
     },
     "edu-2": {
       "degree": "Diploma di Maturità Scientifica",
       "school": "Liceo Scientifico Maria Curie",
-      "location": "Pinerolo (TO)",
+      "location": "Pinerolo (TO), Italia",
       "period": "2018 - 2023"
     }
   },
   "certifications": [
-    "First Certificate in English - B2 (2022)",
-    "Corsi di formazione generica e specifica per lavoratori studenti (12 ore)"
+    "NVIDIA DLI: Data Parallelism: How to Train Deep Learning Models on Multiple GPUs (PyTorch DDP, NCCL) - 2026",
+    "Cambridge Assessment English: First Certificate in English - B2 (Grade B, Punteggio 177 - 2022)",
+    "Corsi di formazione generale e specifica sulla sicurezza per lavoratori studenti (D.Lgs. 81/08, 12 ore)"
   ],
   "projects": {
     "proj-yatal": {
@@ -101,7 +120,8 @@
     },
     "categories": {
       "core-cs": "Core Computer Science",
-      "featured": "Progetto in Evidenza"
+      "featured": "Progetto in Evidenza",
+      "web": "Sviluppo Commerciale & Web"
     },
     "origins": {
       "university": "Università",
@@ -339,8 +359,8 @@
   },
   "sections": {
     "experience": {
-      "title": "Esperienza Professionale",
-      "description": "Uno sguardo alla mia storia lavorativa, ai team con cui ho collaborato e alle tecnologie che ho utilizzato per portare risultati."
+      "title": "Esperienza Professionale & Accademica",
+      "description": "Il mio percorso tra docenza accademica, ricerca nell'ingegneria dei sistemi e sviluppo software professionale."
     },
     "projects": {
       "title": "Progetti in Evidenza",
@@ -405,7 +425,7 @@
     "github_repo": "Repo GitHub",
     "live_demo": "Live Demo",
     "search_placeholder": "Filtra per tag o categoria...",
-    "header_subtitle": "Software Engineer",
+    "header_subtitle": "Computer Scientist & Systems Engineer",
     "loading": "Caricamento",
     "thesis": "Tesi di Laurea / Ricerca",
     "back_to_portfolio": "Torna al Portfolio",
