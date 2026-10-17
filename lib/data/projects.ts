@@ -28,6 +28,32 @@ export const projects: ProjectType[] = [
         ]
     },
     {
+        id: "proj-librbipc",
+        slug: "librbipc",
+        titleKey: "projects.proj-librbipc.title",
+        descriptionKey: "projects.proj-librbipc.description",
+        url: "",
+        repo: "https://github.com/Seintian/librbipc",
+        technologies: ["C23", "Linux Systems", "Shared Memory", "Lock-Free", "Futex", "AVX2 / SIMD"],
+        category: "featured",
+        origin: "personal",
+        themeColor: "cyan",
+        roleKey: "projects.proj-librbipc.role",
+        durationKey: "projects.proj-librbipc.duration",
+        customLinks: [
+            {
+                labelKey: "projects.proj-librbipc.links.readme",
+                url: "https://github.com/Seintian/librbipc/blob/main/README.md",
+                icon: "document"
+            },
+            {
+                labelKey: "projects.proj-librbipc.links.benchmarks",
+                url: "https://github.com/Seintian/librbipc/tree/main/benchmarks",
+                icon: "external"
+            }
+        ]
+    },
+    {
         id: "proj-4",
         slug: "libnumakit",
         titleKey: "projects.proj-4.title",

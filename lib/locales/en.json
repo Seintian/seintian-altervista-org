@@ -355,6 +355,37 @@
         "Jupyter Workspaces: Separation of concerns across modular notebooks (01_cleaning, 02_exploration, 03_story) for reproducible research.",
         "Local Package Architecture: Installation of the analysis source code (src/) in editable mode for clean cross-notebook imports."
       ]
+    },
+    "proj-librbipc": {
+      "title": "librbipc: Lock-Free Shared-Memory Ring Buffer IPC",
+      "description": "High-throughput, sub-microsecond MPMC shared-memory ring buffer IPC library in ISO C23 for Linux. Features 4-tier hybrid synchronization, 0.13% idle CPU via futex2, race-free crash resilience with pidfd_open, and 50M+ msgs/s vector batching.",
+      "longDescription": "librbipc is a zero-dependency, production-grade Inter-Process Communication (IPC) library written in ISO C23 for Linux. It implements a lock-free Multi-Producer / Multi-Consumer (MPMC) shared-memory ring buffer engineered for sub-microsecond user-space fast paths (down to 200 ns half-RTT), 0.13% idle CPU consumption via Dekker-synchronized Linux sys_futex suspension, deterministic crash recovery (pidfd_open), B-Queue scatter-gather vector batching (50.68M msgs/s), non-temporal cache-bypassing streaming stores (19.87 GB/s), asynchronous eventfd/epoll reactor signaling, and 1-to-N lock-free multicast publish-subscribe.",
+      "role": "Systems Software Engineer",
+      "duration": "Oct 2026",
+      "features": [
+        "4-Tier Hybrid Synchronization Engine: Transitions seamlessly from bounded micro-spin (48 pause/yield cycles) and Intel WAITPKG (UMWAIT/UMONITOR) / ARM64 WFET hardware monitor-wait, to Asymmetric Dekker memory barriers and vectorized Linux 5.16+ futex2 (sys_futex_waitv) multi-wait.",
+        "Deterministic Race-Free Crash Resilience: Audits slot-holding peers via Linux 5.3+ pidfd_open(2) and poll, poisoning abandoned slots (RBIPC_SLOT_POISONED), healing orphaned ticket holes, and enforcing time-bounded consumer leases.",
+        "B-Queue Vector Batching & SIMD Scanning: Amortizes atomic ticket claims and memory fences across contiguous slots, achieving 50.68M msgs/s accelerated by 256-bit AVX2 and ARM64 NEON sequence turn scanners.",
+        "Non-Temporal Cache-Bypassing Streaming Stores: Achieves 19.87 GB/s (+105% throughput over standard memcpy) on payloads ≥ 256 B via AVX2 streaming instructions (_mm256_stream_si256), preventing CPU cache pollution and RFO bus traffic.",
+        "Double-Mapped Virtual Memory: Utilizes MAP_FIXED 2x contiguous address space mirroring to allow zero-copy circular buffer wrap-around without modulo pointer arithmetic.",
+        "Multi-Topology & Reactor Integration: Supports non-blocking eventfd readiness signaling for epoll/io_uring event loops, 1-to-N multicast pub-sub with independent cursors, and zero-namespace memfd_create descriptor passing over SCM_RIGHTS."
+      ],
+      "theory": [
+        "Lock-Free Vyukov Sequence Turn Engine: 64-bit monotonic atomic ticket reservations paired with per-slot sequence verification, eliminating global CAS spin bottlenecks and ABA hazards.",
+        "Asymmetric Dekker Synchronization: Shifts memory ordering overhead off high-frequency producer commit fast paths via sys_membarrier(2), eliminating hardware MFENCE instructions during uncontended execution.",
+        "Progressive Feature Unlocking: Dynamically probes host CPU ISA extensions and kernel syscall capabilities (futex2, WAITPKG, AVX-512/AVX2, WFxT) at runtime with graceful degradation to portable POSIX baselines.",
+        "Memory Hierarchy & Cache Coherence: 64-byte aligned slot geometry enforced via C23 static_assert invariants, eliminating false sharing across L1/L2/L3 cache lines."
+      ],
+      "implementation": [
+        "ISO C23 Standard Engineering: Compiled under -std=c23 with strict GCC 13/14 and Clang 17/18 compatibility, ASan, TSan, and explicit GNU linker symbol versioning (LIBRBIPC_1.0).",
+        "Linux Kernel Futex2 Vectorization: Direct 64-bit multi-word monitoring via sys_futex_waitv, achieving 299 ns p50 wakeups while monitoring sequence counters and shutdown flags simultaneously.",
+        "Kernel Descriptor Sealing & CRC32C Integrity: Shared memory backed by memfd_create or POSIX shm sealed via fcntl(F_ADD_SEALS), protected by hardware Castagnoli CRC32C checksums.",
+        "Empirical Benchmark Validation: Thoroughly benchmarked across multi-core desktop and thermal-throttled laptop profiles against DPDK rte_ring, LMAX Disruptor, POSIX mqueue, and AF_UNIX."
+      ],
+      "links": {
+        "readme": "Architecture Documentation",
+        "benchmarks": "Benchmark Suite"
+      }
     }
   },
   "sections": {

@@ -355,6 +355,37 @@
         "Workspace Jupyter: Separazione delle responsabilità su notebook modulari (01_cleaning, 02_exploration, 03_story) per favorire la ricerca riproducibile.",
         "Architettura Pacchetti Locali: Installazione del codice sorgente di analisi (src/) in modalità modificabile per import puliti tra vari notebook."
       ]
+    },
+    "proj-librbipc": {
+      "title": "librbipc: Ring Buffer IPC Lock-Free a Memoria Condivisa",
+      "description": "Libreria IPC ad altissimo throughput e latenza sub-microsecondo per Linux in ISO C23, basata su ring buffer MPMC lock-free a memoria condivisa. Integra sincronizzazione ibrida a 4 livelli, consumo idle dello 0.13% via futex2, crash-resilience con pidfd_open e batch vettoriale a oltre 50M msgs/s.",
+      "longDescription": "librbipc è una libreria di comunicazione inter-processo (IPC) di livello produttivo e a zero dipendenze sviluppata in ISO C23 per Linux. Implementa un ring buffer lock-free a memoria condivisa per architetture Multi-Producer / Multi-Consumer (MPMC), progettato per percorsi critici sub-microsecondo nello spazio utente (fino a 200 ns half-RTT), un consumo CPU in idle di appena lo 0.13% tramite sospensione Dekker su sys_futex, recupero deterministico dai crash di processo (pidfd_open), batching vettoriale B-Queue scatter-gather (50.68M messaggi/sec), scritture non-temporali che bypassano la cache (19.87 GB/s), signaling reattivo asincrono su eventfd/epoll e multicast pub-sub 1-a-N lock-free.",
+      "role": "Systems Software Engineer",
+      "duration": "Ott 2026",
+      "features": [
+        "Motore di Sincronizzazione Ibrida a 4 Livelli: Transizione fluida da micro-spin limitato (48 cicli pause/yield) e monitoraggio hardware Intel WAITPKG (UMWAIT/UMONITOR) / ARM64 WFET, a barriere di memoria asimmetriche Dekker e multi-wait vettoriale Linux 5.16+ futex2 (sys_futex_waitv).",
+        "Resilienza Deterministica ai Crash Senza Corse Critiche: Controllo dello stato dei processi peer via Linux 5.3+ pidfd_open(2) e poll, avvelenamento degli slot abbandonati (RBIPC_SLOT_POISONED), riparazione dei buchi nei ticket orfani e lease temporali per i consumer.",
+        "Batching Vettoriale B-Queue & Scansione SIMD: Ammortizza la riserva atomica dei ticket e le barriere di memoria su slot contigui, raggiungendo 50.68M messaggi/s accelerati da scanner vettoriali a 256-bit AVX2 e ARM64 NEON.",
+        "Scritture Streaming Non-Temporali Diretto in DRAM: Raggiunge 19.87 GB/s (+105% di throughput rispetto a memcpy standard) per payload ≥ 256 B con istruzioni streaming AVX2 (_mm256_stream_si256), evitando l'inquinamento delle cache CPU e il traffico RFO sul bus.",
+        "Memoria Virtuale a Doppio Mappaggio: Sfrutta il rispecchiamento contiguo 2x dello spazio di indirizzamento con MAP_FIXED per consentire l'accesso continuo a cavallo della fine del ring buffer senza aritmetica modulo dei puntatori.",
+        "Integrazione Multi-Topologia & Reactor: Supporta notifiche di prontezza non-bloccanti via eventfd per loop epoll/io_uring, pub-sub multicast 1-a-N con cursori indipendenti e passaggio di descrittori memfd_create zero-namespace su SCM_RIGHTS."
+      ],
+      "theory": [
+        "Motore Sequence Turn Lock-Free di Vyukov: Assegnazione di ticket atomici monotoni a 64-bit abbinata a verifica sequenziale per singolo slot, eliminando i colli di bottiglia CAS globali e i pericoli ABA.",
+        "Sincronizzazione Asimmetrica di Dekker: Sposta l'overhead dell'ordinamento della memoria fuori dal percorso critico dei producer via sys_membarrier(2), eliminando le istruzioni hardware MFENCE durante l'esecuzione non contesa.",
+        "Sblocco Progressivo delle Funzionalità Hardware: Rilevamento dinamico a runtime delle estensioni ISA della CPU e delle chiamate di sistema del kernel (futex2, WAITPKG, AVX-512/AVX2, WFxT) con fallback trasparente a standard POSIX portabili.",
+        "Gerarchia di Memoria & Coerenza delle Cache: Geometria degli slot allineata a 64 byte verificata a tempo di compilazione con invarianti static_assert C23, eliminando il false sharing tra linee di cache L1/L2/L3."
+      ],
+      "implementation": [
+        "Ingegneria dello Standard ISO C23: Compilato con -std=c23 con rigorosa conformità GCC 13/14 e Clang 17/18, sanitizers ASan/TSan e versionamento esplicito dei simboli del linker GNU (LIBRBIPC_1.0).",
+        "Vettorizzazione Kernel Linux Futex2: Monitoraggio multi-word diretto a 64-bit via sys_futex_waitv, ottenendo risvegli a 299 ns p50 monitorando contatori di sequenza e flag di terminazione simultaneamente.",
+        "Sigillatura dei Descrittori Kernel & Integrità CRC32C: Memoria condivisa supportata da memfd_create o POSIX shm sigillata con fcntl(F_ADD_SEALS), protetta da checksum hardware Castagnoli CRC32C.",
+        "Validazione Empirica con Benchmark: Profilazione approfondita su configurazioni desktop multi-core e laptop con throttling termico rispetto a DPDK rte_ring, LMAX Disruptor, POSIX mqueue e AF_UNIX."
+      ],
+      "links": {
+        "readme": "Documentazione Architetturale",
+        "benchmarks": "Suite di Benchmark"
+      }
     }
   },
   "sections": {
