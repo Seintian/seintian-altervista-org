@@ -8,8 +8,6 @@ import ProjectTheory from "@/components/project/ProjectTheory";
 import ProjectImplementation from "@/components/project/ProjectImplementation";
 import ProjectSidebar from "@/components/project/ProjectSidebar";
 
-export type { ProjectType };
-
 export default function ProjectClientPage({ project }: { project: ProjectType }) {
     return (
         <main className="min-h-screen max-w-5xl mx-auto px-6 py-12 md:py-24">

@@ -39,5 +39,3 @@ export {
     certificationsKeys,
     projects
 };
-
-export * from "@/types/portfolio";

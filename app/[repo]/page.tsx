@@ -1,6 +1,7 @@
 import { siteData, getProjectSlug } from "@/lib/data";
 import { notFound } from "next/navigation";
-import ProjectClientPage, { ProjectType } from "./ProjectClientPage";
+import { ProjectType } from "@/types/portfolio";
+import ProjectClientPage from "./ProjectClientPage";
 
 // Generate paths for static export
 export function generateStaticParams() {

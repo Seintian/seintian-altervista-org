@@ -51,7 +51,7 @@ seintian-altervista-org/
 │   ├── sections/         # Major page sections (Hero, BentoGrid, Projects, etc.)
 │   └── ui/               # Reusable atomic UI elements (Buttons, Loaders, Switchers)
 ├── hooks/                # Custom React Hooks (e.g., useSiteData)
-├── lib/                  # Core Business Logic and Static Data structures (e.g., data.ts)
+├── lib/                  # Core Business Logic and Static Data structures (e.g., lib/data/)
 ├── public/               # Static assets (CV, images, icons)
 └── ...config files       # Next, Tailwind, ESLint, TypeScript configurations
 ```
@@ -92,7 +92,7 @@ Ensure you have the following installed:
 
 ## 🏗️ Project Showcase Highlight
 
-This application dynamically renders several complex projects managed centrally in `lib/data.ts`. Some highlighted open-source repositories included in this portfolio:
+This application dynamically renders several complex projects managed centrally in `lib/data/` (such as `lib/data/projects.ts`). Some highlighted open-source repositories included in this portfolio:
 
 - **Web Technologies:** Full-stack Spring Boot & React architecture with Docker & PostgreSQL.
 - **Human-Computer Interaction (HCI):** Specialized Vite & React app optimizing UX/UI.

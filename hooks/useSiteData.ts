@@ -1,7 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { siteData } from "@/lib/data";
-
-type SiteData = typeof siteData;
+import { SiteData } from "@/types/portfolio";
 
 async function fetchSiteData(): Promise<SiteData> {
   try {
