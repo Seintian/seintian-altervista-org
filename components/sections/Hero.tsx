@@ -1,17 +1,15 @@
 import ContactButton from "@/components/ui/ContactButton";
 import { useTranslation } from "react-i18next";
+import { ContactItem } from "@/types/portfolio";
+import { useLocalizedContacts } from "@/hooks/useLocalizedContacts";
 
 interface HeroProps {
-  contacts?: Array<{
-    id: string;
-    labelKey: string;
-    url: string;
-    isPrimary: boolean;
-  }>;
+  contacts?: ContactItem[];
 }
 
 export default function Hero({ contacts }: HeroProps) {
   const { t } = useTranslation();
+  const localizedContacts = useLocalizedContacts(contacts);
 
   return (
     <section className="flex flex-col items-start justify-center mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-in-out">
@@ -26,7 +24,7 @@ export default function Hero({ contacts }: HeroProps) {
       </p>
 
       <div className="flex flex-wrap gap-4 min-h-[48px]">
-        {contacts && contacts.map((contact) => (
+        {localizedContacts.map((contact) => (
           <ContactButton
             key={contact.id}
             id={contact.id}
