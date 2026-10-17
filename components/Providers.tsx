@@ -22,27 +22,12 @@ export default function Providers({ children }: { children: ReactNode }) {
       }
     };
 
-    // Perform language detection safely after hydration
-    const savedLang = window.localStorage.getItem("i18nextLng");
-    if (savedLang) {
-      i18n.changeLanguage(savedLang);
-      updateDocumentLang(savedLang);
-    } else {
-      const browserLang = window.navigator.language;
-      const defaultLang = browserLang.startsWith("it") ? "it" : "en";
-      i18n.changeLanguage(defaultLang);
-      window.localStorage.setItem("i18nextLng", defaultLang);
-      updateDocumentLang(defaultLang);
-    }
+    // Keep <html lang="..."> in sync with the active language detected or selected
+    updateDocumentLang(i18n.language || "en");
 
-    const handleLanguageChange = (lng: string) => {
-      window.localStorage.setItem("i18nextLng", lng);
-      updateDocumentLang(lng);
-    };
-
-    i18n.on("languageChanged", handleLanguageChange);
+    i18n.on("languageChanged", updateDocumentLang);
     return () => {
-      i18n.off("languageChanged", handleLanguageChange);
+      i18n.off("languageChanged", updateDocumentLang);
     };
   }, []);
 
