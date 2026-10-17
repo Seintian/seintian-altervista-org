@@ -1,19 +1,14 @@
 "use client";
 
 import { useTheme } from "next-themes";
-import { useEffect, useState } from "react";
 import { Sun, Moon, Monitor } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useIsMounted } from "@/hooks/useIsMounted";
 
 export default function ThemeSwitcher() {
-    const [mounted, setMounted] = useState(false);
+    const mounted = useIsMounted();
     const { theme, setTheme } = useTheme();
     const { t } = useTranslation();
-
-    // useEffect only runs on the client, so now we can safely show the UI
-    useEffect(() => {
-        setMounted(true);
-    }, []);
 
     if (!mounted) {
         return <div className="h-10 w-10 rounded-full bg-slate-100 dark:bg-slate-900 animate-pulse" />;
