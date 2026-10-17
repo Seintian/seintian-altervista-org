@@ -1,378 +1,414 @@
 {
-    "hero": {
-        "greeting": "Hello, I'm",
-        "name": "Christian Santarelli",
-        "role": "Software Engineer & Web Developer",
-        "description": "Young computer scientist with solid experience in software and web development, currently an undergraduate in Computer Science at the University of Turin. I develop solutions ranging from enterprise web architectures (React, Spring Boot) to low-level system libraries (C, IPC, NUMA)."
-    },
-    "contacts": {
-        "email": "Email Me",
-        "github": "GitHub",
-        "linkedin": "LinkedIn",
-        "cv": "Open CV"
-    },
-    "modules": {
-        "experience": {
-            "title": "Professional Experience",
-            "description": "My career timeline as a Freelance Web Developer."
-        },
-        "projects": {
-            "title": "Featured Projects",
-            "description": "Enterprise web apps, HCI platforms, and core CS projects."
-        },
-        "education": {
-            "title": "Education",
-            "description": "BSc in Computer Science at the University of Turin."
-        },
-        "skills": {
-            "title": "Skills Matrix",
-            "description": "Languages, Frontend, Backend, DevOps & Core CS."
-        }
-    },
+  "hero": {
+    "greeting": "Hello, I'm",
+    "name": "Christian Santarelli",
+    "role": "Software Engineer & Web Developer",
+    "description": "Young computer scientist with solid experience in software and web development, currently an undergraduate in Computer Science at the University of Turin. I develop solutions ranging from enterprise web architectures (React, Spring Boot) to low-level system libraries (C, IPC, NUMA)."
+  },
+  "contacts": {
+    "email": "Email Me",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "cv": "Open CV"
+  },
+  "modules": {
     "experience": {
-        "role-1": {
-            "role": "Freelance Web Developer",
-            "company": "Freelance",
-            "period": "2022 - Present",
-            "description": "End-to-end management and development of dynamic web applications. Architectural design and coding. Deployment management and monthly maintenance for various clients. Technical consulting activities for creative teams, analyzing feedback and trends to optimize software efficiency, performance, and UX."
-        }
+      "title": "Professional Experience",
+      "description": "My career timeline as a Freelance Web Developer."
+    },
+    "projects": {
+      "title": "Featured Projects",
+      "description": "Enterprise web apps, HCI platforms, and core CS projects."
     },
     "education": {
-        "edu-1": {
-            "degree": "BSc in Computer Science",
-            "school": "University of Turin",
-            "location": "Turin",
-            "period": "2023 - Present"
-        },
-        "edu-2": {
-            "degree": "High School Diploma in Science",
-            "school": "Maria Curie Scientific High School",
-            "location": "Pinerolo (TO)",
-            "period": "2018 - 2023"
-        }
+      "title": "Education",
+      "description": "BSc in Computer Science at the University of Turin."
     },
-    "certifications": [
-        "First Certificate in English - B2 (2022)",
-        "Generic and specific training courses for student workers (12 hours)"
-    ],
+    "skills": {
+      "title": "Skills Matrix",
+      "description": "Languages, Frontend, Backend, DevOps & Core CS."
+    }
+  },
+  "experience": {
+    "role-1": {
+      "role": "Freelance Web Developer",
+      "company": "Freelance",
+      "period": "2022 - Present",
+      "description": "End-to-end management and development of dynamic web applications. Architectural design and coding. Deployment management and monthly maintenance for various clients. Technical consulting activities for creative teams, analyzing feedback and trends to optimize software efficiency, performance, and UX."
+    }
+  },
+  "education": {
+    "edu-1": {
+      "degree": "BSc in Computer Science",
+      "school": "University of Turin",
+      "location": "Turin, Italy",
+      "period": "2023 - 2026",
+      "thesis": "Bachelor's Thesis: Low-Overhead Linux Systems Telemetry (YATAL) for HPC4AI",
+      "description": "Comprehensive Datacenter Usage and Sensor Monitoring under Prof. Robert René Maria Birke."
+    },
+    "edu-2": {
+      "degree": "High School Diploma in Science",
+      "school": "Maria Curie Scientific High School",
+      "location": "Pinerolo (TO)",
+      "period": "2018 - 2023"
+    }
+  },
+  "certifications": [
+    "First Certificate in English - B2 (2022)",
+    "Generic and specific training courses for student workers (12 hours)"
+  ],
+  "projects": {
+    "proj-yatal": {
+      "title": "YATAL: Linux Telemetry Daemon for HPC & AI",
+      "description": "High-performance, Linux-native telemetry daemon engineered in Rust for the HPC4AI datacenter cluster. Bridges synchronous hardware scraping with asynchronous network pipelines, featuring zero-allocation hot paths, Linux kernel io_uring, and temporal drift sentinels.",
+      "longDescription": "Developed as a Bachelor's Thesis project at the University of Turin under the supervision of Prof. Robert Birke, YATAL (Yet Another Telemetry Agent for Linux) provides safe, real-time observability for large-scale High-Performance Computing (HPC) and Artificial Intelligence infrastructure. Designed to eliminate the probe effect on scientific computing nodes, the daemon unifies disparate datacenter telemetry sources—ranging from Linux kernel PSI and RTNetlink sockets to Out-of-Band BMC Redfish APIs and industrial Modbus TCP PDUs. The project incorporates deep systems research into concurrent memory allocators (jemalloc vs mimalloc), proving that aggressive decay purging is essential to prevent permanent memory pinning in long-running daemons.",
+      "role": "Systems Software Engineer & Researcher",
+      "duration": "Apr 2026 - Sep 2026",
+      "features": [
+        "Threaded Hybrid Sync-Async Bridge decoupling blocking hardware polling from non-blocking Tokio network exporters.",
+        "Temporal Drift Sentinels resolving Out-of-Band BMC clock skews and filtering stale broker telemetry to guarantee InfluxDB integrity.",
+        "Zero-Allocation Telemetry Hot Path powered by SmallVec stack fields, structural sharing tag trees, and lock-free thread-local buffer pools.",
+        "Linux-Native io_uring Asynchronous File Logging with automated file size rotation and graceful fallback to Tokio async I/O.",
+        "Decentralized Compile-Time Plugin Registry utilizing the inventory crate and static linker safety hooks to eliminate configuration coupling.",
+        "Adaptive Dynamic Compression Engine scaling downstream Gzip levels (1 to 9) in real time based on exporter queue backpressure."
+      ],
+      "theory": [
+        "Sync-Async Systems Architecture: Isolating synchronous Linux virtual filesystem reads (/proc, /sys) onto dedicated kernel worker pools to prevent reactor starvation.",
+        "Concurrent Memory Allocator Mechanics: Applying Jason Evans' 2006 jemalloc principles (tcache, 4xNcpu arenas, decay purging) to eliminate cross-thread lock contention and memory pinning.",
+        "Temporal Correctness in Distributed Systems: Aligning unsynchronized device clocks and mitigating epoch resets across heterogeneous datacenter networks.",
+        "Linker Dead-Stripping & GC Sections: Ensuring dynamic plugin registration survivability across LLVM Link-Time Optimization (LTO) compile passes."
+      ],
+      "implementation": [
+        "Safe Rust Core Architecture: 100% safe Rust telemetry pipeline with zero raw pointer dereferencing and zero undefined behavior.",
+        "SmallVec Field Inlining: Inlining up to 8 telemetry fields directly on the stack to achieve zero heap allocation churn on high-frequency metric ticks.",
+        "tikv-jemalloc-ctl Integration: Runtime tuning of background purging threads (background_thread: true) to return freed transient memory back to the OS.",
+        "Kernel io_uring Submission Queues: Explicit pwrite write-offset tracking within dedicated tokio-uring worker threads for high-throughput local disk spooling."
+      ],
+      "links": {
+        "thesis": "Thesis Documentation",
+        "benchmarks": "Benchmark Report"
+      }
+    },
+    "details": {
+      "type": "Project Type",
+      "role": "My Role",
+      "duration": "Duration"
+    },
+    "categories": {
+      "core-cs": "Core Computer Science",
+      "featured": "Featured Project"
+    },
+    "origins": {
+      "university": "University",
+      "personal": "Personal",
+      "freelance": "Freelance"
+    },
+    "proj-gym": {
+      "title": "Gym Management System (Freelance)",
+      "description": "Bespoke management platform for a local fitness center. It features a dual-interface architecture: a public-facing website and a secure staff dashboard to manage memberships, training plans, and schedules. Built entirely with Vanilla PHP, jQuery, and Bulma CSS without heavy frameworks, utilizing Session APIs for robust cross-page authentication and custom MySQL queries for high-performance data transactions.",
+      "longDescription": "Developed as a high-performance commercial solution, this platform transitioned a local gym from manual paper-based processes to a fully digital ecosystem. Built on a Vanilla PHP architecture, the system manages high-concurrency requests for member check-ins and class scheduling without the overhead of heavy frameworks.",
+      "role": "Full-stack Developer (Freelance)",
+      "duration": "2022 - 2023",
+      "features": [
+        "Dual-interface architecture with a public-facing Homepage and a secure Staff Dashboard.",
+        "Bespoke Membership Management system for real-time tracking of subscriptions and attendance.",
+        "Custom administrative tools for staff to manage equipment inventory and class schedules.",
+        "Responsive design ensuring accessibility for gym members on both mobile and desktop devices."
+      ],
+      "theory": [
+        "Vanilla PHP Architecture: Implementation of a script-per-page model to minimize server latency and eliminate framework dependency.",
+        "State Management: Utilization of PHP Session and Cookie APIs for robust cross-page state persistence and user authentication.",
+        "Relational Database Design: Optimized MySQL schema for handling complex relationships between members, trainers, and schedules."
+      ],
+      "implementation": [
+        "Security-First Design: Implementation of strong password protection using Salted Hashing (password_hash) to ensure data integrity.",
+        "Session-Based Authentication: Custom-built login system with granular access control separating User and Staff privileges.",
+        "SQL Optimization: Hand-crafted queries designed for maximum efficiency in generating real-time attendance reports.",
+        "Legacy Deployment: Deployed on an Apache/Linux environment (Altervista) with custom configuration for optimal PHP performance."
+      ]
+    },
+    "proj-1": {
+      "title": "GreenHabits (Web Technologies)",
+      "description": "Full-stack web platform with an enterprise architecture. Implemented with a Java Spring Boot backend, React/Vite (TS) frontend, and PostgreSQL database. The infrastructure is fully containerized with Docker and includes an advanced monitoring system with Grafana and Prometheus.",
+      "longDescription": "GreenHabits is a comprehensive full-stack application designed to track and promote sustainable living habits. The platform boasts an enterprise-grade architecture with a robust backend powered by Java 25 and Spring Boot 4.0.0, exposing a complete RESTful API. The frontend is a modern Single Page Application (SPA) built with React 19, TypeScript, and Vite, utilizing React Query v5 for efficient data fetching and state management. The entire infrastructure is containerized using Docker, orchestrating services including PostgreSQL 16 for persistent data, Redis 7.0+ for caching, and a full observability stack (Prometheus, Grafana, Loki, Promtail) for real-time monitoring and log aggregation.",
+      "role": "Full-stack Developer",
+      "duration": "Sept 2025 - Jan 2026",
+      "docs": "Documentation",
+      "features": [
+        "Comprehensive user activity logging and statistics tracking with an exponential level system and gamification elements.",
+        "Robust JWT-based security with token blacklisting functionality and customized security filtering.",
+        "Real-time centralized logging and application metrics visualization via Prometheus, Loki, Promtail, and Grafana.",
+        "Fully containerized deployment strategy unifying the backend, frontend, database, cache, and monitoring stack in a single Docker Compose network."
+      ],
+      "theory": [
+        "Controller-Service-Repository Pattern: Strict separation of concerns in the Spring Boot backend architecture.",
+        "Observability Driven Development: First-class integration of metrics (Prometheus) and log aggregation (Loki/Promtail) in the development lifecycle.",
+        "Relational Database Design: Complex entity relationships handling users, posts, activities, events, and challenges via JPA/Hibernate.",
+        "N+1 Query Optimization: Advanced use of LEFT JOIN FETCH and DTO projection queries to resolve performance bottlenecks in ORM data fetching."
+      ],
+      "implementation": [
+        "Spring Boot Actuator & Micrometer: Exposure of custom metrics and health endpoints for Prometheus scraping.",
+        "React Query (v5) & React Hook Form: Implementation of sophisticated client-side data fetching, caching strategies, and form validation.",
+        "Hibernate Query Hints: Applying fetch size hints and covering indexes (idx_activity_user_summary) to batch fetch related entities and reduce memory overhead.",
+        "Cypress E2E Testing: Exhaustive end-to-end testing scenarios ensuring critical user flows and application reliability."
+      ]
+    },
+    "proj-2": {
+      "title": "School Outreach Portal (HCI)",
+      "description": "Development of a high-fidelity, accessible web portal for the Department of Computer Science (UniTo), designed to aggregate outreach activities for schools.",
+      "longDescription": "This project is a high-fidelity, fully functional web application designed for the Department of Computer Science at the University of Turin. It serves as a dedicated portal for schools (students, teachers, and principals) to explore outreach activities, labs, and orientation programs. Developed as part of the Human-Computer Interaction class, the goal was to aggregate various Public Engagement activities (like Social4School and AIRLab) into a single, highly accessible, and user-centric platform.",
+      "role": "Frontend Developer & UX Engineer",
+      "duration": "Dec 2025",
+      "features": [
+        "Advanced accessibility compliance, breadcrumbs, and error handling for maximum usability.",
+        "Full internationalization (i18n) support implemented to accommodate diverse users.",
+        "Native theming leveraging Bootstrap 5 variables for a maintainable and consistent design system.",
+        "Dedicated tailored views including a Master Page, Schools Page, and Events Page."
+      ],
+      "theory": [
+        "Human-Computer Interaction Principles: Focus on user-centric design and intuitive navigation paths.",
+        "Accessibility (a11y) Standards: Ensuring the platform is usable by individuals with varying abilities.",
+        "Information Architecture: Structuring complex academic department data into digestible formats.",
+        "Responsive Web Design: Adapting UI components seamlessly across all breakpoints."
+      ],
+      "implementation": [
+        "React 19 & TypeScript: Building a robust, type-safe single-page application.",
+        "Vite 6.0: Utilizing a modern, rapid build tool for optimized frontend tooling.",
+        "Bootstrap 5.3: Extending native variables for a custom-branded UI without excessive CSS overrides.",
+        "GitHub Actions CI/CD: Automated deployment pipeline directly to GitHub Pages."
+      ]
+    },
+    "proj-3": {
+      "title": "WinHUD",
+      "description": "Desktop application for Windows developed in C# (.NET/WPF). Implements a customizable overlay for real-time monitoring of hardware data and system performance.",
+      "longDescription": "WinHUD is a lightweight, non-intrusive system performance overlay for Windows. It provides real-time monitoring of critical system metrics (CPU, GPU, RAM, Disk, Network) without cluttering your screen or stealing focus from your games. Designed with a \"set it and forget it\" philosophy, WinHUD automatically detects when you are gaming, adjusts its text color based on the background brightness, and stays out of your way (complete with a \"Ghost Mode\" where clicks pass entirely through its UI).",
+      "role": "C# / .NET Developer",
+      "duration": "Jan 2026 - Feb 2026",
+      "features": [
+        "Real-Time Hardware Monitoring delivering updates every second for CPU, GPU, RAM, Disk activity, and Network speed.",
+        "Gamer-Centric Design where the overlay is totally click-through, supported by Steam detection to dynamically vary visibility.",
+        "Smart Visuals using dynamic contrast processing by analyzing pixels beneath it 60 times a second, switching between Bright Green and Dark Grey.",
+        "Multi-Monitor Support via System Tray management driven by auto-saved configuration preferences."
+      ],
+      "theory": [
+        "Windows System Programming: Deep hooks for performance metrics retrieval and Window Manager interactions.",
+        "Image Processing: Real-time background analysis utilizing sub-second pixel readings for intelligent contrast detection.",
+        "Non-blocking UI Loops: Threading models separating heavy computational tasks off the UI update thread."
+      ],
+      "implementation": [
+        "C# 10 & .NET 10: Targeting the latest platform performance with porting via VS 2022 extensions.",
+        "LibreHardwareMonitorLib: Utilization for granular hardware queries extending across GPU vendors like AMD/Intel/NVIDIA.",
+        "WPF & System.Drawing.Common: Core UI technologies combined specifically for on-screen pixel data captures.",
+        "Makefiles for CI/CD: Automating building, packaging, and release publication directly from a Git Bash terminal."
+      ]
+    },
+    "proj-4": {
+      "title": "libnumakit",
+      "description": "Advanced system library written in C (built with CMake) for memory management on NUMA architectures. Includes low-level task pooling, scheduling, and memory migration logic.",
+      "longDescription": "libnumakit is a high-performance, 'batteries-included' C toolkit designed to bridge the gap between hardware topology discovery (like hwloc) and application logic on modern multi-socket NUMA systems. It provides topology-aware allocators, low-latency synchronization primitives (MCS locks), and declarative thread affinity policies. By strictly controlling memory placement and eliminating interconnect traffic during lock contention, it solves critical performance bottlenecks like false sharing and remote allocation overheads.",
+      "role": "System Software Engineer",
+      "duration": "Feb 2026",
+      "features": [
+        "Local-First Memory Management offering zero-overhead bump-pointer allocation and strict node binding through hugepage-backed arenas.",
+        "Interconnect-Friendly Synchronization using queue-based MCS spinlocks that spin on local cache lines, drastically reducing UPI/xGMI traffic.",
+        "Policy-Based Thread Scheduling allowing declarative pinning (e.g., compact or scatter policies) without manual bitmask manipulation.",
+        "Modular Architecture divided into Memory (hugepages, slabs), Sched (affinity, migration), and Sync (MCS, Ticket, RWS locks) components."
+      ],
+      "theory": [
+        "NUMA Architecture: Understanding and mitigating latency overheads when accessing remote memory across CPU sockets.",
+        "Concurrency & Lock Design: Designing scalable spinlocks (MCS) that prevent thundering herds on cache coherence protocols.",
+        "Memory Management: Direct integration with Linux hugepages to reduce TLB misses during large-scale allocations."
+      ],
+      "implementation": [
+        "C / CMake: High-performance core library compiled with strict optimizations (GCC 9+ / Clang 10+).",
+        "Hardware Locality (hwloc): Internal topological discovery and hardware abstractions.",
+        "Zero-Overhead Data Structures: Lockless bump-pointer arenas ensuring O(1) allocation time."
+      ]
+    },
+    "proj-5": {
+      "title": "Formal Languages & Compilers",
+      "description": "Development from scratch of a compiler in Java. Includes the implementation of a lexical analyzer (Lexer), a top-down syntax analyzer (LL(1) Parser), semantic analysis via SDT (Syntax-Directed Translation), and generation of executable bytecode for the Java Virtual Machine (JVM).",
+      "longDescription": "This project involved the complete, from-scratch implementation of a compiler for a custom procedural language using Java. The architecture follows a classic multi-pass compiler design, starting with a custom lexical analyzer that tokenizes the input source code. Parsing is handled by a recursive descent LL(1) parser, which constructs a clear Abstract Syntax Tree (AST). Semantic analysis guarantees type safety and scoping rules via Syntax-Directed Translation techniques before finally generating valid executable Java Bytecode using the ASM library. This academic project successfully demonstrates a deep, practical understanding of language design, formal grammars, and the internal workings of the JVM. The target language features a C-like control flow (while, conditional cases) integrated with Prefix (Polish) notation for arithmetic and boolean expressions, supporting n-ary operators and statement grouping.",
+      "role": "Compiler Engineer",
+      "duration": "Feb 2026 - May 2026",
+      "docs": "Documentation",
+      "study": "Study Materials",
+      "features": [
+        "Manual implementation of a Lexical Analyzer (Lexer) using regular expressions and finite automata theory.",
+        "Construction of a Top-Down Recursive Descent Parser conforming to LL(1) grammar constraints.",
+        "Robust Semantic Analysis implementing Syntax-Directed Translation (SDT) for type checking and scope resolution.",
+        "Direct generation of verifiable Java Bytecode (.class files) utilizing the JVM instruction set architecture."
+      ],
+      "theory": [
+        "Chomsky Hierarchy: Focus on Type-2 (Context-Free) and Type-3 (Regular) languages.",
+        "Finite Automata: Deterministic (DFA) and Nondeterministic (NFA) modeling for token recognition.",
+        "LL(1) Grammars: Formal analysis of FIRST and FOLLOW sets to ensure deterministic predictive parsing.",
+        "Syntax-Directed Translation (SDT): Coupling grammar productions with semantic actions and attribute propagation."
+      ],
+      "implementation": [
+        "Lexical Analysis: Hand-coded scanner with lookahead and character consumption patterns.",
+        "Recursive Descent: Modular parser where each non-terminal is mapped to a Java method.",
+        "Jasmin Backend: Translation of high-level constructs into Jasmin assembly mnemonics.",
+        "Stack Machine Semantics: Management of JVM operand stack and local variable mapping during code emission."
+      ],
+      "links": {
+        "grammar": "Grammar",
+        "study": "Study"
+      }
+    },
+    "proj-6": {
+      "title": "POSIX Operating Systems Simulation",
+      "description": "Complex multi-process simulation developed in C for POSIX environments. The software architecture leverages advanced IPC primitives (Message Queues, Shared Memory, and Semaphores) for secure concurrency management and node synchronization (Director, Worker, etc.).",
+      "longDescription": "This project is a comprehensive multi-process simulation framework developed as part of an Operating Systems course (A.Y. 2024-2025). The simulation models a post office service system with various interacting components: Director, Workers, Users, and Ticket Issuers. Structured with a modular architecture, the program relies on an intricate set of advanced System V IPC primitives to orchestrate flow and two-way communications. A parallel Main application provides a terminal-based UI where users can manage validation of the simulation's configuration or inspect generated logs. In terms of fault tolerance, the project autonomously handles fatal scenarios by generating detailed crash reports—containing CPU registry dumps—for robust post-mortem debugging across architectures like x86-64 and aarch64.",
+      "role": "C Developer / System Engineer",
+      "duration": "Nov 2024 - Jul 2025",
+      "features": [
+        "Realistic modeling of six distinct postal services, producing real-time analytical logs or aggregated statistics at run completion.",
+        "Separated Main application with an interactive TUI utilizing libfort to dynamically manage startup properties and monitor diagnostic output.",
+        "Advanced Error Handling structure that intrinsically intercepts panic signals (SIGSEGV/SIGABRT) to produce core dump files natively listing critical CPU registers.",
+        "Centralized distributed logging driven asynchronously by dedicated Logger processes and orchestrated through custom named pipes (FIFOs)."
+      ],
+      "theory": [
+        "Multi-Process Architecture: An orchestrated process tree where separate client/server logic simulates business components dealing with real-time event ingestion.",
+        "Cooperative Synchronization: Detailed design against race conditions when matching wait queues to agent windows, relying systematically on System V semaphore arrays.",
+        "IPC Primitives: Instantiation of shared memory segments and message queues mapped with precise payload definitions for guaranteed bi-directional communication.",
+        "POSIX OS native signals: Handling complex asynchronous signals to orchestrate controlled interrupts across the process hierarchy and deter zombie processes."
+      ],
+      "implementation": [
+        "Modular C project split into discrete Header/Source files natively compiled with structured Makefiles branching to isolated build targets.",
+        "Integration of the inih library to automatically parse and enforce constraints exposed through external INI configurations.",
+        "System V IPC Abstractions: Extensive wrapping of raw shmget, msgget, semget (and cleanup routines) to effectively broker non-blocking messaging boundaries.",
+        "Adapted log.c library extended with multi-processing guardrails offering variable terminal-colored log severities."
+      ]
+    },
+    "proj-7": {
+      "title": "Algorithms & Data Structures Library",
+      "description": "C library containing manual implementation of fundamental data structures and algorithms, designed for maximum efficiency. Implements Graphs, Hash Tables, Edit Distance calculation, and sorting modules, validated through rigorous unit testing (Unity framework).",
+      "longDescription": "This project is a comprehensive suite of C libraries implementing fundamental data structures and algorithms from scratch. Developed for the Algorithms and Data Structures class, the primary focus was on maximizing time and space efficiency. The project follows a strictly Test-Driven Development (TDD) approach using the Unity framework for C, ensuring extreme robustness through intensive unit testing of each module. The implemented modules range from sorting algorithms and Edit Distance calculation for auto-correction, to generic implementations of Hash Tables with chaining, and sparse Graphs with algorithms such as Breadth-First Visit (BFS).",
+      "role": "C Developer / Algorithms",
+      "duration": "Sept 2025 - Oct 2025",
+      "features": [
+        "Generic implementation (void*) in C of Hash Tables and Sparse Graphs (labeled/unlabeled, directed/undirected).",
+        "Pure TDD development using the Unity framework to ensure 100% coverage of library functionalities.",
+        "Optimized and efficient Edit Distance calculation, applied to automatic text correction against a dictionary.",
+        "Breadth-First Search (BFS) algorithm applied to a real-world dataset of distances between Italian cities (road networks)."
+      ],
+      "theory": [
+        "Complexity Analysis: Rigorous asymptotic (Big-O) evaluation of execution times and memory footprint for every implemented routine.",
+        "Design Patterns in C: Abstract interfaces and utilization of function pointers for custom hashing and comparisons to ensure polymorphism.",
+        "Dynamic Programming: Implementation of the Edit Distance problem by memoizing intermediate results to optimize performance.",
+        "Graph Theory: Computational representation via adjacency lists natively optimized for sparsely connected node topologies."
+      ],
+      "implementation": [
+        "C Engineering: Structured compilation via Makefiles, ensuring clean separation between library objects and main/test executables.",
+        "Function Pointers: Building generic structures capable of storing, hashing, and manipulating arbitrary data types abstractly.",
+        "Dynamic Memory Allocation: Meticulous manipulation of heap memory (malloc/free) with strict verification against memory leaks via Valgrind.",
+        "Unit Testing (Unity C): Production of comprehensive test suites validating all pre- and post-conditions before actual algorithm coding."
+      ]
+    },
+    "proj-8": {
+      "title": "HCI Anime Data Storytelling",
+      "description": "Data processing and analysis pipeline developed in Python (Pandas, Jupyter Notebooks) based on a massive dataset (+130M data points) related to the anime industry. Includes modular scripts for ETL, anomaly treatment, feature engineering, and Exploratory Data Analysis to tell a story through data.",
+      "longDescription": "This project implements an end-to-end data processing and analysis pipeline to explore and visualize a massive dataset of over 130 million data points related to the anime industry (anime, characters, actors, user interactions). Developed entirely in Python within JupyterLab, the work utilizes the uv package manager to guarantee deterministic and highly efficient dependency resolution. The core of the analysis focuses not only on compiling statistics but on true 'Data Storytelling', highlighting patterns, trends, and outliers over time to offer compelling insights to domain experts and fans alike.",
+      "role": "Data Analyst",
+      "duration": "Dec 2025 - Feb 2026",
+      "features": [
+        "Comprehensive ETL (Extract, Transform, Load) Pipeline processing raw CSV data into highly optimized Parquet format.",
+        "Deep Exploratory Data Analysis (EDA) focused on identifying narrative arcs and industry-wide temporal trends.",
+        "Advanced Static Visualization via Matplotlib and Seaborn for multi-dimensional data representation.",
+        "Geospatial Analysis utilizing Geopandas and Folium to plot interactive maps related to content origination and audience spread."
+      ],
+      "theory": [
+        "Data Storytelling: Structuring data-driven narratives to intuitively communicate complex quantitative insights.",
+        "High-Performance Data Storage: Transitioning from row-based (CSV) to columnar storage (Parquet) for analytical workloads.",
+        "Geospatial Topology: Principles of mapping discrete spatial data onto continuous coordinate projections.",
+        "Exploratory vs Explanatory Analysis: Shifting from open-ended data discovery to focused narrative presentation."
+      ],
+      "implementation": [
+        "Pandas with PyArrow Backend: Leveraging Arrow memory format to drastically reduce footprint and speed up aggregations on 130M+ rows.",
+        "Uv Package Management: Use of Rust-based uv for millisecond-resolution of Python virtual environments and locked dependencies.",
+        "Jupyter Workspaces: Separation of concerns across modular notebooks (01_cleaning, 02_exploration, 03_story) for reproducible research.",
+        "Local Package Architecture: Installation of the analysis source code (src/) in editable mode for clean cross-notebook imports."
+      ]
+    }
+  },
+  "sections": {
+    "experience": {
+      "title": "Professional Experience",
+      "description": "A look at my career history, the teams I've worked with, and the technologies I've leveraged to drive business results."
+    },
     "projects": {
-        "details": {
-            "type": "Project Type",
-            "role": "My Role",
-            "duration": "Duration"
-        },
-        "categories": {
-            "core-cs": "Core Computer Science",
-            "featured": "Featured Project"
-        },
-        "origins": {
-            "university": "University",
-            "personal": "Personal",
-            "freelance": "Freelance"
-        },
-        "proj-gym": {
-            "title": "Gym Management System (Freelance)",
-            "description": "Bespoke management platform for a local fitness center. It features a dual-interface architecture: a public-facing website and a secure staff dashboard to manage memberships, training plans, and schedules. Built entirely with Vanilla PHP, jQuery, and Bulma CSS without heavy frameworks, utilizing Session APIs for robust cross-page authentication and custom MySQL queries for high-performance data transactions.",
-            "longDescription": "Developed as a high-performance commercial solution, this platform transitioned a local gym from manual paper-based processes to a fully digital ecosystem. Built on a Vanilla PHP architecture, the system manages high-concurrency requests for member check-ins and class scheduling without the overhead of heavy frameworks.",
-            "role": "Full-stack Developer (Freelance)",
-            "duration": "2022 - 2023",
-            "features": [
-                "Dual-interface architecture with a public-facing Homepage and a secure Staff Dashboard.",
-                "Bespoke Membership Management system for real-time tracking of subscriptions and attendance.",
-                "Custom administrative tools for staff to manage equipment inventory and class schedules.",
-                "Responsive design ensuring accessibility for gym members on both mobile and desktop devices."
-            ],
-            "theory": [
-                "Vanilla PHP Architecture: Implementation of a script-per-page model to minimize server latency and eliminate framework dependency.",
-                "State Management: Utilization of PHP Session and Cookie APIs for robust cross-page state persistence and user authentication.",
-                "Relational Database Design: Optimized MySQL schema for handling complex relationships between members, trainers, and schedules."
-            ],
-            "implementation": [
-                "Security-First Design: Implementation of strong password protection using Salted Hashing (password_hash) to ensure data integrity.",
-                "Session-Based Authentication: Custom-built login system with granular access control separating User and Staff privileges.",
-                "SQL Optimization: Hand-crafted queries designed for maximum efficiency in generating real-time attendance reports.",
-                "Legacy Deployment: Deployed on an Apache/Linux environment (Altervista) with custom configuration for optimal PHP performance."
-            ]
-        },
-        "proj-1": {
-            "title": "GreenHabits (Web Technologies)",
-            "description": "Full-stack web platform with an enterprise architecture. Implemented with a Java Spring Boot backend, React/Vite (TS) frontend, and PostgreSQL database. The infrastructure is fully containerized with Docker and includes an advanced monitoring system with Grafana and Prometheus.",
-            "longDescription": "GreenHabits is a comprehensive full-stack application designed to track and promote sustainable living habits. The platform boasts an enterprise-grade architecture with a robust backend powered by Java 25 and Spring Boot 4.0.0, exposing a complete RESTful API. The frontend is a modern Single Page Application (SPA) built with React 19, TypeScript, and Vite, utilizing React Query v5 for efficient data fetching and state management. The entire infrastructure is containerized using Docker, orchestrating services including PostgreSQL 16 for persistent data, Redis 7.0+ for caching, and a full observability stack (Prometheus, Grafana, Loki, Promtail) for real-time monitoring and log aggregation.",
-            "role": "Full-stack Developer",
-            "duration": "Sept 2025 - Jan 2026",
-            "docs": "Documentation",
-            "features": [
-                "Comprehensive user activity logging and statistics tracking with an exponential level system and gamification elements.",
-                "Robust JWT-based security with token blacklisting functionality and customized security filtering.",
-                "Real-time centralized logging and application metrics visualization via Prometheus, Loki, Promtail, and Grafana.",
-                "Fully containerized deployment strategy unifying the backend, frontend, database, cache, and monitoring stack in a single Docker Compose network."
-            ],
-            "theory": [
-                "Controller-Service-Repository Pattern: Strict separation of concerns in the Spring Boot backend architecture.",
-                "Observability Driven Development: First-class integration of metrics (Prometheus) and log aggregation (Loki/Promtail) in the development lifecycle.",
-                "Relational Database Design: Complex entity relationships handling users, posts, activities, events, and challenges via JPA/Hibernate.",
-                "N+1 Query Optimization: Advanced use of LEFT JOIN FETCH and DTO projection queries to resolve performance bottlenecks in ORM data fetching."
-            ],
-            "implementation": [
-                "Spring Boot Actuator & Micrometer: Exposure of custom metrics and health endpoints for Prometheus scraping.",
-                "React Query (v5) & React Hook Form: Implementation of sophisticated client-side data fetching, caching strategies, and form validation.",
-                "Hibernate Query Hints: Applying fetch size hints and covering indexes (idx_activity_user_summary) to batch fetch related entities and reduce memory overhead.",
-                "Cypress E2E Testing: Exhaustive end-to-end testing scenarios ensuring critical user flows and application reliability."
-            ]
-        },
-        "proj-2": {
-            "title": "School Outreach Portal (HCI)",
-            "description": "Development of a high-fidelity, accessible web portal for the Department of Computer Science (UniTo), designed to aggregate outreach activities for schools.",
-            "longDescription": "This project is a high-fidelity, fully functional web application designed for the Department of Computer Science at the University of Turin. It serves as a dedicated portal for schools (students, teachers, and principals) to explore outreach activities, labs, and orientation programs. Developed as part of the Human-Computer Interaction class, the goal was to aggregate various Public Engagement activities (like Social4School and AIRLab) into a single, highly accessible, and user-centric platform.",
-            "role": "Frontend Developer & UX Engineer",
-            "duration": "Dec 2025",
-            "features": [
-                "Advanced accessibility compliance, breadcrumbs, and error handling for maximum usability.",
-                "Full internationalization (i18n) support implemented to accommodate diverse users.",
-                "Native theming leveraging Bootstrap 5 variables for a maintainable and consistent design system.",
-                "Dedicated tailored views including a Master Page, Schools Page, and Events Page."
-            ],
-            "theory": [
-                "Human-Computer Interaction Principles: Focus on user-centric design and intuitive navigation paths.",
-                "Accessibility (a11y) Standards: Ensuring the platform is usable by individuals with varying abilities.",
-                "Information Architecture: Structuring complex academic department data into digestible formats.",
-                "Responsive Web Design: Adapting UI components seamlessly across all breakpoints."
-            ],
-            "implementation": [
-                "React 19 & TypeScript: Building a robust, type-safe single-page application.",
-                "Vite 6.0: Utilizing a modern, rapid build tool for optimized frontend tooling.",
-                "Bootstrap 5.3: Extending native variables for a custom-branded UI without excessive CSS overrides.",
-                "GitHub Actions CI/CD: Automated deployment pipeline directly to GitHub Pages."
-            ]
-        },
-        "proj-3": {
-            "title": "WinHUD",
-            "description": "Desktop application for Windows developed in C# (.NET/WPF). Implements a customizable overlay for real-time monitoring of hardware data and system performance.",
-            "longDescription": "WinHUD is a lightweight, non-intrusive system performance overlay for Windows. It provides real-time monitoring of critical system metrics (CPU, GPU, RAM, Disk, Network) without cluttering your screen or stealing focus from your games. Designed with a \"set it and forget it\" philosophy, WinHUD automatically detects when you are gaming, adjusts its text color based on the background brightness, and stays out of your way (complete with a \"Ghost Mode\" where clicks pass entirely through its UI).",
-            "role": "C# / .NET Developer",
-            "duration": "Jan 2026 - Feb 2026",
-            "features": [
-                "Real-Time Hardware Monitoring delivering updates every second for CPU, GPU, RAM, Disk activity, and Network speed.",
-                "Gamer-Centric Design where the overlay is totally click-through, supported by Steam detection to dynamically vary visibility.",
-                "Smart Visuals using dynamic contrast processing by analyzing pixels beneath it 60 times a second, switching between Bright Green and Dark Grey.",
-                "Multi-Monitor Support via System Tray management driven by auto-saved configuration preferences."
-            ],
-            "theory": [
-                "Windows System Programming: Deep hooks for performance metrics retrieval and Window Manager interactions.",
-                "Image Processing: Real-time background analysis utilizing sub-second pixel readings for intelligent contrast detection.",
-                "Non-blocking UI Loops: Threading models separating heavy computational tasks off the UI update thread."
-            ],
-            "implementation": [
-                "C# 10 & .NET 10: Targeting the latest platform performance with porting via VS 2022 extensions.",
-                "LibreHardwareMonitorLib: Utilization for granular hardware queries extending across GPU vendors like AMD/Intel/NVIDIA.",
-                "WPF & System.Drawing.Common: Core UI technologies combined specifically for on-screen pixel data captures.",
-                "Makefiles for CI/CD: Automating building, packaging, and release publication directly from a Git Bash terminal."
-            ]
-        },
-        "proj-4": {
-            "title": "libnumakit",
-            "description": "Advanced system library written in C (built with CMake) for memory management on NUMA architectures. Includes low-level task pooling, scheduling, and memory migration logic.",
-            "longDescription": "libnumakit is a high-performance, 'batteries-included' C toolkit designed to bridge the gap between hardware topology discovery (like hwloc) and application logic on modern multi-socket NUMA systems. It provides topology-aware allocators, low-latency synchronization primitives (MCS locks), and declarative thread affinity policies. By strictly controlling memory placement and eliminating interconnect traffic during lock contention, it solves critical performance bottlenecks like false sharing and remote allocation overheads.",
-            "role": "System Software Engineer",
-            "duration": "Feb 2026",
-            "features": [
-                "Local-First Memory Management offering zero-overhead bump-pointer allocation and strict node binding through hugepage-backed arenas.",
-                "Interconnect-Friendly Synchronization using queue-based MCS spinlocks that spin on local cache lines, drastically reducing UPI/xGMI traffic.",
-                "Policy-Based Thread Scheduling allowing declarative pinning (e.g., compact or scatter policies) without manual bitmask manipulation.",
-                "Modular Architecture divided into Memory (hugepages, slabs), Sched (affinity, migration), and Sync (MCS, Ticket, RWS locks) components."
-            ],
-            "theory": [
-                "NUMA Architecture: Understanding and mitigating latency overheads when accessing remote memory across CPU sockets.",
-                "Concurrency & Lock Design: Designing scalable spinlocks (MCS) that prevent thundering herds on cache coherence protocols.",
-                "Memory Management: Direct integration with Linux hugepages to reduce TLB misses during large-scale allocations."
-            ],
-            "implementation": [
-                "C / CMake: High-performance core library compiled with strict optimizations (GCC 9+ / Clang 10+).",
-                "Hardware Locality (hwloc): Internal topological discovery and hardware abstractions.",
-                "Zero-Overhead Data Structures: Lockless bump-pointer arenas ensuring O(1) allocation time."
-            ]
-        },
-        "proj-5": {
-            "title": "Formal Languages & Compilers",
-            "description": "Development from scratch of a compiler in Java. Includes the implementation of a lexical analyzer (Lexer), a top-down syntax analyzer (LL(1) Parser), semantic analysis via SDT (Syntax-Directed Translation), and generation of executable bytecode for the Java Virtual Machine (JVM).",
-            "longDescription": "This project involved the complete, from-scratch implementation of a compiler for a custom procedural language using Java. The architecture follows a classic multi-pass compiler design, starting with a custom lexical analyzer that tokenizes the input source code. Parsing is handled by a recursive descent LL(1) parser, which constructs a clear Abstract Syntax Tree (AST). Semantic analysis guarantees type safety and scoping rules via Syntax-Directed Translation techniques before finally generating valid executable Java Bytecode using the ASM library. This academic project successfully demonstrates a deep, practical understanding of language design, formal grammars, and the internal workings of the JVM. The target language features a C-like control flow (while, conditional cases) integrated with Prefix (Polish) notation for arithmetic and boolean expressions, supporting n-ary operators and statement grouping.",
-            "role": "Compiler Engineer",
-            "duration": "Feb 2026 - May 2026",
-            "docs": "Documentation",
-            "study": "Study Materials",
-            "features": [
-                "Manual implementation of a Lexical Analyzer (Lexer) using regular expressions and finite automata theory.",
-                "Construction of a Top-Down Recursive Descent Parser conforming to LL(1) grammar constraints.",
-                "Robust Semantic Analysis implementing Syntax-Directed Translation (SDT) for type checking and scope resolution.",
-                "Direct generation of verifiable Java Bytecode (.class files) utilizing the JVM instruction set architecture."
-            ],
-            "theory": [
-                "Chomsky Hierarchy: Focus on Type-2 (Context-Free) and Type-3 (Regular) languages.",
-                "Finite Automata: Deterministic (DFA) and Nondeterministic (NFA) modeling for token recognition.",
-                "LL(1) Grammars: Formal analysis of FIRST and FOLLOW sets to ensure deterministic predictive parsing.",
-                "Syntax-Directed Translation (SDT): Coupling grammar productions with semantic actions and attribute propagation."
-            ],
-            "implementation": [
-                "Lexical Analysis: Hand-coded scanner with lookahead and character consumption patterns.",
-                "Recursive Descent: Modular parser where each non-terminal is mapped to a Java method.",
-                "Jasmin Backend: Translation of high-level constructs into Jasmin assembly mnemonics.",
-                "Stack Machine Semantics: Management of JVM operand stack and local variable mapping during code emission."
-            ],
-            "links": {
-                "grammar": "Grammar",
-                "study": "Study"
-            }
-        },
-        "proj-6": {
-            "title": "POSIX Operating Systems Simulation",
-            "description": "Complex multi-process simulation developed in C for POSIX environments. The software architecture leverages advanced IPC primitives (Message Queues, Shared Memory, and Semaphores) for secure concurrency management and node synchronization (Director, Worker, etc.).",
-            "longDescription": "This project is a comprehensive multi-process simulation framework developed as part of an Operating Systems course (A.Y. 2024-2025). The simulation models a post office service system with various interacting components: Director, Workers, Users, and Ticket Issuers. Structured with a modular architecture, the program relies on an intricate set of advanced System V IPC primitives to orchestrate flow and two-way communications. A parallel Main application provides a terminal-based UI where users can manage validation of the simulation's configuration or inspect generated logs. In terms of fault tolerance, the project autonomously handles fatal scenarios by generating detailed crash reports—containing CPU registry dumps—for robust post-mortem debugging across architectures like x86-64 and aarch64.",
-            "role": "C Developer / System Engineer",
-            "duration": "Nov 2024 - Jul 2025",
-            "features": [
-                "Realistic modeling of six distinct postal services, producing real-time analytical logs or aggregated statistics at run completion.",
-                "Separated Main application with an interactive TUI utilizing libfort to dynamically manage startup properties and monitor diagnostic output.",
-                "Advanced Error Handling structure that intrinsically intercepts panic signals (SIGSEGV/SIGABRT) to produce core dump files natively listing critical CPU registers.",
-                "Centralized distributed logging driven asynchronously by dedicated Logger processes and orchestrated through custom named pipes (FIFOs)."
-            ],
-            "theory": [
-                "Multi-Process Architecture: An orchestrated process tree where separate client/server logic simulates business components dealing with real-time event ingestion.",
-                "Cooperative Synchronization: Detailed design against race conditions when matching wait queues to agent windows, relying systematically on System V semaphore arrays.",
-                "IPC Primitives: Instantiation of shared memory segments and message queues mapped with precise payload definitions for guaranteed bi-directional communication.",
-                "POSIX OS native signals: Handling complex asynchronous signals to orchestrate controlled interrupts across the process hierarchy and deter zombie processes."
-            ],
-            "implementation": [
-                "Modular C project split into discrete Header/Source files natively compiled with structured Makefiles branching to isolated build targets.",
-                "Integration of the inih library to automatically parse and enforce constraints exposed through external INI configurations.",
-                "System V IPC Abstractions: Extensive wrapping of raw shmget, msgget, semget (and cleanup routines) to effectively broker non-blocking messaging boundaries.",
-                "Adapted log.c library extended with multi-processing guardrails offering variable terminal-colored log severities."
-            ]
-        },
-        "proj-7": {
-            "title": "Algorithms & Data Structures Library",
-            "description": "C library containing manual implementation of fundamental data structures and algorithms, designed for maximum efficiency. Implements Graphs, Hash Tables, Edit Distance calculation, and sorting modules, validated through rigorous unit testing (Unity framework).",
-            "longDescription": "This project is a comprehensive suite of C libraries implementing fundamental data structures and algorithms from scratch. Developed for the Algorithms and Data Structures class, the primary focus was on maximizing time and space efficiency. The project follows a strictly Test-Driven Development (TDD) approach using the Unity framework for C, ensuring extreme robustness through intensive unit testing of each module. The implemented modules range from sorting algorithms and Edit Distance calculation for auto-correction, to generic implementations of Hash Tables with chaining, and sparse Graphs with algorithms such as Breadth-First Visit (BFS).",
-            "role": "C Developer / Algorithms",
-            "duration": "Sept 2025 - Oct 2025",
-            "features": [
-                "Generic implementation (void*) in C of Hash Tables and Sparse Graphs (labeled/unlabeled, directed/undirected).",
-                "Pure TDD development using the Unity framework to ensure 100% coverage of library functionalities.",
-                "Optimized and efficient Edit Distance calculation, applied to automatic text correction against a dictionary.",
-                "Breadth-First Search (BFS) algorithm applied to a real-world dataset of distances between Italian cities (road networks)."
-            ],
-            "theory": [
-                "Complexity Analysis: Rigorous asymptotic (Big-O) evaluation of execution times and memory footprint for every implemented routine.",
-                "Design Patterns in C: Abstract interfaces and utilization of function pointers for custom hashing and comparisons to ensure polymorphism.",
-                "Dynamic Programming: Implementation of the Edit Distance problem by memoizing intermediate results to optimize performance.",
-                "Graph Theory: Computational representation via adjacency lists natively optimized for sparsely connected node topologies."
-            ],
-            "implementation": [
-                "C Engineering: Structured compilation via Makefiles, ensuring clean separation between library objects and main/test executables.",
-                "Function Pointers: Building generic structures capable of storing, hashing, and manipulating arbitrary data types abstractly.",
-                "Dynamic Memory Allocation: Meticulous manipulation of heap memory (malloc/free) with strict verification against memory leaks via Valgrind.",
-                "Unit Testing (Unity C): Production of comprehensive test suites validating all pre- and post-conditions before actual algorithm coding."
-            ]
-        },
-        "proj-8": {
-            "title": "HCI Anime Data Storytelling",
-            "description": "Data processing and analysis pipeline developed in Python (Pandas, Jupyter Notebooks) based on a massive dataset (+130M data points) related to the anime industry. Includes modular scripts for ETL, anomaly treatment, feature engineering, and Exploratory Data Analysis to tell a story through data.",
-            "longDescription": "This project implements an end-to-end data processing and analysis pipeline to explore and visualize a massive dataset of over 130 million data points related to the anime industry (anime, characters, actors, user interactions). Developed entirely in Python within JupyterLab, the work utilizes the uv package manager to guarantee deterministic and highly efficient dependency resolution. The core of the analysis focuses not only on compiling statistics but on true 'Data Storytelling', highlighting patterns, trends, and outliers over time to offer compelling insights to domain experts and fans alike.",
-            "role": "Data Analyst",
-            "duration": "Dec 2025 - Feb 2026",
-            "features": [
-                "Comprehensive ETL (Extract, Transform, Load) Pipeline processing raw CSV data into highly optimized Parquet format.",
-                "Deep Exploratory Data Analysis (EDA) focused on identifying narrative arcs and industry-wide temporal trends.",
-                "Advanced Static Visualization via Matplotlib and Seaborn for multi-dimensional data representation.",
-                "Geospatial Analysis utilizing Geopandas and Folium to plot interactive maps related to content origination and audience spread."
-            ],
-            "theory": [
-                "Data Storytelling: Structuring data-driven narratives to intuitively communicate complex quantitative insights.",
-                "High-Performance Data Storage: Transitioning from row-based (CSV) to columnar storage (Parquet) for analytical workloads.",
-                "Geospatial Topology: Principles of mapping discrete spatial data onto continuous coordinate projections.",
-                "Exploratory vs Explanatory Analysis: Shifting from open-ended data discovery to focused narrative presentation."
-            ],
-            "implementation": [
-                "Pandas with PyArrow Backend: Leveraging Arrow memory format to drastically reduce footprint and speed up aggregations on 130M+ rows.",
-                "Uv Package Management: Use of Rust-based uv for millisecond-resolution of Python virtual environments and locked dependencies.",
-                "Jupyter Workspaces: Separation of concerns across modular notebooks (01_cleaning, 02_exploration, 03_story) for reproducible research.",
-                "Local Package Architecture: Installation of the analysis source code (src/) in editable mode for clean cross-notebook imports."
-            ]
-        }
+      "title": "Featured Projects",
+      "description": "A selection of my best work spanning enterprise web apps, low-level system libraries, and academic platforms."
     },
-    "sections": {
-        "experience": {
-            "title": "Professional Experience",
-            "description": "A look at my career history, the teams I've worked with, and the technologies I've leveraged to drive business results."
-        },
-        "projects": {
-            "title": "Featured Projects",
-            "description": "A selection of my best work spanning enterprise web apps, low-level system libraries, and academic platforms."
-        },
-        "education": {
-            "title": "Education & Certifications",
-            "description": "My academic background and relevant certifications in Computer Science and software engineering."
-        },
-        "skills": {
-            "title": "Skills Matrix",
-            "description": "A comprehensive overview of my technical stack and core competencies across multiple domains.",
-            "categories": {
-                "languages": "Languages",
-                "frontend": "Frontend",
-                "backend": "Backend & Cloud",
-                "core": "Core Computer Science",
-                "tools": "DevOps & Tools"
-            },
-            "tiers": {
-                "advanced": "Advanced",
-                "proficient": "Proficient",
-                "familiar": "Familiar"
-            },
-            "items": {
-                "java": "Java",
-                "c": "C",
-                "cs": "C#",
-                "js-ts": "JS / TS",
-                "php": "PHP",
-                "python": "Python",
-                "rust": "Rust",
-                "react": "React",
-                "nextjs": "Next.js",
-                "tailwind": "Tailwind CSS",
-                "bootstrap": "Bootstrap",
-                "bulma": "Bulma CSS",
-                "jquery": "jQuery",
-                "html-css": "HTML / CSS",
-                "spring": "Spring Boot",
-                "fastapi": "FastAPI",
-                "flask": "Flask",
-                "postgres": "PostgreSQL",
-                "docker": "Docker",
-                "os": "Operating Systems",
-                "compilers": "Compilers",
-                "algo": "Algorithms & DS",
-                "numa": "NUMA Arch.",
-                "git": "Git",
-                "make": "Make",
-                "cmake": "CMake",
-                "monitoring": "Grafana & Prometheus",
-                "analysis": "Data Analysis",
-                "k8s": "Kubernetes"
-            }
-        }
+    "education": {
+      "title": "Education & Certifications",
+      "description": "My academic background and relevant certifications in Computer Science and software engineering."
     },
-    "common": {
-        "present": "Present",
-        "certifications": "Certifications",
-        "github_repo": "GitHub Repo",
-        "live_demo": "Live Demo",
-        "search_placeholder": "Filter by tag or category...",
-        "header_subtitle": "Software Engineer",
-        "loading": "Loading"
-    },
-    "theme": {
-        "light": "Light mode",
-        "system": "System theme",
-        "dark": "Dark mode"
-    },
-    "loading": "Loading"
+    "skills": {
+      "title": "Skills Matrix",
+      "description": "A comprehensive overview of my technical stack and core competencies across multiple domains.",
+      "categories": {
+        "languages": "Languages",
+        "frontend": "Frontend",
+        "backend": "Backend & Cloud",
+        "core": "Core Computer Science",
+        "tools": "DevOps & Tools"
+      },
+      "tiers": {
+        "advanced": "Advanced",
+        "proficient": "Proficient",
+        "familiar": "Familiar"
+      },
+      "items": {
+        "java": "Java",
+        "c": "C",
+        "cs": "C#",
+        "js-ts": "JS / TS",
+        "php": "PHP",
+        "python": "Python",
+        "rust": "Rust",
+        "react": "React",
+        "nextjs": "Next.js",
+        "tailwind": "Tailwind CSS",
+        "bootstrap": "Bootstrap",
+        "bulma": "Bulma CSS",
+        "jquery": "jQuery",
+        "html-css": "HTML / CSS",
+        "spring": "Spring Boot",
+        "fastapi": "FastAPI",
+        "flask": "Flask",
+        "postgres": "PostgreSQL",
+        "docker": "Docker",
+        "os": "Operating Systems",
+        "compilers": "Compilers",
+        "algo": "Algorithms & DS",
+        "numa": "NUMA Arch.",
+        "git": "Git",
+        "make": "Make",
+        "cmake": "CMake",
+        "monitoring": "InfluxDB, Grafana & Prometheus",
+        "analysis": "Data Analysis",
+        "k8s": "Kubernetes",
+        "systems-io": "Linux Systems & io_uring"
+      }
+    }
+  },
+  "common": {
+    "present": "Present",
+    "certifications": "Certifications",
+    "github_repo": "GitHub Repo",
+    "live_demo": "Live Demo",
+    "search_placeholder": "Filter by tag or category...",
+    "header_subtitle": "Software Engineer",
+    "loading": "Loading",
+    "thesis": "Bachelor's Thesis / Research",
+    "back_to_portfolio": "Back to Portfolio"
+  },
+  "theme": {
+    "light": "Light mode",
+    "system": "System theme",
+    "dark": "Dark mode"
+  },
+  "loading": "Loading"
 }

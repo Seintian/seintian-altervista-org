@@ -1,268 +1,36 @@
-"use client"
+"use client";
 
-import { useTranslation } from "react-i18next";
-import { ArrowLeft, ExternalLink, FileText, Video } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
+import { ProjectType } from "@/types/portfolio";
+import ProjectHeader from "@/components/project/ProjectHeader";
+import ProjectOverview from "@/components/project/ProjectOverview";
+import ProjectFeatures from "@/components/project/ProjectFeatures";
+import ProjectTheory from "@/components/project/ProjectTheory";
+import ProjectImplementation from "@/components/project/ProjectImplementation";
+import ProjectSidebar from "@/components/project/ProjectSidebar";
+import TelemetryInteractiveDemo from "@/components/project/TelemetryInteractiveDemo";
 
-function GithubIcon({ className = "", ...props }: React.HTMLAttributes<HTMLSpanElement>) {
-    return (
-        <span
-            {...props}
-            className={`inline-block bg-current ${className}`}
-            style={{
-                ...props.style,
-                maskImage: 'url(/icons/github.svg)',
-                WebkitMaskImage: 'url(/icons/github.svg)',
-                maskSize: 'contain',
-                WebkitMaskSize: 'contain',
-                maskRepeat: 'no-repeat',
-                WebkitMaskRepeat: 'no-repeat',
-                maskPosition: 'center',
-                WebkitMaskPosition: 'center'
-            }}
-            title="GitHub"
-            role="img"
-        />
-    );
-}
-
-// Matches the Type from siteData
-export interface ProjectType {
-    id: string;
-    titleKey: string;
-    descriptionKey: string;
-    url?: string;
-    repo?: string;
-    slug?: string;
-    technologies: string[];
-    category: string;
-    origin?: "university" | "personal" | "freelance";
-    coverImage?: string;
-    themeColor?: 'blue' | 'emerald' | 'purple' | 'amber' | 'rose' | 'slate' | 'red' | 'indigo' | 'cyan';
-    roleKey?: string;
-    durationKey?: string;
-    customLinks?: {
-        labelKey: string;
-        url: string;
-        icon?: 'document' | 'video' | 'link';
-    }[];
-}
-
-// Utility to map themeColor to Tailwind gradients
-const getThemeGradient = (color?: string) => {
-    switch (color) {
-        case 'emerald':
-            return 'from-emerald-500 to-teal-600 dark:from-emerald-400 dark:to-teal-500';
-        case 'purple':
-            return 'from-purple-600 to-pink-600 dark:from-purple-400 dark:to-pink-500';
-        case 'amber':
-            return 'from-amber-500 to-orange-600 dark:from-amber-400 dark:to-orange-500';
-        case 'rose':
-            return 'from-rose-500 to-red-600 dark:from-rose-400 dark:to-red-500';
-        case 'slate':
-            return 'from-slate-600 to-slate-800 dark:from-slate-400 dark:to-slate-600';
-        case 'red':
-            return 'from-red-600 to-rose-600 dark:from-red-400 dark:to-rose-400';
-        case 'indigo':
-            return 'from-indigo-600 to-violet-600 dark:from-indigo-400 dark:to-violet-400';
-        case 'cyan':
-            return 'from-cyan-600 to-blue-600 dark:from-cyan-400 dark:to-blue-400';
-        case 'blue':
-        default:
-            return 'from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400';
-    }
-};
-
-// Utility to render the correct icon for custom links
-const getCustomIcon = (iconStr?: string, className?: string) => {
-    switch (iconStr) {
-        case 'document':
-            return <FileText className={className} />;
-        case 'video':
-            return <Video className={className} />;
-        case 'link':
-        default:
-            return <ExternalLink className={className} />;
-    }
-};
+export type { ProjectType };
 
 export default function ProjectClientPage({ project }: { project: ProjectType }) {
-    const { t } = useTranslation();
+    const isYatal = project.id === "proj-yatal";
 
     return (
         <main className="min-h-screen max-w-5xl mx-auto px-6 py-12 md:py-24">
-            {/* Back Button */}
-            <Link
-                href="/#projects"
-                className="inline-flex items-center gap-2 text-sm text-slate-500 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 transition-colors mb-12"
-            >
-                <ArrowLeft className="w-4 h-4" />
-                Back to Portfolio
-            </Link>
+            <ProjectHeader project={project} />
 
-            {/* Hero Section */}
-            <div className="space-y-6 mb-16">
-                {project.coverImage && (
-                    <div className="w-full h-48 md:h-80 rounded-2xl overflow-hidden mb-8 ring-1 ring-slate-200 dark:ring-slate-800 relative">
-                        <Image
-                            src={project.coverImage}
-                            alt={t(project.titleKey)}
-                            width={1200}
-                            height={600}
-                            unoptimized
-                            className="w-full h-full object-cover object-center"
-                        />
-                    </div>
-                )}
+            {/* Interactive Telemetry & Systems Architecture Lab for YATAL */}
+            {isYatal && <TelemetryInteractiveDemo />}
 
-                <h1 className={`text-4xl md:text-5xl font-bold bg-clip-text text-transparent pb-2 lg:pb-3 leading-snug lg:leading-normal bg-linear-to-r ${getThemeGradient(project.themeColor)}`}>
-                    {t(project.titleKey)}
-                </h1>
-
-                <p className="text-xl text-slate-600 dark:text-slate-300 leading-relaxed max-w-3xl">
-                    {t(project.descriptionKey)}
-                </p>
-
-                {/* Tech Stack Pills */}
-                <div className="flex flex-wrap gap-2 pt-2">
-                    {project.technologies.map((tech) => (
-                        <span
-                            key={tech}
-                            className="px-3.5 py-1.5 text-sm font-semibold tracking-wide rounded-full border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-200"
-                        >
-                            {tech}
-                        </span>
-                    ))}
-                </div>
-
-                {/* Project Links / CTAs */}
-                <div className="flex flex-wrap gap-4 pt-4">
-                    {project.repo && (
-                        <a
-                            href={project.repo}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 dark:bg-slate-50 text-white dark:text-slate-900 rounded-full font-medium hover:bg-slate-800 dark:hover:bg-slate-200 transition-colors"
-                        >
-                            <GithubIcon className="w-5 h-5" />
-                            {t('common.github_repo')}
-                        </a>
-                    )}
-                    {project.url && (
-                        <a
-                            href={project.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-6 py-3 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors"
-                        >
-                            <ExternalLink className="w-5 h-5" />
-                            {t('common.live_demo')}
-                        </a>
-                    )}
-
-                    {/* Custom Links */}
-                    {project.customLinks?.map((link, idx) => (
-                        <a
-                            key={idx}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-6 py-3 border border-slate-200 dark:border-slate-800 text-slate-700 dark:text-slate-300 rounded-full font-medium hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors"
-                        >
-                            {getCustomIcon(link.icon, "w-5 h-5")}
-                            {t(link.labelKey)}
-                        </a>
-                    ))}
-                </div>
-            </div>
-
-            {/* Details Section */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 pt-12 border-t border-slate-200 dark:border-slate-800">
+            {/* Main Content & Sidebar Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 pt-8 border-t border-slate-200 dark:border-slate-800">
                 <div className="lg:col-span-2 space-y-8">
-                    <section>
-                        <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">
-                            Overview
-                        </h2>
-                        <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300">
-                            <p>
-                                {/* Dynamically lookup the longDescription key */}
-                                {t(`projects.${project.id}.longDescription`, { defaultValue: t(project.descriptionKey) })}
-                            </p>
-                        </div>
-                    </section>
-
-                    <section>
-                        <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">
-                            Key Features
-                        </h2>
-                        <ul className="space-y-3">
-                            {(t(`projects.${project.id}.features`, { returnObjects: true, defaultValue: [] }) as string[]).map((feature, idx) => (
-                                <li key={idx} className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
-                                    <span className="w-1.5 h-1.5 mt-2 rounded-full bg-blue-500 shrink-0" />
-                                    <span>{feature}</span>
-                                </li>
-                            ))}
-                        </ul>
-                    </section>
-
-                    {/* New Technical Sections */}
-                    {(t(`projects.${project.id}.theory`, { returnObjects: true, defaultValue: [] }) as string[]).length > 0 && (
-                        <section>
-                            <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">
-                                Theory & Foundation
-                            </h2>
-                            <ul className="space-y-3">
-                                {(t(`projects.${project.id}.theory`, { returnObjects: true }) as string[]).map((item, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
-                                        <div className="w-1.5 h-1.5 mt-2 rounded-full bg-purple-500 shrink-0" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </section>
-                    )}
-
-                    {(t(`projects.${project.id}.implementation`, { returnObjects: true, defaultValue: [] }) as string[]).length > 0 && (
-                        <section>
-                            <h2 className="text-2xl font-semibold mb-4 text-slate-900 dark:text-slate-50">
-                                Technical Implementation
-                            </h2>
-                            <ul className="space-y-3">
-                                {(t(`projects.${project.id}.implementation`, { returnObjects: true }) as string[]).map((item, idx) => (
-                                    <li key={idx} className="flex items-start gap-3 text-slate-600 dark:text-slate-300">
-                                        <div className="w-1.5 h-1.5 mt-2 rounded-full shrink-0 ring-1 ring-emerald-500 bg-emerald-500" />
-                                        <span>{item}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </section>
-                    )}
+                    <ProjectOverview project={project} />
+                    <ProjectFeatures project={project} />
+                    <ProjectTheory project={project} />
+                    <ProjectImplementation project={project} />
                 </div>
 
-                {/* Sidebar Info */}
-                <div className="space-y-8 lg:border-l lg:border-slate-200 lg:dark:border-slate-800 lg:pl-12">
-                    <section>
-                        <h3 className="font-semibold text-slate-900 dark:text-slate-50 mb-3">{t('projects.details.type', { defaultValue: 'Project Type' })}</h3>
-                        <p className="text-slate-600 dark:text-slate-300 capitalize">
-                            {t(`projects.categories.${project.category}`, { defaultValue: project.category.replace("-", " ") })}
-                        </p>
-                    </section>
-
-                    {project.roleKey && (
-                        <section>
-                            <h3 className="font-semibold text-slate-900 dark:text-slate-50 mb-3">{t('projects.details.role', { defaultValue: 'My Role' })}</h3>
-                            <p className="text-slate-600 dark:text-slate-300">{t(project.roleKey)}</p>
-                        </section>
-                    )}
-
-                    {project.durationKey && (
-                        <section>
-                            <h3 className="font-semibold text-slate-900 dark:text-slate-50 mb-3">{t('projects.details.duration', { defaultValue: 'Duration' })}</h3>
-                            <p className="text-slate-600 dark:text-slate-300">{t(project.durationKey)}</p>
-                        </section>
-                    )}
-                </div>
+                <ProjectSidebar project={project} />
             </div>
         </main>
     );

@@ -1,36 +1,39 @@
+"use client";
+
 import ProjectCard from "@/components/ProjectCard";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
 import { Search, X } from "lucide-react";
+import { ProjectType } from "@/types/portfolio";
 
 interface ProjectsSectionProps {
-    projects?: Array<{
-        id: string;
-        slug?: string;
-        titleKey: string;
-        descriptionKey: string;
-        url?: string;
-        repo?: string;
-        technologies: string[];
-        category?: string;
-        origin?: "university" | "personal" | "freelance";
-    }>;
+    projects?: ProjectType[];
 }
 
 export default function ProjectsSection({ projects }: ProjectsSectionProps) {
     const { t } = useTranslation();
     const [searchQuery, setSearchQuery] = useState("");
 
+    // Sanitize input to max 100 characters and remove dangerous control chars
+    const sanitizedQuery = searchQuery
+        .slice(0, 100)
+        .replace(/[\x00-\x1F\x7F]/g, "")
+        .toLowerCase()
+        .trim();
+
     const filteredProjects = projects?.filter((project) => {
-        const query = searchQuery.toLowerCase();
+        if (!sanitizedQuery) return true;
+
         const title = t(project.titleKey).toLowerCase();
-        const technologies = project.technologies.map(tech => tech.toLowerCase());
-        const category = project.category?.toLowerCase() || "";
+        const description = t(project.descriptionKey).toLowerCase();
+        const technologies = project.technologies.map((tech) => tech.toLowerCase());
+        const category = (project.category || "").toLowerCase();
 
         return (
-            title.includes(query) ||
-            technologies.some(tech => tech.includes(query)) ||
-            category.includes(query)
+            title.includes(sanitizedQuery) ||
+            description.includes(sanitizedQuery) ||
+            technologies.some((tech) => tech.includes(sanitizedQuery)) ||
+            category.includes(sanitizedQuery)
         );
     });
 
@@ -39,7 +42,9 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
             <div className="max-w-5xl mx-auto">
                 <div className="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
                     <div className="flex-1">
-                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 transition-colors duration-300">{t("sections.projects.title")}</h2>
+                        <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 transition-colors duration-300">
+                            {t("sections.projects.title")}
+                        </h2>
                         <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl transition-colors duration-300">
                             {t("sections.projects.description")}
                         </p>
@@ -51,6 +56,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                         </div>
                         <input
                             type="text"
+                            maxLength={100}
                             className="block w-full pl-10 pr-10 py-2.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl text-slate-900 dark:text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all"
                             placeholder={t("common.search_placeholder")}
                             value={searchQuery}
@@ -60,6 +66,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                             <button
                                 onClick={() => setSearchQuery("")}
                                 className="absolute inset-y-0 right-0 pr-3 flex items-center text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors"
+                                aria-label="Clear search"
                             >
                                 <X className="h-5 w-5" />
                             </button>
