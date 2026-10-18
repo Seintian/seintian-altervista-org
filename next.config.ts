@@ -12,6 +12,19 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
+
+  // Disable production source maps to avoid leaking source maps into static deployment
+  productionBrowserSourceMaps: false,
+
+  // Compiler options: strip console.log / warn in production builds
+  compiler: {
+    removeConsole: process.env.NODE_ENV === "production" ? { exclude: ["error"] } : false,
+  },
+
+  // Package import optimization for lucide-react to avoid loading whole icon barrel files
+  experimental: {
+    optimizePackageImports: ["lucide-react"],
+  },
 };
 
 export default nextConfig;
