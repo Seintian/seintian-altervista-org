@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useResonance, isTechMatch } from "@/lib/context/ResonanceContext";
 import { Sparkles } from "lucide-react";
@@ -18,6 +19,26 @@ interface ExperienceTimelineProps {
 export default function ExperienceTimeline({ experience }: ExperienceTimelineProps) {
   const { t } = useTranslation();
   const { activeTech, selectedTech, setHoveredTech, toggleSelectedTech, matchesTech } = useResonance();
+  const timelineRef = useRef<HTMLOListElement>(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+      const rect = timelineRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const startOffset = windowHeight * 0.7;
+      const totalHeight = rect.height;
+      if (totalHeight === 0) return;
+      const currentProgress = (startOffset - rect.top) / totalHeight;
+      const clamped = Math.min(Math.max(currentProgress, 0), 1);
+      setScrollProgress(clamped * 100);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [experience]);
 
   if (!experience) {
     return null;
@@ -26,28 +47,42 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
   const isAnyTechActive = activeTech !== null;
 
   return (
-    <div className="max-w-3xl mx-auto">
-      <ol className="relative border-s-2 border-slate-200 dark:border-slate-800 ml-3 md:ml-0 transition-colors duration-300">
-        {experience.map((job) => {
+    <div className="relative max-w-3xl mx-auto">
+      {/* Background Static Line */}
+      <div className="absolute top-2 bottom-6 start-[11px] md:start-[7px] w-0.5 bg-slate-200 dark:border-slate-800 transition-colors duration-300" />
+
+      {/* Dynamic Animated Scroll-Linked Progress Line */}
+      <div
+        className="absolute top-2 start-[11px] md:start-[7px] w-0.5 bg-linear-to-b from-blue-600 via-indigo-500 to-cyan-400 transition-all duration-150 ease-out shadow-[0_0_8px_rgba(59,130,246,0.6)] z-0 rounded-full"
+        style={{ height: `${scrollProgress}%` }}
+      />
+
+      <ol ref={timelineRef} className="relative ml-3 md:ml-0 transition-colors duration-300 z-10">
+        {experience.map((job, idx) => {
           const hasMatch = matchesTech(job.technologies);
           const isDimmed = isAnyTechActive && !hasMatch;
           const isResonating = isAnyTechActive && hasMatch;
 
+          const nodePercentage = (idx / (experience.length - 1 || 1)) * 95;
+          const isActivated = scrollProgress >= nodePercentage;
+
           return (
             <li
               key={job.id}
-              className={`mb-12 ms-8 group transition-all duration-300 ${
+              className={`mb-12 ms-8 group transition-all duration-300 relative ${
                 isDimmed ? "opacity-40 grayscale-[15%]" : "opacity-100"
               }`}
             >
-              {/* The Timeline Dot */}
+              {/* The Dynamic Timeline Dot */}
               <span
-                className={`absolute flex items-center justify-center w-4 h-4 bg-white dark:bg-slate-900 rounded-full -start-[9px] ring-4 border transition-all duration-300 ${
+                className={`absolute flex items-center justify-center w-4 h-4 rounded-full -start-[27px] md:-start-[27px] ring-4 transition-all duration-300 ${
                   isResonating
-                    ? "border-blue-600 dark:border-blue-400 ring-blue-100 dark:ring-blue-900/50 scale-125"
-                    : "ring-slate-100 dark:ring-slate-900 border-slate-300 dark:border-slate-700 group-hover:border-blue-600 dark:group-hover:border-blue-400 group-hover:ring-blue-50 dark:group-hover:ring-blue-900/30"
+                    ? "border-2 border-white dark:border-slate-900 bg-blue-600 dark:bg-blue-400 ring-blue-500/50 scale-125 shadow-[0_0_12px_rgba(59,130,246,0.8)]"
+                    : isActivated
+                    ? "border-2 border-white dark:border-slate-900 bg-blue-600 dark:bg-blue-500 ring-blue-500/20 shadow-sm"
+                    : "bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 ring-slate-100 dark:ring-slate-900 group-hover:border-blue-600 dark:group-hover:border-blue-400 group-hover:ring-blue-50 dark:group-hover:ring-blue-900/30"
                 }`}
-              ></span>
+              />
 
               {/* Content Card */}
               <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
@@ -58,11 +93,11 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
                   {isResonating && (
                     <span className="inline-flex items-center gap-1 text-[0.65rem] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 animate-pulse">
                       <Sparkles className="w-3 h-3" />
-                      <span>Resonant</span>
+                      <span>{t("projects.resonant_match", "Resonant")}</span>
                     </span>
                   )}
                 </div>
-                <time className="text-sm font-medium text-slate-500 dark:text-slate-400 mt-1 sm:mt-0 transition-colors duration-300">
+                <time className={`text-sm font-medium mt-1 sm:mt-0 transition-colors duration-300 ${isActivated ? "text-blue-600 dark:text-blue-400" : "text-slate-500 dark:text-slate-400"}`}>
                   {t(job.periodKey)}
                 </time>
               </div>
