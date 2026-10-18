@@ -7,7 +7,7 @@ import { useIsMounted } from "@/hooks/useIsMounted";
 
 export default function ThemeSwitcher() {
     const mounted = useIsMounted();
-    const { theme, setTheme } = useTheme();
+    const { theme, setTheme, resolvedTheme } = useTheme();
     const { t } = useTranslation();
 
     if (!mounted) {
@@ -15,9 +15,15 @@ export default function ThemeSwitcher() {
     }
 
     const cycleTheme = () => {
-        if (theme === "light") setTheme("dark");
-        else if (theme === "dark") setTheme("system");
-        else setTheme("light");
+        if (theme === "system") {
+            // When currently on system theme, toggle immediately to the opposite resolved mode
+            setTheme(resolvedTheme === "dark" ? "light" : "dark");
+        } else if (theme === "dark") {
+            setTheme("light");
+        } else {
+            // From light, return to system theme
+            setTheme("system");
+        }
     };
 
     const getIcon = () => {
@@ -29,7 +35,8 @@ export default function ThemeSwitcher() {
     const getAriaLabel = () => {
         if (theme === "light") return t("theme.light", "Light mode");
         if (theme === "dark") return t("theme.dark", "Dark mode");
-        return t("theme.system", "System theme");
+        const resolved = resolvedTheme === "dark" ? t("theme.dark", "Dark") : t("theme.light", "Light");
+        return `${t("theme.system", "System theme")} (${resolved})`;
     };
 
     return (
