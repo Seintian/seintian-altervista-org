@@ -2,6 +2,7 @@
 
 import { useTranslation } from "react-i18next";
 import { useIsMounted } from "@/hooks/useIsMounted";
+import { languageDetector } from "@/lib/i18n";
 
 export default function LanguageSwitcher() {
     const { i18n, t } = useTranslation();
@@ -20,7 +21,7 @@ export default function LanguageSwitcher() {
         const nextLang = isIt ? "en" : "it";
         i18n.changeLanguage(nextLang);
         try {
-            localStorage.setItem("i18nextLng", nextLang);
+            languageDetector.cacheUserLanguage(nextLang);
         } catch {
             // Storage access fallback
         }

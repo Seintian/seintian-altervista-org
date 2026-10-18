@@ -2,7 +2,7 @@
 
 import { ReactNode, useEffect } from "react";
 import { ThemeProvider } from "next-themes";
-import i18n from "@/lib/i18n";
+import i18n, { languageDetector } from "@/lib/i18n";
 import { ResonanceProvider } from "@/lib/context/ResonanceContext";
 
 export default function Providers({ children }: { children: ReactNode }) {
@@ -15,24 +15,21 @@ export default function Providers({ children }: { children: ReactNode }) {
 
     updateDocumentLang(i18n.language || "en");
 
-    // Client-side post-hydration language restoration (localStorage, URL query, navigator)
+    // Post-hydration language detection using i18next-browser-languagedetector
+    // Runs after React hydration completes to prevent server-client HTML mismatch
     try {
-      const urlParams = new URLSearchParams(window.location.search);
-      const queryLng = urlParams.get("lng") || urlParams.get("lang");
-      const stored = localStorage.getItem("i18nextLng");
-      const browser = navigator.language;
-      const preferred = queryLng || stored || (browser?.startsWith("it") ? "it" : "en");
-      const target = preferred.startsWith("it") ? "it" : "en";
-
-      if (queryLng) {
-        localStorage.setItem("i18nextLng", target);
-      }
-
-      if (target !== i18n.language) {
-        i18n.changeLanguage(target);
+      const detected = languageDetector.detect();
+      const rawLang = Array.isArray(detected) ? detected[0] : detected;
+      if (rawLang) {
+        const target = rawLang.toLowerCase().startsWith("it") ? "it" : "en";
+        if (target !== i18n.language) {
+          i18n.changeLanguage(target);
+        }
+        // Cache user language via official detector caching logic
+        languageDetector.cacheUserLanguage(target);
       }
     } catch {
-      // Storage access may fail in certain restricted contexts
+      // Safe fallback for restricted storage / security exceptions
     }
 
     i18n.on("languageChanged", updateDocumentLang);
