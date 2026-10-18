@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCodeSpans } from "@/lib/formatText";
+
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useResonance, isTechMatch } from "@/lib/context/ResonanceContext";
@@ -48,15 +50,15 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
   return (
     <div className="relative max-w-3xl mx-auto">
       {/* Background Static Line */}
-      <div className="absolute top-2 bottom-6 start-[11px] md:start-[7px] w-0.5 bg-slate-200 dark:bg-slate-800 transition-colors duration-300" />
+      <div className="absolute top-2 bottom-6 start-[7px] w-0.5 bg-slate-200 dark:bg-slate-800 transition-colors duration-300" />
 
       {/* Dynamic Animated Scroll-Linked Progress Line */}
       <div
-        className="absolute top-2 start-[11px] md:start-[7px] w-0.5 bg-gradient-to-b from-blue-600 via-indigo-500 to-cyan-400 transition-all duration-150 ease-out shadow-[0_0_8px_rgba(59,130,246,0.6)] z-0 rounded-full"
+        className="absolute top-2 start-[7px] w-0.5 bg-gradient-to-b from-blue-600 via-indigo-500 to-cyan-400 transition-all duration-150 ease-out shadow-[0_0_8px_rgba(59,130,246,0.6)] z-0 rounded-full"
         style={{ height: `${scrollProgress}%` }}
       />
 
-      <ol ref={timelineRef} className="relative ml-3 md:ml-0 transition-colors duration-300 z-10">
+      <ol ref={timelineRef} className="relative transition-colors duration-300 z-10">
         {experience.map((job, idx) => {
           const hasMatch = matchesTech(job.technologies);
           const isDimmed = isAnyTechActive && !hasMatch;
@@ -74,7 +76,7 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
             >
               {/* Dynamic Timeline Dot */}
               <span
-                className={`absolute flex items-center justify-center w-4 h-4 rounded-full -start-[27px] md:-start-[27px] ring-4 transition-all duration-300 ${
+                className={`absolute flex items-center justify-center w-4 h-4 rounded-full -start-8 ring-4 transition-all duration-300 ${
                   isHighlighted
                     ? "border-2 border-white dark:border-slate-900 bg-blue-600 dark:bg-blue-400 ring-blue-500/40 scale-125 shadow-[0_0_10px_rgba(59,130,246,0.7)]"
                     : isActivated
@@ -98,8 +100,8 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
                 </div>
               </div>
 
-              <p className="mb-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed transition-colors duration-300">
-                {t(job.descriptionKey)}
+              <p className="mb-4 text-slate-600 dark:text-slate-400 text-sm leading-relaxed transition-colors duration-300">
+                {formatCodeSpans(t(job.descriptionKey))}
               </p>
 
               {/* Technologies Pills */}
