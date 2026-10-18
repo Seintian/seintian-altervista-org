@@ -5,17 +5,6 @@ import { useTranslation } from "react-i18next";
 import { ContactItem } from "@/types/portfolio";
 import { useLocalizedContacts } from "@/hooks/useLocalizedContacts";
 import { formatCodeSpans } from "@/lib/formatText";
-import dynamic from "next/dynamic";
-
-const NumaArchitectureCanvas = dynamic(
-  () => import("@/components/canvas/NumaArchitectureCanvas"),
-  {
-    ssr: false,
-    loading: () => (
-      <div className="w-full h-[340px] sm:h-[380px] lg:h-[420px] rounded-3xl bg-slate-100/50 dark:bg-slate-900/50 animate-pulse border border-slate-200 dark:border-slate-800" />
-    ),
-  }
-);
 
 interface HeroProps {
   contacts?: ContactItem[];
@@ -27,8 +16,7 @@ export default function Hero({ contacts }: HeroProps) {
 
   return (
     <section className="mb-20 animate-in fade-in slide-in-from-bottom-4 duration-700 ease-in-out">
-      {/* Hero Typography & Action Controls */}
-      <div className="max-w-3xl mb-10">
+      <div className="max-w-3xl">
         <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50 mb-5 transition-colors duration-300">
           {t("hero.greeting")}{" "}
           <span className="text-blue-600 dark:text-blue-400">
@@ -54,11 +42,6 @@ export default function Hero({ contacts }: HeroProps) {
             />
           ))}
         </div>
-      </div>
-
-      {/* Full-Width Interactive NUMA Architecture System Canvas */}
-      <div className="w-full">
-        <NumaArchitectureCanvas />
       </div>
     </section>
   );
