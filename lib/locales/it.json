@@ -386,7 +386,11 @@
         "readme": "Documentazione Architetturale",
         "benchmarks": "Suite di Benchmark"
       }
-    }
+    },
+    "resonance_active": "Grafo relazionale attivo: risonanza con",
+    "resonance_count": "progetti evidenziati",
+    "resonance_reset": "Azzera Filtro",
+    "resonant_match": "Risonanza Attiva"
   },
   "sections": {
     "experience": {

@@ -1,6 +1,10 @@
-import { ExternalLink, GraduationCap, User, Briefcase } from "lucide-react";
+"use client";
+
+import { useRef, useState } from "react";
+import { ExternalLink, GraduationCap, User, Briefcase, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
+import { useResonance, isTechMatch } from "@/lib/context/ResonanceContext";
 
 function GithubIcon({ className = "", ...props }: React.HTMLAttributes<HTMLSpanElement>) {
     return (
@@ -45,6 +49,8 @@ const ORIGIN_CONFIG = {
         watermarkHover: "group-hover:text-indigo-500 dark:group-hover:text-indigo-400 group-hover:opacity-10 dark:group-hover:opacity-20",
         techBadge: "text-indigo-700 dark:text-indigo-300 bg-indigo-50/50 dark:bg-indigo-900/20 border-indigo-200/50 dark:border-indigo-800/50",
         linkHover: "hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30",
+        resonantBorder: "border-indigo-500/80 dark:border-indigo-400/80 ring-2 ring-indigo-500/30 shadow-lg shadow-indigo-500/15",
+        spotlightColor: "rgba(99, 102, 241, 0.14)",
         icon: GraduationCap,
     },
     personal: {
@@ -57,6 +63,8 @@ const ORIGIN_CONFIG = {
         watermarkHover: "group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:opacity-10 dark:group-hover:opacity-20",
         techBadge: "text-emerald-700 dark:text-emerald-300 bg-emerald-50/50 dark:bg-emerald-900/20 border-emerald-200/50 dark:border-emerald-800/50",
         linkHover: "hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30",
+        resonantBorder: "border-emerald-500/80 dark:border-emerald-400/80 ring-2 ring-emerald-500/30 shadow-lg shadow-emerald-500/15",
+        spotlightColor: "rgba(16, 185, 129, 0.14)",
         icon: User,
     },
     freelance: {
@@ -69,6 +77,8 @@ const ORIGIN_CONFIG = {
         watermarkHover: "group-hover:text-amber-500 dark:group-hover:text-amber-400 group-hover:opacity-10 dark:group-hover:opacity-20",
         techBadge: "text-amber-700 dark:text-amber-300 bg-amber-50/50 dark:bg-amber-900/20 border-amber-200/50 dark:border-amber-800/50",
         linkHover: "hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/30",
+        resonantBorder: "border-amber-500/80 dark:border-amber-400/80 ring-2 ring-amber-500/30 shadow-lg shadow-amber-500/15",
+        spotlightColor: "rgba(245, 158, 11, 0.14)",
         icon: Briefcase,
     },
     default: {
@@ -81,6 +91,8 @@ const ORIGIN_CONFIG = {
         watermarkHover: "group-hover:text-blue-500 dark:group-hover:text-blue-400 group-hover:opacity-10 dark:group-hover:opacity-20",
         techBadge: "text-blue-700 dark:text-blue-300 bg-blue-50/50 dark:bg-blue-900/20 border-blue-200/50 dark:border-blue-800/50",
         linkHover: "hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30",
+        resonantBorder: "border-blue-500/80 dark:border-blue-400/80 ring-2 ring-blue-500/30 shadow-lg shadow-blue-500/15",
+        spotlightColor: "rgba(59, 130, 246, 0.14)",
         icon: undefined,
     }
 } as const;
@@ -88,32 +100,97 @@ const ORIGIN_CONFIG = {
 export default function ProjectCard({ title, description, url, repo, slug, technologies, origin }: ProjectCardProps) {
     const projectSlug = slug || repo?.split("/").pop();
     const { t } = useTranslation();
+    const { activeTech, selectedTech, setHoveredTech, toggleSelectedTech, matchesTech } = useResonance();
+
+    const cardRef = useRef<HTMLDivElement>(null);
+    const [tilt, setTilt] = useState({ x: 0, y: 0 });
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [isHovered, setIsHovered] = useState(false);
 
     const config = origin ? ORIGIN_CONFIG[origin] : ORIGIN_CONFIG.default;
     const Icon = config.icon;
 
+    const hasResonanceMatch = matchesTech(technologies);
+    const isAnyTechActive = activeTech !== null;
+    const isDimmed = isAnyTechActive && !hasResonanceMatch;
+    const isResonating = isAnyTechActive && hasResonanceMatch;
+
+    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+        if (!cardRef.current) return;
+        const rect = cardRef.current.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const nx = (x / rect.width) * 2 - 1;
+        const ny = (y / rect.height) * 2 - 1;
+        setTilt({ x: ny * -3, y: nx * 3 });
+        setMousePos({ x, y });
+    };
+
+    const handleMouseEnter = () => {
+        setIsHovered(true);
+    };
+
+    const handleMouseLeave = () => {
+        setTilt({ x: 0, y: 0 });
+        setIsHovered(false);
+    };
+
     return (
-        <div className={`flex flex-col h-full bg-white dark:bg-slate-900/80 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 transition-all duration-500 group relative overflow-hidden isolate focus-within:ring-2 focus-within:ring-offset-2 dark:focus-within:ring-offset-slate-950 ${config.borderHover} ${config.shadowHover} ${config.ringFocus}`}>
+        <div
+            ref={cardRef}
+            onMouseMove={handleMouseMove}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+            style={{
+                transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+                transition: isHovered ? "transform 0.1s ease-out" : "transform 0.4s ease-out, opacity 0.3s ease-out, border-color 0.3s ease-out",
+            }}
+            className={`flex flex-col h-full bg-white dark:bg-slate-900/80 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border transition-all duration-300 group relative overflow-hidden isolate focus-within:ring-2 focus-within:ring-offset-2 dark:focus-within:ring-offset-slate-950 ${
+                isResonating
+                    ? config.resonantBorder
+                    : isDimmed
+                    ? "border-slate-200/50 dark:border-slate-800/50 opacity-40 grayscale-[15%] scale-[0.99]"
+                    : `border-slate-200 dark:border-slate-800 ${config.borderHover} ${config.shadowHover} ${config.ringFocus}`
+            }`}
+        >
             {/* Subtle background gradient on hover */}
             <div className={`absolute inset-0 bg-linear-to-br ${config.bgHover} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none -z-20`} />
 
+            {/* Radial Cursor Spotlight */}
+            {isHovered && (
+                <div
+                    className="pointer-events-none absolute -inset-px rounded-3xl opacity-100 transition-opacity duration-200 -z-10"
+                    style={{
+                        background: `radial-gradient(380px circle at ${mousePos.x}px ${mousePos.y}px, ${config.spotlightColor}, transparent 80%)`,
+                    }}
+                />
+            )}
+
             {/* Watermark Icon */}
             {Icon && (
-                <Icon 
+                <Icon
                     strokeWidth={1}
-                    className={`absolute -right-8 -bottom-8 w-56 h-56 transform -rotate-12 pointer-events-none transition-all duration-700 ease-out group-hover:scale-110 group-hover:-rotate-3 -z-10 text-slate-100 dark:text-slate-800/50 ${config.watermarkHover} opacity-50`} 
+                    className={`absolute -right-8 -bottom-8 w-56 h-56 transform -rotate-12 pointer-events-none transition-all duration-700 ease-out group-hover:scale-110 group-hover:-rotate-3 -z-10 text-slate-100 dark:text-slate-800/50 ${config.watermarkHover} opacity-50`}
                 />
             )}
 
             <div className="flex flex-col h-full relative z-10">
                 <div className="flex justify-between items-start mb-4">
                     <div className="flex flex-col">
-                        {origin && Icon && (
-                            <div className={`flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-widest mb-2.5 ${config.accentText} opacity-80 group-hover:opacity-100 transition-opacity h-5`}>
-                                <Icon className="w-4 h-4 shrink-0" strokeWidth={2.5} />
-                                <span className="leading-5 pt-px">{t(`projects.origins.${origin}`)}</span>
-                            </div>
-                        )}
+                        <div className="flex items-center gap-2 mb-2.5 h-5">
+                            {origin && Icon && (
+                                <div className={`flex items-center gap-1.5 text-[0.7rem] font-bold uppercase tracking-widest ${config.accentText} opacity-80 group-hover:opacity-100 transition-opacity`}>
+                                    <Icon className="w-4 h-4 shrink-0" strokeWidth={2.5} />
+                                    <span className="leading-5 pt-px">{t(`projects.origins.${origin}`)}</span>
+                                </div>
+                            )}
+                            {isResonating && (
+                                <span className="inline-flex items-center gap-1 text-[0.65rem] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 animate-pulse">
+                                    <Sparkles className="w-3 h-3" />
+                                    <span>{t("projects.resonant_match", "Resonant Match")}</span>
+                                </span>
+                            )}
+                        </div>
                         <h3 className={`text-xl font-bold transition-colors duration-300 leading-tight ${config.titleHover}`}>
                             {projectSlug ? (
                                 <Link href={`/${projectSlug}`} className="focus:outline-none before:absolute before:inset-0 before:z-10 text-inherit hover:text-inherit">
@@ -155,14 +232,34 @@ export default function ProjectCard({ title, description, url, repo, slug, techn
                 </p>
 
                 <div className="flex flex-wrap gap-2 mt-auto relative z-20">
-                    {technologies.map((tech) => (
-                        <span
-                            key={tech}
-                            className={`px-3 py-1 text-[0.72rem] font-semibold tracking-wide rounded-full border transition-colors duration-500 ${config.techBadge}`}
-                        >
-                            {tech}
-                        </span>
-                    ))}
+                    {technologies.map((tech) => {
+                        const isThisPillMatch = isTechMatch(tech, activeTech || "");
+                        const isPinned = selectedTech !== null && isTechMatch(tech, selectedTech);
+
+                        return (
+                            <button
+                                key={tech}
+                                type="button"
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    toggleSelectedTech(tech);
+                                }}
+                                onMouseEnter={() => setHoveredTech(tech)}
+                                onMouseLeave={() => setHoveredTech(null)}
+                                className={`px-3 py-1 text-[0.72rem] font-semibold tracking-wide rounded-full border transition-all duration-200 cursor-pointer text-left ${
+                                    isThisPillMatch
+                                        ? "bg-blue-600 text-white border-blue-600 dark:bg-blue-500 dark:border-blue-500 shadow-sm scale-105"
+                                        : isPinned
+                                        ? "bg-blue-600 text-white border-blue-600"
+                                        : `${config.techBadge} hover:scale-105 active:scale-95`
+                                }`}
+                                title={`Filter / resonate by ${tech}`}
+                            >
+                                {tech}
+                            </button>
+                        );
+                    })}
                 </div>
             </div>
         </div>

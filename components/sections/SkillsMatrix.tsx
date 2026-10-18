@@ -3,6 +3,7 @@
 import { useTranslation } from "react-i18next";
 import { Code2, Layout, Server, Cpu, Wrench, Award, Shield, Zap } from "lucide-react";
 import { SkillsMatrix as SkillsMatrixType, SkillTier } from "@/types/portfolio";
+import { useResonance, isTechMatch } from "@/lib/context/ResonanceContext";
 
 interface SkillsMatrixProps {
   skills?: SkillsMatrixType;
@@ -33,6 +34,7 @@ const tierConfig = {
 
 export default function SkillsMatrix({ skills }: SkillsMatrixProps) {
   const { t } = useTranslation();
+  const { activeTech, selectedTech, setHoveredTech, toggleSelectedTech } = useResonance();
 
   if (!skills) return null;
 
@@ -81,19 +83,36 @@ export default function SkillsMatrix({ skills }: SkillsMatrixProps) {
                   const config = tierConfig[tier];
                   const TierIcon = config.icon;
 
+                  const isMatch = isTechMatch(skill.name, activeTech || "") || isTechMatch(skill.id, activeTech || "");
+                  const isPinned = selectedTech !== null && (isTechMatch(skill.name, selectedTech) || isTechMatch(skill.id, selectedTech));
+
                   return (
-                    <div
+                    <button
                       key={skill.id}
-                      className="flex items-start justify-between p-3 rounded-2xl border border-transparent hover:border-slate-100 dark:hover:border-slate-800 hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-all duration-200 group/skill"
-                      title={t(`sections.skills.tiers.${tier}`)}
+                      type="button"
+                      onClick={() => toggleSelectedTech(skill.name)}
+                      onMouseEnter={() => setHoveredTech(skill.name)}
+                      onMouseLeave={() => setHoveredTech(null)}
+                      className={`w-full flex items-start justify-between p-3 rounded-2xl border transition-all duration-200 cursor-pointer text-left group/skill ${
+                        isMatch
+                          ? "bg-blue-50 dark:bg-blue-900/40 border-blue-400 dark:border-blue-600 scale-[1.02] shadow-sm"
+                          : isPinned
+                          ? "bg-blue-50 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700"
+                          : "border-transparent hover:border-slate-100 dark:hover:border-slate-800 hover:bg-slate-50/50 dark:hover:bg-slate-800/30"
+                      }`}
+                      title={`${t(`sections.skills.tiers.${tier}`)} - Click to resonate across portfolio`}
                     >
-                      <span className="font-medium text-slate-700 dark:text-slate-300 group-hover/skill:text-blue-600 dark:group-hover/skill:text-blue-400 transition-colors leading-7">
+                      <span className={`font-medium transition-colors leading-7 ${
+                        isMatch
+                          ? "text-blue-600 dark:text-blue-400 font-semibold"
+                          : "text-slate-700 dark:text-slate-300 group-hover/skill:text-blue-600 dark:group-hover/skill:text-blue-400"
+                      }`}>
                         {t(`sections.skills.items.${skill.id}`, skill.name)}
                       </span>
                       <div className={`shrink-0 flex items-center justify-center w-7 h-7 rounded-lg border ${config.style} transition-all duration-200 group-hover/skill:scale-110`}>
                         <TierIcon className="w-4 h-4" />
                       </div>
-                    </div>
+                    </button>
                   );
                 })}
               </div>

@@ -386,7 +386,11 @@
         "readme": "Architecture Documentation",
         "benchmarks": "Benchmark Suite"
       }
-    }
+    },
+    "resonance_active": "Relational graph active: resonating with",
+    "resonance_count": "matching projects highlighted",
+    "resonance_reset": "Reset Filter",
+    "resonant_match": "Resonant Match"
   },
   "sections": {
     "experience": {
