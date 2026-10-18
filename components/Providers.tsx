@@ -15,12 +15,19 @@ export default function Providers({ children }: { children: ReactNode }) {
 
     updateDocumentLang(i18n.language || "en");
 
-    // Client-side post-hydration language restoration
+    // Client-side post-hydration language restoration (localStorage, URL query, navigator)
     try {
+      const urlParams = new URLSearchParams(window.location.search);
+      const queryLng = urlParams.get("lng") || urlParams.get("lang");
       const stored = localStorage.getItem("i18nextLng");
       const browser = navigator.language;
-      const preferred = stored || (browser?.startsWith("it") ? "it" : "en");
+      const preferred = queryLng || stored || (browser?.startsWith("it") ? "it" : "en");
       const target = preferred.startsWith("it") ? "it" : "en";
+
+      if (queryLng) {
+        localStorage.setItem("i18nextLng", target);
+      }
+
       if (target !== i18n.language) {
         i18n.changeLanguage(target);
       }
