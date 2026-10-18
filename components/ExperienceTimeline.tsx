@@ -3,7 +3,6 @@
 import { useRef, useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { useResonance, isTechMatch } from "@/lib/context/ResonanceContext";
-import { Sparkles } from "lucide-react";
 
 interface ExperienceTimelineProps {
   experience?: Array<{
@@ -49,11 +48,11 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
   return (
     <div className="relative max-w-3xl mx-auto">
       {/* Background Static Line */}
-      <div className="absolute top-2 bottom-6 start-[11px] md:start-[7px] w-0.5 bg-slate-200 dark:border-slate-800 transition-colors duration-300" />
+      <div className="absolute top-2 bottom-6 start-[11px] md:start-[7px] w-0.5 bg-slate-200 dark:bg-slate-800 transition-colors duration-300" />
 
       {/* Dynamic Animated Scroll-Linked Progress Line */}
       <div
-        className="absolute top-2 start-[11px] md:start-[7px] w-0.5 bg-linear-to-b from-blue-600 via-indigo-500 to-cyan-400 transition-all duration-150 ease-out shadow-[0_0_8px_rgba(59,130,246,0.6)] z-0 rounded-full"
+        className="absolute top-2 start-[11px] md:start-[7px] w-0.5 bg-gradient-to-b from-blue-600 via-indigo-500 to-cyan-400 transition-all duration-150 ease-out shadow-[0_0_8px_rgba(59,130,246,0.6)] z-0 rounded-full"
         style={{ height: `${scrollProgress}%` }}
       />
 
@@ -61,7 +60,7 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
         {experience.map((job, idx) => {
           const hasMatch = matchesTech(job.technologies);
           const isDimmed = isAnyTechActive && !hasMatch;
-          const isResonating = isAnyTechActive && hasMatch;
+          const isHighlighted = isAnyTechActive && hasMatch;
 
           const nodePercentage = (idx / (experience.length - 1 || 1)) * 95;
           const isActivated = scrollProgress >= nodePercentage;
@@ -70,44 +69,36 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
             <li
               key={job.id}
               className={`mb-12 ms-8 group transition-all duration-300 relative ${
-                isDimmed ? "opacity-40 grayscale-[15%]" : "opacity-100"
+                isDimmed ? "opacity-35 grayscale-[20%]" : "opacity-100"
               }`}
             >
-              {/* The Dynamic Timeline Dot */}
+              {/* Dynamic Timeline Dot */}
               <span
                 className={`absolute flex items-center justify-center w-4 h-4 rounded-full -start-[27px] md:-start-[27px] ring-4 transition-all duration-300 ${
-                  isResonating
-                    ? "border-2 border-white dark:border-slate-900 bg-blue-600 dark:bg-blue-400 ring-blue-500/50 scale-125 shadow-[0_0_12px_rgba(59,130,246,0.8)]"
+                  isHighlighted
+                    ? "border-2 border-white dark:border-slate-900 bg-blue-600 dark:bg-blue-400 ring-blue-500/40 scale-125 shadow-[0_0_10px_rgba(59,130,246,0.7)]"
                     : isActivated
                     ? "border-2 border-white dark:border-slate-900 bg-blue-600 dark:bg-blue-500 ring-blue-500/20 shadow-sm"
                     : "bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 ring-slate-100 dark:ring-slate-900 group-hover:border-blue-600 dark:group-hover:border-blue-400 group-hover:ring-blue-50 dark:group-hover:ring-blue-900/30"
                 }`}
               />
 
-              {/* Content Card */}
-              <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between mb-2">
-                <div className="flex items-center gap-2">
-                  <h3 className={`text-xl font-bold transition-colors duration-300 ${isResonating ? "text-blue-600 dark:text-blue-400" : "text-slate-900 dark:text-slate-100"}`}>
-                    {t(job.roleKey)} <span className="text-blue-600 dark:text-blue-400 font-medium hidden sm:inline transition-colors duration-300">@ {t(job.companyKey)}</span>
+              {/* Header Container: Separated rows to avoid collision */}
+              <div className="mb-3">
+                <div className="flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1 sm:gap-4">
+                  <h3 className={`text-lg sm:text-xl font-bold transition-colors duration-300 ${isHighlighted ? "text-blue-600 dark:text-blue-400" : "text-slate-900 dark:text-slate-100"}`}>
+                    {t(job.roleKey)}
                   </h3>
-                  {isResonating && (
-                    <span className="inline-flex items-center gap-1 text-[0.65rem] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 animate-pulse">
-                      <Sparkles className="w-3 h-3" />
-                      <span>{t("projects.resonant_match", "Resonant")}</span>
-                    </span>
-                  )}
+                  <time className={`text-xs sm:text-sm font-mono whitespace-nowrap shrink-0 transition-colors duration-300 ${isActivated ? "text-blue-600 dark:text-blue-400 font-semibold" : "text-slate-500 dark:text-slate-400"}`}>
+                    {t(job.periodKey)}
+                  </time>
                 </div>
-                <time className={`text-sm font-medium mt-1 sm:mt-0 transition-colors duration-300 ${isActivated ? "text-blue-600 dark:text-blue-400" : "text-slate-500 dark:text-slate-400"}`}>
-                  {t(job.periodKey)}
-                </time>
+                <div className="text-sm font-semibold text-blue-600 dark:text-blue-400 mt-0.5 transition-colors duration-300">
+                  {t(job.companyKey)}
+                </div>
               </div>
 
-              {/* Mobile Company Name */}
-              <div className="text-blue-600 dark:text-blue-400 font-medium sm:hidden mb-2 transition-colors duration-300">
-                {t(job.companyKey)}
-              </div>
-
-              <p className="mb-4 text-slate-600 dark:text-slate-400 leading-relaxed transition-colors duration-300">
+              <p className="mb-4 text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed transition-colors duration-300">
                 {t(job.descriptionKey)}
               </p>
 
@@ -131,7 +122,7 @@ export default function ExperienceTimeline({ experience }: ExperienceTimelinePro
                           ? "bg-blue-600 text-white border-blue-600"
                           : "text-slate-700 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-700 hover:scale-105 active:scale-95"
                       }`}
-                      title={`Filter / resonate by ${tech}`}
+                      title={`Filter by ${tech}`}
                     >
                       {tech}
                     </button>
