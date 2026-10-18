@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCodeSpans } from "@/lib/formatText";
+
 import { useTranslation } from "react-i18next";
 import { ArrowLeft, ExternalLink, FileText, Video, GraduationCap, User, Briefcase } from "lucide-react";
 import Link from "next/link";
@@ -129,8 +131,8 @@ export default function ProjectHeader({ project }: ProjectHeaderProps) {
             </h1>
 
             {/* Short Tagline / Description */}
-            <p className="text-xl text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
-                {t(project.descriptionKey)}
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+                {formatCodeSpans(t(project.descriptionKey))}
             </p>
 
             {/* Action Buttons */}

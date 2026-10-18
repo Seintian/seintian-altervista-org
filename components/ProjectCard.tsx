@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCodeSpans } from "@/lib/formatText";
+
 import { useRef, useState } from "react";
 import { ExternalLink, GraduationCap, User, Briefcase } from "lucide-react";
 import Link from "next/link";
@@ -222,8 +224,8 @@ export default function ProjectCard({ title, description, url, repo, slug, techn
                     </div>
                 </div>
 
-                <p className="text-slate-600 dark:text-slate-400/90 mb-8 grow transition-colors duration-300 text-sm sm:text-base leading-relaxed">
-                    {description}
+                <p className="text-slate-600 dark:text-slate-400/90 mb-8 grow transition-colors duration-300 text-sm leading-relaxed">
+                    {formatCodeSpans(description)}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mt-auto relative z-20">

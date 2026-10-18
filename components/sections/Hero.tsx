@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCodeSpans } from "@/lib/formatText";
+
 import ContactButton from "@/components/ui/ContactButton";
 import { useTranslation } from "react-i18next";
 import { ContactItem } from "@/types/portfolio";
@@ -34,8 +36,8 @@ export default function Hero({ contacts }: HeroProps) {
           <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-slate-700 dark:text-slate-300 mb-6 transition-colors duration-300">
             {t("hero.role")}
           </h2>
-          <p className="text-base sm:text-lg text-slate-600 dark:text-slate-400 max-w-2xl mb-8 leading-relaxed transition-colors duration-300">
-            {t("hero.description")}
+          <p className="text-sm sm:text-[15px] text-slate-600 dark:text-slate-400 max-w-2xl mb-8 leading-relaxed transition-colors duration-300">
+            {formatCodeSpans(t("hero.description"))}
           </p>
 
           <div className="flex flex-wrap gap-4 min-h-[48px]">

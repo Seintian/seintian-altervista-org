@@ -49,7 +49,7 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                         <h2 className="text-3xl md:text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4 transition-colors duration-300">
                             {t("sections.projects.title")}
                         </h2>
-                        <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl transition-colors duration-300">
+                        <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-2xl transition-colors duration-300">
                             {t("sections.projects.description")}
                         </p>
                     </div>

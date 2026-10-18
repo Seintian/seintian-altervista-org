@@ -3,7 +3,7 @@
     "greeting": "Ciao, sono",
     "name": "Christian Santarelli",
     "role": "Computer Scientist & Systems Software Engineer",
-    "description": "Informatico specializzato nella programmazione di sistema a basso livello, telemetria ad alte prestazioni e architetture distribuite. Laureando in Informatica presso l'Università degli Studi di Torino, con ricerca accademica sull'osservabilità del kernel Linux (HPC4AI) ed esperienza di docenza e tutorato in algoritmi e strutture dati."
+    "description": "Informatico specializzato nella programmazione di sistema a basso livello, telemetria ad alte prestazioni e architetture distribuite. Laureando in Informatica presso l'Università degli Studi di Torino, con ricerca accademica sull'osservabilità del kernel Linux (`HPC4AI`) ed esperienza di docenza e tutorato in algoritmi e strutture dati."
   },
   "contacts": {
     "email": "Scrivimi",
@@ -22,7 +22,7 @@
     },
     "education": {
       "title": "Formazione & Ricerca",
-      "description": "Laurea in Informatica a UniTO e ricerca di tesi su HPC4AI."
+      "description": "Laurea in Informatica a UniTO e ricerca di tesi su `HPC4AI`."
     },
     "skills": {
       "title": "Matrice delle Competenze",
@@ -34,13 +34,13 @@
       "role": "Tutor Didattico e Progettista di Esercizi Algoritmici",
       "company": "Università degli Studi di Torino - Dipartimento di Informatica",
       "period": "11/04/2026 - 23/09/2026",
-      "description": "Collaborazione con il docente della parte teorica del corso di Algoritmi e Strutture Dati per la progettazione e lo sviluppo di esercizi di valutazione automatizzata su piattaforma Moodle (plugin CodeRunner). Ideazione e implementazione di un esercizio guidato multi-stadio (4-5 fasi progressive) per lo sviluppo da zero di una variante avanzata dell'algoritmo di Rabin-Karp (ricerca multi-pattern a lunghezza fissa) con verifiche anti-brute-force sui vincoli di complessità temporale del rolling hash."
+      "description": "Collaborazione con il docente della parte teorica del corso di Algoritmi e Strutture Dati per la progettazione e lo sviluppo di esercizi di valutazione automatizzata su piattaforma Moodle (plugin CodeRunner). Ideazione e implementazione di un esercizio guidato multi-stadio (4-5 fasi progressive) per lo sviluppo da zero di una variante avanzata dell'algoritmo di `Rabin-Karp` (ricerca multi-pattern a lunghezza fissa) con verifiche anti-brute-force sui vincoli di complessità temporale del rolling hash."
     },
     "role-tutor-lab": {
       "role": "Tutor Didattico di Laboratorio",
       "company": "Università degli Studi di Torino - Dipartimento di Informatica",
       "period": "03/10/2025 - 09/12/2025",
-      "description": "Supporto didattico e assistenza tecnica in laboratorio per il corso di Algoritmi e Strutture Dati (Corso di Laurea Triennale in Informatica), in affiancamento al docente titolare su una coorte di circa 100 studenti. Supervisione delle sessioni pratiche di programmazione, revisione del codice (code review) in tempo reale, risoluzione di problematiche di gestione della memoria e con Valgrind, e guida all'analisi asintotica della complessità computazionale."
+      "description": "Supporto didattico e assistenza tecnica in laboratorio per il corso di Algoritmi e Strutture Dati (Corso di Laurea Triennale in Informatica), in affiancamento al docente titolare su una coorte di circa 100 studenti. Supervisione delle sessioni pratiche di programmazione, revisione del codice (code review) in tempo reale, risoluzione di problematiche di gestione della memoria e con `Valgrind`, e guida all'analisi asintotica della complessità computazionale."
     },
     "role-powerline": {
       "role": "Sviluppatore Software Full-Stack",
@@ -62,7 +62,7 @@
       "location": "Torino, Italia",
       "period": "2023 - 2026",
       "thesis": "Tesi di Laurea: Comprehensive Datacenter Usage and Sensor Monitoring (YATAL)",
-      "description": "Daemon di telemetria Linux-native ad alte prestazioni sviluppato in Rust per l'infrastruttura di supercalcolo HPC4AI, risolvendo l'effetto sonda e il drift d'orologio su nodi di datacenter eterogenei."
+      "description": "Daemon di telemetria Linux-native ad alte prestazioni sviluppato in Rust per l'infrastruttura di supercalcolo `HPC4AI`, risolvendo l'effetto sonda e il drift d'orologio su nodi di datacenter eterogenei."
     },
     "edu-2": {
       "degree": "Diploma di Maturità Scientifica",
@@ -72,22 +72,22 @@
     }
   },
   "certifications": [
-    "NVIDIA DLI: Data Parallelism: How to Train Deep Learning Models on Multiple GPUs (PyTorch DDP, NCCL) - 2026",
+    "`NVIDIA DLI`: Data Parallelism: How to Train Deep Learning Models on Multiple GPUs (`PyTorch DDP`, `NCCL`) - 2026",
     "Cambridge Assessment English: First Certificate in English - B2 (Grade B, Punteggio 177 - 2022)",
     "Corsi di formazione generale e specifica sulla sicurezza per lavoratori studenti (D.Lgs. 81/08, 12 ore)"
   ],
   "projects": {
     "proj-yatal": {
       "title": "YATAL: Daemon di Telemetria Linux per HPC & AI",
-      "description": "Daemon di telemetria Linux-native ad alte prestazioni sviluppato in Rust per il datacenter HPC4AI. Integra la campionatura sincrona dell'hardware con pipeline asincrone di esportazione di rete, incorporando percorsi a zero allocazioni, io_uring e sentinelle temporali.",
-      "longDescription": "Sviluppato come progetto di Tesi di Laurea presso l'Università degli Studi di Torino per l'infrastruttura di supercalcolo HPC4AI, YATAL (Yet Another Telemetry Agent for Linux) fornisce un'osservabilità sicura e in tempo reale per infrastrutture di supercalcolo (HPC) e intelligenza artificiale. Progettato per eliminare l'effetto sonda sui nodi di calcolo primari, il daemon unifica sorgenti eterogenee: dai file system virtuali del kernel Linux (PSI, RTNetlink) fino alle API Out-of-Band BMC Redfish e ai bus industriali Modbus TCP. Il progetto include un'approfondita ricerca empirica sugli allocatori di memoria concorrenti (jemalloc vs mimalloc), dimostrando la necessità del decay-purging asincrono per prevenire il memory pinning nei daemon persistenti.",
+      "description": "Daemon di telemetria Linux-native ad alte prestazioni sviluppato in Rust per il datacenter `HPC4AI`. Integra la campionatura sincrona dell'hardware con pipeline asincrone di esportazione di rete, incorporando percorsi a zero allocazioni, `io_uring` e sentinelle temporali.",
+      "longDescription": "Sviluppato come progetto di Tesi di Laurea presso l'Università degli Studi di Torino per l'infrastruttura di supercalcolo `HPC4AI`, YATAL (Yet Another Telemetry Agent for Linux) fornisce un'osservabilità sicura e in tempo reale per infrastrutture di supercalcolo (HPC) e intelligenza artificiale. Progettato per eliminare l'effetto sonda sui nodi di calcolo primari, il daemon unifica sorgenti eterogenee: dai file system virtuali del kernel Linux (PSI, RTNetlink) fino alle API Out-of-Band BMC Redfish e ai bus industriali Modbus TCP. Il progetto include un'approfondita ricerca empirica sugli allocatori di memoria concorrenti (jemalloc vs mimalloc), dimostrando la necessità del decay-purging asincrono per prevenire il memory pinning nei daemon persistenti.",
       "role": "Ingegnere del Software di Sistema & Tesista",
       "duration": "Apr 2026 - Set 2026",
       "features": [
-        "Bridge Ibrido Sync-Async che disaccoppia il polling bloccante dell'hardware dai worker asincroni di esportazione Tokio.",
-        "Sentinelle di Correttezza Temporale che compensano il drift dei BMC Out-of-Band e filtrano la staleness dei broker garantendo l'integrità di InfluxDB.",
-        "Percorso Critico a Zero Allocazioni basato su campi SmallVec nello stack, alberi di tag a condivisione strutturale e pool thread-local lock-free.",
-        "Logging Asincrono su File tramite Linux io_uring con rotazione dimensionale automatica e fallback trasparente su Tokio fs.",
+        "Bridge Ibrido Sync-Async che disaccoppia il polling bloccante dell'hardware dai worker asincroni di esportazione `Tokio`.",
+        "Sentinelle di Correttezza Temporale che compensano il drift dei BMC Out-of-Band e filtrano la staleness dei broker garantendo l'integrità di `InfluxDB`.",
+        "Percorso Critico a Zero Allocazioni basato su campi `SmallVec` nello stack, alberi di tag a condivisione strutturale e pool thread-local lock-free.",
+        "Logging Asincrono su File tramite Linux `io_uring` con rotazione dimensionale automatica e fallback trasparente su `Tokio` fs.",
         "Registro Modulare Compile-Time basato su inventory e hook di sicurezza contro il dead-stripping del linker ad ogni livello di ottimizzazione.",
         "Motore di Compressione Adattiva che rimodula dinamicamente i livelli Gzip (da 1 a 9) in base alla contropressione delle code di rete."
       ],
@@ -99,9 +99,9 @@
       ],
       "implementation": [
         "Architettura Core in Safe Rust: Pipeline di telemetria 100% safe Rust senza dereferenziazione di puntatori grezzi e priva di undefined behavior.",
-        "Inlining dei Campi con SmallVec: Memorizzazione diretta sullo stack fino a 8 misurazioni per punto, azzerando l'overhead sull'heap durante la campionatura.",
+        "Inlining dei Campi con `SmallVec`: Memorizzazione diretta sullo stack fino a 8 misurazioni per punto, azzerando l'overhead sull'heap durante la campionatura.",
         "Control Plane tikv-jemalloc-ctl: Configurazione runtime dei thread asincroni di decay per restituire la memoria transitoria al kernel del sistema operativo.",
-        "Code di Sottomissione Kernel io_uring: Gestione esplicita dell'offset pwrite all'interno di worker tokio-uring dedicati per il massimo throughput di scrittura su disco."
+        "Code di Sottomissione Kernel `io_uring`: Gestione esplicita dell'offset pwrite all'interno di worker tokio-uring dedicati per il massimo throughput di scrittura su disco."
       ],
       "links": {
         "thesis": "Documentazione di Tesi",
@@ -327,7 +327,7 @@
       "implementation": [
         "C: Compilazione strutturata tramite Makefile, garantendo la separazione tra oggetti della libreria ed eseguibili main/test.",
         "Puntatori a funzione: Implementazione di interfacce generiche capaci di memorizzare e manipolare qualsiasi tipo di dato.",
-        "Strutture Dati Dinamiche: Gestione meticolosa della memoria heap (malloc/free) per scongiurare memory leak (verifiche tramite Valgrind).",
+        "Strutture Dati Dinamiche: Gestione meticolosa della memoria heap (malloc/free) per scongiurare memory leak (verifiche tramite `Valgrind`).",
         "Unit Testing (Unity C): Produzione di test suite per ogni scenario pre-condizione e post-condizione prima della stesura effettiva degli algoritmi."
       ]
     },
@@ -358,29 +358,29 @@
     },
     "proj-librbipc": {
       "title": "librbipc: Ring Buffer IPC Lock-Free a Memoria Condivisa",
-      "description": "Libreria IPC ad altissimo throughput e latenza sub-microsecondo per Linux in ISO C23, basata su ring buffer MPMC lock-free a memoria condivisa. Integra sincronizzazione ibrida a 4 livelli, consumo idle dello 0.13% via futex2, crash-resilience con pidfd_open e batch vettoriale a oltre 50M msgs/s.",
-      "longDescription": "librbipc è una libreria di comunicazione inter-processo (IPC) di livello produttivo e a zero dipendenze sviluppata in ISO C23 per Linux. Implementa un ring buffer lock-free a memoria condivisa per architetture Multi-Producer / Multi-Consumer (MPMC), progettato per percorsi critici sub-microsecondo nello spazio utente (fino a 200 ns half-RTT), un consumo CPU in idle di appena lo 0.13% tramite sospensione Dekker su sys_futex, recupero deterministico dai crash di processo (pidfd_open), batching vettoriale B-Queue scatter-gather (50.68M messaggi/sec), scritture non-temporali che bypassano la cache (19.87 GB/s), signaling reattivo asincrono su eventfd/epoll e multicast pub-sub 1-a-N lock-free.",
+      "description": "Libreria IPC ad altissimo throughput e latenza sub-microsecondo per Linux in `ISO C23`, basata su ring buffer MPMC lock-free a memoria condivisa. Integra sincronizzazione ibrida a 4 livelli, consumo idle dello 0.13% via `futex2`, crash-resilience con `pidfd_open` e batch vettoriale a oltre 50M msgs/s.",
+      "longDescription": "librbipc è una libreria di comunicazione inter-processo (IPC) di livello produttivo e a zero dipendenze sviluppata in `ISO C23` per Linux. Implementa un ring buffer lock-free a memoria condivisa per architetture Multi-Producer / Multi-Consumer (MPMC), progettato per percorsi critici sub-microsecondo nello spazio utente (fino a 200 ns half-RTT), un consumo CPU in idle di appena lo 0.13% tramite sospensione Dekker su sys_futex, recupero deterministico dai crash di processo (`pidfd_open`), batching vettoriale B-Queue scatter-gather (50.68M messaggi/sec), scritture non-temporali che bypassano la cache (19.87 GB/s), signaling reattivo asincrono su `eventfd`/`epoll` e multicast pub-sub 1-a-N lock-free.",
       "role": "Systems Software Engineer",
       "duration": "Ott 2026",
       "features": [
-        "Motore di Sincronizzazione Ibrida a 4 Livelli: Transizione fluida da micro-spin limitato (48 cicli pause/yield) e monitoraggio hardware Intel WAITPKG (UMWAIT/UMONITOR) / ARM64 WFET, a barriere di memoria asimmetriche Dekker e multi-wait vettoriale Linux 5.16+ futex2 (sys_futex_waitv).",
-        "Resilienza Deterministica ai Crash Senza Corse Critiche: Controllo dello stato dei processi peer via Linux 5.3+ pidfd_open(2) e poll, avvelenamento degli slot abbandonati (RBIPC_SLOT_POISONED), riparazione dei buchi nei ticket orfani e lease temporali per i consumer.",
-        "Batching Vettoriale B-Queue & Scansione SIMD: Ammortizza la riserva atomica dei ticket e le barriere di memoria su slot contigui, raggiungendo 50.68M messaggi/s accelerati da scanner vettoriali a 256-bit AVX2 e ARM64 NEON.",
-        "Scritture Streaming Non-Temporali Diretto in DRAM: Raggiunge 19.87 GB/s (+105% di throughput rispetto a memcpy standard) per payload ≥ 256 B con istruzioni streaming AVX2 (_mm256_stream_si256), evitando l'inquinamento delle cache CPU e il traffico RFO sul bus.",
-        "Memoria Virtuale a Doppio Mappaggio: Sfrutta il rispecchiamento contiguo 2x dello spazio di indirizzamento con MAP_FIXED per consentire l'accesso continuo a cavallo della fine del ring buffer senza aritmetica modulo dei puntatori.",
-        "Integrazione Multi-Topologia & Reactor: Supporta notifiche di prontezza non-bloccanti via eventfd per loop epoll/io_uring, pub-sub multicast 1-a-N con cursori indipendenti e passaggio di descrittori memfd_create zero-namespace su SCM_RIGHTS."
+        "Motore di Sincronizzazione Ibrida a 4 Livelli: Transizione fluida da micro-spin limitato (48 cicli pause/yield) e monitoraggio hardware Intel `WAITPKG` (`UMWAIT`/`UMONITOR`) / `ARM64 WFET`, a barriere di memoria asimmetriche Dekker e multi-wait vettoriale Linux 5.16+ `futex2` (`sys_futex_waitv`).",
+        "Resilienza Deterministica ai Crash Senza Corse Critiche: Controllo dello stato dei processi peer via Linux 5.3+ `pidfd_open`(2) e poll, avvelenamento degli slot abbandonati (RBIPC_SLOT_POISONED), riparazione dei buchi nei ticket orfani e lease temporali per i consumer.",
+        "Batching Vettoriale B-Queue & Scansione SIMD: Ammortizza la riserva atomica dei ticket e le barriere di memoria su slot contigui, raggiungendo 50.68M messaggi/s accelerati da scanner vettoriali a 256-bit `AVX2` e `ARM64 NEON`.",
+        "Scritture Streaming Non-Temporali Diretto in DRAM: Raggiunge 19.87 GB/s (+105% di throughput rispetto a memcpy standard) per payload ≥ 256 B con istruzioni streaming `AVX2` (_mm256_stream_si256), evitando l'inquinamento delle cache CPU e il traffico RFO sul bus.",
+        "Memoria Virtuale a Doppio Mappaggio: Sfrutta il rispecchiamento contiguo 2x dello spazio di indirizzamento con `MAP_FIXED` per consentire l'accesso continuo a cavallo della fine del ring buffer senza aritmetica modulo dei puntatori.",
+        "Integrazione Multi-Topologia & Reactor: Supporta notifiche di prontezza non-bloccanti via `eventfd` per loop `epoll`/`io_uring`, pub-sub multicast 1-a-N con cursori indipendenti e passaggio di descrittori `memfd_create` zero-namespace su `SCM_RIGHTS`."
       ],
       "theory": [
         "Motore Sequence Turn Lock-Free di Vyukov: Assegnazione di ticket atomici monotoni a 64-bit abbinata a verifica sequenziale per singolo slot, eliminando i colli di bottiglia CAS globali e i pericoli ABA.",
-        "Sincronizzazione Asimmetrica di Dekker: Sposta l'overhead dell'ordinamento della memoria fuori dal percorso critico dei producer via sys_membarrier(2), eliminando le istruzioni hardware MFENCE durante l'esecuzione non contesa.",
-        "Sblocco Progressivo delle Funzionalità Hardware: Rilevamento dinamico a runtime delle estensioni ISA della CPU e delle chiamate di sistema del kernel (futex2, WAITPKG, AVX-512/AVX2, WFxT) con fallback trasparente a standard POSIX portabili.",
-        "Gerarchia di Memoria & Coerenza delle Cache: Geometria degli slot allineata a 64 byte verificata a tempo di compilazione con invarianti static_assert C23, eliminando il false sharing tra linee di cache L1/L2/L3."
+        "Sincronizzazione Asimmetrica di Dekker: Sposta l'overhead dell'ordinamento della memoria fuori dal percorso critico dei producer via `sys_membarrier`(2), eliminando le istruzioni hardware `MFENCE` durante l'esecuzione non contesa.",
+        "Sblocco Progressivo delle Funzionalità Hardware: Rilevamento dinamico a runtime delle estensioni ISA della CPU e delle chiamate di sistema del kernel (`futex2`, `WAITPKG`, `AVX-512`/`AVX2`, WFxT) con fallback trasparente a standard POSIX portabili.",
+        "Gerarchia di Memoria & Coerenza delle Cache: Geometria degli slot allineata a 64 byte verificata a tempo di compilazione con invarianti `static_assert` C23, eliminando il false sharing tra linee di cache L1/L2/L3."
       ],
       "implementation": [
-        "Ingegneria dello Standard ISO C23: Compilato con -std=c23 con rigorosa conformità GCC 13/14 e Clang 17/18, sanitizers ASan/TSan e versionamento esplicito dei simboli del linker GNU (LIBRBIPC_1.0).",
-        "Vettorizzazione Kernel Linux Futex2: Monitoraggio multi-word diretto a 64-bit via sys_futex_waitv, ottenendo risvegli a 299 ns p50 monitorando contatori di sequenza e flag di terminazione simultaneamente.",
-        "Sigillatura dei Descrittori Kernel & Integrità CRC32C: Memoria condivisa supportata da memfd_create o POSIX shm sigillata con fcntl(F_ADD_SEALS), protetta da checksum hardware Castagnoli CRC32C.",
-        "Validazione Empirica con Benchmark: Profilazione approfondita su configurazioni desktop multi-core e laptop con throttling termico rispetto a DPDK rte_ring, LMAX Disruptor, POSIX mqueue e AF_UNIX."
+        "Ingegneria dello Standard `ISO C23`: Compilato con -std=c23 con rigorosa conformità GCC 13/14 e Clang 17/18, sanitizers ASan/TSan e versionamento esplicito dei simboli del linker GNU (LIBRBIPC_1.0).",
+        "Vettorizzazione Kernel Linux Futex2: Monitoraggio multi-word diretto a 64-bit via `sys_futex_waitv`, ottenendo risvegli a 299 ns p50 monitorando contatori di sequenza e flag di terminazione simultaneamente.",
+        "Sigillatura dei Descrittori Kernel & Integrità CRC32C: Memoria condivisa supportata da `memfd_create` o POSIX shm sigillata con fcntl(F_ADD_SEALS), protetta da checksum hardware Castagnoli CRC32C.",
+        "Validazione Empirica con Benchmark: Profilazione approfondita su configurazioni desktop multi-core e laptop con throttling termico rispetto a `DPDK rte_ring`, `LMAX Disruptor`, `POSIX mqueue` e `AF_UNIX`."
       ],
       "links": {
         "readme": "Documentazione Architetturale",
@@ -395,8 +395,8 @@
         "badge": "Dossier di Architettura dei Sistemi",
         "title": "Macchina a Stati di Sincronizzazione Ibrida a 4 Livelli",
         "tier0": "Esegue backoff esponenziale limitato con istruzioni CPU pause. Evita context switch verso il kernel nei percorsi non contesi e a breve latenza.",
-        "tier1": "Attiva il monitoraggio hardware della cache su &slot->sequence tramite UMONITOR. Entra nel sub-state a bassissima latenza C0.1, riducendo i consumi con risveglio hardware immediato.",
-        "tier2": "Elimina gli stalli dello store buffer (MFENCE) tramite barriere di memoria asimmetriche. Esegue multi-wait a 64-bit vettorizzate su sequenza slot e flag di arresto contemporaneamente.",
+        "tier1": "Attiva il monitoraggio hardware della cache su &slot->sequence tramite `UMONITOR`. Entra nel sub-state a bassissima latenza C0.1, riducendo i consumi con risveglio hardware immediato.",
+        "tier2": "Elimina gli stalli dello store buffer (`MFENCE`) tramite barriere di memoria asimmetriche. Esegue multi-wait a 64-bit vettorizzate su sequenza slot e flag di arresto contemporaneamente.",
         "tier3": "Sospende i thread consumatori inattivi nelle code del kernel senza risvegli spuri. Valuta atomicamente il ticket dello slot e risveglia le code successive in una singola chiamata di sistema."
       }
     }
@@ -456,10 +456,10 @@
         "git": "Git",
         "make": "Make",
         "cmake": "CMake",
-        "monitoring": "InfluxDB, Grafana & Prometheus",
+        "monitoring": "`InfluxDB`, Grafana & Prometheus",
         "analysis": "Analisi dei Dati",
         "k8s": "Kubernetes",
-        "systems-io": "Sistemi Linux & io_uring"
+        "systems-io": "Sistemi Linux & `io_uring`"
       }
     }
   },

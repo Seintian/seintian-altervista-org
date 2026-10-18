@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCodeSpans } from "@/lib/formatText";
+
 import { useTranslation } from "react-i18next";
 import { ProjectType } from "@/types/portfolio";
 
@@ -19,8 +21,8 @@ export default function ProjectOverview({ project }: ProjectOverviewProps) {
             <h2 className="text-2xl font-bold mb-4 text-slate-900 dark:text-slate-50">
                 {t("projects.details.overview", "Overview")}
             </h2>
-            <div className="prose prose-slate dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 leading-relaxed text-base sm:text-lg">
-                <p>{overviewText}</p>
+            <div className="text-slate-600 dark:text-slate-300 leading-relaxed text-sm sm:text-[15px]">
+                <p>{formatCodeSpans(overviewText)}</p>
             </div>
         </section>
     );
