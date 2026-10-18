@@ -5,12 +5,11 @@ import { useResonance } from "@/lib/context/ResonanceContext";
 import { useTheme } from "next-themes";
 
 interface Particle {
-  t: number;          // Position along the loop [0, 1)
-  speed: number;      // Individual speed variance
-  size: number;       // Particle radius
-  tier: 0 | 1 | 2;    // Visual tier: 0 = fast path, 1 = waitpkg, 2 = futex2
-  alpha: number;      // Opacity
-  trail: Array<{ x: number; y: number }>;
+  t: number;          // Position [0, 1) where 0..0.5 is Primary Ring, 0.5..1.0 is Mirror Ring
+  speed: number;
+  size: number;
+  color: string;
+  isContiguousSpan?: boolean;
 }
 
 export default function RingBufferStream() {
@@ -35,7 +34,6 @@ export default function RingBufferStream() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Respect prefers-reduced-motion
     const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     let animationFrameId: number;
@@ -44,7 +42,6 @@ export default function RingBufferStream() {
     let height = 0;
     let dpr = 1;
 
-    // Mouse tilt parallax
     let targetTiltX = 0;
     let targetTiltY = 0;
     let currentTiltX = 0;
@@ -54,13 +51,12 @@ export default function RingBufferStream() {
       const rect = canvas.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width - 0.5;
       const y = (e.clientY - rect.top) / rect.height - 0.5;
-      targetTiltX = x * 0.25;
-      targetTiltY = y * 0.2;
+      targetTiltX = x * 0.35;
+      targetTiltY = y * 0.25;
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
 
-    // Handle Resize
     const resize = () => {
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
@@ -74,7 +70,6 @@ export default function RingBufferStream() {
     resize();
     window.addEventListener("resize", resize, { passive: true });
 
-    // IntersectionObserver to pause loop when scrolled out of view
     const observer = new IntersectionObserver(
       (entries) => {
         isVisible = entries[0].isIntersecting;
@@ -83,156 +78,228 @@ export default function RingBufferStream() {
     );
     observer.observe(canvas);
 
-    // Tab visibility check
     const handleVisibilityChange = () => {
       isVisible = !document.hidden;
     };
     document.addEventListener("visibilitychange", handleVisibilityChange);
 
-    // Initialize 48 telemetry & ring buffer stream particles
-    const PARTICLE_COUNT = 42;
+    // Stream particles: representing packet payloads traversing both Virtual Buffers
+    const PARTICLE_COUNT = 36;
     const particles: Particle[] = [];
     for (let i = 0; i < PARTICLE_COUNT; i++) {
       particles.push({
         t: i / PARTICLE_COUNT,
-        speed: 0.0018 + Math.random() * 0.0012,
-        size: 1.5 + Math.random() * 2,
-        tier: (i % 5 === 0 ? 2 : i % 3 === 0 ? 1 : 0) as 0 | 1 | 2,
-        alpha: 0.4 + Math.random() * 0.5,
-        trail: [],
+        speed: 0.0016 + Math.random() * 0.001,
+        size: 2 + Math.random() * 2,
+        color: i % 2 === 0 ? "#06b6d4" : "#6366f1",
       });
     }
 
-    let globalRotation = 0;
+    // A large contiguous message packet that demonstrably crosses the boundary
+    let contiguousPacketT = 0.42; // Starts just before Boundary (at 0.5)
 
-    // Render loop
+    let globalAngle = 0;
+
     const render = () => {
       if (!isVisible) {
         animationFrameId = requestAnimationFrame(render);
         return;
       }
 
-      // Smooth tilt interpolation
       currentTiltX += (targetTiltX - currentTiltX) * 0.05;
       currentTiltY += (targetTiltY - currentTiltY) * 0.05;
 
-      // Determine palette based on active resonance & theme
       const isDark = themeRef.current === "dark";
       const tech = (activeTechRef.current || "").toLowerCase();
 
-      let primaryColor = isDark ? "#06b6d4" : "#0284c7";    // Cyan default
-      let accentColor = isDark ? "#6366f1" : "#4f46e5";     // Indigo default
-      let speedMultiplier = 1.0;
+      let primaryHue = isDark ? "#06b6d4" : "#0284c7"; // Cyan
+      let mirrorHue = isDark ? "#818cf8" : "#4f46e5";  // Indigo
+      let speedMult = 1.0;
 
-      if (tech.includes("c23") || tech.includes("futex") || tech.includes("ipc") || tech.includes("ring")) {
-        primaryColor = isDark ? "#38bdf8" : "#0284c7";
-        accentColor = isDark ? "#22d3ee" : "#0891b2";
-        speedMultiplier = 2.0;
-      } else if (tech.includes("rust") || tech.includes("io_uring") || tech.includes("telemetry")) {
-        primaryColor = isDark ? "#818cf8" : "#4f46e5";
-        accentColor = isDark ? "#a855f7" : "#7e22ce";
-        speedMultiplier = 1.8;
-      } else if (tech.includes("algo") || tech.includes("c") || tech.includes("numa")) {
-        primaryColor = isDark ? "#34d399" : "#059669";
-        accentColor = isDark ? "#10b981" : "#047857";
-        speedMultiplier = 1.6;
+      if (tech.includes("c23") || tech.includes("ipc") || tech.includes("futex")) {
+        primaryHue = isDark ? "#38bdf8" : "#0284c7";
+        mirrorHue = isDark ? "#22d3ee" : "#0891b2";
+        speedMult = 1.8;
+      } else if (tech.includes("rust") || tech.includes("telemetry")) {
+        primaryHue = isDark ? "#818cf8" : "#4f46e5";
+        mirrorHue = isDark ? "#a855f7" : "#7e22ce";
+        speedMult = 1.6;
       }
 
       ctx.clearRect(0, 0, width, height);
 
       const cx = width * 0.5;
-      const cy = height * 0.5;
-      const rx = Math.min(width, height) * 0.42;
-      const ry = rx * (0.38 + currentTiltY);
+      const cy = height * 0.52;
+      const rBase = Math.min(width, height) * 0.38;
+      const tiltFactor = 0.45 + currentTiltY * 0.4;
 
-      globalRotation += (0.002 * speedMultiplier);
+      globalAngle += 0.002 * speedMult;
 
-      // Draw 64-byte Vyukov Slot ticks around the ring
-      const SLOT_COUNT = 32;
-      ctx.lineWidth = 1;
-      for (let s = 0; s < SLOT_COUNT; s++) {
-        const slotAngle = (s / SLOT_COUNT) * Math.PI * 2 + globalRotation;
-        const cosA = Math.cos(slotAngle);
-        const sinA = Math.sin(slotAngle);
+      // Dimensions for the 2 Concentric / Contiguous Virtual Memory Tracks
+      const rInner = rBase * 0.82; // Track A: Primary Virtual Memory Space [0..N-1]
+      const rOuter = rBase * 1.08; // Track B: Mirror Virtual Memory Space [N..2N-1]
 
-        // Project slot tick
-        const x1 = cx + cosA * (rx - 6) + currentTiltX * 40;
-        const y1 = cy + sinA * (ry - 4);
-        const x2 = cx + cosA * (rx + 6) + currentTiltX * 40;
-        const y2 = cy + sinA * (ry + 4);
-
-        // Depth cueing
-        const depthAlpha = ((sinA + 1) / 2) * 0.35 + 0.08;
-        ctx.strokeStyle = isDark
-          ? `rgba(148, 163, 184, ${depthAlpha})`
-          : `rgba(100, 116, 139, ${depthAlpha * 0.7})`;
-
-        ctx.beginPath();
-        ctx.moveTo(x1, y1);
-        ctx.lineTo(x2, y2);
-        ctx.stroke();
-      }
-
-      // Draw the ambient double-mapped ring buffer backbone (2x MAP_FIXED guide)
+      // 1. Draw Physical Memory Center Frame (Single memfd_create shared buffer)
+      const rCore = rBase * 0.35;
       ctx.beginPath();
-      ctx.ellipse(cx + currentTiltX * 40, cy, rx, ry, 0, 0, Math.PI * 2);
-      ctx.strokeStyle = isDark ? "rgba(99, 102, 241, 0.12)" : "rgba(59, 130, 246, 0.08)";
+      ctx.ellipse(cx + currentTiltX * 35, cy, rCore, rCore * tiltFactor, 0, 0, Math.PI * 2);
+      ctx.fillStyle = isDark ? "rgba(15, 23, 42, 0.85)" : "rgba(241, 245, 249, 0.9)";
+      ctx.fill();
+      ctx.strokeStyle = isDark ? "rgba(51, 65, 85, 0.6)" : "rgba(203, 213, 225, 0.8)";
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+
+      // Core Physical Label
+      ctx.font = "9px ui-monospace, SFMono-Regular, monospace";
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = isDark ? "rgba(148, 163, 184, 0.8)" : "rgba(71, 85, 105, 0.9)";
+      ctx.fillText("PHYSICAL RAM", cx + currentTiltX * 35, cy - 6);
+      ctx.fillStyle = isDark ? "#38bdf8" : "#0284c7";
+      ctx.fillText("memfd_create(1x)", cx + currentTiltX * 35, cy + 8);
+
+      // 2. Draw Virtual Memory Ring Tracks
+      // Track A (Primary Buffer): Cyan
+      ctx.beginPath();
+      ctx.ellipse(cx + currentTiltX * 35, cy, rInner, rInner * tiltFactor, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = isDark ? "rgba(6, 182, 212, 0.28)" : "rgba(2, 132, 199, 0.25)";
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      // Update and draw streaming telemetry / IPC message packets
-      for (let i = 0; i < particles.length; i++) {
-        const p = particles[i];
-        if (!prefersReducedMotion) {
-          p.t = (p.t + p.speed * speedMultiplier) % 1;
-        }
+      // Track B (Mirror Buffer - MAP_FIXED): Indigo
+      ctx.beginPath();
+      ctx.ellipse(cx + currentTiltX * 35, cy, rOuter, rOuter * tiltFactor, 0, 0, Math.PI * 2);
+      ctx.strokeStyle = isDark ? "rgba(99, 102, 241, 0.32)" : "rgba(79, 70, 229, 0.25)";
+      ctx.lineWidth = 2;
+      ctx.stroke();
 
-        const angle = p.t * Math.PI * 2 + globalRotation;
-        const cosA = Math.cos(angle);
-        const sinA = Math.sin(angle);
+      // 3. Draw 16 Memory Page Aliases connecting Track A & Track B to Physical Core
+      const SLOTS = 16;
+      for (let s = 0; s < SLOTS; s++) {
+        const slotAngle = (s / SLOTS) * Math.PI * 2 + globalAngle;
+        const cosA = Math.cos(slotAngle);
+        const sinA = Math.sin(slotAngle);
 
-        const px = cx + cosA * rx + currentTiltX * 40;
-        const py = cy + sinA * ry;
+        const xCore = cx + cosA * rCore + currentTiltX * 35;
+        const yCore = cy + sinA * rCore * tiltFactor;
 
-        // Depth attenuation: front of ring is brighter, back is softer
-        const depth = (sinA + 1) / 2; // 0 (back) to 1 (front)
-        const currentAlpha = p.alpha * (0.3 + depth * 0.7);
+        const xInner = cx + cosA * rInner + currentTiltX * 35;
+        const yInner = cy + sinA * rInner * tiltFactor;
 
-        // Update particle trail
-        p.trail.unshift({ x: px, y: py });
-        if (p.trail.length > 5) p.trail.pop();
+        const xOuter = cx + cosA * rOuter + currentTiltX * 35;
+        const yOuter = cy + sinA * rOuter * tiltFactor;
 
-        // Draw particle tail
-        if (p.trail.length > 1) {
-          ctx.beginPath();
-          ctx.moveTo(p.trail[0].x, p.trail[0].y);
-          for (let j = 1; j < p.trail.length; j++) {
-            ctx.lineTo(p.trail[j].x, p.trail[j].y);
-          }
-          ctx.strokeStyle = p.tier === 0
-            ? `${primaryColor}${Math.floor(currentAlpha * 0.4 * 255).toString(16).padStart(2, "0")}`
-            : `${accentColor}${Math.floor(currentAlpha * 0.3 * 255).toString(16).padStart(2, "0")}`;
-          ctx.lineWidth = p.size * 0.8;
-          ctx.stroke();
-        }
+        const depth = (sinA + 1) / 2; // 0 = back, 1 = front
 
-        // Draw particle head
+        // Virtual-to-Physical MMU Mapping Line (demonstrates 2 virtual addresses mapping to 1 physical slot)
         ctx.beginPath();
-        ctx.arc(px, py, p.size * (0.7 + depth * 0.5), 0, Math.PI * 2);
-        ctx.fillStyle = p.tier === 0 ? primaryColor : accentColor;
-        ctx.globalAlpha = currentAlpha;
+        ctx.moveTo(xInner, yInner);
+        ctx.lineTo(xCore, yCore);
+        ctx.strokeStyle = isDark
+          ? `rgba(56, 189, 248, ${0.06 + depth * 0.12})`
+          : `rgba(2, 132, 199, ${0.05 + depth * 0.08})`;
+        ctx.lineWidth = 1;
+        ctx.setLineDash([2, 4]);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Connection between Primary Virtual Slot and Mirror Virtual Slot
+        ctx.beginPath();
+        ctx.moveTo(xInner, yInner);
+        ctx.lineTo(xOuter, yOuter);
+        ctx.strokeStyle = isDark
+          ? `rgba(129, 140, 248, ${0.15 + depth * 0.25})`
+          : `rgba(79, 70, 229, ${0.12 + depth * 0.2})`;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        // Slot Tick Heads on Track A
+        ctx.beginPath();
+        ctx.arc(xInner, yInner, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = primaryHue;
+        ctx.globalAlpha = 0.4 + depth * 0.6;
         ctx.fill();
         ctx.globalAlpha = 1.0;
 
-        // Subtle glow aura for Tier 0 fast-path particles
-        if (p.tier === 0 && depth > 0.6) {
-          ctx.beginPath();
-          ctx.arc(px, py, p.size * 2.5, 0, Math.PI * 2);
-          ctx.fillStyle = primaryColor;
-          ctx.globalAlpha = currentAlpha * 0.2;
-          ctx.fill();
-          ctx.globalAlpha = 1.0;
+        // Slot Tick Heads on Track B (Mirror)
+        ctx.beginPath();
+        ctx.arc(xOuter, yOuter, 1.8, 0, Math.PI * 2);
+        ctx.fillStyle = mirrorHue;
+        ctx.globalAlpha = 0.4 + depth * 0.6;
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+      }
+
+      // 4. MAP_FIXED Boundary Seam Annotation (at angle ~0, 3 o'clock)
+      const seamAngle = globalAngle;
+      const seamCos = Math.cos(seamAngle);
+      const seamSin = Math.sin(seamAngle);
+      const xSeam1 = cx + seamCos * (rInner - 8) + currentTiltX * 35;
+      const ySeam1 = cy + seamSin * (rInner - 8) * tiltFactor;
+      const xSeam2 = cx + seamCos * (rOuter + 8) + currentTiltX * 35;
+      const ySeam2 = cy + seamSin * (rOuter + 8) * tiltFactor;
+
+      ctx.beginPath();
+      ctx.moveTo(xSeam1, ySeam1);
+      ctx.lineTo(xSeam2, ySeam2);
+      ctx.strokeStyle = "#38bdf8";
+      ctx.lineWidth = 2.5;
+      ctx.stroke();
+
+      // Boundary Tag
+      ctx.font = "bold 8.5px ui-monospace, SFMono-Regular, monospace";
+      ctx.fillStyle = isDark ? "#38bdf8" : "#0284c7";
+      ctx.textAlign = "left";
+      ctx.fillText("2x MAP_FIXED BOUNDARY (0 memcpy)", xSeam2 + 6, ySeam2);
+
+      // 5. Draw Streaming Packet Packets across the dual continuum
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        if (!prefersReducedMotion) {
+          p.t = (p.t + p.speed * speedMult) % 1;
         }
+
+        // p.t from 0..0.5 traverses Primary Ring (rInner)
+        // p.t from 0.5..1.0 traverses Mirror Ring (rOuter)
+        const isMirror = p.t >= 0.5;
+        const currentR = isMirror ? rOuter : rInner;
+        const localAngle = (p.t * 2 * Math.PI * 2) + globalAngle;
+
+        const px = cx + Math.cos(localAngle) * currentR + currentTiltX * 35;
+        const py = cy + Math.sin(localAngle) * currentR * tiltFactor;
+        const depth = (Math.sin(localAngle) + 1) / 2;
+
+        ctx.beginPath();
+        ctx.arc(px, py, p.size * (0.8 + depth * 0.4), 0, Math.PI * 2);
+        ctx.fillStyle = isMirror ? mirrorHue : primaryHue;
+        ctx.globalAlpha = 0.35 + depth * 0.65;
+        ctx.fill();
+        ctx.globalAlpha = 1.0;
+      }
+
+      // 6. Contiguous Wrap-Around Write Payload (Demonstrating multi-slot linear write across boundary)
+      if (!prefersReducedMotion) {
+        contiguousPacketT = (contiguousPacketT + 0.002 * speedMult) % 1;
+      }
+
+      // Draw contiguous message spanning across the boundary
+      const spanSteps = 7;
+      for (let s = 0; s < spanSteps; s++) {
+        const stepT = (contiguousPacketT + (s * 0.012)) % 1;
+        const inMirror = stepT >= 0.5;
+        const rTrack = inMirror ? rOuter : rInner;
+        const angle = (stepT * 4 * Math.PI) + globalAngle;
+
+        const xSpan = cx + Math.cos(angle) * rTrack + currentTiltX * 35;
+        const ySpan = cy + Math.sin(angle) * rTrack * tiltFactor;
+
+        ctx.beginPath();
+        ctx.arc(xSpan, ySpan, 3.5, 0, Math.PI * 2);
+        ctx.fillStyle = inMirror ? "#a855f7" : "#06b6d4";
+        ctx.shadowColor = inMirror ? "#a855f7" : "#06b6d4";
+        ctx.shadowBlur = 8;
+        ctx.fill();
+        ctx.shadowBlur = 0;
       }
 
       if (!prefersReducedMotion) {
@@ -252,17 +319,28 @@ export default function RingBufferStream() {
   }, []);
 
   return (
-    <div className="relative w-full h-[280px] sm:h-[320px] lg:h-[380px] flex items-center justify-center pointer-events-none select-none overflow-hidden">
+    <div className="relative w-full h-[320px] sm:h-[360px] lg:h-[420px] flex items-center justify-center select-none overflow-hidden rounded-3xl bg-slate-900/10 dark:bg-slate-950/40 border border-slate-200/40 dark:border-slate-800/60 backdrop-blur-xs p-2">
       <canvas
         ref={canvasRef}
-        className="w-full h-full block"
+        className="w-full h-full block cursor-crosshair"
         style={{ width: "100%", height: "100%" }}
         aria-hidden="true"
       />
-      {/* Subtle overlay HUD telemetry badge */}
-      <div className="absolute bottom-2 right-4 flex items-center gap-2 px-3 py-1 rounded-full bg-slate-900/40 dark:bg-slate-950/60 backdrop-blur-md border border-slate-200/20 dark:border-slate-800/40 text-[0.65rem] font-mono text-slate-500 dark:text-slate-400 opacity-70">
-        <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-ping" />
-        <span>2x MAP_FIXED :: Ring Buffer Stream</span>
+
+      {/* Top Left: Memory Architecture Monospace Telemetry */}
+      <div className="absolute top-3 left-4 flex flex-col gap-0.5 font-mono text-[0.65rem] text-slate-500 dark:text-slate-400 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/50 dark:border-slate-800/60 pointer-events-none">
+        <div className="flex items-center gap-1.5 font-bold text-slate-700 dark:text-slate-200">
+          <span className="w-1.5 h-1.5 rounded-full bg-cyan-500 animate-pulse" />
+          <span>VIRTUAL MEMORY DUAL MIRROR</span>
+        </div>
+        <div>Base Mapping: <span className="text-cyan-600 dark:text-cyan-400">0x7f00 [0 .. N-1]</span></div>
+        <div>Mirror Mapping: <span className="text-indigo-600 dark:text-indigo-400">MAP_FIXED [N .. 2N-1]</span></div>
+      </div>
+
+      {/* Bottom Right: Systems Zero-Copy Invariant */}
+      <div className="absolute bottom-3 right-4 flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-800/60 font-mono text-[0.65rem] text-slate-600 dark:text-slate-300 pointer-events-none">
+        <span className="w-2 h-2 rounded-full bg-emerald-500" />
+        <span>Contiguous Wrap-Around :: 0 Split Writes</span>
       </div>
     </div>
   );
