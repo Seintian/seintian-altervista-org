@@ -390,7 +390,17 @@
     "resonance_active": "Grafo relazionale attivo: risonanza con",
     "resonance_count": "progetti evidenziati",
     "resonance_reset": "Azzera Filtro",
-    "resonant_match": "Risonanza Attiva"
+    "resonant_match": "Risonanza Attiva",
+    "librbipc": {
+      "explorer": {
+        "badge": "Architettura di Sistema Interattiva",
+        "title": "Macchina a Stati di Sincronizzazione Ibrida a 4 Livelli",
+        "tier0": "Esegue backoff esponenziale limitato con istruzioni CPU pause. Evita completamente context switch verso il kernel nei percorsi non contesi.",
+        "tier1": "Attiva il monitoraggio hardware della cache su &slot->sequence tramite UMONITOR. Entra nel sub-state a bassissima latenza C0.1, abbattendo i consumi con risveglio istantaneo.",
+        "tier2": "Elimina gli stalli dello store buffer (MFENCE) tramite memory barrier asimmetriche. Esegue multi-wait a 64-bit vettorizzate su sequenza slot e flag di shutdown contemporaneamente.",
+        "tier3": "Sospende i consumatori inattivi nelle wait-queue del kernel senza risvegli spuri. Valuta atomicamente il ticket dello slot e risveglia le code successive in una singola syscall."
+      }
+    }
   },
   "sections": {
     "experience": {

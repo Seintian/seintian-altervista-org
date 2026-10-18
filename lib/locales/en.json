@@ -390,7 +390,17 @@
     "resonance_active": "Relational graph active: resonating with",
     "resonance_count": "matching projects highlighted",
     "resonance_reset": "Reset Filter",
-    "resonant_match": "Resonant Match"
+    "resonant_match": "Resonant Match",
+    "librbipc": {
+      "explorer": {
+        "badge": "Interactive Systems Architecture",
+        "title": "4-Tier Hybrid Synchronization State Machine",
+        "tier0": "Executes bounded exponential backoff with CPU pause instructions. Completely avoids kernel context switches on uncontended and brief contention windows.",
+        "tier1": "Arms CPU cache monitoring on &slot->sequence via UMONITOR. Enters ultra-low-latency C0.1 core sub-state, dropping core power while retaining instant hardware wakeups.",
+        "tier2": "Eliminates MFENCE store-buffer stalls using asymmetric memory barriers. Performs vectorized 64-bit multi-waits on slot sequences and shutdown flags simultaneously.",
+        "tier3": "Transfers dormant consumers to kernel wait-queues without spurious wakeups. Atomically evaluates slot tickets and wakes subsequent wait-queues in a single syscall."
+      }
+    }
   },
   "sections": {
     "experience": {
