@@ -4,8 +4,11 @@ import { ReactNode, useEffect } from "react";
 import { ThemeProvider } from "next-themes";
 import i18n, { languageDetector } from "@/lib/i18n";
 import { ResonanceProvider } from "@/lib/context/ResonanceContext";
+import { useLateralMouseNavigation } from "@/hooks/useLateralMouseNavigation";
 
 export default function Providers({ children }: { children: ReactNode }) {
+  useLateralMouseNavigation();
+
   useEffect(() => {
     const updateDocumentLang = (lng: string) => {
       if (typeof document !== "undefined") {
