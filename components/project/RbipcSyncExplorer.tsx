@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { Cpu, Zap, Layers, Terminal } from "lucide-react";
+import { formatCodeSpans } from "@/lib/formatText";
 
 interface TierData {
   id: number;
@@ -48,7 +49,7 @@ for (int i = 0; i < 48; i++) {
     latency: "40 – 70 ns",
     syscall: "User-Level Monitor Wait (C0.1 sub-state)",
     descriptionKey: "projects.librbipc.explorer.tier1",
-    defaultDescription: "Arms CPU cache monitoring on &slot->sequence via UMONITOR. Enters the ultra-low-latency C0.1 core sub-state, reducing core power while maintaining hardware-level wakeups.",
+    defaultDescription: "Arms CPU cache monitoring on `&slot->sequence` via `UMONITOR`. Enters the ultra-low-latency C0.1 core sub-state, reducing core power while maintaining hardware-level wakeups.",
     codeSnippet: `// Tier 1: Hardware-assisted cacheline monitoring via WAITPKG
 _umonitor((void*)&slot->sequence);
 
@@ -67,7 +68,7 @@ _umwait(control, __rdtsc() + timeout_cycles);`,
     latency: "~299 ns (p50)",
     syscall: "Vectorized 64-bit futex2 multi-wait",
     descriptionKey: "projects.librbipc.explorer.tier2",
-    defaultDescription: "Eliminates MFENCE store-buffer stalls using asymmetric memory barriers. Executes vectorized 64-bit multi-waits on slot sequences and shutdown flags simultaneously.",
+    defaultDescription: "Eliminates `MFENCE` store-buffer stalls using asymmetric memory barriers. Executes vectorized 64-bit multi-waits on slot sequences and shutdown flags simultaneously.",
     codeSnippet: `// Tier 2: Asymmetric Dekker barrier + Linux 5.16+ vectorized futex2
 struct futex_waitv waiters[2] = {
     { .val = expected_seq, .uaddr = (uintptr_t)&slot->sequence, .flags = FUTEX_32 },
@@ -180,7 +181,7 @@ export default function RbipcSyncExplorer() {
         </div>
 
         <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-4">
-          {t(tier.descriptionKey, tier.defaultDescription)}
+          {formatCodeSpans(t(tier.descriptionKey, tier.defaultDescription))}
         </p>
 
         {/* C23 Implementation Code Block - Reset scroll on tier change */}
