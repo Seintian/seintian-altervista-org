@@ -3,7 +3,7 @@
 import ProjectCard from "@/components/ProjectCard";
 import { useTranslation } from "react-i18next";
 import { useState } from "react";
-import { Search, X, Sparkles } from "lucide-react";
+import { Search, X, Filter } from "lucide-react";
 import { ProjectType } from "@/types/portfolio";
 import { useResonance } from "@/lib/context/ResonanceContext";
 
@@ -78,23 +78,23 @@ export default function ProjectsSection({ projects }: ProjectsSectionProps) {
                     </div>
                 </div>
 
-                {/* Resonance Active Banner */}
+                {/* Topic Filter Active Banner */}
                 {selectedTech && (
-                    <div className="mb-8 flex items-center justify-between p-3.5 px-5 bg-blue-50/80 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 rounded-2xl animate-in fade-in slide-in-from-top-2 duration-300">
+                    <div className="mb-8 flex items-center justify-between p-3 px-4.5 bg-slate-100/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 rounded-2xl animate-in fade-in slide-in-from-top-2 duration-300">
                         <div className="flex items-center gap-2.5">
-                            <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
+                            <Filter className="w-4 h-4 text-blue-600 dark:text-blue-400 shrink-0" />
                             <span className="text-sm text-slate-700 dark:text-slate-300">
-                                {t("projects.resonance_active", "Relational graph active: resonating with")}{" "}
-                                <strong className="text-blue-600 dark:text-blue-400 font-bold">{selectedTech}</strong> ({matchingCount} {t("projects.resonance_count", "matching projects highlighted")})
+                                {t("projects.resonance_active", "Active filter:")}{" "}
+                                <strong className="text-blue-600 dark:text-blue-400 font-semibold">{selectedTech}</strong> ({matchingCount} {t("projects.resonance_count", "matching projects")})
                             </span>
                         </div>
                         <button
                             type="button"
                             onClick={clearResonance}
-                            className="text-xs font-semibold px-3 py-1 bg-white dark:bg-slate-900 hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg border border-slate-200 dark:border-slate-800 transition-colors cursor-pointer flex items-center gap-1.5 shrink-0 ml-4"
+                            className="text-xs font-semibold px-3 py-1 bg-white dark:bg-slate-800 hover:bg-slate-200/60 dark:hover:bg-slate-700/60 text-slate-700 dark:text-slate-300 rounded-lg border border-slate-200 dark:border-slate-700 transition-colors cursor-pointer flex items-center gap-1.5 shrink-0 ml-4"
                         >
                             <X className="w-3.5 h-3.5" />
-                            <span>{t("projects.resonance_reset", "Reset Filter")}</span>
+                            <span>{t("projects.resonance_reset", "Clear filter")}</span>
                         </button>
                     </div>
                 )}

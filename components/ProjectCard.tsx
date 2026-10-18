@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { ExternalLink, GraduationCap, User, Briefcase, Sparkles } from "lucide-react";
+import { ExternalLink, GraduationCap, User, Briefcase } from "lucide-react";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import { useResonance, isTechMatch } from "@/lib/context/ResonanceContext";
@@ -49,7 +49,7 @@ const ORIGIN_CONFIG = {
         watermarkHover: "group-hover:text-indigo-500 dark:group-hover:text-indigo-400 group-hover:opacity-10 dark:group-hover:opacity-20",
         techBadge: "text-indigo-700 dark:text-indigo-300 bg-indigo-50/50 dark:bg-indigo-900/20 border-indigo-200/50 dark:border-indigo-800/50",
         linkHover: "hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-indigo-50 dark:hover:bg-indigo-900/30",
-        resonantBorder: "border-indigo-500/80 dark:border-indigo-400/80 ring-2 ring-indigo-500/30 shadow-lg shadow-indigo-500/15",
+        activeBorder: "border-indigo-500/80 dark:border-indigo-400/80 ring-2 ring-indigo-500/30 shadow-lg shadow-indigo-500/15",
         spotlightColor: "rgba(99, 102, 241, 0.14)",
         icon: GraduationCap,
     },
@@ -63,7 +63,7 @@ const ORIGIN_CONFIG = {
         watermarkHover: "group-hover:text-emerald-500 dark:group-hover:text-emerald-400 group-hover:opacity-10 dark:group-hover:opacity-20",
         techBadge: "text-emerald-700 dark:text-emerald-300 bg-emerald-50/50 dark:bg-emerald-900/20 border-emerald-200/50 dark:border-emerald-800/50",
         linkHover: "hover:text-emerald-600 dark:hover:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-emerald-900/30",
-        resonantBorder: "border-emerald-500/80 dark:border-emerald-400/80 ring-2 ring-emerald-500/30 shadow-lg shadow-emerald-500/15",
+        activeBorder: "border-emerald-500/80 dark:border-emerald-400/80 ring-2 ring-emerald-500/30 shadow-lg shadow-emerald-500/15",
         spotlightColor: "rgba(16, 185, 129, 0.14)",
         icon: User,
     },
@@ -77,7 +77,7 @@ const ORIGIN_CONFIG = {
         watermarkHover: "group-hover:text-amber-500 dark:group-hover:text-amber-400 group-hover:opacity-10 dark:group-hover:opacity-20",
         techBadge: "text-amber-700 dark:text-amber-300 bg-amber-50/50 dark:bg-amber-900/20 border-amber-200/50 dark:border-amber-800/50",
         linkHover: "hover:text-amber-600 dark:hover:text-amber-400 hover:bg-amber-50 dark:hover:bg-amber-900/30",
-        resonantBorder: "border-amber-500/80 dark:border-amber-400/80 ring-2 ring-amber-500/30 shadow-lg shadow-amber-500/15",
+        activeBorder: "border-amber-500/80 dark:border-amber-400/80 ring-2 ring-amber-500/30 shadow-lg shadow-amber-500/15",
         spotlightColor: "rgba(245, 158, 11, 0.14)",
         icon: Briefcase,
     },
@@ -91,7 +91,7 @@ const ORIGIN_CONFIG = {
         watermarkHover: "group-hover:text-blue-500 dark:group-hover:text-blue-400 group-hover:opacity-10 dark:group-hover:opacity-20",
         techBadge: "text-blue-700 dark:text-blue-300 bg-blue-50/50 dark:bg-blue-900/20 border-blue-200/50 dark:border-blue-800/50",
         linkHover: "hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30",
-        resonantBorder: "border-blue-500/80 dark:border-blue-400/80 ring-2 ring-blue-500/30 shadow-lg shadow-blue-500/15",
+        activeBorder: "border-blue-500/80 dark:border-blue-400/80 ring-2 ring-blue-500/30 shadow-lg shadow-blue-500/15",
         spotlightColor: "rgba(59, 130, 246, 0.14)",
         icon: undefined,
     }
@@ -110,10 +110,10 @@ export default function ProjectCard({ title, description, url, repo, slug, techn
     const config = origin ? ORIGIN_CONFIG[origin] : ORIGIN_CONFIG.default;
     const Icon = config.icon;
 
-    const hasResonanceMatch = matchesTech(technologies);
+    const hasFilterMatch = matchesTech(technologies);
     const isAnyTechActive = activeTech !== null;
-    const isDimmed = isAnyTechActive && !hasResonanceMatch;
-    const isResonating = isAnyTechActive && hasResonanceMatch;
+    const isDimmed = isAnyTechActive && !hasFilterMatch;
+    const isFilterActive = isAnyTechActive && hasFilterMatch;
 
     const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
         if (!cardRef.current) return;
@@ -146,8 +146,8 @@ export default function ProjectCard({ title, description, url, repo, slug, techn
                 transition: isHovered ? "transform 0.1s ease-out" : "transform 0.4s ease-out, opacity 0.3s ease-out, border-color 0.3s ease-out",
             }}
             className={`flex flex-col h-full bg-white dark:bg-slate-900/80 backdrop-blur-sm rounded-3xl p-6 sm:p-8 border transition-all duration-300 group relative overflow-hidden isolate focus-within:ring-2 focus-within:ring-offset-2 dark:focus-within:ring-offset-slate-950 ${
-                isResonating
-                    ? config.resonantBorder
+                isFilterActive
+                    ? config.activeBorder
                     : isDimmed
                     ? "border-slate-200/50 dark:border-slate-800/50 opacity-40 grayscale-[15%] scale-[0.99]"
                     : `border-slate-200 dark:border-slate-800 ${config.borderHover} ${config.shadowHover} ${config.ringFocus}`
@@ -184,12 +184,7 @@ export default function ProjectCard({ title, description, url, repo, slug, techn
                                     <span className="leading-5 pt-px">{t(`projects.origins.${origin}`)}</span>
                                 </div>
                             )}
-                            {isResonating && (
-                                <span className="inline-flex items-center gap-1 text-[0.65rem] font-bold px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/50 dark:text-blue-300 animate-pulse">
-                                    <Sparkles className="w-3 h-3" />
-                                    <span>{t("projects.resonant_match", "Resonant Match")}</span>
-                                </span>
-                            )}
+
                         </div>
                         <h3 className={`text-xl font-bold transition-colors duration-300 leading-tight ${config.titleHover}`}>
                             {projectSlug ? (
@@ -254,7 +249,7 @@ export default function ProjectCard({ title, description, url, repo, slug, techn
                                         ? "bg-blue-600 text-white border-blue-600"
                                         : `${config.techBadge} hover:scale-105 active:scale-95`
                                 }`}
-                                title={`Filter / resonate by ${tech}`}
+                                title={`Filter by ${tech}`}
                             >
                                 {tech}
                             </button>

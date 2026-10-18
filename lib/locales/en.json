@@ -387,18 +387,17 @@
         "benchmarks": "Benchmark Suite"
       }
     },
-    "resonance_active": "Relational graph active: resonating with",
-    "resonance_count": "matching projects highlighted",
-    "resonance_reset": "Reset Filter",
-    "resonant_match": "Resonant Match",
+    "resonance_active": "Active filter:",
+    "resonance_count": "matching projects",
+    "resonance_reset": "Clear filter",
     "librbipc": {
       "explorer": {
-        "badge": "Interactive Systems Architecture",
+        "badge": "Systems Architecture Dossier",
         "title": "4-Tier Hybrid Synchronization State Machine",
-        "tier0": "Executes bounded exponential backoff with CPU pause instructions. Completely avoids kernel context switches on uncontended and brief contention windows.",
-        "tier1": "Arms CPU cache monitoring on &slot->sequence via UMONITOR. Enters ultra-low-latency C0.1 core sub-state, dropping core power while retaining instant hardware wakeups.",
-        "tier2": "Eliminates MFENCE store-buffer stalls using asymmetric memory barriers. Performs vectorized 64-bit multi-waits on slot sequences and shutdown flags simultaneously.",
-        "tier3": "Transfers dormant consumers to kernel wait-queues without spurious wakeups. Atomically evaluates slot tickets and wakes subsequent wait-queues in a single syscall."
+        "tier0": "Bounded exponential backoff with CPU pause instructions. Avoids kernel context switches during uncontended and brief contention windows.",
+        "tier1": "Arms CPU cache monitoring on &slot->sequence via UMONITOR. Enters the ultra-low-latency C0.1 core sub-state, reducing core power while maintaining hardware-level wakeups.",
+        "tier2": "Eliminates MFENCE store-buffer stalls using asymmetric memory barriers. Executes vectorized 64-bit multi-waits on slot sequences and shutdown flags simultaneously.",
+        "tier3": "Suspends dormant consumer threads into kernel wait-queues without spurious wakeups. Atomically evaluates slot tickets and wakes subsequent wait-queues in a single system call."
       }
     }
   },

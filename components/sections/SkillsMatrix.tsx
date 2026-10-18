@@ -100,7 +100,7 @@ export default function SkillsMatrix({ skills }: SkillsMatrixProps) {
                           ? "bg-blue-50 dark:bg-blue-900/30 border-blue-300 dark:border-blue-700"
                           : "border-transparent hover:border-slate-100 dark:hover:border-slate-800 hover:bg-slate-50/50 dark:hover:bg-slate-800/30"
                       }`}
-                      title={`${t(`sections.skills.tiers.${tier}`)} - Click to resonate across portfolio`}
+                      title={`${t(`sections.skills.tiers.${tier}`)} - Click to filter portfolio`}
                     >
                       <span className={`font-medium transition-colors leading-7 ${
                         isMatch
