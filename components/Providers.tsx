@@ -23,8 +23,20 @@ export default function Providers({ children }: { children: ReactNode }) {
       }
     };
 
-    // Keep <html lang="..."> in sync with the active language detected or selected
     updateDocumentLang(i18n.language || "en");
+
+    // Client-side post-hydration language restoration
+    try {
+      const stored = localStorage.getItem("i18nextLng");
+      const browser = navigator.language;
+      const preferred = stored || (browser?.startsWith("it") ? "it" : "en");
+      const target = preferred.startsWith("it") ? "it" : "en";
+      if (target !== i18n.language) {
+        i18n.changeLanguage(target);
+      }
+    } catch {
+      // Storage access may fail in certain restricted contexts
+    }
 
     i18n.on("languageChanged", updateDocumentLang);
     return () => {

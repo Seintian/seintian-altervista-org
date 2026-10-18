@@ -9,15 +9,21 @@ export default function LanguageSwitcher() {
 
     if (!mounted) {
         return (
-            <div className="flex bg-slate-100 dark:bg-slate-900 rounded-full w-[48px] h-10 animate-pulse"></div>
+            <div className="flex bg-slate-100 dark:bg-slate-900 rounded-full w-[48px] h-10 animate-pulse" />
         );
     }
 
-    const currentLang = i18n.language || 'en';
-    const isIt = currentLang.startsWith('it');
+    const currentLang = i18n.language || "en";
+    const isIt = currentLang.startsWith("it");
 
     const toggleLanguage = () => {
-        i18n.changeLanguage(isIt ? "en" : "it");
+        const nextLang = isIt ? "en" : "it";
+        i18n.changeLanguage(nextLang);
+        try {
+            localStorage.setItem("i18nextLng", nextLang);
+        } catch {
+            // Storage access fallback
+        }
     };
 
     const labelText = isIt ? t("common.switch_to_en", "Switch to English") : t("common.switch_to_it", "Passa all'italiano");
