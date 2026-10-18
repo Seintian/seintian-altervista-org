@@ -1,5 +1,7 @@
 "use client";
 
+import { formatCodeSpans } from "@/lib/formatText";
+
 import { useTranslation } from "react-i18next";
 import { CheckCircle2 } from "lucide-react";
 import { ProjectType } from "@/types/portfolio";
@@ -22,8 +24,8 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
 
     return (
         <section className="bg-white dark:bg-slate-900/60 rounded-3xl p-6 sm:p-8 border border-slate-200 dark:border-slate-800 transition-colors">
-            <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-slate-50 flex items-center gap-2">
-                <CheckCircle2 className="w-6 h-6 text-blue-500" />
+            <h2 className="text-2xl font-bold mb-6 text-slate-900 dark:text-slate-50 flex items-center gap-2.5 -ml-2">
+                <CheckCircle2 className="w-6 h-6 text-blue-500 shrink-0" />
                 {t("projects.details.features", "Key Features")}
             </h2>
             <ul className="space-y-4">
@@ -33,7 +35,7 @@ export default function ProjectFeatures({ project }: ProjectFeaturesProps) {
                         className="flex items-start gap-3.5 text-slate-700 dark:text-slate-300 leading-relaxed group"
                     >
                         <span className="w-2 h-2 mt-2.5 rounded-full bg-blue-500 group-hover:scale-125 transition-transform shrink-0" />
-                        <span className="text-base sm:text-lg">{feature}</span>
+                        <span className="text-sm sm:text-[15px]">{formatCodeSpans(feature)}</span>
                     </li>
                 ))}
             </ul>
