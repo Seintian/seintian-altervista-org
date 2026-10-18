@@ -389,17 +389,7 @@
     },
     "resonance_active": "Active filter:",
     "resonance_count": "matching projects",
-    "resonance_reset": "Clear filter",
-    "librbipc": {
-      "explorer": {
-        "badge": "Systems Architecture Dossier",
-        "title": "4-Tier Hybrid Synchronization State Machine",
-        "tier0": "Bounded exponential backoff with CPU pause instructions. Avoids kernel context switches during uncontended and brief contention windows.",
-        "tier1": "Arms CPU cache monitoring on `&slot->sequence` via `UMONITOR`. Enters the ultra-low-latency C0.1 core sub-state, reducing core power while maintaining hardware-level wakeups.",
-        "tier2": "Eliminates `MFENCE` store-buffer stalls using asymmetric memory barriers. Executes vectorized 64-bit multi-waits on slot sequences and shutdown flags simultaneously.",
-        "tier3": "Suspends dormant consumer threads into kernel wait-queues without spurious wakeups. Atomically evaluates slot tickets and wakes subsequent wait-queues in a single system call."
-      }
-    }
+    "resonance_reset": "Clear filter"
   },
   "sections": {
     "experience": {

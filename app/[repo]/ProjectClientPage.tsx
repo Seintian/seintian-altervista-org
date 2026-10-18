@@ -7,7 +7,6 @@ import ProjectFeatures from "@/components/project/ProjectFeatures";
 import ProjectTheory from "@/components/project/ProjectTheory";
 import ProjectImplementation from "@/components/project/ProjectImplementation";
 import ProjectSidebar from "@/components/project/ProjectSidebar";
-import RbipcSyncExplorer from "@/components/project/RbipcSyncExplorer";
 
 export default function ProjectClientPage({ project }: { project: ProjectType }) {
     return (
@@ -21,7 +20,6 @@ export default function ProjectClientPage({ project }: { project: ProjectType })
                     <ProjectFeatures project={project} />
                     <ProjectTheory project={project} />
                     <ProjectImplementation project={project} />
-                    {project.slug === "librbipc" && <RbipcSyncExplorer />}
                 </div>
 
                 <ProjectSidebar project={project} />

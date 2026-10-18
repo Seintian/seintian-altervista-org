@@ -389,17 +389,7 @@
     },
     "resonance_active": "Filtro attivo:",
     "resonance_count": "progetti corrispondenti",
-    "resonance_reset": "Rimuovi filtro",
-    "librbipc": {
-      "explorer": {
-        "badge": "Dossier di Architettura dei Sistemi",
-        "title": "Macchina a Stati di Sincronizzazione Ibrida a 4 Livelli",
-        "tier0": "Esegue backoff esponenziale limitato con istruzioni CPU pause. Evita context switch verso il kernel nei percorsi non contesi e a breve latenza.",
-        "tier1": "Attiva il monitoraggio hardware della cache su `&slot->sequence` tramite `UMONITOR`. Entra nel sub-state a bassissima latenza C0.1, riducendo i consumi con risveglio hardware immediato.",
-        "tier2": "Elimina gli stalli dello store buffer (`MFENCE`) tramite barriere di memoria asimmetriche. Esegue multi-wait a 64-bit vettorizzate su sequenza slot e flag di arresto contemporaneamente.",
-        "tier3": "Sospende i thread consumatori inattivi nelle code del kernel senza risvegli spuri. Valuta atomicamente il ticket dello slot e risveglia le code successive in una singola chiamata di sistema."
-      }
-    }
+    "resonance_reset": "Rimuovi filtro"
   },
   "sections": {
     "experience": {
