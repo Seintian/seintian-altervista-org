@@ -6,7 +6,10 @@ import NextTopLoader from "nextjs-toploader";
 
 import Header from "@/components/ui/Header";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Christian Santarelli | Software Engineering",
